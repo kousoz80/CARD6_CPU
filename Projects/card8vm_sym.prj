@@ -1,0 +1,4555 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!-- なんちゃってXML version 0.1( ObjectEditor専用 ) -->
+<xobject>
+<ID>project</ID>
+<x0>0</x0>
+<y0>0</y0>
+<width>200</width>
+<height>100</height>
+<ID_maker>109</ID_maker>
+<objectname>card8vm_sym</objectname>
+<description>新規のアプリケーション</description>
+<codeclip>
+<ID>_CSTART</ID>
+<x0>699</x0>
+<y0>3</y0>
+<width>121</width>
+<height>26</height>
+<codetext> String[] ARGS;
+</codetext>
+</codeclip>
+<pin>
+<ID>_PSTART</ID>
+<x0>444</x0>
+<y0>8</y0>
+<width>55</width>
+<height>24</height>
+<text>Start()</text>
+<px>50</px>
+<py>50</py>
+</pin>
+<relation>
+<ID>_R3</ID>
+<pin1name>_PSTART</pin1name>
+<pin2name>_A0(_Pstart)</pin2name>
+</relation>
+<xobject>
+<ID>_X6</ID>
+<x0>0</x0>
+<y0>515</y0>
+<width>107</width>
+<height>183</height>
+<ID_maker>48</ID_maker>
+<objectname>symulator</objectname>
+<description></description>
+<pin>
+<ID>_P0</ID>
+<x0>7</x0>
+<y0>415</y0>
+<width>73</width>
+<height>27</height>
+<text>run_stop()</text>
+<px>1</px>
+<py>29</py>
+</pin>
+<pin>
+<ID>_P1</ID>
+<x0>233</x0>
+<y0>320</y0>
+<width>85</width>
+<height>28</height>
+<text>single_step()</text>
+<px>0</px>
+<py>159</py>
+</pin>
+<pin>
+<ID>_P2</ID>
+<x0>38</x0>
+<y0>9</y0>
+<width>60</width>
+<height>30</height>
+<text>add()</text>
+<px>0</px>
+<py>67</py>
+</pin>
+<pin>
+<ID>_P3</ID>
+<x0>42</x0>
+<y0>54</y0>
+<width>60</width>
+<height>30</height>
+<text>delete()</text>
+<px>0</px>
+<py>85</py>
+</pin>
+<operation>
+<ID>_O8</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>102</x0>
+<y0>387</y0>
+<width>110</width>
+<height>45</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>29</inpiny0>
+<inpinwidth>38</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>63</outpinx0>
+<outpiny0>24</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>//実行・停止
+
+
+run_mode = 1- run_mode;
+if( run_mode == 0 ) run_button.setText(&quot;run&quot;); else run_button.setText(&quot;stop&quot;);
+interval = Integer.parseInt( interval_field.getText() );
+</codetext>
+</operation>
+<relation>
+<ID>_R9</ID>
+<pin1name>_P0</pin1name>
+<pin2name>_O8</pin2name>
+</relation>
+<operation>
+<ID>_O13</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>48</x0>
+<y0>328</y0>
+<width>155</width>
+<height>51</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>104</inpinx0>
+<inpiny0>32</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>2</inpinlinkcount>
+<description></description>
+<codetext>//シングルステップ実行
+
+
+
+   exec_one_cycle();
+</codetext>
+</operation>
+<relation>
+<ID>_R14</ID>
+<pin1name>_P1</pin1name>
+<pin2name>_O13</pin2name>
+</relation>
+<operation>
+<ID>_O15</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>165</x0>
+<y0>50</y0>
+<width>235</width>
+<height>47</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>//該当番号のメモリウィンドウを削除
+
+
+if( memory_windows.size() &gt; list_no ) memory_windows.remove(list_no);
+
+int nn = memory_windows.size();
+if( nn &gt; 0){
+if( list_no &gt;= nn ) list_no = nn-1;
+memory_window w = (memory_window)(memory_windows.get(list_no));
+name_field.setText(w.name);
+start_field.setText(hex6(w.start));
+end_field.setText(hex6(w.end));
+}
+</codetext>
+</operation>
+<relation>
+<ID>_R16</ID>
+<pin1name>_P3</pin1name>
+<pin2name>_O15</pin2name>
+</relation>
+<operation>
+<ID>_O19</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>164</x0>
+<y0>0</y0>
+<width>169</width>
+<height>44</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>2</inpinx0>
+<inpiny0>25</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>//メモリウィンドウを追加
+
+
+String n = name_field.getText();
+int s = Integer.parseInt(start_field.getText(),16);
+int e = Integer.parseInt(end_field.getText(),16);
+memory_windows.add( new memory_window( n, s, e ) );
+
+int nn = memory_windows.size();
+if( nn &gt; 0){
+list_no = nn-1;
+memory_window w = (memory_window)(memory_windows.get(list_no));
+name_field.setText(w.name);
+start_field.setText(hex6(w.start));
+end_field.setText(hex6(w.end));
+}
+</codetext>
+</operation>
+<relation>
+<ID>_R20</ID>
+<pin1name>_P2</pin1name>
+<pin2name>_O19</pin2name>
+</relation>
+<codeclip>
+<ID>_C21</ID>
+<x0>169</x0>
+<y0>447</y0>
+<width>198</width>
+<height>33</height>
+<codetext>// 1サイクル実行
+public void exec_one_cycle(){
+  int ins, adr, tmp;
+
+    // 各レジスタ、クロックカウンタの設定
+    reg_pc = Integer.parseInt( pc_reg.getText(), 16 );
+    reg_x =  Integer.parseInt( x_reg.getText(), 16 );
+    reg_y =  Integer.parseInt( y_reg.getText(), 16 );
+    reg_a =  Integer.parseInt( a_reg.getText(), 16 );
+    reg_sp = Integer.parseInt( sp_reg.getText(), 16 );
+    clock =  Integer.parseInt( clock_field.getText() );
+    break_adrs = Integer.parseInt( break_field.getText(), 16 );
+
+    // opコード表示
+    message_area.setText(&quot; OP CODE:\n&quot;+hex6(reg_pc) );
+    
+//    System.out.println( &quot;opcode=&quot;+ mem[ reg_pc ]);
+    
+    message_area.append( &quot; : &quot;+opcode[ mem[ reg_pc ] ]+&quot;\n\n&quot; );
+
+    // 停止アドレスに到達したら停止する
+    if( break_adrs !=0 &amp;&amp; break_adrs == reg_pc ){
+     run_stop();
+    }
+
+    // 命令コードをフェッチ
+    ins = mem[ reg_pc++ ];
+
+    // 命令コードに応じた処理
+    switch( ins ){
+
+	// hlt;			停止する
+    case HLT:
+      if( run_mode !=0 ) run_stop();
+      break;
+
+    // lxi xxxx;	Xレジスタにxxxxの値をセットする
+    case LXI:
+      reg_x = mem[ reg_pc++ ] | (mem[ reg_pc++ ] &lt;&lt; 8) | (mem[ reg_pc++ ] &lt;&lt; 16);
+      break;
+
+    // ldx xxxx;	Xレジスタにxxxx番地の内容を転送する
+    case LDX:
+      adr = mem[ reg_pc++ ] | (mem[ reg_pc++ ] &lt;&lt; 8) | (mem[ reg_pc++ ] &lt;&lt; 16);
+      reg_x = mem[ adr++ ] | (mem[ adr++ ] &lt;&lt; 8) | (mem[ adr ] &lt;&lt; 16);
+      break;
+
+    // adx xxxx;	Xレジスタにxxxx番地の内容を加算する
+    case ADX:
+      adr = mem[ reg_pc++ ] | (mem[ reg_pc++ ] &lt;&lt; 8) | (mem[ reg_pc++ ] &lt;&lt; 16);
+      tmp = mem[ adr++ ] | (mem[ adr++ ] &lt;&lt; 8) | (mem[ adr ] &lt;&lt; 16);
+      reg_x = reg_x + tmp;
+      reg_zf = (reg_x==0? 1 : 0);
+      reg_cf = (reg_x&gt;=0x1000000? 1 : 0);
+      reg_x &amp;= 0xffffff; 
+      break;
+
+    // sbx xxxx;	Xレジスタからxxxx番地の内容を減算する
+    case SBX:
+      adr = mem[ reg_pc++] | (mem[ reg_pc++ ] &lt;&lt; 8) | (mem[reg_pc++] &lt;&lt; 16);
+      tmp = mem[ adr++ ] | (mem[ adr++ ] &lt;&lt; 8) | (mem[ adr ] &lt;&lt; 16);
+      reg_x = reg_x - tmp;
+      reg_zf = (reg_x==0? 1 : 0);
+      reg_cf = (reg_x&lt;0? 0 : 1);
+      reg_x &amp;= 0xffffff; 
+      break;
+
+    // stx xxxx;	Xレジスタの内容をxxxx番地に転送する
+    case  STX:
+      adr = mem[ reg_pc++] | (mem[ reg_pc++ ] &lt;&lt; 8) | (mem[reg_pc++] &lt;&lt; 16);
+      mem[ adr++ ] = (reg_x&gt;&gt;0)  &amp; 0xff;
+      mem[ adr++ ] = (reg_x&gt;&gt;8)  &amp; 0xff;
+      mem[ adr ]   = (reg_x&gt;&gt;16) &amp; 0xff;
+      break;
+
+    // lai xx;		Aレジスタにxxの値をセットする
+    case  LAI:
+      reg_a = mem[ reg_pc++ ];
+      break;
+
+    // ld;			AレジスタにXレジスタが示す番地の内容を転送する
+    case  LD:
+      reg_a = mem[ reg_x ];
+      break;
+
+    // st;			Xレジスタが示す番地にAレジスタの内容を転送する
+    case  ST:
+      mem[ reg_x ] = reg_a;
+      break;
+
+    // adc;			AレジスタにXレジスタが示す番地の内容をキャリー付き加算する
+    case  ADC:
+      reg_a = reg_a + mem[ reg_x ] + reg_cf;
+      reg_cf = (reg_a&gt;=0x100? 1 : 0);
+      reg_a &amp;= 0xff; 
+      reg_zf = (reg_a==0? 1 : 0);
+      break;
+
+    // sbb;			AレジスタからXレジスタが示す番地の内容をボロー(キャリーの反転)付き減算する
+    case  SBB:
+      reg_a = reg_a - mem[ reg_x ] - 1 + reg_cf;
+      reg_cf = (reg_a&lt;0? 0 : 1);
+      reg_a &amp;= 0xff; 
+      reg_zf = (reg_a==0? 1 : 0);
+      break;
+
+    // and;			AレジスタにXレジスタが示す番地の内容をAND演算する(CFは0にする)
+    case  AND:
+      reg_a = (reg_a &amp; mem[ reg_x ]) &amp; 0xff;
+      reg_zf = (reg_a==0? 1 : 0);
+      reg_cf = 0;
+      break;
+
+    // or;			AレジスタにXレジスタが示す番地の内容をOR演算する(CFは1にする)
+    case  OR:
+      reg_a = (reg_a | mem[ reg_x ]) &amp; 0xff;
+      reg_zf = (reg_a==0? 1 : 0);
+      reg_cf = 1;
+      break;
+
+    // rorx;			Xレジスタが示す番地の内容のビットをCFを含めて右回転させる
+    case  RORX:
+      tmp = mem[ reg_x ];
+      mem[ reg_x ] = tmp &gt;&gt; 1;
+      if( reg_cf == 1 ) mem[ reg_x ] |= 0x80; 
+      mem[ reg_x ] &amp;= 0xff; 
+      reg_zf = (mem[ reg_x ]==0? 1 : 0);
+      reg_cf = ((tmp&amp;0x01)!=0)? 1 : 0;
+      break;
+
+    // rolX;			Xレジスタが示す番地の内容のビットをCFを含めて左回転させる
+    case  ROLX:
+      tmp = mem[ reg_x ];
+      mem[ reg_x ] = tmp &lt;&lt; 1;
+      if( reg_cf == 1 ) mem[ reg_x ] |= 0x01; 
+      mem[ reg_x ] &amp;= 0xff; 
+      reg_zf = (mem[ reg_x ]==0? 1 : 0);
+      reg_cf = (tmp &amp; 0x80)!=0? 1 : 0;
+      break;
+
+    // jmp xxxx;	xxxx番地にジャンプする
+    case  JMP:
+      tmp = mem[ reg_pc++] | (mem[ reg_pc++ ] &lt;&lt; 8) | (mem[reg_pc++] &lt;&lt; 16);
+      reg_pc = tmp;
+      break;
+
+    // jz xxxx;		ZFが１のときxxxx番地にジャンプする
+    case  JZ:
+      tmp = mem[ reg_pc++] | (mem[ reg_pc++ ] &lt;&lt; 8) | (mem[reg_pc++] &lt;&lt; 16);
+      if( reg_zf == 1 ) reg_pc = tmp;
+      break;
+
+    // jnz xxxx;	ZFが0のときxxxx番地にジャンプする
+    case  JNZ:
+      tmp = mem[ reg_pc++] | (mem[ reg_pc++ ] &lt;&lt; 8) | (mem[reg_pc++] &lt;&lt; 16);
+      if( reg_zf == 0 ) reg_pc = tmp;
+      break;
+
+    // jc xxxx;		CFが１のときxxxx番地にジャンプする
+    case  JC:
+      tmp = mem[ reg_pc++] | (mem[ reg_pc++ ] &lt;&lt; 8) | (mem[reg_pc++] &lt;&lt; 16);
+      if( reg_cf == 1 ) reg_pc = tmp;
+      break;
+
+    // jnc xxxx;	CFが0のときxxxx番地にジャンプする
+    case  JNC:
+      tmp = mem[ reg_pc++] | (mem[ reg_pc++ ] &lt;&lt; 8) | (mem[reg_pc++] &lt;&lt; 16);
+      if( reg_cf == 0 ) reg_pc = tmp;
+      break;
+
+    // jmpx;		Xレジスタが示す番地にジャンプする
+    case  JMPX:
+      reg_pc = reg_x;
+      break;
+
+    // ここから拡張命令
+
+    // jmpy;		Yレジスタが示す番地にジャンプする
+    case  JMPY:
+      reg_pc = reg_y;
+      break;
+
+    // lyi xxxx;	Yレジスタにxxxxの値をセットする
+    case LYI:
+      reg_y = mem[ reg_pc++ ] | (mem[ reg_pc++ ] &lt;&lt; 8) | (mem[ reg_pc++ ] &lt;&lt; 16);
+      break;
+
+    // ldy xxxx;	Yレジスタにxxxx番地の内容を転送する
+    case LDY:
+      adr = mem[ reg_pc++ ] | (mem[ reg_pc++ ] &lt;&lt; 8) | (mem[ reg_pc++ ] &lt;&lt; 16);
+      reg_y = mem[ adr++ ] | (mem[ adr++ ] &lt;&lt; 8) | (mem[ adr ] &lt;&lt; 16);
+      break;
+
+    // ady xxxx;	Yレジスタにxxxx番地の内容を加算する
+    case ADY:
+      adr = mem[ reg_pc++ ] | (mem[ reg_pc++ ] &lt;&lt; 8) | (mem[ reg_pc++ ] &lt;&lt; 16);
+      tmp = mem[ adr++ ] | (mem[ adr++ ] &lt;&lt; 8) | (mem[ adr ] &lt;&lt; 16);
+      reg_y = reg_y + tmp;
+      reg_zf = (reg_y==0? 1 : 0);
+      reg_cf = (reg_y&gt;=0x1000000? 1 : 0);
+      reg_y &amp;= 0xffffff; 
+      break;
+
+    // sby xxxx;	Yレジスタからxxxx番地の内容を減算する
+    case SBY:
+      adr = mem[ reg_pc++] | (mem[ reg_pc++ ] &lt;&lt; 8) | (mem[reg_pc++] &lt;&lt; 16);
+      tmp = mem[ adr++ ] | (mem[ adr++ ] &lt;&lt; 8) | (mem[ adr ] &lt;&lt; 16);
+      reg_y = reg_y - tmp;
+      reg_zf = (reg_y==0? 1 : 0);
+      reg_cf = (reg_y&lt;0? 0 : 1);
+      reg_y &amp;= 0xffffff; 
+      break;
+
+    // sty xxxx;	Yレジスタの内容をxxxx番地に転送する
+    case STY:
+      adr = mem[ reg_pc++] | (mem[ reg_pc++ ] &lt;&lt; 8) | (mem[reg_pc++] &lt;&lt; 16);
+      mem[ adr++ ] = (reg_y&gt;&gt;0)  &amp; 0xff;
+      mem[ adr++ ] = (reg_y&gt;&gt;8)  &amp; 0xff;
+      mem[ adr ]   = (reg_y&gt;&gt;16) &amp; 0xff;
+      break;
+
+    // ld_y;		AレジスタにYレジスタが示す番地の内容を転送する
+    case LD_Y:
+      reg_a = mem[ reg_y ];
+      break;
+
+    // st_y;		Yレジスタが示す番地にAレジスタの内容を転送する
+    case ST_Y:
+      mem[ reg_y ] = reg_a;
+      break;
+
+    // adc_y;		AレジスタにYレジスタが示す番地の内容をキャリー付き加算する
+    case ADC_Y:
+      reg_a = reg_a + mem[ reg_y ] + reg_cf;
+      reg_cf = (reg_a &gt;= 0x100)? 1 : 0;
+      reg_a &amp;= 0xff; 
+      reg_zf = (reg_a==0)? 1 : 0;
+      break;
+
+    // sbb_y;			AレジスタからYレジスタが示す番地の内容をボロー(キャリーの反転)付き減算する
+    case  SBB_Y:
+      reg_a = reg_a - mem[ reg_y ] - 1 + reg_cf;
+      reg_cf = (reg_a&lt;0? 0 : 1);
+      reg_a &amp;= 0xff; 
+      reg_zf = (reg_a==0? 1 : 0);
+      break;
+
+    // and_y;		AレジスタにYレジスタが示す番地の内容をAND演算する(CFは0にする)
+    case AND_Y:
+      reg_a = (reg_a &amp; mem[ reg_y ]) &amp; 0xff;
+      reg_zf = (reg_a==0? 1 : 0);
+      reg_cf = 0;
+      break;
+
+    // or_y;		AレジスタにYレジスタが示す番地の内容をOR演算する(CFは1にする)
+    case OR_Y:
+      reg_a = (reg_a | mem[ reg_y ]) &amp; 0xff;
+      reg_zf = (reg_a==0? 1 : 0);
+      reg_cf = 1;
+      break;
+
+    // call xxxx;	PCレジスタの内容をスタックにプッシュしてxxxx番地にジャンプする
+    case CALL:
+      tmp = mem[ reg_pc++] | (mem[ reg_pc++ ] &lt;&lt; 8) | (mem[reg_pc++] &lt;&lt; 16);
+      mem[ --reg_sp ] = (reg_pc&gt;&gt;16) &amp; 0xff;
+      mem[ --reg_sp ] = (reg_pc&gt;&gt;8)  &amp; 0xff;
+      mem[ --reg_sp ] = (reg_pc&gt;&gt;0)  &amp; 0xff;
+      reg_pc = tmp;
+      break;
+
+    // ret;	スタックにプッシュされたアドレスPCレジスタに復帰する
+    case RET:
+      reg_pc = mem[ reg_sp++ ] | (mem[ reg_sp++ ] &lt;&lt; 8) | (mem[ reg_sp++ ] &lt;&lt; 16);
+      break;
+
+    // push a;	Aレジスタの内容をスタックにプッシュする
+    case PUSHA:
+      mem[ --reg_sp ] = reg_a;
+      break;
+
+    // push x;	Xレジスタの内容をスタックにプッシュする 
+    case PUSHX:
+      mem[ --reg_sp ] = (reg_x&gt;&gt;16) &amp; 0xff;
+      mem[ --reg_sp ] = (reg_x&gt;&gt;8)  &amp; 0xff;
+      mem[ --reg_sp ] = (reg_x&gt;&gt;0)  &amp; 0xff;
+      break;
+
+    // pop a;	スタックからAレジスタの内容を復帰する 
+    case POPA:
+      reg_a = mem[ reg_sp++ ];
+      break;
+
+    // pop x;	スタックからXレジスタの内容を復帰する 
+    case POPX:
+      reg_x = mem[ reg_sp++ ] | (mem[ reg_sp++ ] &lt;&lt; 8) | (mem[ reg_sp++ ] &lt;&lt; 16);
+      break;
+
+    // txs;	Xレジスタスの内容をスタックポインタに転送する 
+    case TXS:
+      reg_sp = reg_x;
+      break;
+
+    // tsx;	スタックポインタの内容をXレジスタスに転送する 
+    case TSX:
+      reg_x = reg_sp;
+      break;
+
+    // incx;	Xレジスタを+1する
+    case INCX:
+      reg_x = (reg_x+1) &amp; 0xffffff;
+      reg_zf = (reg_x==0? 1 : 0);
+      break;
+
+    // decx;	Xレジスタを-1する
+    case DECX:
+      reg_x = (reg_x-1) &amp; 0xffffff;
+      reg_zf = (reg_x==0? 1 : 0);
+      break;
+
+    // incy;	Yレジスタを+1する
+    case INCY: 
+      reg_y = (reg_y+1) &amp; 0xffffff;
+      reg_zf = (reg_y==0? 1 : 0);
+      break;
+
+    // decy;	Yレジスタを-1する
+    case DECY: 
+      reg_y = (reg_y-1) &amp; 0xffffff;
+      reg_zf = (reg_y==0? 1 : 0);
+      break;
+
+    // rory;			Yレジスタが示す番地の内容のビットをCFを含めて右回転させる
+    case  RORY:
+      tmp = mem[ reg_y ];
+      mem[ reg_y ] = tmp &gt;&gt; 1;
+      if( reg_cf == 1 ) mem[ reg_y ] |= 0x80; 
+      mem[ reg_y ] &amp;= 0xff; 
+      reg_zf = (mem[ reg_y ]==0? 1 : 0);
+      reg_cf = ((tmp&amp;0x01)!=0)? 1 : 0;
+      break;
+
+    // roly;			Yレジスタが示す番地の内容のビットをCFを含めて左回転させる
+    case  ROLY:
+      tmp = mem[ reg_y ];
+      mem[ reg_y ] = tmp &lt;&lt; 1;
+      if( reg_cf == 1 ) mem[ reg_y ] |= 0x01; 
+      mem[ reg_y ] &amp;= 0xff; 
+      reg_zf = (mem[ reg_y ]==0? 1 : 0);
+      reg_cf = (tmp &amp; 0x80)!=0? 1 : 0;
+      break;
+
+    }
+
+    // メモリウィンドウ表示処理
+    int n = memory_windows.size();
+    for( int i = 0; i &lt; n; i++ ){
+      memory_window w = (memory_window)(memory_windows.get(i));
+      message_area.append(w.name+&quot;\n&quot;+hex6(w.start)+&quot;: &quot;);
+      for( int ad = w.start; ad &lt;= w.end; ad++ ){
+        message_area.append( hex2(mem[ad])+ &quot; &quot; );
+      }
+      message_area.append( &quot;\n\n&quot; );
+    }
+
+    // I/O同期
+    io_sync();
+
+    // レジスタ表示処理
+    pc_reg.setText(hex6(reg_pc));
+    x_reg.setText(hex6(reg_x));
+    y_reg.setText(hex6(reg_y));
+    a_reg.setText(hex2(reg_a));
+    sp_reg.setText(hex6(reg_sp));
+
+    // フラグ表示処理
+    if( reg_cf != 0 ) cf_reg.setBackground(Color.green); else  cf_reg.setBackground(Color.lightGray);
+    if( reg_zf != 0 ) zf_reg.setBackground(Color.green); else  zf_reg.setBackground(Color.lightGray);
+
+    // クロック表示処理
+    clock++;
+    clock_field.setText(&quot;&quot;+clock);
+
+}
+</codetext>
+</codeclip>
+<aobject>
+<ID>_A24</ID>
+<x0>236</x0>
+<y0>354</y0>
+<width>147</width>
+<height>85</height>
+<ID_maker>11</ID_maker>
+<objectname>Interval_Timer</objectname>
+<description>新しいオブジェクト</description>
+<state>
+<ID>_SINIT</ID>
+<x0>188</x0>
+<y0>270</y0>
+<width>70</width>
+<height>40</height>
+<text>  初期状態</text>
+<isinitstate>1</isinitstate>
+</state>
+<pin>
+<ID>_P0</ID>
+<x0>200</x0>
+<y0>364</y0>
+<width>99</width>
+<height>25</height>
+<text>play_pause()</text>
+<px>1</px>
+<py>61</py>
+</pin>
+<pin>
+<ID>_P2</ID>
+<x0>476</x0>
+<y0>155</y0>
+<width>60</width>
+<height>30</height>
+<text>Action()</text>
+<px>0</px>
+<py>41</py>
+</pin>
+<codeclip>
+<ID>_C3</ID>
+<x0>200</x0>
+<y0>5</y0>
+<width>272</width>
+<height>198</height>
+<codetext>XTimer  timer;
+class XTimer implements ActionListener{
+  javax.swing.Timer unit;
+ 
+  XTimer( int del ){
+   unit = new javax.swing.Timer( del, this );
+  }
+
+  public void actionPerformed( ActionEvent e){
+    Action();
+  }
+
+}
+</codetext>
+</codeclip>
+<operation>
+<ID>_O7</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>321</x0>
+<y0>255</y0>
+<width>171</width>
+<height>53</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>30</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>30</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>3</inpinx0>
+<inpiny0>31</inpiny0>
+<inpinwidth>45</inpinwidth>
+<inpinheight>21</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// タイマーの起動・停止
+
+
+if( run_mode != 0 ){
+ timer = new XTimer( interval );
+ timer.unit.start();
+}
+ else timer.unit.stop();
+</codetext>
+</operation>
+<action>
+<ID>_A9</ID>
+<comp1name>_P0</comp1name>
+<comp2name>_O7</comp2name>
+</action>
+</aobject>
+<relation>
+<ID>_R25</ID>
+<pin1name>_O8</pin1name>
+<pin2name>_A24(_P0)</pin2name>
+</relation>
+<relation>
+<ID>_R26</ID>
+<pin1name>_A24(_P2)</pin1name>
+<pin2name>_O13</pin2name>
+</relation>
+<codeclip>
+<ID>_C32</ID>
+<x0>410</x0>
+<y0>4</y0>
+<width>593</width>
+<height>631</height>
+<codetext>// 仮想マシンの命令セット
+static final int HLT=0;	// hlt;	停止する
+static final int LXI=1;	// lxi xxxx;	Xレジスタにxxxxの値をセットする
+static final int LDX=2;	// ldx xxxx;	Xレジスタにxxxx番地の内容を転送する
+static final int ADX=3;	// adx xxxx;	Xレジスタにxxxx番地の内容を加算する
+static final int SBX=4;	// sbx xxxx;	Xレジスタからxxxx番地の内容を減算する
+static final int STX=5;	// stx xxxx;	Xレジスタの内容をxxxx番地に転送する
+static final int LAI=6;	// lai xx;	Aレジスタにxxの値をセットする
+static final int LD=7;	// ld;	AレジスタにXレジスタが示す番地の内容を転送する
+static final int ST=8;	// st;	Xレジスタが示す番地にAレジスタの内容を転送する
+static final int ADC=9;	// adc;	AレジスタにXレジスタが示す番地の内容をキャリー付き加算する
+static final int SBB=10;	// sbb;	AレジスタからXレジスタが示す番地の内容をボロー(キャリーの反転)付き減算する
+static final int AND=11;	// and;	AレジスタにXレジスタが示す番地の内容をAND演算する(CFは0にする)
+static final int OR=12;	// or;	AレジスタにXレジスタが示す番地の内容をOR演算する(CFは1にする)
+static final int RORX=13;	// rorx;	Xレジスタが示す番地の内容のビットをCFを含めて右回転させる
+static final int ROLX=14;	// rolx;	Xレジスタが示す番地の内容のビットをCFを含めて左回転させる
+static final int JMP=15;	// jmp xxxx;	xxxx番地にジャンプする
+static final int JZ=16;	// jz xxxx;	ZFが１のときxxxx番地にジャンプする
+static final int JNZ=17;	// jnz xxxx;	ZFが0のときxxxx番地にジャンプする
+static final int JC=18;	// jc xxxx;	CFが１のときxxxx番地にジャンプする
+static final int JNC=19;	// jnc xxxx;	CFが0のときxxxx番地にジャンプする
+static final int JMPX=20;	// jmpx;	Xレジスタが示す番地にジャンプする
+static final int JMPY=21;	// jmpy;	Yレジスタが示す番地にジャンプする
+static final int LYI=22;	// lyi xxxx;	Yレジスタにxxxxの値をセットする
+static final int LDY=23;	// ldy xxxx;	Yレジスタにxxxx番地の内容を転送する
+static final int ADY=24;	// ady xxxx;	Yレジスタにxxxx番地の内容を加算する
+static final int SBY=25;	// sby xxxx;	Yレジスタからxxxx番地の内容を減算する
+static final int STY=26;	// sty xxxx;	Yレジスタの内容をxxxx番地に転送する
+static final int LD_Y=27;	// ld_y;	AレジスタにYレジスタが示す番地の内容を転送する
+static final int ST_Y=28;	// st_y;	Yレジスタが示す番地にAレジスタの内容を転送する
+static final int ADC_Y=29;// adc_y;	AレジスタにYレジスタが示す番地の内容をキャリー付き加算する
+static final int SBB_Y=30;// sbc_y;	AレジスタからYレジスタが示す番地の内容をボロー(キャリーの反転)付き減算する
+static final int AND_Y=31;// and_y;	AレジスタにYレジスタが示す番地の内容をAND演算する(CFは0にする)
+static final int OR_Y=32;	// or_y;	AレジスタにYレジスタが示す番地の内容をOR演算する(CFは1にする)
+static final int CALL=33;	// call xxxx;	PCレジスタの内容をスタックにプッシュしてxxxx番地にジャンプする
+static final int RET=34;	// ret;	スタックにプッシュされたアドレスPCレジスタに復帰する
+static final int PUSHA=35;// push a;	Aレジスタの内容をスタックにプッシュする
+static final int PUSHX=36;// push x;	Xレジスタの内容をスタックにプッシュする 
+static final int POPA=37;	// pop a;	スタックからAレジスタの内容を復帰する 
+static final int POPX=38;	// pop x;	スタックからXレジスタの内容を復帰する 
+static final int TXS=39;	// txs;	Xレジスタスの内容をスタックポインタに転送する 
+static final int TSX=40;	// tsx;	スタックポインタの内容をXレジスタスに転送する 
+static final int INCX=41;	// incx;	Xレジスタを+1する (ZFのみ変化する、CFは変化しない)
+static final int DECX=42;	// decx;	Xレジスタを-1する (ZFのみ変化する、CFは変化しない)
+static final int INCY=43;	// incy;	Yレジスタを+1する (ZFのみ変化する、CFは変化しない)
+static final int DECY=44;	// decy;	Yレジスタを-1する (ZFのみ変化する、CFは変化しない)
+static final int RORY=45;	// rory;	Yレジスタが示す番地の内容のビットをCFを含めて右回転させる
+static final int ROLY=46;	// roly;	Yレジスタが示す番地の内容のビットをCFを含めて左回転させる
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C34</ID>
+<x0>61</x0>
+<y0>486</y0>
+<width>293</width>
+<height>151</height>
+<codetext>/*  仮想マシンのレジスタセット
+  PC: プログラムカウンタ
+  A:   アキュムレータ
+  X:   インデックスレジスタX
+  Y:   インデックスレジスタY
+  SP:  スタックポインタ
+  ZF: ゼロフラグ
+  CF: キャリーフラグ
+  BF: ボローフラグ(反転したキャリーフラグ)
+*/
+
+</codetext>
+</codeclip>
+<pin>
+<ID>_P35</ID>
+<x0>44</x0>
+<y0>212</y0>
+<width>60</width>
+<height>30</height>
+<text>inc()</text>
+<px>0</px>
+<py>124</py>
+</pin>
+<pin>
+<ID>_P36</ID>
+<x0>46</x0>
+<y0>262</y0>
+<width>60</width>
+<height>30</height>
+<text>dec()</text>
+<px>0</px>
+<py>143</py>
+</pin>
+<pin>
+<ID>_P37</ID>
+<x0>36</x0>
+<y0>168</y0>
+<width>60</width>
+<height>30</height>
+<text>home()</text>
+<px>0</px>
+<py>106</py>
+</pin>
+<codeclip>
+<ID>_C38</ID>
+<x0>22</x0>
+<y0>305</y0>
+<width>187</width>
+<height>19</height>
+<codetext>int list_no=0; //リスト番号
+</codetext>
+</codeclip>
+<operation>
+<ID>_O39</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>174</x0>
+<y0>152</y0>
+<width>117</width>
+<height>45</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>25</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>list_no = 0;
+
+
+int nn = memory_windows.size();
+if( nn &gt; 0){
+memory_window w = (memory_window)(memory_windows.get(list_no));
+name_field.setText(w.name);
+start_field.setText(hex6(w.start));
+end_field.setText(hex6(w.end));
+}
+</codetext>
+</operation>
+<relation>
+<ID>_R40</ID>
+<pin1name>_P37</pin1name>
+<pin2name>_O39</pin2name>
+</relation>
+<operation>
+<ID>_O41</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>173</x0>
+<y0>197</y0>
+<width>117</width>
+<height>45</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>25</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>list_no++;
+
+
+int nn = memory_windows.size();
+if( nn &gt; 0 ){
+if( list_no &gt;= nn ) list_no = nn -1;
+memory_window w = (memory_window)(memory_windows.get(list_no));
+name_field.setText(w.name);
+start_field.setText(hex6(w.start));
+end_field.setText(hex6(w.end));
+}
+</codetext>
+</operation>
+<operation>
+<ID>_O42</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>171</x0>
+<y0>248</y0>
+<width>117</width>
+<height>45</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>25</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>list_no--;
+
+
+int nn = memory_windows.size();
+if( nn &gt; 0){
+if( list_no &lt; 0 ) list_no = 0;
+memory_window w = (memory_window)(memory_windows.get(list_no));
+name_field.setText(w.name);
+start_field.setText(hex6(w.start));
+end_field.setText(hex6(w.end));
+}
+</codetext>
+</operation>
+<relation>
+<ID>_R43</ID>
+<pin1name>_P35</pin1name>
+<pin2name>_O41</pin2name>
+</relation>
+<relation>
+<ID>_R44</ID>
+<pin1name>_P36</pin1name>
+<pin2name>_O42</pin2name>
+</relation>
+<pin>
+<ID>_P45</ID>
+<x0>42</x0>
+<y0>110</y0>
+<width>60</width>
+<height>30</height>
+<text>clear()</text>
+<px>0</px>
+<py>47</py>
+</pin>
+<operation>
+<ID>_O46</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>173</x0>
+<y0>104</y0>
+<width>176</width>
+<height>46</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>25</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>//メモリウィンドウを消去
+
+
+memory_windows = new Vector();
+list_no =0;
+name_field.setText(&quot;&quot;);
+start_field.setText(&quot;0&quot;);
+end_field.setText(&quot;0&quot;);
+</codetext>
+</operation>
+<relation>
+<ID>_R47</ID>
+<pin1name>_P45</pin1name>
+<pin2name>_O46</pin2name>
+</relation>
+</xobject>
+<codeclip>
+<ID>_C9</ID>
+<x0>685</x0>
+<y0>356</y0>
+<width>160</width>
+<height>47</height>
+<codetext>// 変数
+int[] mem;
+int reg_pc, reg_x, reg_y, reg_a, reg_sp, reg_cf, reg_zf; 
+JButton run_button; int run_mode = 0;
+JTextField pc_reg, x_reg, y_reg, a_reg, sp_reg;
+JTextField adrs_field, data_field;
+JLabel cf_reg, zf_reg;
+JTextArea message_area, disp;
+JTextField cmd_line;
+JTextField clock_field; int clock=0;
+JTextField interval_field; int interval=1000;
+JTextField no_field, name_field, start_field, end_field;
+JTextField break_field; int break_adrs =0;
+static final int AD_SIZE = 0x1000000;
+int is_break;
+
+ int KeyCode=0;
+ int KeyAck = 0;
+ boolean      is_gets = false;
+static final int KEY_CODE=0xfffffd;
+static final int PRT_STROBE=0xfffffe;
+static final int PRT_DATA=0xffffff;
+
+String edit_command = &quot;&quot;;
+String compile_command = &quot;&quot;;
+String fast_run_command=&quot;&quot;;// 高速エミュレータ起動コマンド
+</codetext>
+</codeclip>
+<relation>
+<ID>_R11</ID>
+<pin1name>_A0(_PArun_button)</pin1name>
+<pin2name>_X6(_P0)</pin2name>
+</relation>
+<relation>
+<ID>_R16</ID>
+<pin1name>_A0(_PAsingle_button)</pin1name>
+<pin2name>_X6(_P1)</pin2name>
+</relation>
+<xobject>
+<ID>_X19</ID>
+<x0>444</x0>
+<y0>45</y0>
+<width>231</width>
+<height>437</height>
+<ID_maker>85</ID_maker>
+<objectname>set_variables</objectname>
+<description></description>
+<pin>
+<ID>_P0</ID>
+<x0>0</x0>
+<y0>141</y0>
+<width>164</width>
+<height>19</height>
+<text>x_reg_is(JTextField t)</text>
+<px>0</px>
+<py>140</py>
+</pin>
+<pin>
+<ID>_P1</ID>
+<x0>0</x0>
+<y0>165</y0>
+<width>163</width>
+<height>22</height>
+<text>y_reg_is(JTextField t)</text>
+<px>0</px>
+<py>122</py>
+</pin>
+<pin>
+<ID>_P2</ID>
+<x0>1</x0>
+<y0>193</y0>
+<width>148</width>
+<height>23</height>
+<text>a_reg_is(JTextField t)</text>
+<px>0</px>
+<py>98</py>
+</pin>
+<pin>
+<ID>_P6</ID>
+<x0>0</x0>
+<y0>52</y0>
+<width>132</width>
+<height>22</height>
+<text>cf_reg_is(JLabel l)</text>
+<px>0</px>
+<py>189</py>
+</pin>
+<pin>
+<ID>_P7</ID>
+<x0>0</x0>
+<y0>87</y0>
+<width>138</width>
+<height>22</height>
+<text>zf_reg_is(JLabel l)</text>
+<px>0</px>
+<py>210</py>
+</pin>
+<pin>
+<ID>_P10</ID>
+<x0>3</x0>
+<y0>357</y0>
+<width>205</width>
+<height>22</height>
+<text>message_area_is(JTextArea t)</text>
+<px>0</px>
+<py>233</py>
+</pin>
+<pin>
+<ID>_P11</ID>
+<x0>0</x0>
+<y0>247</y0>
+<width>184</width>
+<height>21</height>
+<text>clock_field_is(JTextField t)</text>
+<px>0</px>
+<py>260</py>
+</pin>
+<pin>
+<ID>_P13</ID>
+<x0>0</x0>
+<y0>275</y0>
+<width>184</width>
+<height>21</height>
+<text>start_field_is(JTextField t)</text>
+<px>0</px>
+<py>304</py>
+</pin>
+<pin>
+<ID>_P14</ID>
+<x0>0</x0>
+<y0>298</y0>
+<width>167</width>
+<height>27</height>
+<text>end_field_is(JTextField t)</text>
+<px>0</px>
+<py>324</py>
+</pin>
+<pin>
+<ID>_P15</ID>
+<x0>3</x0>
+<y0>326</y0>
+<width>211</width>
+<height>27</height>
+<text>interval_field_is(JTextField t)</text>
+<px>0</px>
+<py>344</py>
+</pin>
+<pin>
+<ID>_P16</ID>
+<x0>727</x0>
+<y0>82</y0>
+<width>52</width>
+<height>25</height>
+<text>start()</text>
+<px>0</px>
+<py>31</py>
+</pin>
+<pin>
+<ID>_P17</ID>
+<x0>0</x0>
+<y0>113</y0>
+<width>158</width>
+<height>24</height>
+<text>pc_reg_is(JTextField t)</text>
+<px>0</px>
+<py>362</py>
+</pin>
+<operation>
+<ID>_O18</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>800</x0>
+<y0>20</y0>
+<width>115</width>
+<height>48</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>1</inpinx0>
+<inpiny0>28</inpiny0>
+<inpinwidth>32</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>2</inpinlinkcount>
+<description></description>
+<codetext>// 初期化する
+
+
+memory_windows = new Vector();
+mem = new int[AD_SIZE];
+
+// 各ボタンを押した時に実行されるコマンドを設定する
+String line;
+try{
+
+BufferedReader din = new BufferedReader( new FileReader(ini_file));
+while( ((line=din.readLine())!=null) ){
+if(&quot;.break&quot;.equals(line)) break;
+if(&quot;.watch&quot;.equals(line)) break;
+if( line.startsWith(&quot;edit_command=&quot;)) edit_command=line.substring(13);
+if( line.startsWith(&quot;compile_command=&quot;)) compile_command=line.substring(16);
+if( line.startsWith(&quot;fast_run_command=&quot;)) fast_run_command=line.substring(17);
+}
+if(&quot;.break&quot;.equals(line)){
+  if( (line=din.readLine()) != null) {
+    break_field.setText(line);
+    line=din.readLine();
+  }
+}
+if(&quot;.watch&quot;.equals(line)){
+  while(true){
+    String name,start,end;
+    if((name=din.readLine()) == null) break;
+    if((start=din.readLine()) == null) break;
+    if((end=din.readLine()) == null) break;
+    int s = Integer.parseInt(start);
+    int e = Integer.parseInt(end);
+    memory_windows.add( new memory_window( name, s, e ) );
+  }
+}
+din.close();
+} catch( Exception e ){}
+
+</codetext>
+</operation>
+<relation>
+<ID>_R19</ID>
+<pin1name>_P16</pin1name>
+<pin2name>_O18</pin2name>
+</relation>
+<operation>
+<ID>_O21</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>162</x0>
+<y0>41</y0>
+<width>121</width>
+<height>47</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JLabel l)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>25</inpiny0>
+<inpinwidth>76</inpinwidth>
+<inpinheight>23</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>cf_reg = l;
+</codetext>
+</operation>
+<relation>
+<ID>_R22</ID>
+<pin1name>_P6</pin1name>
+<pin2name>_O21</pin2name>
+</relation>
+<operation>
+<ID>_O23</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>286</x0>
+<y0>62</y0>
+<width>121</width>
+<height>52</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JLabel l)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>29</inpiny0>
+<inpinwidth>76</inpinwidth>
+<inpinheight>23</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>zf_reg = l;
+</codetext>
+</operation>
+<relation>
+<ID>_R28</ID>
+<pin1name>_P7</pin1name>
+<pin2name>_O23</pin2name>
+</relation>
+<operation>
+<ID>_O37</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>211</x0>
+<y0>221</y0>
+<width>125</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextField t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>104</inpinwidth>
+<inpinheight>24</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>clock_field = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R38</ID>
+<pin1name>_P11</pin1name>
+<pin2name>_O37</pin2name>
+</relation>
+<operation>
+<ID>_O41</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>453</x0>
+<y0>246</y0>
+<width>125</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextField t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>104</inpinwidth>
+<inpinheight>24</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>start_field = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R42</ID>
+<pin1name>_P13</pin1name>
+<pin2name>_O41</pin2name>
+</relation>
+<operation>
+<ID>_O43</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>580</x0>
+<y0>273</y0>
+<width>125</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextField t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>104</inpinwidth>
+<inpinheight>24</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>end_field = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R44</ID>
+<pin1name>_P14</pin1name>
+<pin2name>_O43</pin2name>
+</relation>
+<operation>
+<ID>_O45</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>709</x0>
+<y0>301</y0>
+<width>138</width>
+<height>49</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextField t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>104</inpinwidth>
+<inpinheight>24</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>interval_field = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R46</ID>
+<pin1name>_P15</pin1name>
+<pin2name>_O45</pin2name>
+</relation>
+<operation>
+<ID>_O47</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>856</x0>
+<y0>331</y0>
+<width>139</width>
+<height>51</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextArea t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>104</inpinwidth>
+<inpinheight>24</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>message_area = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R48</ID>
+<pin1name>_P10</pin1name>
+<pin2name>_O47</pin2name>
+</relation>
+<operation>
+<ID>_O49</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>415</x0>
+<y0>87</y0>
+<width>137</width>
+<height>49</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextField t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>104</inpinwidth>
+<inpinheight>24</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>pc_reg = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R50</ID>
+<pin1name>_P17</pin1name>
+<pin2name>_O49</pin2name>
+</relation>
+<operation>
+<ID>_O51</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>556</x0>
+<y0>113</y0>
+<width>125</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextField t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>104</inpinwidth>
+<inpinheight>24</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>x_reg = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R52</ID>
+<pin1name>_P0</pin1name>
+<pin2name>_O51</pin2name>
+</relation>
+<operation>
+<ID>_O53</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>690</x0>
+<y0>139</y0>
+<width>125</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextField t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>104</inpinwidth>
+<inpinheight>24</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>y_reg = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R54</ID>
+<pin1name>_P1</pin1name>
+<pin2name>_O53</pin2name>
+</relation>
+<operation>
+<ID>_O55</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>822</x0>
+<y0>167</y0>
+<width>125</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextField t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>104</inpinwidth>
+<inpinheight>24</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>a_reg = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R56</ID>
+<pin1name>_P2</pin1name>
+<pin2name>_O55</pin2name>
+</relation>
+<pin>
+<ID>_P59</ID>
+<x0>0</x0>
+<y0>415</y0>
+<width>169</width>
+<height>22</height>
+<text>run_button_is(JButton b)</text>
+<px>0</px>
+<py>416</py>
+</pin>
+<operation>
+<ID>_O60</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>211</x0>
+<y0>390</y0>
+<width>123</width>
+<height>51</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JButton b)</inpintext>
+<inpinx0>2</inpinx0>
+<inpiny0>31</inpiny0>
+<inpinwidth>88</inpinwidth>
+<inpinheight>19</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>run_button = b;
+</codetext>
+</operation>
+<relation>
+<ID>_R61</ID>
+<pin1name>_P59</pin1name>
+<pin2name>_O60</pin2name>
+</relation>
+<pin>
+<ID>_P62</ID>
+<x0>0</x0>
+<y0>449</y0>
+<width>180</width>
+<height>26</height>
+<text>adrs_field_is(JTextField t)</text>
+<px>0</px>
+<py>396</py>
+</pin>
+<pin>
+<ID>_P63</ID>
+<x0>0</x0>
+<y0>488</y0>
+<width>169</width>
+<height>24</height>
+<text>data_field_is(JTextField t)</text>
+<px>0</px>
+<py>379</py>
+</pin>
+<operation>
+<ID>_O65</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>338</x0>
+<y0>424</y0>
+<width>138</width>
+<height>49</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextField t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>104</inpinwidth>
+<inpinheight>24</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>adrs_field = t;
+</codetext>
+</operation>
+<operation>
+<ID>_O66</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>482</x0>
+<y0>462</y0>
+<width>138</width>
+<height>49</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextField t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>104</inpinwidth>
+<inpinheight>24</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>data_field = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R67</ID>
+<pin1name>_P62</pin1name>
+<pin2name>_O65</pin2name>
+</relation>
+<relation>
+<ID>_R68</ID>
+<pin1name>_P63</pin1name>
+<pin2name>_O66</pin2name>
+</relation>
+<pin>
+<ID>_P69</ID>
+<x0>0</x0>
+<y0>520</y0>
+<width>182</width>
+<height>30</height>
+<text>name_field_is(JTextField t)</text>
+<px>0</px>
+<py>284</py>
+</pin>
+<operation>
+<ID>_O70</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>623</x0>
+<y0>497</y0>
+<width>134</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextField t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>104</inpinwidth>
+<inpinheight>24</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>name_field = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R71</ID>
+<pin1name>_P69</pin1name>
+<pin2name>_O70</pin2name>
+</relation>
+<pin>
+<ID>_P72</ID>
+<x0>0</x0>
+<y0>554</y0>
+<width>154</width>
+<height>24</height>
+<text>sp_reg_is(JTextField t)</text>
+<px>0</px>
+<py>159</py>
+</pin>
+<operation>
+<ID>_O74</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>764</x0>
+<y0>527</y0>
+<width>134</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextField t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>104</inpinwidth>
+<inpinheight>24</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>sp_reg = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R75</ID>
+<pin1name>_P72</pin1name>
+<pin2name>_O74</pin2name>
+</relation>
+<pin>
+<ID>_P78</ID>
+<x0>0</x0>
+<y0>609</y0>
+<width>179</width>
+<height>24</height>
+<text>break_field_is(JTextField t)</text>
+<px>0</px>
+<py>79</py>
+</pin>
+<operation>
+<ID>_O79</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>429</x0>
+<y0>583</y0>
+<width>137</width>
+<height>49</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextField t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>104</inpinwidth>
+<inpinheight>24</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>break_field = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R80</ID>
+<pin1name>_P78</pin1name>
+<pin2name>_O79</pin2name>
+</relation>
+<operation>
+<ID>_O81</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>567</x0>
+<y0>17</y0>
+<width>197</width>
+<height>48</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>27</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>146</outpinx0>
+<outpiny0>29</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// 初期化ファイルを再設定する
+
+
+JFileChooser chooser = new JFileChooser(new File(&quot;.&quot;));
+chooser.setDialogTitle( &quot;Select .ini File&quot; );
+chooser.setFileSelectionMode( JFileChooser.FILES_AND_DIRECTORIES );
+if( chooser.showSaveDialog(null) != JFileChooser.APPROVE_OPTION ) return;
+
+ini_file = chooser.getSelectedFile();
+</codetext>
+</operation>
+<relation>
+<ID>_R82</ID>
+<pin1name>_O81</pin1name>
+<pin2name>_O18</pin2name>
+</relation>
+<pin>
+<ID>_P83</ID>
+<x0>468</x0>
+<y0>38</y0>
+<width>60</width>
+<height>30</height>
+<text>init()</text>
+<px>0</px>
+<py>58</py>
+</pin>
+<relation>
+<ID>_R84</ID>
+<pin1name>_P83</pin1name>
+<pin2name>_O81</pin2name>
+</relation>
+</xobject>
+<relation>
+<ID>_R33</ID>
+<pin1name>_A0(_Pmessage_area)</pin1name>
+<pin2name>_X19(_P10)</pin2name>
+</relation>
+<relation>
+<ID>_R34</ID>
+<pin1name>_A0(_Pclock_field)</pin1name>
+<pin2name>_X19(_P11)</pin2name>
+</relation>
+<relation>
+<ID>_R36</ID>
+<pin1name>_A0(_Pstart_field)</pin1name>
+<pin2name>_X19(_P13)</pin2name>
+</relation>
+<relation>
+<ID>_R37</ID>
+<pin1name>_A0(_Pend_field)</pin1name>
+<pin2name>_X19(_P14)</pin2name>
+</relation>
+<relation>
+<ID>_R38</ID>
+<pin1name>_A0(_Pinterval_field)</pin1name>
+<pin2name>_X19(_P15)</pin2name>
+</relation>
+<codeclip>
+<ID>_C40</ID>
+<x0>686</x0>
+<y0>110</y0>
+<width>302</width>
+<height>152</height>
+<codetext>// メモリウィンドウ
+Vector memory_windows;
+class memory_window{
+  String name;
+  int start;
+  int end;
+  memory_window( String n, int s, int e ){
+    name = n; start=s; end=e;
+  }
+}
+</codetext>
+</codeclip>
+<xobject>
+<ID>_X42</ID>
+<x0>0</x0>
+<y0>395</y0>
+<width>135</width>
+<height>110</height>
+<ID_maker>13</ID_maker>
+<objectname>memory_edit</objectname>
+<description></description>
+<pin>
+<ID>_P0</ID>
+<x0>17</x0>
+<y0>33</y0>
+<width>125</width>
+<height>25</height>
+<text>adrs_set(String s)</text>
+<px>0</px>
+<py>29</py>
+</pin>
+<pin>
+<ID>_P1</ID>
+<x0>52</x0>
+<y0>98</y0>
+<width>60</width>
+<height>30</height>
+<text>inc()</text>
+<px>0</px>
+<py>50</py>
+</pin>
+<pin>
+<ID>_P2</ID>
+<x0>54</x0>
+<y0>150</y0>
+<width>60</width>
+<height>30</height>
+<text>dec()</text>
+<px>0</px>
+<py>67</py>
+</pin>
+<pin>
+<ID>_P3</ID>
+<x0>39</x0>
+<y0>220</y0>
+<width>112</width>
+<height>25</height>
+<text>mem_set()</text>
+<px>0</px>
+<py>83</py>
+</pin>
+<operation>
+<ID>_O4</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>248</x0>
+<y0>22</y0>
+<width>233</width>
+<height>47</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(String s)</inpintext>
+<inpinx0>2</inpinx0>
+<inpiny0>28</inpiny0>
+<inpinwidth>78</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// 指定アドレスメモリのデータを表示
+
+
+int address = Integer.parseInt( s, 16 );
+adrs_field.setText(hex6(address));
+data_field.setText(hex2(mem[address]));
+</codetext>
+</operation>
+<relation>
+<ID>_R5</ID>
+<pin1name>_P0</pin1name>
+<pin2name>_O4</pin2name>
+</relation>
+<operation>
+<ID>_O6</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>251</x0>
+<y0>86</y0>
+<width>263</width>
+<height>45</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>1</inpinx0>
+<inpiny0>24</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// アドレスを+1してメモリのデータを表示
+
+
+int address = Integer.parseInt( adrs_field.getText(), 16 );
+address++;
+if( address &gt; 0xffffff ) address=0;
+adrs_field.setText(hex6(address));
+data_field.setText(hex2(mem[address]));
+</codetext>
+</operation>
+<relation>
+<ID>_R7</ID>
+<pin1name>_P1</pin1name>
+<pin2name>_O6</pin2name>
+</relation>
+<operation>
+<ID>_O9</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>250</x0>
+<y0>142</y0>
+<width>268</width>
+<height>45</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>1</inpinx0>
+<inpiny0>24</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// アドレスを-1してメモリのデータを表示
+
+
+int address = Integer.parseInt( adrs_field.getText(), 16 );
+address--;
+if( address &lt; 0 ) address=0xffffff;
+adrs_field.setText(hex6(address));
+data_field.setText(hex2(mem[address]));
+</codetext>
+</operation>
+<relation>
+<ID>_R10</ID>
+<pin1name>_P2</pin1name>
+<pin2name>_O9</pin2name>
+</relation>
+<operation>
+<ID>_O11</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>255</x0>
+<y0>206</y0>
+<width>267</width>
+<height>43</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>24</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// 表示されているデータをメモリに書き込む
+
+int address = Integer.parseInt( adrs_field.getText(), 16 );
+mem[address] = Integer.parseInt( data_field.getText(), 16 );
+io_sync();
+</codetext>
+</operation>
+<relation>
+<ID>_R12</ID>
+<pin1name>_P3</pin1name>
+<pin2name>_O11</pin2name>
+</relation>
+</xobject>
+<relation>
+<ID>_R44</ID>
+<pin1name>_A0(_PAinc_addr)</pin1name>
+<pin2name>_X42(_P1)</pin2name>
+</relation>
+<relation>
+<ID>_R45</ID>
+<pin1name>_A0(_PAdec_addr)</pin1name>
+<pin2name>_X42(_P2)</pin2name>
+</relation>
+<relation>
+<ID>_R46</ID>
+<pin1name>_A0(_PAmem_set)</pin1name>
+<pin2name>_X42(_P3)</pin2name>
+</relation>
+<codeclip>
+<ID>_C48</ID>
+<x0>696</x0>
+<y0>78</y0>
+<width>229</width>
+<height>28</height>
+<codetext>// 長さが2文字の16進数文字列を返す
+public String hex2( int i ){
+  String s = Integer.toHexString(i);
+  int l = s.length();
+  if( l ==1 ) return &quot;0&quot;+s;
+  return s;
+}
+</codetext>
+</codeclip>
+<relation>
+<ID>_R53</ID>
+<pin1name>_A0(_Prun_button)</pin1name>
+<pin2name>_X19(_P59)</pin2name>
+</relation>
+<pin>
+<ID>_P57</ID>
+<x0>594</x0>
+<y0>578</y0>
+<width>63</width>
+<height>22</height>
+<text>io_sync()</text>
+<px>10</px>
+<py>40</py>
+</pin>
+<プロパティ>
+<ID>properties</ID>
+<LookandFeel>javax.swing.plaf.metal.MetalLookAndFeel</LookandFeel>
+<MainWinx0>0</MainWinx0>
+<MainWiny0>0</MainWiny0>
+<MainWinWidth>1024</MainWinWidth>
+<MainWinHeight>741</MainWinHeight>
+<MesgWinx0>0</MesgWinx0>
+<MesgWiny0>0</MesgWiny0>
+<MesgWinWidth>1024</MesgWinWidth>
+<MesgWinHeight>745</MesgWinHeight>
+<FileWinx0>36</FileWinx0>
+<FileWiny0>476</FileWiny0>
+<FileWinWidth>578</FileWinWidth>
+<FileWinHeight>262</FileWinHeight>
+<EditWinx0>347</EditWinx0>
+<EditWiny0>0</EditWiny0>
+<EditWinWidth>676</EditWinWidth>
+<EditWinHeight>541</EditWinHeight>
+<PropWinx0>1</PropWinx0>
+<PropWiny0>1</PropWiny0>
+<PropWinWidth>615</PropWinWidth>
+<PropWinHeight>448</PropWinHeight>
+<DividerLocation1>2</DividerLocation1>
+<DividerLocation2>2</DividerLocation2>
+<ToolBarVisible>1</ToolBarVisible>
+<ViewSourceAtCompile>0</ViewSourceAtCompile>
+<NoSourceCreate>0</NoSourceCreate>
+<JavaEditCommand>geany</JavaEditCommand>
+<JavaViewCommand></JavaViewCommand>
+<HelpCommand>xdg-open ./help/manual.html</HelpCommand>
+<ApplicationType>0</ApplicationType>
+<CompileCommand0>./compile_card8vm_sym</CompileCommand0>
+<RunCommand0>./run_java</RunCommand0>
+<GUIDesignerCommand0>java -jar guidsin.jar -java</GUIDesignerCommand0>
+<ImportFiles0> import java.awt.*;
+ import java.awt.event.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+import java.awt.geom.*;
+import java.awt.print.*;
+import javax.swing.border.*;
+import javax.swing.filechooser.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+import java.awt.image.BufferedImage;
+import javax.sound.sampled.*;
+
+class Starter{
+  public static void main( String args[] ){
+    %AppName% ap = new %AppName%();
+    ap.ARGS = args;
+    ap.Start();
+  }
+}
+</ImportFiles0>
+<ProgramStartupCode0> String[] ARGS;
+</ProgramStartupCode0>
+<NativeHelpCommand0></NativeHelpCommand0>
+<CompileCommand1></CompileCommand1>
+<RunCommand1></RunCommand1>
+<GUIDesignerCommand1>java -jar guidsin.jar -applet</GUIDesignerCommand1>
+<ImportFiles1> import java.awt.*;
+ import java.awt.event.*;
+ import java.applet.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+ public class javatext extends Applet {
+   %AppName% ap;
+   public void init() {
+     ap = new %AppName%();
+     ap.APPLET = this;
+     ap.Start();
+   }
+ }
+</ImportFiles1>
+<ProgramStartupCode1> Applet APPLET;
+</ProgramStartupCode1>
+<NativeHelpCommand1></NativeHelpCommand1>
+<CompileCommand2></CompileCommand2>
+<RunCommand2></RunCommand2>
+<GUIDesignerCommand2></GUIDesignerCommand2>
+<ImportFiles2>#include &lt;stdio.h&gt;
+
+void Startup();
+</ImportFiles2>
+<ProgramStartupCode2>int main(){
+ Startup();
+ %AppName%::Start();
+ }
+</ProgramStartupCode2>
+<NativeHelpCommand2></NativeHelpCommand2>
+<CompileCommand3></CompileCommand3>
+<RunCommand3></RunCommand3>
+<GUIDesignerCommand3>java -jar guidsin.jar -cpp</GUIDesignerCommand3>
+<ImportFiles3>#include &lt;stdio.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;math.h&gt;
+#include &quot;Ekagen.h&quot;
+void Startup();
+</ImportFiles3>
+<ProgramStartupCode3>void Emain(){
+Startup();
+%AppName%::Start();
+}
+</ProgramStartupCode3>
+<NativeHelpCommand3></NativeHelpCommand3>
+<MoveStep>8</MoveStep>
+<ImageEditCommand></ImageEditCommand>
+<CompilerFileName>javac.exe</CompilerFileName>
+<CompileCommand4>./compile_android Test com example test</CompileCommand4>
+<RunCommand4>./run_android Test com example test</RunCommand4>
+<GUIDesignerCommand4>java -jar guidsin.jar -android</GUIDesignerCommand4>
+<ImportFiles4>package com.example.test;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.View;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.widget.Button;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+import android.widget.EditText;
+import android.text.SpannableStringBuilder;
+import android.text.TextWatcher;
+import android.text.Editable;
+import android.graphics.Matrix;
+import android.graphics.Typeface;
+import android.graphics.RectF;
+import android.graphics.BitmapFactory;
+import java.io.*;
+ import java.net.*;
+import java.util.*;
+import java.text.SimpleDateFormat;
+import android.media.MediaPlayer;
+import android.os.Handler;
+import android.content.res.Configuration;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.app.Activity;
+import android.graphics.Color;
+
+import android.widget.AbsoluteLayout;
+import android.widget.*;
+import android.view.Gravity;
+import android.view.View.OnClickListener;
+
+import android.hardware.Camera;
+
+public class HelloWorld extends Activity {
+  public void onCreate(Bundle bundle) {
+    super.onCreate(bundle);
+    %AppName% ap = new %AppName%();
+    ap.ACTIVITY = this;
+    ap.Start();
+  }
+}
+</ImportFiles4>
+<ProgramStartupCode4>Activity ACTIVITY;
+</ProgramStartupCode4>
+<NativeHelpCommand4>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    package=&quot;com.example.test&quot;
+    android:versionCode=&quot;1&quot;
+    android:versionName=&quot;1.0&quot; &gt;
+
+    
+    
+  &lt;uses-permission android:name=&quot;android.permission.CAMERA&quot; /&gt; 
+  &lt;uses-feature android:name=&quot;android.hardware.camera&quot; /&gt; 
+  &lt;uses-feature android:name=&quot;android.hardware.usb.host&quot; /&gt; 
+  &lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot;/&gt;
+  &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt; 
+  &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+
+  &lt;uses-sdk android:minSdkVersion=&quot;3&quot; android:targetSdkVersion=&quot;21&quot;/&gt;
+  
+ 
+    &lt;application android:label=&quot;@string/app_name&quot; &gt;
+        &lt;activity
+            android:name=&quot;HelloWorld&quot;
+            android:label=&quot;@string/app_name&quot; &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+
+                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;
+</NativeHelpCommand4>
+<HtmlEditCommand></HtmlEditCommand>
+<CompileCommand5></CompileCommand5>
+<RunCommand5></RunCommand5>
+<GUIDesignerCommand5></GUIDesignerCommand5>
+<ImportFiles5></ImportFiles5>
+<ProgramStartupCode5>gosub @_PSTART
+end
+</ProgramStartupCode5>
+<NativeHelpCommand5></NativeHelpCommand5>
+<NoOptimizePin>0</NoOptimizePin>
+<CompileCommand6>./compile_c</CompileCommand6>
+<RunCommand6>./run_c</RunCommand6>
+<GUIDesignerCommand6></GUIDesignerCommand6>
+<ImportFiles6>#include &lt;setjmp.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdarg.h&gt;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;math.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;arpa/inet.h&gt;
+#include &lt;netdb.h&gt;
+
+#include &lt;X11/Xlib.h&gt;
+#include &lt;X11/Xutil.h&gt;
+#include &lt;X11/Xlocale.h&gt; /* ロケール用ヘッダーファイル */
+#include &lt;X11/xpm.h&gt;
+#include &lt;sys/time.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;termios.h&gt;
+#include &lt;errno.h&gt;
+</ImportFiles6>
+<ProgramStartupCode6>int ARGC; char** ARGV;
+int main( int argc, char** argv ){
+  ARGC=argc;
+  ARGV=argv;
+  _PSTART();
+}
+</ProgramStartupCode6>
+<NativeHelpCommand6></NativeHelpCommand6>
+<IDF_LocalVariable5>\</IDF_LocalVariable5>
+<IDF_LocalVariable7>\</IDF_LocalVariable7>
+<CompileCommand7></CompileCommand7>
+<RunCommand7></RunCommand7>
+<GUIDesignerCommand7></GUIDesignerCommand7>
+<ImportFiles7></ImportFiles7>
+<ProgramStartupCode7></ProgramStartupCode7>
+<NativeHelpCommand7></NativeHelpCommand7>
+</プロパティ>
+<relation>
+<ID>_R60</ID>
+<pin1name>_A0(_Pstart)</pin1name>
+<pin2name>_X19(_P16)</pin2name>
+</relation>
+<codeclip>
+<ID>_C62</ID>
+<x0>695</x0>
+<y0>38</y0>
+<width>230</width>
+<height>35</height>
+<codetext>// 長さが6文字の16進数文字列を返す
+public String hex6( int i ){
+  String s = Integer.toHexString(i);
+  int l = s.length();
+  if( l == 1 ) return &quot;00000&quot;+s;
+  if( l == 2 ) return &quot;0000&quot;+s;
+  if( l == 3 ) return &quot;000&quot;+s;
+  if( l == 4 ) return &quot;00&quot;+s;
+  if( l == 5 ) return &quot;0&quot;+s;
+  return s;
+}
+</codetext>
+</codeclip>
+<relation>
+<ID>_R65</ID>
+<pin1name>_A0(_Px_reg)</pin1name>
+<pin2name>_X19(_P0)</pin2name>
+</relation>
+<relation>
+<ID>_R66</ID>
+<pin1name>_A0(_Pcf_reg)</pin1name>
+<pin2name>_X19(_P6)</pin2name>
+</relation>
+<relation>
+<ID>_R68</ID>
+<pin1name>_A0(_Ppc_reg)</pin1name>
+<pin2name>_X19(_P17)</pin2name>
+</relation>
+<codeclip>
+<ID>_C70</ID>
+<x0>686</x0>
+<y0>271</y0>
+<width>301</width>
+<height>38</height>
+<codetext>//コマンドを実行して結果をコンソールに表示する
+public void exec_command( String cmd ){
+
+      Runtime runtime = Runtime.getRuntime();
+      Process process;
+      try {            //実行するコマンドを指定
+        process = runtime.exec(cmd);
+        new PrintThread(process.getInputStream()).start();
+        new PrintThread(process.getErrorStream()).start();
+        process.waitFor();
+      } catch (Exception e) {}
+    }
+
+
+class PrintThread extends Thread{
+  BufferedReader reader;
+  PrintThread( InputStream s ){
+    reader = new BufferedReader(new InputStreamReader(s));
+  }
+  
+  public void run(){
+    String line;
+    try{
+      while ((line = reader.readLine()) != null) message_area.append(line+&quot;\n&quot;);
+      reader.close();
+    } catch( IOException ie ){ }
+  }
+}
+</codetext>
+</codeclip>
+<relation>
+<ID>_R71</ID>
+<pin1name>_A0(_Padrs_field)</pin1name>
+<pin2name>_X19(_P62)</pin2name>
+</relation>
+<relation>
+<ID>_R72</ID>
+<pin1name>_A0(_Pdata_field)</pin1name>
+<pin2name>_X19(_P63)</pin2name>
+</relation>
+<relation>
+<ID>_R73</ID>
+<pin1name>_A0(_PAadrs_field)</pin1name>
+<pin2name>_X42(_P0)</pin2name>
+</relation>
+<xobject>
+<ID>_X74</ID>
+<x0>8</x0>
+<y0>6</y0>
+<width>101</width>
+<height>150</height>
+<ID_maker>20</ID_maker>
+<objectname>command</objectname>
+<description></description>
+<operation>
+<ID>_O0</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>177</x0>
+<y0>250</y0>
+<width>122</width>
+<height>69</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>1</inpinx0>
+<inpiny0>48</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>//終了する 
+
+
+
+
+
+
+try{
+
+BufferedWriter dout = new BufferedWriter( new FileWriter(ini_file));
+dout.write(&quot;edit_command=&quot;+edit_command+&quot;\n&quot;);
+dout.write(&quot;compile_command=&quot;+compile_command+&quot;\n&quot;);
+dout.write(&quot;fast_run_command=&quot;+fast_run_command+&quot;\n&quot;);
+dout.write(&quot;.break\n&quot;);
+dout.write(break_field.getText()+&quot;\n&quot;);
+dout.write(&quot;.watch\n&quot;);
+int nn = memory_windows.size();
+for( int i = 0;i &lt; nn; i++ ){
+  memory_window w = (memory_window)(memory_windows.get(i));
+  dout.write( w.name+&quot;\n&quot;+w.start+&quot;\n&quot;+w.end+&quot;\n&quot;);
+}
+dout.close();
+} catch( Exception e ){}
+
+
+System.exit(0);
+</codetext>
+</operation>
+<pin>
+<ID>_P4</ID>
+<x0>32</x0>
+<y0>49</y0>
+<width>60</width>
+<height>30</height>
+<text>compile()</text>
+<px>1</px>
+<py>54</py>
+</pin>
+<pin>
+<ID>_P5</ID>
+<x0>36</x0>
+<y0>127</y0>
+<width>60</width>
+<height>30</height>
+<text>edit()</text>
+<px>0</px>
+<py>121</py>
+</pin>
+<pin>
+<ID>_P6</ID>
+<x0>38</x0>
+<y0>281</y0>
+<width>60</width>
+<height>30</height>
+<text>quit()</text>
+<px>0</px>
+<py>29</py>
+</pin>
+<relation>
+<ID>_R9</ID>
+<pin1name>_P6</pin1name>
+<pin2name>_O0</pin2name>
+</relation>
+<operation>
+<ID>_O10</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>161</x0>
+<y0>46</y0>
+<width>258</width>
+<height>46</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>27</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>exec_command(compile_command);
+
+
+try{
+
+BufferedReader din = new BufferedReader( new FileReader( &quot;r.out&quot; ) );
+
+while(true){
+  String line;
+  int adrs,data;
+  if((line=din.readLine()) == null )  break;
+  adrs = Integer.parseInt(line);
+  if((line=din.readLine()) == null )  break;
+  data = Integer.parseInt(line);
+  mem[adrs] = data;
+}
+
+din.close();
+
+
+} catch( IOException ie ){message_area.append(&quot;load error!\n&quot;);}
+</codetext>
+</operation>
+<operation>
+<ID>_O11</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>174</x0>
+<y0>123</y0>
+<width>233</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>1</inpinx0>
+<inpiny0>29</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>exec_command(edit_command);
+</codetext>
+</operation>
+<relation>
+<ID>_R12</ID>
+<pin1name>_P5</pin1name>
+<pin2name>_O11</pin2name>
+</relation>
+<relation>
+<ID>_R13</ID>
+<pin1name>_P4</pin1name>
+<pin2name>_O10</pin2name>
+</relation>
+<pin>
+<ID>_P14</ID>
+<x0>50</x0>
+<y0>370</y0>
+<width>60</width>
+<height>30</height>
+<text>clear()</text>
+<px>0</px>
+<py>77</py>
+</pin>
+<operation>
+<ID>_O15</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>176</x0>
+<y0>368</y0>
+<width>168</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>30</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// レジスタ等のクリア
+
+
+ pc_reg.setText(vm_start);
+ x_reg.setText(&quot;000000&quot;);
+ y_reg.setText(&quot;000000&quot;);
+ a_reg.setText(&quot;00&quot;);
+ sp_reg.setText(&quot;000000&quot;);
+ clock_field.setText(&quot;0&quot;);
+ message_area.setText(&quot;&quot;);
+ disp.setText(&quot;&quot;);
+</codetext>
+</operation>
+<relation>
+<ID>_R16</ID>
+<pin1name>_P14</pin1name>
+<pin2name>_O15</pin2name>
+</relation>
+<pin>
+<ID>_P17</ID>
+<x0>32</x0>
+<y0>204</y0>
+<width>75</width>
+<height>25</height>
+<text>fast_run()</text>
+<px>0</px>
+<py>99</py>
+</pin>
+<operation>
+<ID>_O18</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>176</x0>
+<y0>188</y0>
+<width>244</width>
+<height>49</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>1</inpinx0>
+<inpiny0>29</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>exec_command(fast_run_command);
+</codetext>
+</operation>
+<relation>
+<ID>_R19</ID>
+<pin1name>_P17</pin1name>
+<pin2name>_O18</pin2name>
+</relation>
+</xobject>
+<relation>
+<ID>_R75</ID>
+<pin1name>_A0(_PAcompile_button)</pin1name>
+<pin2name>_X74(_P4)</pin2name>
+</relation>
+<relation>
+<ID>_R78</ID>
+<pin1name>_A0(_PAedit_button)</pin1name>
+<pin2name>_X74(_P5)</pin2name>
+</relation>
+<relation>
+<ID>_R79</ID>
+<pin1name>_A0(_PGUIclosed)</pin1name>
+<pin2name>_X74(_P6)</pin2name>
+</relation>
+<relation>
+<ID>_R80</ID>
+<pin1name>_A0(_Pname_field)</pin1name>
+<pin2name>_X19(_P69)</pin2name>
+</relation>
+<relation>
+<ID>_R82</ID>
+<pin1name>_A0(_Pa_reg)</pin1name>
+<pin2name>_X19(_P2)</pin2name>
+</relation>
+<relation>
+<ID>_R83</ID>
+<pin1name>_A0(_Py_reg)</pin1name>
+<pin2name>_X19(_P1)</pin2name>
+</relation>
+<relation>
+<ID>_R84</ID>
+<pin1name>_A0(_Psp_reg)</pin1name>
+<pin2name>_X19(_P72)</pin2name>
+</relation>
+<relation>
+<ID>_R85</ID>
+<pin1name>_A0(_Pzf_reg)</pin1name>
+<pin2name>_X19(_P7)</pin2name>
+</relation>
+<relation>
+<ID>_R87</ID>
+<pin1name>_A0(_PAclr_button)</pin1name>
+<pin2name>_X74(_P14)</pin2name>
+</relation>
+<codeclip>
+<ID>_C88</ID>
+<x0>687</x0>
+<y0>316</y0>
+<width>172</width>
+<height>33</height>
+<codetext>// 仮想マシンの命令セット
+String opcode[] ={
+&quot;hlt&quot;,
+&quot;x=nnnn&quot;,
+&quot;x=(nnnn)&quot;,
+&quot;x+=(nnnn)&quot;,
+&quot;x-=(nnnn)&quot;,
+&quot;(nnnn)=x&quot;,
+&quot;a=nn&quot;,
+&quot;a=(x)&quot;,
+&quot;(x)=a&quot;,
+&quot;a+=(x)+cf&quot;,
+&quot;a-=(x)+bf&quot;,
+&quot;a&amp;=(x)&quot;,
+&quot;a|=(x)&quot;,
+&quot;ror (x)&quot;,
+&quot;rol (x)&quot;,
+&quot;jmp xxxx&quot;,
+&quot;jz xxxx&quot;,
+&quot;jnz xxxx&quot;,
+&quot;jc xxxx&quot;,
+&quot;jnc xxxx&quot;,
+&quot;jmp (x)&quot;,
+&quot;jmp (y)&quot;,
+&quot;y=nnnn&quot;,
+&quot;y=(nnnn)&quot;,
+&quot;y+=(nnnn)&quot;,
+&quot;y-=(nnnn)&quot;,
+&quot;(nnnn)=y&quot;,
+&quot;a=(y)&quot;,
+&quot;(y)=a&quot;,
+&quot;a+=(y)+cf&quot;,
+&quot;a-=(y)+bf&quot;,
+&quot;a&amp;=(y)&quot;,
+&quot;a|=(y)&quot;,
+&quot;call xxxx&quot;,
+&quot;ret&quot;,
+&quot;push a&quot;,
+&quot;push x&quot;,
+&quot;pop a&quot;,
+&quot;pop x&quot;,
+&quot;sp=x&quot;,
+&quot;x=sp&quot;,
+&quot;x++&quot;,
+&quot;x--&quot;,
+&quot;y++&quot;,
+&quot;y--&quot;,
+&quot;ror (y)&quot;,
+&quot;rol (y)&quot;
+};
+
+</codetext>
+</codeclip>
+<relation>
+<ID>_R89</ID>
+<pin1name>_A0(_PAadd_list)</pin1name>
+<pin2name>_X6(_P2)</pin2name>
+</relation>
+<relation>
+<ID>_R90</ID>
+<pin1name>_A0(_PAdel_list)</pin1name>
+<pin2name>_X6(_P3)</pin2name>
+</relation>
+<relation>
+<ID>_R91</ID>
+<pin1name>_A0(_PAinc_list)</pin1name>
+<pin2name>_X6(_P35)</pin2name>
+</relation>
+<relation>
+<ID>_R92</ID>
+<pin1name>_A0(_PAdec_list)</pin1name>
+<pin2name>_X6(_P36)</pin2name>
+</relation>
+<relation>
+<ID>_R93</ID>
+<pin1name>_A0(_PAhome_list)</pin1name>
+<pin2name>_X6(_P37)</pin2name>
+</relation>
+<operation>
+<ID>_O94</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>460</x0>
+<y0>668</y0>
+<width>125</width>
+<height>51</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextArea t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>29</inpiny0>
+<inpinwidth>109</inpinwidth>
+<inpinheight>23</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>disp = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R95</ID>
+<pin1name>_A0(_Pdisp_area)</pin1name>
+<pin2name>_O94</pin2name>
+</relation>
+<operation>
+<ID>_O96</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>457</x0>
+<y0>536</y0>
+<width>125</width>
+<height>51</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextField t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>29</inpiny0>
+<inpinwidth>109</inpinwidth>
+<inpinheight>23</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>cmd_line = t;
+
+
+cmd_line.getDocument().addDocumentListener(listener = new keyinput_listener());
+</codetext>
+</operation>
+<relation>
+<ID>_R97</ID>
+<pin1name>_A0(_Pcmd_field)</pin1name>
+<pin2name>_O96</pin2name>
+</relation>
+<operation>
+<ID>_O98</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>460</x0>
+<y0>604</y0>
+<width>128</width>
+<height>55</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(String s)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>33</inpiny0>
+<inpinwidth>81</inpinwidth>
+<inpinheight>21</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>KeyCode = 10;
+</codetext>
+</operation>
+<relation>
+<ID>_R99</ID>
+<pin1name>_A0(_PAcmd_field)</pin1name>
+<pin2name>_O98</pin2name>
+</relation>
+<codeclip>
+<ID>_C100</ID>
+<x0>592</x0>
+<y0>514</y0>
+<width>364</width>
+<height>36</height>
+<codetext>keyinput_listener listener;
+class keyinput_listener implements DocumentListener{
+
+  String s;
+  boolean allow = true;
+  public void caretPositionChanged(InputMethodEvent e){}
+  public void changedUpdate(DocumentEvent e){}//属性が変更されたときの処理
+  public void insertUpdate(DocumentEvent e){
+    KeyCode = 0;
+    if(!is_gets){
+      if( allow &amp;&amp; (s = cmd_line.getText()).length() &gt; 0 ){
+        allow = false;
+        KeyCode = (int)(byte)s.charAt(0);
+        allow = true;
+         }
+      }
+   }
+  public void removeUpdate(DocumentEvent e){}//ドキュメントから削除されたときの処理
+
+}
+</codetext>
+</codeclip>
+<operation>
+<ID>_O101</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>681</x0>
+<y0>568</y0>
+<width>283</width>
+<height>46</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// メモリと周辺装置の同期(メモリマップドIO)
+
+
+if( KeyCode != 0 ) mem[KEY_CODE] = KeyCode;
+KeyCode = 0;
+cmd_line.setText(&quot;&quot;);
+if( mem[PRT_STROBE] != 0 ){
+  mem[PRT_STROBE] = 0;
+  int c = mem[PRT_DATA];
+  if( c == 12 ) disp.setText(&quot;&quot;);
+  else disp.append(&quot;&quot;+(char)(byte)(c &amp; 0xff));
+}
+</codetext>
+</operation>
+<relation>
+<ID>_R102</ID>
+<pin1name>_P57</pin1name>
+<pin2name>_O101</pin2name>
+</relation>
+<codeclip>
+<ID>_C104</ID>
+<x0>659</x0>
+<y0>626</y0>
+<width>310</width>
+<height>85</height>
+<codetext>// 仮想マシンの実行開始アドレス
+static final String vm_start=&quot;070000&quot;;
+
+// 初期化ファイル
+File ini_file=new File(&quot;card8vm_sym.ini&quot;);
+
+</codetext>
+</codeclip>
+<relation>
+<ID>_R105</ID>
+<pin1name>_A0(_PAclear_list)</pin1name>
+<pin2name>_X6(_P45)</pin2name>
+</relation>
+<relation>
+<ID>_R106</ID>
+<pin1name>_A0(_PAfast_run_button)</pin1name>
+<pin2name>_X74(_P17)</pin2name>
+</relation>
+<relation>
+<ID>_R107</ID>
+<pin1name>_A0(_Pbreak_field)</pin1name>
+<pin2name>_X19(_P78)</pin2name>
+</relation>
+<aobject>
+<ID>_A0</ID>
+<x0>147</x0>
+<y0>0</y0>
+<width>280</width>
+<objectname>GUI</objectname>
+<description>GUIオブジェクト
+</description>
+<state>
+<ID>_SINIT</ID>
+<x0>0</x0>
+<y0>40</y0>
+<width>70</width>
+<height>40</height>
+<text>  InitState</text>
+<isinitstate>1</isinitstate>
+</state>
+<pin>
+<ID>_Pstart</ID>
+<x0>400</x0>
+<y0>100</y0>
+<width>80</width>
+<height>26</height>
+<text>Start()</text>
+<px>0</px>
+<py>36</py>
+</pin>
+<pin>
+<ID>_PGUIout</ID>
+<x0>0</x0>
+<y0>84</y0>
+<width>180</width>
+<height>26</height>
+<text>GUI_created(JFrame f)</text>
+<px>0</px>
+<py>54</py>
+</pin>
+<pin>
+<ID>_PGUIclosed</ID>
+<x0>310</x0>
+<y0>0</y0>
+<width>180</width>
+<height>26</height>
+<text>GUI_closed()</text>
+<px>100</px>
+<py>6</py>
+</pin>
+<action>
+<ID>_Astart</ID>
+<comp1name>_Pstart</comp1name>
+<comp2name>_Ocreate</comp2name>
+</action>
+<operation>
+<ID>_Ocreate</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>220</x0>
+<y0>40</y0>
+<width>130</width>
+<height>64</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>30</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>30</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>90</inpinx0>
+<inpiny0>43</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// GUIを作成する
+XGUI x = new XGUI();
+
+</codetext>
+</operation>
+<pin>
+<ID>_PAcompile_button</ID>
+<x0>0</x0>
+<y0>110</y0>
+<width>200</width>
+<height>26</height>
+<text>compile_button_clicked()</text>
+<px>0</px>
+<py>72</py>
+</pin>
+<pin>
+<ID>_PAclr_button</ID>
+<x0>0</x0>
+<y0>138</y0>
+<width>200</width>
+<height>26</height>
+<text>clr_button_clicked()</text>
+<px>0</px>
+<py>90</py>
+</pin>
+<pin>
+<ID>_PAfast_run_button</ID>
+<x0>0</x0>
+<y0>166</y0>
+<width>200</width>
+<height>26</height>
+<text>fast_run_button_clicked()</text>
+<px>0</px>
+<py>108</py>
+</pin>
+<pin>
+<ID>_PAinifile_button</ID>
+<x0>0</x0>
+<y0>194</y0>
+<width>200</width>
+<height>26</height>
+<text>inifile_button_clicked()</text>
+<px>0</px>
+<py>126</py>
+</pin>
+<pin>
+<ID>_PAedit_button</ID>
+<x0>0</x0>
+<y0>222</y0>
+<width>200</width>
+<height>26</height>
+<text>edit_button_clicked()</text>
+<px>0</px>
+<py>144</py>
+</pin>
+<pin>
+<ID>_Pbreak_field</ID>
+<x0>0</x0>
+<y0>250</y0>
+<width>200</width>
+<height>26</height>
+<text>break_field_created(JTextField t)</text>
+<px>0</px>
+<py>162</py>
+</pin>
+<pin>
+<ID>_Pa_reg</ID>
+<x0>0</x0>
+<y0>278</y0>
+<width>200</width>
+<height>26</height>
+<text>a_reg_created(JTextField t)</text>
+<px>0</px>
+<py>180</py>
+</pin>
+<pin>
+<ID>_Py_reg</ID>
+<x0>0</x0>
+<y0>306</y0>
+<width>200</width>
+<height>26</height>
+<text>y_reg_created(JTextField t)</text>
+<px>0</px>
+<py>198</py>
+</pin>
+<pin>
+<ID>_Px_reg</ID>
+<x0>0</x0>
+<y0>334</y0>
+<width>200</width>
+<height>26</height>
+<text>x_reg_created(JTextField t)</text>
+<px>0</px>
+<py>216</py>
+</pin>
+<pin>
+<ID>_Psp_reg</ID>
+<x0>0</x0>
+<y0>362</y0>
+<width>200</width>
+<height>26</height>
+<text>sp_reg_created(JTextField t)</text>
+<px>0</px>
+<py>234</py>
+</pin>
+<pin>
+<ID>_Pcf_reg</ID>
+<x0>0</x0>
+<y0>390</y0>
+<width>200</width>
+<height>26</height>
+<text>cf_reg_created(JLabel l)</text>
+<px>0</px>
+<py>252</py>
+</pin>
+<pin>
+<ID>_Pzf_reg</ID>
+<x0>0</x0>
+<y0>418</y0>
+<width>200</width>
+<height>26</height>
+<text>zf_reg_created(JLabel l)</text>
+<px>0</px>
+<py>270</py>
+</pin>
+<pin>
+<ID>_Pmessage_area</ID>
+<x0>0</x0>
+<y0>446</y0>
+<width>200</width>
+<height>26</height>
+<text>message_area_created(JTextArea t)</text>
+<px>0</px>
+<py>288</py>
+</pin>
+<pin>
+<ID>_Pclock_field</ID>
+<x0>0</x0>
+<y0>474</y0>
+<width>200</width>
+<height>26</height>
+<text>clock_field_created(JTextField t)</text>
+<px>0</px>
+<py>306</py>
+</pin>
+<pin>
+<ID>_Pname_field</ID>
+<x0>0</x0>
+<y0>502</y0>
+<width>200</width>
+<height>26</height>
+<text>name_field_created(JTextField t)</text>
+<px>0</px>
+<py>324</py>
+</pin>
+<pin>
+<ID>_Pstart_field</ID>
+<x0>0</x0>
+<y0>530</y0>
+<width>200</width>
+<height>26</height>
+<text>start_field_created(JTextField t)</text>
+<px>0</px>
+<py>342</py>
+</pin>
+<pin>
+<ID>_Pend_field</ID>
+<x0>0</x0>
+<y0>558</y0>
+<width>200</width>
+<height>26</height>
+<text>end_field_created(JTextField t)</text>
+<px>0</px>
+<py>360</py>
+</pin>
+<pin>
+<ID>_Pinterval_field</ID>
+<x0>0</x0>
+<y0>586</y0>
+<width>200</width>
+<height>26</height>
+<text>interval_field_created(JTextField t)</text>
+<px>0</px>
+<py>378</py>
+</pin>
+<pin>
+<ID>_Ppc_reg</ID>
+<x0>0</x0>
+<y0>614</y0>
+<width>200</width>
+<height>26</height>
+<text>pc_reg_created(JTextField t)</text>
+<px>0</px>
+<py>396</py>
+</pin>
+<pin>
+<ID>_Pdata_field</ID>
+<x0>0</x0>
+<y0>642</y0>
+<width>200</width>
+<height>26</height>
+<text>data_field_created(JTextField t)</text>
+<px>0</px>
+<py>414</py>
+</pin>
+<pin>
+<ID>_Padrs_field</ID>
+<x0>0</x0>
+<y0>670</y0>
+<width>200</width>
+<height>26</height>
+<text>adrs_field_created(JTextField t)</text>
+<px>0</px>
+<py>432</py>
+</pin>
+<pin>
+<ID>_PAadrs_field</ID>
+<x0>0</x0>
+<y0>698</y0>
+<width>200</width>
+<height>26</height>
+<text>adrs_field_input(String s)</text>
+<px>0</px>
+<py>450</py>
+</pin>
+<pin>
+<ID>_PAinc_addr</ID>
+<x0>0</x0>
+<y0>726</y0>
+<width>200</width>
+<height>26</height>
+<text>inc_addr_clicked()</text>
+<px>0</px>
+<py>468</py>
+</pin>
+<pin>
+<ID>_PAdec_addr</ID>
+<x0>0</x0>
+<y0>754</y0>
+<width>200</width>
+<height>26</height>
+<text>dec_addr_clicked()</text>
+<px>0</px>
+<py>486</py>
+</pin>
+<pin>
+<ID>_PAmem_set</ID>
+<x0>0</x0>
+<y0>782</y0>
+<width>200</width>
+<height>26</height>
+<text>mem_set_clicked()</text>
+<px>0</px>
+<py>504</py>
+</pin>
+<pin>
+<ID>_Prun_button</ID>
+<x0>0</x0>
+<y0>810</y0>
+<width>200</width>
+<height>26</height>
+<text>run_button_created(JButton b)</text>
+<px>0</px>
+<py>522</py>
+</pin>
+<pin>
+<ID>_PArun_button</ID>
+<x0>0</x0>
+<y0>838</y0>
+<width>200</width>
+<height>26</height>
+<text>run_button_clicked()</text>
+<px>0</px>
+<py>540</py>
+</pin>
+<pin>
+<ID>_PAclear_list</ID>
+<x0>0</x0>
+<y0>866</y0>
+<width>200</width>
+<height>26</height>
+<text>clear_list_clicked()</text>
+<px>0</px>
+<py>558</py>
+</pin>
+<pin>
+<ID>_PAadd_list</ID>
+<x0>0</x0>
+<y0>894</y0>
+<width>200</width>
+<height>26</height>
+<text>add_list_clicked()</text>
+<px>0</px>
+<py>576</py>
+</pin>
+<pin>
+<ID>_PAdel_list</ID>
+<x0>0</x0>
+<y0>922</y0>
+<width>200</width>
+<height>26</height>
+<text>del_list_clicked()</text>
+<px>0</px>
+<py>594</py>
+</pin>
+<pin>
+<ID>_PAhome_list</ID>
+<x0>0</x0>
+<y0>950</y0>
+<width>200</width>
+<height>26</height>
+<text>home_list_clicked()</text>
+<px>0</px>
+<py>612</py>
+</pin>
+<pin>
+<ID>_PAinc_list</ID>
+<x0>0</x0>
+<y0>978</y0>
+<width>200</width>
+<height>26</height>
+<text>inc_list_clicked()</text>
+<px>0</px>
+<py>630</py>
+</pin>
+<pin>
+<ID>_PAdec_list</ID>
+<x0>0</x0>
+<y0>1006</y0>
+<width>200</width>
+<height>26</height>
+<text>dec_list_clicked()</text>
+<px>0</px>
+<py>648</py>
+</pin>
+<pin>
+<ID>_PAsingle_button</ID>
+<x0>0</x0>
+<y0>1034</y0>
+<width>200</width>
+<height>26</height>
+<text>single_button_clicked()</text>
+<px>0</px>
+<py>666</py>
+</pin>
+<pin>
+<ID>_Pcmd_field</ID>
+<x0>0</x0>
+<y0>1062</y0>
+<width>200</width>
+<height>26</height>
+<text>cmd_field_created(JTextField t)</text>
+<px>0</px>
+<py>684</py>
+</pin>
+<pin>
+<ID>_PAcmd_field</ID>
+<x0>0</x0>
+<y0>1090</y0>
+<width>200</width>
+<height>26</height>
+<text>cmd_field_input(String s)</text>
+<px>0</px>
+<py>702</py>
+</pin>
+<pin>
+<ID>_Pdisp_area</ID>
+<x0>0</x0>
+<y0>1118</y0>
+<width>200</width>
+<height>26</height>
+<text>disp_area_created(JTextArea t)</text>
+<px>0</px>
+<py>720</py>
+</pin>
+<codeclip>
+<ID>_CXSTART</ID>
+<x0>0</x0>
+<y0>0</y0>
+<width>300</width>
+<height>26</height>
+<codetext> class XGUI extends JFrame implements WindowListener{
+ JPanel cnt;
+compile_button Icompile_button;
+ class compile_button extends JButton implements ActionListener{
+  compile_button(){
+ setOpaque( true );
+ setName(  &quot;compile_button&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;Compile&quot; );
+ addActionListener( this );
+}
+ public void actionPerformed( ActionEvent e ){ compile_button_clicked(); }
+}
+clr_button Iclr_button;
+ class clr_button extends JButton implements ActionListener{
+  clr_button(){
+ setOpaque( true );
+ setName(  &quot;clr_button&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;CLR&quot; );
+ addActionListener( this );
+}
+ public void actionPerformed( ActionEvent e ){ clr_button_clicked(); }
+}
+fast_run_button Ifast_run_button;
+ class fast_run_button extends JButton implements ActionListener{
+  fast_run_button(){
+ setOpaque( true );
+ setName(  &quot;fast_run_button&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;Fast run&quot; );
+ addActionListener( this );
+}
+ public void actionPerformed( ActionEvent e ){ fast_run_button_clicked(); }
+}
+LABEL2 ILABEL2;
+ class LABEL2 extends JLabel{
+  LABEL2(){
+ setOpaque( true );
+ setName(  &quot;LABEL2&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;A:&quot; );
+}
+}
+LABEL3 ILABEL3;
+ class LABEL3 extends JLabel{
+  LABEL3(){
+ setOpaque( true );
+ setName(  &quot;LABEL3&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;Y:&quot; );
+}
+}
+LABEL4 ILABEL4;
+ class LABEL4 extends JLabel{
+  LABEL4(){
+ setOpaque( true );
+ setName(  &quot;LABEL4&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;X:&quot; );
+}
+}
+inifile_button Iinifile_button;
+ class inifile_button extends JButton implements ActionListener{
+  inifile_button(){
+ setOpaque( true );
+ setName(  &quot;inifile_button&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;Select .ini File&quot; );
+ addActionListener( this );
+}
+ public void actionPerformed( ActionEvent e ){ inifile_button_clicked(); }
+}
+edit_button Iedit_button;
+ class edit_button extends JButton implements ActionListener{
+  edit_button(){
+ setOpaque( true );
+ setName(  &quot;edit_button&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;edit&quot; );
+ addActionListener( this );
+}
+ public void actionPerformed( ActionEvent e ){ edit_button_clicked(); }
+}
+break_field Ibreak_field;
+ class break_field extends JTextField{
+  break_field(){
+ setOpaque( true );
+ setName(  &quot;break_field&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 10 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  255, 255, 255 ));
+ setText( &quot;0&quot; );
+ break_field_created( this );
+}
+}
+a_reg Ia_reg;
+ class a_reg extends JTextField{
+  a_reg(){
+ setOpaque( true );
+ setName(  &quot;a_reg&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 9 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  255, 255, 255 ));
+ setText( &quot;00&quot; );
+ a_reg_created( this );
+}
+}
+y_reg Iy_reg;
+ class y_reg extends JTextField{
+  y_reg(){
+ setOpaque( true );
+ setName(  &quot;y_reg&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 9 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  255, 255, 255 ));
+ setText( &quot;000000&quot; );
+ y_reg_created( this );
+}
+}
+x_reg Ix_reg;
+ class x_reg extends JTextField{
+  x_reg(){
+ setOpaque( true );
+ setName(  &quot;x_reg&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 9 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  255, 255, 255 ));
+ setText( &quot;000000&quot; );
+ x_reg_created( this );
+}
+}
+sp_reg Isp_reg;
+ class sp_reg extends JTextField{
+  sp_reg(){
+ setOpaque( true );
+ setName(  &quot;sp_reg&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 9 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  255, 255, 255 ));
+ setText( &quot;000000&quot; );
+ sp_reg_created( this );
+}
+}
+cf_reg Icf_reg;
+ class cf_reg extends JLabel{
+  cf_reg(){
+ setOpaque( true );
+ setName(  &quot;cf_reg&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 10 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;CF&quot; );
+ cf_reg_created( this );
+}
+}
+zf_reg Izf_reg;
+ class zf_reg extends JLabel{
+  zf_reg(){
+ setOpaque( true );
+ setName(  &quot;zf_reg&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 10 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;ZF&quot; );
+ zf_reg_created( this );
+}
+}
+message_area Imessage_area;
+ class message_area extends JTextArea{
+ JScrollPane scrl;
+  message_area(){
+ setOpaque( true );
+ setName(  &quot;message_area&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  255, 255, 255 ));
+ setText( &quot;&quot; );
+ scrl = new JScrollPane( this );
+ message_area_created( this );
+}
+}
+LABEL24 ILABEL24;
+ class LABEL24 extends JLabel{
+  LABEL24(){
+ setOpaque( true );
+ setName(  &quot;LABEL24&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 2 );
+ setVerticalAlignment( 0 );
+ setText( &quot;CYCLE:&quot; );
+}
+}
+clock_field Iclock_field;
+ class clock_field extends JTextField{
+  clock_field(){
+ setOpaque( true );
+ setName(  &quot;clock_field&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  255, 255, 255 ));
+ setText( &quot;0&quot; );
+ clock_field_created( this );
+}
+}
+LABEL27 ILABEL27;
+ class LABEL27 extends JLabel{
+  LABEL27(){
+ setOpaque( true );
+ setName(  &quot;LABEL27&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;Name&quot; );
+}
+}
+LABEL28 ILABEL28;
+ class LABEL28 extends JLabel{
+  LABEL28(){
+ setOpaque( true );
+ setName(  &quot;LABEL28&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;Start&quot; );
+}
+}
+LABEL29 ILABEL29;
+ class LABEL29 extends JLabel{
+  LABEL29(){
+ setOpaque( true );
+ setName(  &quot;LABEL29&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;End&quot; );
+}
+}
+name_field Iname_field;
+ class name_field extends JTextField{
+  name_field(){
+ setOpaque( true );
+ setName(  &quot;name_field&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 10 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  255, 255, 255 ));
+ setText( &quot;&quot; );
+ name_field_created( this );
+}
+}
+start_field Istart_field;
+ class start_field extends JTextField{
+  start_field(){
+ setOpaque( true );
+ setName(  &quot;start_field&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 10 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  255, 255, 255 ));
+ setText( &quot;0&quot; );
+ start_field_created( this );
+}
+}
+end_field Iend_field;
+ class end_field extends JTextField{
+  end_field(){
+ setOpaque( true );
+ setName(  &quot;end_field&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 9 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  255, 255, 255 ));
+ setText( &quot;0&quot; );
+ end_field_created( this );
+}
+}
+LABEL33 ILABEL33;
+ class LABEL33 extends JLabel{
+  LABEL33(){
+ setOpaque( true );
+ setName(  &quot;LABEL33&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;interval time&quot; );
+}
+}
+LABEL34 ILABEL34;
+ class LABEL34 extends JLabel{
+  LABEL34(){
+ setOpaque( true );
+ setName(  &quot;LABEL34&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;ms&quot; );
+}
+}
+interval_field Iinterval_field;
+ class interval_field extends JTextField{
+  interval_field(){
+ setOpaque( true );
+ setName(  &quot;interval_field&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 10 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  255, 255, 255 ));
+ setText( &quot;1&quot; );
+ interval_field_created( this );
+}
+}
+LABEL36 ILABEL36;
+ class LABEL36 extends JLabel{
+  LABEL36(){
+ setOpaque( true );
+ setName(  &quot;LABEL36&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;PC:&quot; );
+}
+}
+pc_reg Ipc_reg;
+ class pc_reg extends JTextField{
+  pc_reg(){
+ setOpaque( true );
+ setName(  &quot;pc_reg&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 9 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  255, 255, 255 ));
+ setText( &quot;070000&quot; );
+ pc_reg_created( this );
+}
+}
+data_field Idata_field;
+ class data_field extends JTextField{
+  data_field(){
+ setOpaque( true );
+ setName(  &quot;data_field&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 10 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  255, 255, 255 ));
+ setText( &quot;00&quot; );
+ data_field_created( this );
+}
+}
+adrs_field Iadrs_field;
+ class adrs_field extends JTextField implements ActionListener{
+  adrs_field(){
+ setOpaque( true );
+ setName(  &quot;adrs_field&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 10 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  255, 255, 255 ));
+ setText( &quot;000000&quot; );
+ addActionListener( this );
+ adrs_field_created( this );
+}
+ public void actionPerformed( ActionEvent e ){ adrs_field_input( getText() ); }
+}
+inc_addr Iinc_addr;
+ class inc_addr extends JButton implements ActionListener{
+  inc_addr(){
+ setOpaque( true );
+ setName(  &quot;inc_addr&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;+&quot; );
+ addActionListener( this );
+}
+ public void actionPerformed( ActionEvent e ){ inc_addr_clicked(); }
+}
+dec_addr Idec_addr;
+ class dec_addr extends JButton implements ActionListener{
+  dec_addr(){
+ setOpaque( true );
+ setName(  &quot;dec_addr&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;-&quot; );
+ addActionListener( this );
+}
+ public void actionPerformed( ActionEvent e ){ dec_addr_clicked(); }
+}
+mem_set Imem_set;
+ class mem_set extends JButton implements ActionListener{
+  mem_set(){
+ setOpaque( true );
+ setName(  &quot;mem_set&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;WRT&quot; );
+ addActionListener( this );
+}
+ public void actionPerformed( ActionEvent e ){ mem_set_clicked(); }
+}
+run_button Irun_button;
+ class run_button extends JButton implements ActionListener{
+  run_button(){
+ setOpaque( true );
+ setName(  &quot;run_button&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;run&quot; );
+ addActionListener( this );
+ run_button_created( this );
+}
+ public void actionPerformed( ActionEvent e ){ run_button_clicked(); }
+}
+clear_list Iclear_list;
+ class clear_list extends JButton implements ActionListener{
+  clear_list(){
+ setOpaque( true );
+ setName(  &quot;clear_list&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 10 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;C&quot; );
+ addActionListener( this );
+}
+ public void actionPerformed( ActionEvent e ){ clear_list_clicked(); }
+}
+add_list Iadd_list;
+ class add_list extends JButton implements ActionListener{
+  add_list(){
+ setOpaque( true );
+ setName(  &quot;add_list&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;add&quot; );
+ addActionListener( this );
+}
+ public void actionPerformed( ActionEvent e ){ add_list_clicked(); }
+}
+del_list Idel_list;
+ class del_list extends JButton implements ActionListener{
+  del_list(){
+ setOpaque( true );
+ setName(  &quot;del_list&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;del&quot; );
+ addActionListener( this );
+}
+ public void actionPerformed( ActionEvent e ){ del_list_clicked(); }
+}
+home_list Ihome_list;
+ class home_list extends JButton implements ActionListener{
+  home_list(){
+ setOpaque( true );
+ setName(  &quot;home_list&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 9 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;0&quot; );
+ addActionListener( this );
+}
+ public void actionPerformed( ActionEvent e ){ home_list_clicked(); }
+}
+inc_list Iinc_list;
+ class inc_list extends JButton implements ActionListener{
+  inc_list(){
+ setOpaque( true );
+ setName(  &quot;inc_list&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 9 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;&gt;&quot; );
+ addActionListener( this );
+}
+ public void actionPerformed( ActionEvent e ){ inc_list_clicked(); }
+}
+dec_list Idec_list;
+ class dec_list extends JButton implements ActionListener{
+  dec_list(){
+ setOpaque( true );
+ setName(  &quot;dec_list&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 9 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;&lt;&quot; );
+ addActionListener( this );
+}
+ public void actionPerformed( ActionEvent e ){ dec_list_clicked(); }
+}
+single_button Isingle_button;
+ class single_button extends JButton implements ActionListener{
+  single_button(){
+ setOpaque( true );
+ setName(  &quot;single_button&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 10 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;1step&quot; );
+ addActionListener( this );
+}
+ public void actionPerformed( ActionEvent e ){ single_button_clicked(); }
+}
+LABEL35 ILABEL35;
+ class LABEL35 extends JLabel{
+  LABEL35(){
+ setOpaque( true );
+ setName(  &quot;LABEL35&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;SP:&quot; );
+}
+}
+cmd_field Icmd_field;
+ class cmd_field extends JTextField implements ActionListener{
+  cmd_field(){
+ setOpaque( true );
+ setName(  &quot;cmd_field&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  255, 255, 255 ));
+ setText( &quot;&quot; );
+ addActionListener( this );
+ cmd_field_created( this );
+}
+ public void actionPerformed( ActionEvent e ){ cmd_field_input( getText() ); }
+}
+LABEL42 ILABEL42;
+ class LABEL42 extends JLabel{
+  LABEL42(){
+ setOpaque( true );
+ setName(  &quot;LABEL42&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;Command:&quot; );
+}
+}
+disp_area Idisp_area;
+ class disp_area extends JTextArea{
+ JScrollPane scrl;
+  disp_area(){
+ setOpaque( true );
+ setName(  &quot;disp_area&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 20 ));
+ setForeground( new Color(  29, 255, 32 ));
+ setBackground( new Color(  1, 1, 1 ));
+ setText( &quot;&quot; );
+ scrl = new JScrollPane( this );
+ disp_area_created( this );
+}
+}
+LABEL44 ILABEL44;
+ class LABEL44 extends JLabel{
+  LABEL44(){
+ setOpaque( true );
+ setName(  &quot;LABEL44&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  195, 195, 195 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;Break address:&quot; );
+}
+}
+ XGUI(){
+ setTitle(&quot;CARD8VMシミュレータ&quot;);
+ cnt = new JPanel( new BorderLayout() );
+ cnt.setPreferredSize(  new  Dimension( 889, 577 ) );
+ ((Component)cnt).setBackground( new Color( 254, 252, 168 ) );
+ Icompile_button = new compile_button();
+ cnt.add( Icompile_button, 0 );
+ cnt.getLayout().removeLayoutComponent( Icompile_button );
+ Icompile_button.setBounds( 152, 1, 61, 29 );
+ Iclr_button = new clr_button();
+ cnt.add( Iclr_button, 0 );
+ cnt.getLayout().removeLayoutComponent( Iclr_button );
+ Iclr_button.setBounds( 214, 1, 40, 29 );
+ Ifast_run_button = new fast_run_button();
+ cnt.add( Ifast_run_button, 0 );
+ cnt.getLayout().removeLayoutComponent( Ifast_run_button );
+ Ifast_run_button.setBounds( 297, 1, 74, 29 );
+ ILABEL2 = new LABEL2();
+ cnt.add( ILABEL2, 0 );
+ cnt.getLayout().removeLayoutComponent( ILABEL2 );
+ ILABEL2.setBounds( 288, 35, 32, 24 );
+ ILABEL3 = new LABEL3();
+ cnt.add( ILABEL3, 0 );
+ cnt.getLayout().removeLayoutComponent( ILABEL3 );
+ ILABEL3.setBounds( 240, 35, 46, 24 );
+ ILABEL4 = new LABEL4();
+ cnt.add( ILABEL4, 0 );
+ cnt.getLayout().removeLayoutComponent( ILABEL4 );
+ ILABEL4.setBounds( 194, 35, 44, 24 );
+ Iinifile_button = new inifile_button();
+ cnt.add( Iinifile_button, 0 );
+ cnt.getLayout().removeLayoutComponent( Iinifile_button );
+ Iinifile_button.setBounds( 744, 3, 140, 27 );
+ Iedit_button = new edit_button();
+ cnt.add( Iedit_button, 0 );
+ cnt.getLayout().removeLayoutComponent( Iedit_button );
+ Iedit_button.setBounds( 113, 1, 37, 29 );
+ Ibreak_field = new break_field();
+ cnt.add( Ibreak_field, 0 );
+ cnt.getLayout().removeLayoutComponent( Ibreak_field );
+ Ibreak_field.setBounds( 112, 137, 112, 22 );
+ Ia_reg = new a_reg();
+ cnt.add( Ia_reg, 0 );
+ cnt.getLayout().removeLayoutComponent( Ia_reg );
+ Ia_reg.setBounds( 286, 63, 35, 25 );
+ Iy_reg = new y_reg();
+ cnt.add( Iy_reg, 0 );
+ cnt.getLayout().removeLayoutComponent( Iy_reg );
+ Iy_reg.setBounds( 240, 62, 45, 25 );
+ Ix_reg = new x_reg();
+ cnt.add( Ix_reg, 0 );
+ cnt.getLayout().removeLayoutComponent( Ix_reg );
+ Ix_reg.setBounds( 193, 63, 47, 24 );
+ Isp_reg = new sp_reg();
+ cnt.add( Isp_reg, 0 );
+ cnt.getLayout().removeLayoutComponent( Isp_reg );
+ Isp_reg.setBounds( 323, 63, 50, 25 );
+ Icf_reg = new cf_reg();
+ cnt.add( Icf_reg, 0 );
+ cnt.getLayout().removeLayoutComponent( Icf_reg );
+ Icf_reg.setBounds( 114, 34, 25, 25 );
+ Izf_reg = new zf_reg();
+ cnt.add( Izf_reg, 0 );
+ cnt.getLayout().removeLayoutComponent( Izf_reg );
+ Izf_reg.setBounds( 113, 62, 26, 22 );
+ Imessage_area = new message_area();
+ cnt.add( Imessage_area.scrl, 0 );
+ cnt.getLayout().removeLayoutComponent( Imessage_area.scrl );
+ (  Imessage_area.scrl ).setBounds( 4, 161, 370, 410 );
+ ILABEL24 = new LABEL24();
+ cnt.add( ILABEL24, 0 );
+ cnt.getLayout().removeLayoutComponent( ILABEL24 );
+ ILABEL24.setBounds( 2, 49, 59, 22 );
+ Iclock_field = new clock_field();
+ cnt.add( Iclock_field, 0 );
+ cnt.getLayout().removeLayoutComponent( Iclock_field );
+ Iclock_field.setBounds( 1, 73, 60, 21 );
+ ILABEL27 = new LABEL27();
+ cnt.add( ILABEL27, 0 );
+ cnt.getLayout().removeLayoutComponent( ILABEL27 );
+ ILABEL27.setBounds( 226, 90, 53, 21 );
+ ILABEL28 = new LABEL28();
+ cnt.add( ILABEL28, 0 );
+ cnt.getLayout().removeLayoutComponent( ILABEL28 );
+ ILABEL28.setBounds( 281, 90, 45, 21 );
+ ILABEL29 = new LABEL29();
+ cnt.add( ILABEL29, 0 );
+ cnt.getLayout().removeLayoutComponent( ILABEL29 );
+ ILABEL29.setBounds( 328, 90, 43, 20 );
+ Iname_field = new name_field();
+ cnt.add( Iname_field, 0 );
+ cnt.getLayout().removeLayoutComponent( Iname_field );
+ Iname_field.setBounds( 226, 113, 54, 22 );
+ Istart_field = new start_field();
+ cnt.add( Istart_field, 0 );
+ cnt.getLayout().removeLayoutComponent( Istart_field );
+ Istart_field.setBounds( 282, 113, 45, 22 );
+ Iend_field = new end_field();
+ cnt.add( Iend_field, 0 );
+ cnt.getLayout().removeLayoutComponent( Iend_field );
+ Iend_field.setBounds( 328, 113, 46, 22 );
+ ILABEL33 = new LABEL33();
+ cnt.add( ILABEL33, 0 );
+ cnt.getLayout().removeLayoutComponent( ILABEL33 );
+ ILABEL33.setBounds( 1, 97, 107, 15 );
+ ILABEL34 = new LABEL34();
+ cnt.add( ILABEL34, 0 );
+ cnt.getLayout().removeLayoutComponent( ILABEL34 );
+ ILABEL34.setBounds( 80, 113, 27, 23 );
+ Iinterval_field = new interval_field();
+ cnt.add( Iinterval_field, 0 );
+ cnt.getLayout().removeLayoutComponent( Iinterval_field );
+ Iinterval_field.setBounds( 3, 113, 75, 25 );
+ ILABEL36 = new LABEL36();
+ cnt.add( ILABEL36, 0 );
+ cnt.getLayout().removeLayoutComponent( ILABEL36 );
+ ILABEL36.setBounds( 142, 35, 50, 25 );
+ Ipc_reg = new pc_reg();
+ cnt.add( Ipc_reg, 0 );
+ cnt.getLayout().removeLayoutComponent( Ipc_reg );
+ Ipc_reg.setBounds( 142, 63, 51, 23 );
+ Idata_field = new data_field();
+ cnt.add( Idata_field, 0 );
+ cnt.getLayout().removeLayoutComponent( Idata_field );
+ Idata_field.setBounds( 70, 1, 40, 23 );
+ Iadrs_field = new adrs_field();
+ cnt.add( Iadrs_field, 0 );
+ cnt.getLayout().removeLayoutComponent( Iadrs_field );
+ Iadrs_field.setBounds( 1, 1, 67, 23 );
+ Iinc_addr = new inc_addr();
+ cnt.add( Iinc_addr, 0 );
+ cnt.getLayout().removeLayoutComponent( Iinc_addr );
+ Iinc_addr.setBounds( 31, 27, 26, 20 );
+ Idec_addr = new dec_addr();
+ cnt.add( Idec_addr, 0 );
+ cnt.getLayout().removeLayoutComponent( Idec_addr );
+ Idec_addr.setBounds( 1, 27, 27, 20 );
+ Imem_set = new mem_set();
+ cnt.add( Imem_set, 0 );
+ cnt.getLayout().removeLayoutComponent( Imem_set );
+ Imem_set.setBounds( 60, 27, 49, 20 );
+ Irun_button = new run_button();
+ cnt.add( Irun_button, 0 );
+ cnt.getLayout().removeLayoutComponent( Irun_button );
+ Irun_button.setBounds( 255, 1, 39, 29 );
+ Iclear_list = new clear_list();
+ cnt.add( Iclear_list, 0 );
+ cnt.getLayout().removeLayoutComponent( Iclear_list );
+ Iclear_list.setBounds( 111, 91, 34, 20 );
+ Iadd_list = new add_list();
+ cnt.add( Iadd_list, 0 );
+ cnt.getLayout().removeLayoutComponent( Iadd_list );
+ Iadd_list.setBounds( 148, 90, 40, 21 );
+ Idel_list = new del_list();
+ cnt.add( Idel_list, 0 );
+ cnt.getLayout().removeLayoutComponent( Idel_list );
+ Idel_list.setBounds( 190, 90, 33, 21 );
+ Ihome_list = new home_list();
+ cnt.add( Ihome_list, 0 );
+ cnt.getLayout().removeLayoutComponent( Ihome_list );
+ Ihome_list.setBounds( 111, 114, 34, 20 );
+ Iinc_list = new inc_list();
+ cnt.add( Iinc_list, 0 );
+ cnt.getLayout().removeLayoutComponent( Iinc_list );
+ Iinc_list.setBounds( 190, 114, 33, 20 );
+ Idec_list = new dec_list();
+ cnt.add( Idec_list, 0 );
+ cnt.getLayout().removeLayoutComponent( Idec_list );
+ Idec_list.setBounds( 149, 114, 38, 20 );
+ Isingle_button = new single_button();
+ cnt.add( Isingle_button, 0 );
+ cnt.getLayout().removeLayoutComponent( Isingle_button );
+ Isingle_button.setBounds( 64, 49, 45, 44 );
+ ILABEL35 = new LABEL35();
+ cnt.add( ILABEL35, 0 );
+ cnt.getLayout().removeLayoutComponent( ILABEL35 );
+ ILABEL35.setBounds( 322, 35, 50, 25 );
+ Icmd_field = new cmd_field();
+ cnt.add( Icmd_field, 0 );
+ cnt.getLayout().removeLayoutComponent( Icmd_field );
+ Icmd_field.setBounds( 473, 2, 266, 30 );
+ ILABEL42 = new LABEL42();
+ cnt.add( ILABEL42, 0 );
+ cnt.getLayout().removeLayoutComponent( ILABEL42 );
+ ILABEL42.setBounds( 379, 2, 91, 29 );
+ Idisp_area = new disp_area();
+ cnt.add( Idisp_area.scrl, 0 );
+ cnt.getLayout().removeLayoutComponent( Idisp_area.scrl );
+ (  Idisp_area.scrl ).setBounds( 380, 35, 507, 537 );
+ ILABEL44 = new LABEL44();
+ cnt.add( ILABEL44, 0 );
+ cnt.getLayout().removeLayoutComponent( ILABEL44 );
+ ILABEL44.setBounds( 0, 139, 109, 19 );
+ setContentPane( cnt );
+ pack();
+ addWindowListener( this );
+ setVisible( true );
+ GUI_created( this );
+}
+ public void windowActivated( WindowEvent e ){}
+ public void windowClosed( WindowEvent e ){}
+ public void windowClosing( WindowEvent e ){ GUI_closed(); }
+ public void windowDeactivated( WindowEvent e ){}
+ public void windowDeiconified( WindowEvent e ){}
+ public void windowIconified( WindowEvent e ){}
+ public void windowOpened( WindowEvent e ){}
+}
+</codetext>
+</codeclip>
+<ID_maker>57</ID_maker>
+<height>742</height>
+<レイアウト>CARD8VMシミュレータ
+889
+577
+254
+252
+168
+xxscale=1
+BUTTON;compile_button;Compile;152;1;61;29;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
+BUTTON;clr_button;CLR;214;1;40;29;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
+BUTTON;fast_run_button;Fast run;297;1;74;29;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
+LABEL;LABEL2;A:;288;35;32;24;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
+LABEL;LABEL3;Y:;240;35;46;24;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
+LABEL;LABEL4;X:;194;35;44;24;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
+BUTTON;inifile_button;Select .ini File;744;3;140;27;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
+BUTTON;edit_button;edit;113;1;37;29;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
+TEXTFIELD;break_field;0;112;137;112;22;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
+TEXTFIELD;a_reg;00;286;63;35;25;51;51;51;255;255;255;Dialog;9;1;1;0;JTextField;
+TEXTFIELD;y_reg;000000;240;62;45;25;51;51;51;255;255;255;Dialog;9;1;1;0;JTextField;
+TEXTFIELD;x_reg;000000;193;63;47;24;51;51;51;255;255;255;Dialog;9;1;1;0;JTextField;
+TEXTFIELD;sp_reg;000000;323;63;50;25;51;51;51;255;255;255;Dialog;9;1;1;0;JTextField;
+LABEL;cf_reg;CF;114;34;25;25;51;51;51;192;192;192;Dialog;10;null;0;0;1;1;0;JLabel;
+LABEL;zf_reg;ZF;113;62;26;22;51;51;51;192;192;192;Dialog;10;null;0;0;1;1;0;JLabel;
+TEXTAREA;message_area;null;4;161;370;410;51;51;51;255;255;255;Dialog;12;1;1;1;JTextArea;
+LABEL;LABEL24;CYCLE:;2;49;59;22;51;51;51;192;192;192;Dialog;12;null;2;0;1;0;0;JLabel;
+TEXTFIELD;clock_field;0;1;73;60;21;51;51;51;255;255;255;Dialog;12;1;1;0;JTextField;
+LABEL;LABEL27;Name;226;90;53;21;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
+LABEL;LABEL28;Start;281;90;45;21;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
+LABEL;LABEL29;End;328;90;43;20;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
+TEXTFIELD;name_field;null;226;113;54;22;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
+TEXTFIELD;start_field;0;282;113;45;22;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
+TEXTFIELD;end_field;0;328;113;46;22;51;51;51;255;255;255;Dialog;9;1;1;0;JTextField;
+LABEL;LABEL33;interval time;1;97;107;15;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
+LABEL;LABEL34;ms;80;113;27;23;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
+TEXTFIELD;interval_field;1;3;113;75;25;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
+LABEL;LABEL36;PC:;142;35;50;25;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
+TEXTFIELD;pc_reg;070000;142;63;51;23;51;51;51;255;255;255;Dialog;9;1;1;0;JTextField;
+TEXTFIELD;data_field;00;70;1;40;23;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
+TEXTFIELD;adrs_field;000000;1;1;67;23;51;51;51;255;255;255;Dialog;10;1;1;1;JTextField;
+BUTTON;inc_addr;+;31;27;26;20;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
+BUTTON;dec_addr;-;1;27;27;20;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
+BUTTON;mem_set;WRT;60;27;49;20;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
+BUTTON;run_button;run;255;1;39;29;51;51;51;192;192;192;Dialog;12;null;0;0;1;1;1;JButton;
+BUTTON;clear_list;C;111;91;34;20;51;51;51;192;192;192;Dialog;10;null;0;0;1;0;1;JButton;
+BUTTON;add_list;add;148;90;40;21;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
+BUTTON;del_list;del;190;90;33;21;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
+BUTTON;home_list;0;111;114;34;20;51;51;51;192;192;192;Dialog;9;null;0;0;1;0;1;JButton;
+BUTTON;inc_list;&gt;;190;114;33;20;51;51;51;192;192;192;Dialog;9;null;0;0;1;0;1;JButton;
+BUTTON;dec_list;&lt;;149;114;38;20;51;51;51;192;192;192;Dialog;9;null;0;0;1;0;1;JButton;
+BUTTON;single_button;1step;64;49;45;44;51;51;51;192;192;192;Dialog;10;null;0;0;1;0;1;JButton;
+LABEL;LABEL35;SP:;322;35;50;25;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
+TEXTFIELD;cmd_field;null;473;2;266;30;51;51;51;255;255;255;Dialog;12;1;1;1;JTextField;
+LABEL;LABEL42;Command:;379;2;91;29;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
+TEXTAREA;disp_area;null;380;35;507;537;29;255;32;1;1;1;Dialog;20;1;1;1;JTextArea;
+LABEL;LABEL44;Break address:;0;139;109;19;51;51;51;195;195;195;Dialog;12;null;0;0;1;0;0;JLabel;
+</レイアウト>
+</aobject>
+<relation>
+<ID>_R108</ID>
+<pin1name>_A0(_PAinifile_button)</pin1name>
+<pin2name>_X19(_P83)</pin2name>
+</relation>
+</xobject>

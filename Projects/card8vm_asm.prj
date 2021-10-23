@@ -1,0 +1,1274 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!-- なんちゃってXML version 0.1( ObjectEditor専用 ) -->
+<xobject>
+<ID>project</ID>
+<x0>0</x0>
+<y0>0</y0>
+<width>200</width>
+<height>100</height>
+<ID_maker>40</ID_maker>
+<objectname>card8vm_asm</objectname>
+<description>新規のアプリケーション</description>
+<プロパティ>
+<ID>properties</ID>
+<LookandFeel>javax.swing.plaf.metal.MetalLookAndFeel</LookandFeel>
+<MainWinx0>0</MainWinx0>
+<MainWiny0>0</MainWiny0>
+<MainWinWidth>1024</MainWinWidth>
+<MainWinHeight>740</MainWinHeight>
+<MesgWinx0>0</MesgWinx0>
+<MesgWiny0>0</MesgWiny0>
+<MesgWinWidth>1024</MesgWinWidth>
+<MesgWinHeight>745</MesgWinHeight>
+<FileWinx0>36</FileWinx0>
+<FileWiny0>478</FileWiny0>
+<FileWinWidth>578</FileWinWidth>
+<FileWinHeight>262</FileWinHeight>
+<EditWinx0>347</EditWinx0>
+<EditWiny0>0</EditWiny0>
+<EditWinWidth>676</EditWinWidth>
+<EditWinHeight>541</EditWinHeight>
+<PropWinx0>1</PropWinx0>
+<PropWiny0>1</PropWiny0>
+<PropWinWidth>615</PropWinWidth>
+<PropWinHeight>448</PropWinHeight>
+<DividerLocation1>2</DividerLocation1>
+<DividerLocation2>2</DividerLocation2>
+<ToolBarVisible>1</ToolBarVisible>
+<ViewSourceAtCompile>0</ViewSourceAtCompile>
+<NoSourceCreate>0</NoSourceCreate>
+<JavaEditCommand>geany</JavaEditCommand>
+<JavaViewCommand></JavaViewCommand>
+<HelpCommand></HelpCommand>
+<ApplicationType>0</ApplicationType>
+<CompileCommand0>./compile_java</CompileCommand0>
+<RunCommand0>./run_java</RunCommand0>
+<GUIDesignerCommand0>java -jar guidsin.jar -java</GUIDesignerCommand0>
+<ImportFiles0> import java.awt.*;
+ import java.awt.event.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+import java.awt.geom.*;
+import java.awt.print.*;
+import javax.swing.border.*;
+import javax.swing.filechooser.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+import java.awt.image.BufferedImage;
+import javax.sound.sampled.*;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+
+class Starter{
+  public static void main( String args[] ){
+    %AppName% ap = new %AppName%();
+    ap.ARGS = args;
+    ap.Start();
+  }
+}
+</ImportFiles0>
+<ProgramStartupCode0> String[] ARGS;
+</ProgramStartupCode0>
+<NativeHelpCommand0></NativeHelpCommand0>
+<CompileCommand1></CompileCommand1>
+<RunCommand1></RunCommand1>
+<GUIDesignerCommand1>java -jar guidsin.jar -applet</GUIDesignerCommand1>
+<ImportFiles1> import java.awt.*;
+ import java.awt.event.*;
+ import java.applet.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+ public class javatext extends Applet {
+   %AppName% ap;
+   public void init() {
+     ap = new %AppName%();
+     ap.APPLET = this;
+     ap.Start();
+   }
+ }
+</ImportFiles1>
+<ProgramStartupCode1> Applet APPLET;
+</ProgramStartupCode1>
+<NativeHelpCommand1></NativeHelpCommand1>
+<CompileCommand2></CompileCommand2>
+<RunCommand2></RunCommand2>
+<GUIDesignerCommand2></GUIDesignerCommand2>
+<ImportFiles2>#include &lt;stdio.h&gt;
+
+void Startup();
+</ImportFiles2>
+<ProgramStartupCode2>int main(){
+ Startup();
+ %AppName%::Start();
+ }
+</ProgramStartupCode2>
+<NativeHelpCommand2></NativeHelpCommand2>
+<CompileCommand3></CompileCommand3>
+<RunCommand3></RunCommand3>
+<GUIDesignerCommand3>java -jar guidsin.jar -cpp</GUIDesignerCommand3>
+<ImportFiles3>#include &lt;stdio.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;math.h&gt;
+#include &quot;Ekagen.h&quot;
+void Startup();
+</ImportFiles3>
+<ProgramStartupCode3>void Emain(){
+Startup();
+%AppName%::Start();
+}
+</ProgramStartupCode3>
+<NativeHelpCommand3></NativeHelpCommand3>
+<MoveStep>8</MoveStep>
+<ImageEditCommand></ImageEditCommand>
+<CompilerFileName>javac.exe</CompilerFileName>
+<CompileCommand4>./compile_android Test com example test</CompileCommand4>
+<RunCommand4>echo no action</RunCommand4>
+<GUIDesignerCommand4>java -jar guidsin.jar -android</GUIDesignerCommand4>
+<ImportFiles4>package com.example.test;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.View;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.widget.Button;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+import android.widget.EditText;
+import android.text.SpannableStringBuilder;
+import android.text.TextWatcher;
+import android.text.Editable;
+import android.graphics.Matrix;
+import android.graphics.Typeface;
+import android.graphics.RectF;
+import android.graphics.BitmapFactory;
+import java.io.*;
+ import java.net.*;
+import java.util.*;
+import java.text.SimpleDateFormat;
+import android.media.MediaPlayer;
+import android.os.Handler;
+import android.content.res.Configuration;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.app.Activity;
+import android.graphics.Color;
+
+import android.widget.AbsoluteLayout;
+import android.widget.*;
+import android.view.Gravity;
+import android.view.View.OnClickListener;
+
+import android.hardware.Camera;
+
+public class HelloWorld extends Activity {
+  public void onCreate(Bundle bundle) {
+    super.onCreate(bundle);
+    %AppName% ap = new %AppName%();
+    ap.ACTIVITY = this;
+    ap.Start();
+  }
+}
+</ImportFiles4>
+<ProgramStartupCode4>Activity ACTIVITY;
+</ProgramStartupCode4>
+<NativeHelpCommand4>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    package=&quot;com.example.test&quot;
+    android:versionCode=&quot;1&quot;
+    android:versionName=&quot;1.0&quot; &gt;
+
+    
+    
+  &lt;uses-permission android:name=&quot;android.permission.CAMERA&quot; /&gt; 
+  &lt;uses-feature android:name=&quot;android.hardware.camera&quot; /&gt; 
+  &lt;uses-feature android:name=&quot;android.hardware.usb.host&quot; /&gt; 
+  &lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot;/&gt;
+  &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt; 
+  &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+
+  &lt;uses-sdk android:minSdkVersion=&quot;3&quot; android:targetSdkVersion=&quot;21&quot;/&gt;
+  
+ 
+    &lt;application android:label=&quot;@string/app_name&quot; &gt;
+        &lt;activity
+            android:name=&quot;HelloWorld&quot;
+            android:label=&quot;@string/app_name&quot; &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+
+                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;
+</NativeHelpCommand4>
+<HtmlEditCommand></HtmlEditCommand>
+<CompileCommand5></CompileCommand5>
+<RunCommand5></RunCommand5>
+<GUIDesignerCommand5></GUIDesignerCommand5>
+<ImportFiles5></ImportFiles5>
+<ProgramStartupCode5>gosub @_PSTART
+end
+</ProgramStartupCode5>
+<NativeHelpCommand5></NativeHelpCommand5>
+<NoOptimizePin>0</NoOptimizePin>
+<CompileCommand6>./compile_c</CompileCommand6>
+<RunCommand6>./run_c</RunCommand6>
+<GUIDesignerCommand6></GUIDesignerCommand6>
+<ImportFiles6>#include &lt;setjmp.h&gt;
+#include &lt;pthread.h&gt;
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;stdarg.h&gt;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;fcntl.h&gt;
+#include &lt;math.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;arpa/inet.h&gt;
+#include &lt;netdb.h&gt;
+
+#include &lt;X11/Xlib.h&gt;
+#include &lt;X11/Xutil.h&gt;
+#include &lt;X11/Xlocale.h&gt; /* ロケール用ヘッダーファイル */
+#include &lt;X11/xpm.h&gt;
+#include &lt;sys/time.h&gt;
+#include &lt;signal.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;termios.h&gt;
+#include &lt;errno.h&gt;
+</ImportFiles6>
+<ProgramStartupCode6>int ARGC; char** ARGV;
+int main( int argc, char** argv ){
+  ARGC=argc;
+  ARGV=argv;
+  _PSTART();
+}
+</ProgramStartupCode6>
+<NativeHelpCommand6></NativeHelpCommand6>
+<scale>3</scale>
+<CompileCommand7></CompileCommand7>
+<RunCommand7></RunCommand7>
+<GUIDesignerCommand7></GUIDesignerCommand7>
+<ImportFiles7></ImportFiles7>
+<ProgramStartupCode7></ProgramStartupCode7>
+<NativeHelpCommand7></NativeHelpCommand7>
+<IDF_LocalVariable5>\</IDF_LocalVariable5>
+<IDF_LocalVariable7>\</IDF_LocalVariable7>
+</プロパティ>
+<codeclip>
+<ID>_CSTART</ID>
+<x0>333</x0>
+<y0>219</y0>
+<width>123</width>
+<height>22</height>
+<codetext> String[] ARGS;
+</codetext>
+</codeclip>
+<pin>
+<ID>_PSTART</ID>
+<x0>17</x0>
+<y0>184</y0>
+<width>55</width>
+<height>24</height>
+<text>Start()</text>
+<px>50</px>
+<py>50</py>
+</pin>
+<codeclip>
+<ID>_C22</ID>
+<x0>332</x0>
+<y0>243</y0>
+<width>163</width>
+<height>40</height>
+<codetext>// デバッグ用変数
+boolean debug=false;
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C21</ID>
+<x0>817</x0>
+<y0>72</y0>
+<width>151</width>
+<height>35</height>
+<codetext>// 次の命令に移る
+public void next_ins(){
+  while( !(read().equals(&quot;END&quot;)) ) ;
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C20</ID>
+<x0>331</x0>
+<y0>322</y0>
+<width>157</width>
+<height>35</height>
+<codetext> // 命令定義データ
+String[] ins_data = {
+&quot;org \\0664&quot;,&quot;1&quot;,&quot;0&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;equ \\0664&quot;,&quot;2&quot;,&quot;0&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;= \\0664&quot;,&quot;2&quot;,&quot;0&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;+= \\0664&quot;,&quot;5&quot;,&quot;0&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;memory \\0264&quot;,&quot;3&quot;,&quot;0&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;byte \\0664&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;8&quot;,&quot;0&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;int \\0664&quot;,&quot;0&quot;,&quot;3&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;0&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;push a&quot;,&quot;0&quot;,&quot;1&quot;,&quot;35&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;push x&quot;,&quot;0&quot;,&quot;1&quot;,&quot;36&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;pop a&quot;,&quot;0&quot;,&quot;1&quot;,&quot;37&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;pop x&quot;,&quot;0&quot;,&quot;1&quot;,&quot;38&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;sp=x&quot;,&quot;0&quot;,&quot;1&quot;,&quot;39&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;x=sp&quot;,&quot;0&quot;,&quot;1&quot;,&quot;40&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;x++&quot;,&quot;0&quot;,&quot;1&quot;,&quot;41&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;x--&quot;,&quot;0&quot;,&quot;1&quot;,&quot;42&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;y++&quot;,&quot;0&quot;,&quot;1&quot;,&quot;43&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;y--&quot;,&quot;0&quot;,&quot;1&quot;,&quot;44&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;rol (y)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;45&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;ror (y)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;46&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;jmp (x)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;20&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;jmp (y)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;21&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;a+=(x)+cf&quot;,&quot;0&quot;,&quot;1&quot;,&quot;9&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;a-=(x)+bf&quot;,&quot;0&quot;,&quot;1&quot;,&quot;10&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;a&amp;=(x)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;11&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;a|=(x)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;12&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;a=(x)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;7&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;(x)=a&quot;,&quot;0&quot;,&quot;1&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;a+=(y)+cf&quot;,&quot;0&quot;,&quot;1&quot;,&quot;29&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;a-=(y)+bf&quot;,&quot;0&quot;,&quot;1&quot;,&quot;30&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;a&amp;=(y)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;31&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;a|=(y)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;a=(y)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;27&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;(y)=a&quot;,&quot;0&quot;,&quot;1&quot;,&quot;28&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;rol (x)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;14&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;ror (x)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;13&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;ret&quot;,&quot;0&quot;,&quot;1&quot;,&quot;34&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;jmp \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;15&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;jc \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;18&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;jnc \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;19&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;jnb \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;18&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;jb \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;19&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;jz \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;16&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;jnz \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;17&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;x+=(\\0664)&quot;,&quot;0&quot;,&quot;4&quot;,&quot;3&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;x-=(\\0664)&quot;,&quot;0&quot;,&quot;4&quot;,&quot;4&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;x=(\\0664)&quot;,&quot;0&quot;,&quot;4&quot;,&quot;2&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;x=\\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;(\\0664)=x&quot;,&quot;0&quot;,&quot;4&quot;,&quot;5&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;y+=(\\0664)&quot;,&quot;0&quot;,&quot;4&quot;,&quot;24&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;y-=(\\0664)&quot;,&quot;0&quot;,&quot;4&quot;,&quot;25&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;y=(\\0664)&quot;,&quot;0&quot;,&quot;4&quot;,&quot;23&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;y=\\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;22&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;(\\0664)=y&quot;,&quot;0&quot;,&quot;4&quot;,&quot;26&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;a=\\0664&quot;,&quot;0&quot;,&quot;2&quot;,&quot;6&quot;,&quot;0&quot;,&quot;8&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;call \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;33&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;hlt&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;-1&quot;,&quot;END&quot;
+};
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C19</ID>
+<x0>61</x0>
+<y0>217</y0>
+<width>262</width>
+<height>213</height>
+<codetext>// シンボル
+Vector symbols;
+class xSymbol{
+  String name;
+  String type;
+  long value;
+
+  xSymbol( String n, String t, long v ){
+    name = n;
+    type  = t;
+    value = v;
+  }
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C18</ID>
+<x0>767</x0>
+<y0>112</y0>
+<width>163</width>
+<height>33</height>
+<codetext>/* データを読み込む */
+public int read_int(){
+  return Integer.parseInt(read());
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C17</ID>
+<x0>597</x0>
+<y0>163</y0>
+<width>396</width>
+<height>359</height>
+<codetext>// 変数
+ static final long FAULT = 0x7fffffffffffffffL;
+ static final int NONE   = -1;
+ static final int NORMAL   = 0;
+ static final int ORG      = 1;
+ static final int EQU      = 2;
+ static final int MEMORY = 3;
+ static final int ALIGN    = 4;
+ static final int EQUPP   = 5;
+ static final int MAX_WORD = 4; // 最大語長
+
+  int[] ins = new int[16];  // 配列の１要素は1バイトに対応
+  int  line = 0, ins_type = 0;
+  long  word_length = 0L, end_prog, end_mem; 
+  long address =0, location = 0, prev_loc = 0;
+  long last_equ = 0;
+  String source = null, label = null;
+  int line_p, read_p;
+  String input_file = null;
+  String output_file = &quot;a.out&quot;;
+  long boffset = 0L; //ブランチオフセット
+  boolean blist = false;      // リスト表示モード
+  boolean blabel = false;    // ラベルリスト表示モード
+  
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C16</ID>
+<x0>76</x0>
+<y0>125</y0>
+<width>267</width>
+<height>35</height>
+<codetext>/* 基数にしたがって文字列を整数に変換する */
+public long xatol( String str, int r ){
+  long a = 0L,  radix = (long)r;
+  int i = 0;
+  
+  while( i &lt; str.length() ){
+    switch( str.charAt(i) ){
+      case &apos;0&apos;:           a = radix * a + 0L;  break;
+      case &apos;1&apos;:           a = radix * a + 1L;  break;
+      case &apos;2&apos;:           a = radix * a + 2L;  break;
+      case &apos;3&apos;:           a = radix * a + 3L;  break;
+      case &apos;4&apos;:           a = radix * a + 4L;  break;
+      case &apos;5&apos;:           a = radix * a + 5L;  break;
+      case &apos;6&apos;:           a = radix * a + 6L;  break;
+      case &apos;7&apos;:           a = radix * a + 7L;  break;
+      case &apos;8&apos;:           a = radix * a + 8L;  break;
+      case &apos;9&apos;:           a = radix * a + 9L;  break;
+      case &apos;a&apos;: case &apos;A&apos;: a = radix * a + 10L; break;
+      case &apos;b&apos;: case &apos;B&apos;: a = radix * a + 11L; break;
+      case &apos;c&apos;: case &apos;C&apos;: a = radix * a + 12L; break;
+      case &apos;d&apos;: case &apos;D&apos;: a = radix * a + 13L; break;
+      case &apos;e&apos;: case &apos;E&apos;: a = radix * a + 14L; break;
+      case &apos;f&apos;: case &apos;F&apos;: a = radix * a + 15L; break;
+    }
+   i++;
+  }
+  return a;
+}
+
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C15</ID>
+<x0>591</x0>
+<y0>111</y0>
+<width>164</width>
+<height>32</height>
+<codetext>/* データを読み込む */
+public String read(){
+  return ins_data[read_p++];
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C14</ID>
+<x0>591</x0>
+<y0>73</y0>
+<width>224</width>
+<height>35</height>
+<codetext>/* データの読み込み位置を設定する */
+public void restore(){
+  read_p = 0;
+}
+
+
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C13</ID>
+<x0>59</x0>
+<y0>548</y0>
+<width>357</width>
+<height>37</height>
+<codetext>/* シンボルの検索 */
+public long serch_symbol( String name, String type ){
+
+//System.out.println(&quot;serch symbol: name=&quot;+name+&quot;, type=&quot;+type);
+//System.out.println(&quot;size of symbols=&quot;+symbols.size());
+
+  xSymbol s;
+  for( int i = 0;i &lt; symbols.size(); i++ ){
+    s = (xSymbol)(symbols.get(i));
+
+//System.out.println(s.name+&quot;:&quot;+s.type);
+
+    if( s.name.equals(name) &amp;&amp; s.type.equals(type)) return s.value;
+  }
+  return FAULT;
+}
+
+
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C12</ID>
+<x0>60</x0>
+<y0>434</y0>
+<width>421</width>
+<height>36</height>
+<codetext>/* 新しいシンボルを生成する */
+public void create_symbol( String name, String type, long value ){
+  symbols.add( new xSymbol( name, type, value ) );
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C11</ID>
+<x0>73</x0>
+<y0>86</y0>
+<width>425</width>
+<height>36</height>
+<codetext>/* ビット列をコピーする */
+public void bit_copy( long src, int[] dst, int pos, int width ){
+  long  x;
+  int  y, z;
+
+  if( width &lt;= 0 ) return;
+  for( int i = 0; i &lt; width; i++ ){
+    x = 1L &lt;&lt; i;
+    y = pos / 8;
+    z = 1 &lt;&lt; (pos % 8);
+    if( (src &amp; x) != 0L ) dst[y] = dst[y]^z;
+    pos++;
+  }
+}
+
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C10</ID>
+<x0>76</x0>
+<y0>45</y0>
+<width>300</width>
+<height>34</height>
+<codetext>/* １行アセンブル */
+public int asm_1line( String xbuf, int pass ){
+  long value;
+
+//System.out.println(&quot;\nasm 1 line&quot;);
+
+  line++;
+  ins_type = NONE;
+  address = location;
+  word_length = 0L;
+  label = null;
+
+  String buf = xbuf, ref, statement, arg, term;
+  long operand[] = new long[8];
+  long term_val;
+  long state = 0L;
+  int  ref_pos, st_pos, operand_p, bit_width, bit_pos, i;
+  char op, op2=&apos;\0&apos;;
+
+  if(  buf.length()&lt;=0 ) return 0; // 空の場合は戻る
+
+  /* コメントをすてる */
+  if( ( i = buf.indexOf(&quot;//&quot;)) &gt;= 0 ) buf = buf.substring( 0,i );
+  if( ( i = buf.indexOf(&quot;/*&quot;)) &gt;= 0 ) buf = buf.substring( 0,i );
+
+  if(  buf.length()&lt;=0 ) return 0; // 空の場合は戻る
+
+  /* 末尾の不要なスペースをすてる */
+  for( i = buf.length() - 1; i &gt;= 0 &amp;&amp; buf.charAt(i) == &apos; &apos;; i-- ) ;
+  buf= buf.substring(0, i+1);
+
+  if(  buf.length()&lt;=0 ) return 0; // 空の場合は戻る
+
+  /* ラベルがあれば格納する */
+  if( buf.charAt(0) != &apos; &apos; ){
+    for( i = 0; i &lt; buf.length() &amp;&amp; buf.charAt(i) != &apos; &apos; &amp;&amp; buf.charAt(i) != &apos;:&apos;; i++) ;
+    label = buf.substring(0,i);
+    
+// System.out.print(&quot;label=&quot;+label+&quot;, &quot;); print_hex(address,8,&quot;:\n&quot;);
+    
+    buf = buf.substring(i);
+  }
+
+  /* ステートメントを格納する */
+  if(  buf.length()&lt;=0 ) return 0; // 空の場合は戻る
+  for( i = 0; i &lt; buf.length() &amp;&amp; (buf.charAt(i) == &apos; &apos; || buf.charAt(i) == &apos;:&apos;); i++) ;
+  if( i &gt;= buf.length() ) return 0; // 空の場合は戻る
+  statement = buf.substring(i);
+    
+// System.out.println(&quot;statement=&quot;+statement);   
+    
+  /* 命令定義データをよみこむ */
+  restore();
+  while( read_p &lt; ins_data.length ){
+    state = 0L;
+    ref = read();
+    ins_type = read_int();
+    word_length = read_int();
+    
+// System.out.println(&quot;ref : &quot;+ref+&quot;, ins_typ=&quot;+ins_type+&quot;, word_length=&quot;+word_length);   
+    
+    
+    /* 命令コードのよみこみ */
+    for( i = 0; i &lt; word_length; i++ ) ins[ i ] = read_int();
+
+    /* オペランドのクリア */
+    for( i = 0; i &lt; 8; i++ ) operand[ i ] = 0;
+    operand_p = 0;
+
+    /* 文字パターンの比較 */
+    ref_pos = 0;
+    st_pos = 0;
+    while( ref_pos&lt; ref.length() ){
+
+      /* スペースのとき */
+      if( ref.charAt(ref_pos) == &apos; &apos; ){
+        ref_pos++;
+        if( statement.charAt(st_pos) != &apos; &apos; ) { state = FAULT; break;}
+        while( st_pos &lt; statement.length() &amp;&amp; statement.charAt(st_pos) == &apos; &apos; ){ st_pos++;}
+        if( st_pos &gt;= statement.length() &amp;&amp; ref_pos &lt; ref.length() ) { state = FAULT; break;}
+	  }
+
+      /* \ : 引数のとき */
+      else if( ref.charAt(ref_pos) == &apos;\\&apos; ){
+        int arg_typ = Integer.parseInt( &quot;&quot; + ref.charAt(ref_pos+1) + ref.charAt(ref_pos+2) );
+        int arg_wid = Integer.parseInt( &quot;&quot; + ref.charAt(ref_pos+3) + ref.charAt(ref_pos+4) );
+        ref_pos+=5;
+
+        /* 引数を格納する */
+        if( ref_pos &gt;= ref.length() ){ arg = statement.substring(st_pos); st_pos = statement.length();}
+        else{
+          arg = &quot;&quot;;
+          while( st_pos &lt; statement.length() &amp;&amp; statement.charAt(st_pos) != ref.charAt(ref_pos) ){
+            arg = arg + statement.charAt(st_pos++);
+          }
+          if( st_pos &gt;= statement.length() &amp;&amp; ref_pos &lt; ref.length() ) { state = FAULT; break;}
+        }
+
+        // 引数を評価する
+
+//System.out.println(&quot;arg=&quot;+arg);
+
+        // 引数が無いときは次
+        if( arg.length() == 0 ) { state = FAULT; break;}
+ 
+        // レジスタ等のシンボルとして評価 
+        if( arg_typ  &gt;= 8 ) {
+        
+//System.out.println(&quot;symbol:&quot;);        
+        
+          if( (value = serch_symbol(arg, &quot;&quot;+arg_typ) ) == FAULT){ state = FAULT; break;}
+        }
+
+        // 数式として評価
+        else{
+        
+//System.out.println(&quot;numeric:&quot;);        
+        
+          op   = &apos;+&apos;;
+
+          if( arg_typ &lt; 4) value = 0L;  // 現在のロケーションをオフセットとする数値
+          else if( arg_typ &lt; 6 ) value = boffset - location - word_length; // 相対アドレッシング用 4:符号つき / 5:符号なし
+          else value = 0L;  // 通常の数値 6:符号つき数値 / 7:符号なし
+
+          while( op != &apos;\0&apos; ){
+
+//System.out.println(&quot;arg=&quot;+arg);        
+
+            /* 演算子を探す */
+            for( i = 0; i &lt; arg.length() &amp;&amp; (!is_operater( op2 = arg.charAt(i) )); i++ ) { /* System.out.print(&quot;+&quot;); */}
+            if( i &gt;= arg.length()) op2 = &apos;\0&apos;;
+
+//System.out.println(&quot;op=\&apos;&quot;+op2+&quot;\&apos;&quot;);        
+
+            term_val = 0L;
+            term = arg.substring(0,i);
+            if( i+1 &gt;= arg.length() ) arg = &quot;&quot;; else  arg = arg.substring(i+1);
+            if( term.length() == 0){ 
+              if( op2 == &apos;\0&apos; &amp;&amp; is_operater( op ) ){ // 最後が演算子で終わるようならエラー
+                state = FAULT;
+                break;
+              }
+            }
+            else{
+
+//System.out.println(&quot;term=&quot;+term);        
+
+              switch( term.charAt(0) ){
+
+              /* 先頭に&apos;\&apos;&apos; があるときは続く1文字のアスキーコードとする*/
+              case &apos;\&apos;&apos;:
+                term_val = (long)term.charAt(1);
+                break;
+
+              /* 先頭に&apos;^&apos; があるときはプラスの浮動小数点数として処理する */
+              case &apos;^&apos;:              /* 先頭に&apos;^&apos; があるとき */
+              try{
+                 term_val = Double.doubleToLongBits(Double.valueOf(term.substring(1)).doubleValue());
+               } catch(Exception e){ term_val = 0L; }
+               break;
+
+              /* 先頭に&apos;~&apos; があるときはマイナスの浮動小数点数として処理する */
+              case &apos;~&apos;:              /* 先頭に&apos;^&apos; があるとき */
+              try{
+                 term_val = Double.doubleToLongBits(Double.valueOf(&quot;-&quot;+term.substring(1)).doubleValue());
+               } catch(Exception e){ term_val = 0L; }
+               break;
+
+              case &apos;0&apos;:
+                if( term.length() == 1 ) term_val =0L;
+                else{
+                  switch( term.charAt(1) ){
+                  case &apos;b&apos;: case &apos;B&apos;:
+                    term_val = xatol( term.substring(2), 2 );
+                    break;
+                  case &apos;0&apos;: case &apos;1&apos;: case &apos;2&apos;: case &apos;3&apos;: case &apos;4&apos;: case &apos;5&apos;: case &apos;6&apos;: case &apos;7&apos;: case &apos;8&apos;: case &apos;9&apos;:
+                    term_val = xatol( term.substring(1), 8 );
+                    break;
+                  case &apos;x&apos;: case &apos;X&apos;:
+                    term_val = xatol( term.substring(2), 16 );
+                    break;
+                  default:
+                    term_val = 0L;
+                    break;
+                  }
+                }
+                break;
+
+              /* &apos;1&apos;から&apos;9&apos;のときは10進数とみなす */
+              case &apos;1&apos;: case &apos;2&apos;: case &apos;3&apos;: case &apos;4&apos;: case &apos;5&apos;: case &apos;6&apos;: case &apos;7&apos;: case &apos;8&apos;: case &apos;9&apos;:
+                term_val = xatol( term, 10 );
+                break;
+
+              /* それ以外の文字が出てきたら現在のロケーションかラベルとみなす */
+              default:
+                if( term.equals(&quot;$&quot;)) term_val = location;
+                else if( (term_val = serch_label( term )) == FAULT &amp;&amp; pass == 2 ) { state = FAULT; break;}
+ 
+ //System.out.println(&quot;term=&quot;+term);
+ //System.out.print(&quot;term_val=&quot;+term_val+&quot; (0x&quot;);print_hex( term_val, 8, &quot;)\n&quot;);
+ 
+                break;
+              }
+              if( state == FAULT ) break;
+            }
+
+            /* 演算処理 */
+            switch( op ){
+              case &apos;+&apos;: value += term_val; break;
+              case &apos;-&apos;:  value -= term_val; break;
+              case &apos;*&apos;: value *= term_val; break;
+              case &apos;/&apos;:  value /= term_val; break;
+            }
+
+//System.out.println(&quot;value=&quot;+value);
+
+            op = op2;
+          }
+
+//System.out.println(&quot;exit loop&quot;);
+
+          if( state == FAULT ) break;
+        }
+
+        /* 評価した引数の値をビット列に変換する */
+        long amin, amax;
+        if( (arg_typ &amp; 1) != 0 ) {
+         amin = 0L; 
+         amax = (1L&lt;&lt; arg_wid)-1L;
+        }
+        else{
+          amin = -(1L&lt;&lt;(arg_wid-1));
+          amax = (1L&lt;&lt;(arg_wid-1))-1L;
+        }
+        if( value &lt; amin || value &gt; amax ){
+
+//System.out.println(&quot;value is out of range\n&quot;);
+
+          state = FAULT;
+          break;
+        }
+        operand[operand_p++] = value;
+      }
+
+
+      /* その他の文字のとき */
+      else{
+
+        if( ( ref_pos &gt;= ref.length() ) != ( st_pos &gt;= statement.length() ) ||
+              ref.charAt(ref_pos++) != statement.charAt(st_pos++)
+        ){
+          state = FAULT;
+          break;
+        }
+      }
+
+    }
+
+    if( state == FAULT ){
+      next_ins();
+      continue;
+    }
+
+    /* 正常終了 */
+
+//System.out.println(&quot;match&quot;);
+
+    if( st_pos &gt;= statement.length() ){
+
+      /* 命令コードの生成 */
+      for( i = 0; ( bit_width = read_int() ) &gt;= 0; i++ ){
+        bit_pos = read_int();
+
+//System.out.println(&quot;bit copy&quot;);
+
+        bit_copy( operand[i], ins, bit_pos, bit_width );
+
+//System.out.println(&quot;bit copy end&quot;);
+
+      }
+
+
+//System.out.println(&quot;ins_type=&quot;+ins_type);
+
+      switch( ins_type ){
+
+      case NORMAL:
+        address = prev_loc = location;
+        end_mem  = location += word_length;
+        break;
+
+      case ORG:
+        prev_loc = location;
+        address= end_mem = location = operand[0];
+        break;
+
+      case MEMORY:
+        address = prev_loc = location;
+        end_mem = location += operand[0];
+        break;
+
+      case ALIGN:
+        prev_loc = location;
+        location  = (location / operand[0])*operand[0];
+        if( location &lt; prev_loc ) location += operand[0];
+        address = end_mem = location;
+        break;
+
+      case EQU:
+        last_equ = address = operand[0];
+        break;
+
+      case EQUPP:
+        address = last_equ;
+        last_equ += operand[0];
+        break;
+
+      }
+
+//print_hex(address,8,&quot;:\n&quot;);
+
+//System.out.println(&quot;end asm 1line&quot;);
+
+
+      return 0;
+    }
+
+    next_ins();
+    state = 0L;
+  }
+
+  /* エラー終了 */
+  
+//System.out.println(&quot;not match&quot;);
+
+  word_length = 0;
+  ins_type = NONE;
+  return 1;
+}
+</codetext>
+</codeclip>
+<operation>
+<ID>_O8</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>421</x0>
+<y0>162</y0>
+<width>165</width>
+<height>49</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>30</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// パス２：コードの生成
+
+
+try{
+
+//System.out.println(&quot;pass2&quot;);
+
+  location = 0;
+
+File outfile = new File(output_file);
+BufferedReader din = new BufferedReader( new FileReader(input_file) );
+BufferedWriter dout = new BufferedWriter( new FileWriter(outfile) );
+int len;
+
+//System.out.println(&quot;create code&quot;);
+
+  
+    String buf;
+    int err = 0, ad;
+    line = 0;
+    while( (buf = din.readLine()) != null ){
+       err = asm_1line( buf, 2 );
+
+       if( blist &amp;&amp; (label!=null) ){
+         System.out.println(buf);
+       }
+
+//System.out.println(&quot;asm err code=&quot;+err);
+
+       switch(ins_type){
+       case NONE:
+         if( err != 0 ) System.err.println(&quot;line:&quot;+line+&quot; *** ERROR ***\n&quot;+buf);
+         break;
+
+       case NORMAL:
+           long adrs = location-word_length;
+           for( int i = 0; i &lt; word_length; i++ ){
+             dout.write((adrs+i)+&quot;\n&quot;);
+             dout.write(ins[i]+&quot;\n&quot;);
+           }
+
+         if( blist){
+           print_hex( location-word_length, 8, &quot;:&quot; );
+           for( int i = 0; i &lt; word_length; i++ ){
+             print_hex( (long)ins[i], 2, &quot; &quot; );
+           }
+           for( int i =MAX_WORD; i &gt;= word_length; i-- ) System.out.print(&quot;   &quot;);
+           System.out.println(buf);
+         }
+         break;
+
+       case ORG:
+
+         if( blist){
+           print_hex( location, 8, &quot;:\n&quot; );
+         }
+         break;
+
+       case MEMORY:
+         len = (int)(location - prev_loc); 
+
+//System.out.println(&quot;allocated memory size=&quot;+len);
+
+         if( blist){
+           print_hex( prev_loc, 8, &quot;: alloc &quot; );System.out.println( len + &quot;bytes&quot;);
+         }
+         break;
+
+       case ALIGN:
+         len = (int)(location - prev_loc); 
+
+         if( blist){
+           print_hex( location, 8, &quot;: skip &quot; );System.out.println( len + &quot;bytes&quot;);
+         }
+
+         break;
+      }
+
+//System.out.println(&quot;continue read line&quot;);
+
+    }
+
+//System.out.println(&quot;end pass2&quot;);
+
+
+    din.close();
+    dout.close();
+} catch( Exception e ) {e.printStackTrace();}
+
+
+// ラベルリスト表示モードの時はラベルのリストを表示する
+ if( blabel ){
+   xSymbol s;
+   for( int i = 0;i &lt; symbols.size(); i++ ){
+     s = (xSymbol)(symbols.get(i));
+     if( s.type.equals(&quot;LABEL&quot;)){
+       System.out.print( s.name + &quot;  0x&quot;); print_hex( s.value, 16, &quot;\n&quot; );
+     }
+   }
+ }
+</codetext>
+</operation>
+<operation>
+<ID>_O6</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>257</x0>
+<y0>163</y0>
+<width>154</width>
+<height>49</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>28</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>106</outpinx0>
+<outpiny0>28</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// パス１:ラベルの定義
+
+
+
+// レジスタ等のシンボルを設定
+symbols = new Vector();
+
+
+try{
+  location = 0;
+
+File infile = new File(input_file);
+if( !infile.exists() || !infile.isFile() )  print_usage();
+BufferedReader din = new BufferedReader( new FileReader(infile) );
+    String buf;
+    line = 0;
+    while( (buf = din.readLine()) != null ){
+      asm_1line( buf, 1 );
+      if( label != null ){
+        if( serch_label( label ) == FAULT ){
+           create_label( label, address );
+        }
+        else{
+           System.err.println(&quot;line &quot;+line+&quot;:ラベルの多重定義&quot;);
+           System.err.println(buf+&quot;\n&quot;);
+        }
+      }
+    }
+    din.close();
+} catch( IOException ie ) {System.out.println(input_file+&quot;の読み取りエラー&quot;);}
+
+</codetext>
+</operation>
+<relation>
+<ID>_R9</ID>
+<pin1name>_O6</pin1name>
+<pin2name>_O8</pin2name>
+</relation>
+<codeclip>
+<ID>_C25</ID>
+<x0>58</x0>
+<y0>594</y0>
+<width>262</width>
+<height>36</height>
+<codetext>/* ラベルの検索 */
+public long serch_label( String name ){
+  xSymbol s;
+  for( int i = 0;i &lt; symbols.size(); i++ ){
+    s = (xSymbol)(symbols.get(i));
+    if( s.name.equals(name) &amp;&amp; s.type.equals(&quot;LABEL&quot;) ) return s.value;
+  }
+  return FAULT;
+}
+
+
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C27</ID>
+<x0>60</x0>
+<y0>510</y0>
+<width>275</width>
+<height>36</height>
+<codetext>// シンボルデーブルをセットする
+public void set_symbols( String[] syms ){
+
+//System.out.println(&quot;set symbols size=&quot;+syms.length);
+
+  int i = 0;
+  do{
+
+//System.out.println(syms[i]+&quot;,&quot;+syms[i+1]+&quot;,&quot;+ Long.parseLong(syms[i+2]));
+ Object o =  new xSymbol( syms[i], syms[i+1], Long.parseLong(syms[i+2])  );
+// System.out.println(&quot;object=&quot;+o);
+    symbols.add(o);
+    i+=3;
+  } while( i &lt; syms.length );
+  
+ // System.out.println(&quot;size of symbols=&quot;+symbols.size());
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C28</ID>
+<x0>77</x0>
+<y0>10</y0>
+<width>285</width>
+<height>23</height>
+<codetext>//  CARD8VM   ア  セ  ン  ブ  ラ  ver 0.1
+</codetext>
+</codeclip>
+<operation>
+<ID>_O29</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>106</x0>
+<y0>162</y0>
+<width>138</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>30</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>89</outpinx0>
+<outpiny0>29</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>//オプション設定
+
+
+
+ input_file = null;
+ output_file=&quot;r.out&quot;;
+ if( ARGS.length == 0 ) print_usage();
+ else{
+   for( int i = 0; i &lt; ARGS.length; i++ ){
+     if( ARGS[i].equals(&quot;-list&quot;) )       blist      = true;
+     else if( ARGS[i].equals(&quot;-label&quot;) )    blabel    = true;
+     else{
+      if( input_file == null ) input_file = ARGS[i];
+      else output_file = ARGS[i];
+     }
+   }
+ }
+ if( input_file == null ) print_usage();
+ 
+</codetext>
+</operation>
+<relation>
+<ID>_R30</ID>
+<pin1name>_O29</pin1name>
+<pin2name>_O6</pin2name>
+</relation>
+<relation>
+<ID>_R31</ID>
+<pin1name>_PSTART</pin1name>
+<pin2name>_O29</pin2name>
+</relation>
+<codeclip>
+<ID>_C32</ID>
+<x0>331</x0>
+<y0>286</y0>
+<width>183</width>
+<height>33</height>
+<codetext>// 使用法を表示して終了する
+public void print_usage(){
+  System.out.println(&quot;card8vm_asm [-list] [-label] input_file [output_file]&quot;);
+  System.exit(0);
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C36</ID>
+<x0>60</x0>
+<y0>471</y0>
+<width>336</width>
+<height>37</height>
+<codetext>/* 新しいラベルを生成する */
+public void create_label( String name, long value ){
+  symbols.add( new xSymbol( name, &quot;LABEL&quot;, value ) );
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C37</ID>
+<x0>326</x0>
+<y0>594</y0>
+<width>327</width>
+<height>37</height>
+<codetext>// 16進数を表示
+public void print_hex( long x, int wid, String tail ){
+   int e = (wid-1) * 4;
+   while( e &gt;= 0 ){
+     int d = ((int)(x &gt;&gt;e)) &amp; 15;
+     System.out.print( &quot;0123456789abcdef&quot;.charAt(d)+&quot;&quot;);
+     e -= 4;
+   }
+   System.out.print(tail);       
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C38</ID>
+<x0>341</x0>
+<y0>510</y0>
+<width>248</width>
+<height>33</height>
+<codetext>// 演算子であるかどうか判断する
+public boolean is_operater( char c ){
+  return (c == &apos;+&apos;) || (c == &apos;-&apos;) || (c == &apos;*&apos;) || (c == &apos;/&apos;);
+}
+</codetext>
+</codeclip>
+</xobject>

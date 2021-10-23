@@ -1,0 +1,33 @@
+#!/bin/sh
+
+if test $# -eq 0
+then
+echo "can not compile."
+exit 0
+fi
+
+if test $# -eq 1
+then
+./bin/card8vm_orc ./include/stdio.rh ./oregengo-R/$1.r
+java -jar jar/card8vm_asm.jar asm.s r.out
+ rm __tmp1
+ rm __tmp2
+ rm __str
+ rm __var
+ rm asm.s
+ echo "compile end"
+ exit 0
+fi
+
+if test $# -gt 1
+then
+./bin/card8vm_orc ./include/stdio.rh ./oregengo-R/$1.r
+java -jar jar/card8vm_asm.jar -list asm.s r.out > $2
+ rm __tmp1
+ rm __tmp2
+ rm __str
+ rm __var
+ rm asm.s
+ echo "compile end"
+ exit 0
+fi

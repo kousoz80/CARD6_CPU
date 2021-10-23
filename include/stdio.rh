@@ -1,0 +1,495 @@
+// "stdio.rh" oregengo-R コンパイラ for CARD8VM用ヘッダファイル 
+/ org 0x70000/  // 実行開始アドレスは仮想マシンの実装に依存する
+
+ const EOF      255         /* ファイルの終わりをあらわす文字コード */
+ const ERROR    -1          /* エラーが発生したことをあらわす */
+ const NULL     0           /* ヌルポインタ */
+ const SPACE    32          /* 空白文字 */
+ const CR       13          /* キャリッジリターンコード */
+ const LF       10          /* ラインフィードコード */
+ const PLUS     43          /* プラス記号の文字コード */
+ const MINUS    45          /* マイナス記号の文字コード */
+ const ESC      27          /* ESCキーの文字コード */
+ const NaN      0x800000    /* ゼロ除算が発生したことをあらわす */
+ const STACK_SIZE 8000
+ const SIZEOF_CHAR 1
+ const SIZEOF_SHORT 1
+ const SIZEOF_INT 3
+ const SIZEOF_LONG 3
+
+
+ // 入出力エリア
+ const KEY_DATA 0xfffffd
+ const PRT_STB  0xfffffe
+ const PRT_DATA 0xffffff
+
+
+ // 作業変数
+ char  __sign$(1),__nbuf$(64)
+ count __p0#
+ long  __p1#,__p2#,__p3#,__p4#,__p5#,__p6#,__p7#
+ long __t#,__u#,read_p# // data文へのポインタ
+ long  __stack#(STACK_SIZE)
+ long  __stack_top#
+ long arg0#,r0#,r1#,r2#,r3#
+ long __tmp#,__ans#,__sgn#
+
+// プログラム開始位置 */
+_start:
+/ x=__stack_top/
+/ sp=x/
+/ call main/
+_end_loop:
+/ jmp _end_loop/
+
+
+// 符号付き乗算( __ans = r0 * r1 )
+mul:
+/ x=r0+2/
+/ a=(x)/
+/ x=__0x800000+2/
+/ a&=(x)/
+/ x=r1+2/
+/ a+=(x)+cf/
+/ x=__sgn/
+/ (x)=a/
+/ x=(r0)/
+/ x-=(__0x800000)/
+/ jb mul1/
+/ x=0/
+/ x-=(r0)/
+/ (r0)=x/
+mul1:
+/ x=(r1)/
+/ x-=(__0x800000)/
+/ jb mul2/
+/ x=0/
+/ x-=(r1)/
+/ (r1)=x/
+mul2:
+/ call umul/
+/ x=__sgn/
+/ a=(x)/
+/ x=__0x800000+2/
+/ a&=(x)/
+/ jz mul3/
+/ x=0/
+/ x-=(__ans)/
+/ (__ans)=x/
+mul3:
+/ ret/
+
+
+// 符号なし乗算( __ans = r0 * r1 )
+umul:
+/ x=0/
+/ (__ans)=x/
+umul1:
+/ x=r1+2/
+/ a&=(x)/ // CFクリア
+/ ror (x)/
+/ x--/
+/ ror (x)/
+/ x--/
+/ ror (x)/
+/ jnc umul2/
+/ x=(__ans)/
+/ x+=(r0)/
+/ (__ans)=x/
+umul2:
+/ x=r0/
+/ a&=(x)/ // cf=0
+/ rol (x)/
+/ x++/
+/ rol (x)/
+/ x++/
+/ rol (x)/
+/ x=0/
+/ x+=(r1)/
+/ jnz umul1/
+/ ret/
+
+
+// 符号付き除算( __ans = r1 / r0,  r1 = r1 % r0)
+div:
+/ x=0/
+/ x+=(r1)/
+/ jz div_zero/
+/ x=r0+2/
+/ a=(x)/
+/ x=__0x800000+2/
+/ a&=(x)/
+/ x=r1+2/
+/ a+=(x)+cf/
+/ x=__sgn/
+/ (x)=a/
+/ x=(r0)/
+/ x-=(__0x800000)/
+/ jb div1/
+/ x=0/
+/ x-=(r0)/
+/ (r0)=x/
+div1:
+/ x=(r1)/
+/ x-=(__0x800000)/
+/ jb div2/
+/ x=0/
+/ x-=(r1)/
+/ (r1)=x/
+div2:
+/ call udiv/
+/ x=__sgn/
+/ a=(x)/
+/ x=__0x800000+2/
+/ a&=(x)/
+/ jz div3/
+/ x=0/
+/ x-=(__ans)/
+/ (__ans)=x/
+div3:
+/ ret/
+
+
+// 符号なし除算( __ans = r1 / r0, r1 = r1 % r0)
+udiv:
+/ x=(r1)/
+/ x-=(r0)/
+/ jb div_under/
+/ x=0/
+/ (__ans)=x/
+/ x+=(r0)/
+/ jz div_zero/
+udiv1:
+/ x=__ans+2/
+/ ror (x)/
+/ x--/
+/ ror (x)/
+/ x--/
+/ ror (x)/
+/ x=r0/
+/ rol (x)/
+/ x++/
+/ rol (x)/
+/ x++/
+/ rol (x)/
+/ x=(r1)/
+/ x-=(r0)/
+/ jnb udiv1/
+udiv2:
+/ x=r0+2/
+/ a&=(x)/ // cf=0
+/ ror (x)/
+/ x--/
+/ ror (x)/
+/ x--/
+/ ror (x)/
+/ x=(r1)/
+/ x-=(r0)/
+/ jb udiv3/
+/ (r1)=x/
+udiv3:
+/ x=__ans/
+/ rol (x)/
+/ x++/
+/ rol (x)/
+/ x++/
+/ rol (x)/
+/ jc udiv2/
+/ ret/
+
+
+// 除算エラー(演算結果はNaN)
+div_zero:
+/ x=NaN/
+/ (__ans)=x/
+/ ret/
+
+
+// アンダーフロー(演算結果は0)
+div_under:
+/ x=0/
+/ (__ans)=x/
+/ ret/
+
+
+// コンソールからから一文字読み込む */
+getchar:
+/ a=0/
+/ x=KEY_DATA/
+/ (x)=a/
+getchar1:
+/ a=0/
+/ a|=(x)/
+/ jz getchar1/
+/ x=r0/
+/ (x)=a/
+/ a=0/
+/ x++/
+/ (x)=a/
+/ x++/
+/ (x)=a/
+/ call putchar/
+/ ret/
+
+
+// コンソールへ一文字出力する
+putchar:
+/ x=r0/
+/ a=(x)/
+/ x=PRT_DATA/
+/ (x)=a/
+/ a=1/
+/ x=PRT_STB/
+/ (x)=a/
+/ ret/
+
+
+// 文字列を表示する
+prints:
+ __p6#=
+ __prints1:
+  if (__p6)$=NULL then NULL, end
+  (__p6)$, putchar
+  __p6#++
+ goto __prints1
+
+
+// 数値を表示する
+printd:
+ dec prints
+ end
+
+
+// 改行する
+nl:
+ 32, putchar LF, putchar
+ end
+
+
+// 画面消去
+cls:
+  32, putchar
+  12, putchar
+  end
+
+
+// キー入力(実装されていない)
+inkey:
+/ x=KEY_DATA/
+/ a=(x)/
+/ x=r0/
+/ (x)=a/
+/ a=0/
+/ x++/
+/ (x)=a/
+/ x++/
+/ (x)=a/
+/ x=KEY_DATA/
+/ (x)=a
+/ ret/
+
+
+// コンソールから文字列を入力する
+inputs:
+ __p6#=
+ __inputs1:
+  getchar __p5$=
+  if __p5$=LF  goto __inputs2
+  __p5$, (__p6)$=
+  __p6#++
+ goto __inputs1
+ __inputs2:
+ NULL,  (__p6)$=
+ __p5$, end
+
+
+// 文字列を比較する
+strcmp:
+ __p2#= swap __p1#=
+ __strcmp1:
+  if (__p1)$<>(__p2)$ then 1, end
+  if (__p1)$=NULL then 0, end
+  __p1#++
+  __p2#++
+ goto __strcmp1
+
+
+// 文字数制限付きで文字列を比較する
+strncmp:
+ __p3#= pop __p2#= pop __p1#=
+ __strncmp1:
+  if __p3#<=0 then 0, end
+  if (__p1)$<>(__p2)$ then 1, end
+  if (__p1)$=NULL then 0, end
+  __p1#++
+  __p2#++
+  __p3#--
+ goto __strncmp1
+
+
+// 文字列をコピーする
+strcpy:
+ __p2#= swap __p1#=
+ __strcpy1:
+  (__p1)$, (__p2)$= __p3#=
+  __p1#++
+  __p2#++
+ if __p3#<>NULL goto __strcpy1
+ end
+
+
+// 文字数制限付きで文字列をコピーする
+strncpy:
+ __p3#= pop __p2#= pop __p1#=
+ __strncpy1:
+  if __p3#<=0 then NULL, (__p2)$= end
+  (__p1)$, (__p2)$= __p4#=
+  __p1#++
+  __p2#++
+  __p3#--
+ if __p4#<>NULL goto __strncpy1
+ end
+
+
+// 文字列を連結する
+strcat:
+ __p2#= swap __p1#=
+__strcat1:
+ if (__p2)$<>NULL then __p2#++ goto__strcat1
+__strcat2:
+ (__p1)$, (__p2)$= __p3#=
+ __p1#++
+ __p2#++
+ if __p3#<>NULL goto __strcat2
+ end
+
+
+// 文字数制限付きで文字列を連結する
+strncat:
+ __p3#= pop __p2#= pop __p1#=
+__strncat1:
+ if (__p2)$<>NULL then __p2#++ goto__strncat1
+__strncat2:
+ if __p3#<=0 then NULL, (__p2)$= end
+ (__p1)$, (__p2)$= __p4#=
+ __p1#++
+ __p2#++
+ __p3#--
+ if __p4#<>NULL goto __strncat2
+ end
+
+
+// 文字列を検索する
+strstr:
+ __p2#= swap __p1#=
+__strstr1:
+ if (__p1)$=NULL then NULL, end
+ __p1#, __p3#=
+ __p2#, __p4#=
+__strstr2:
+ if (__p3)$<>(__p4)$ then __p1#++ goto__strstr1
+ __p3#++
+ __p4#++
+ if (__p4)$<>NULL goto __strstr2
+ __p1#, end
+
+
+// 文字列の長さを得る
+strlen:
+ __p1#=
+ 0, __p2#=
+__strlen1:
+ if (__p1)$=NULL then __p2#, end
+ __p1#++
+ __p2#++
+ goto __strlen1
+
+
+// 文字列を数値に変換する(基数指定あり)
+atoi:
+ __p2#= swap __p1#=
+ 1, __p3#=   0, __p4#=
+ if (__p1)$=PLUS  then __p1#++
+ if (__p1)$=MINUS then __p1#++ -1, __p3#=
+__atoi1:
+ 0, __p5#=
+__atoi2:
+ if __p5#>=__p2# then __p3#, __p4#, * end
+ if "0123456789abcdef"$(__p5#)<>(__p1)$ then __p5#++ goto__atoi2
+ __p4#, __p2#, umul __p5#, + __p4#=
+ __p1#++
+ goto __atoi1
+
+
+// 数値を文字列に変換する(基数指定あり)
+itoa:
+  __p2#= swap __p1#=
+  if __p1#=0 then "0", __nbuf, strcpy __nbuf, end
+  __nbuf, __p3#=
+  1,      __p4#=
+  __p1#,  __p5#=
+__itoa1:
+ if __p5#<__p2# goto __itoa2
+  __p5#, __p2#, udiv __p5#=
+  __p4#, __p2#, umul __p4#=
+  goto __itoa1
+__itoa2:
+  __p1#, __p4#, udiv __p5#=
+  __p4#, __p5#, umul __p1#, swap - __p1#=
+  "0123456789abcdef"$(__p5#),  (__p3)$=
+  __p3#++
+  __p4#, __p2#, udiv __p4#=
+  if __p4#<>0 goto __itoa2
+ NULL, (__p3)$=
+ __nbuf, end
+
+
+// 数値を2進文字列に変換する
+bin:
+ 2, itoa end
+
+
+// 数値を8進文字列に変換する
+oct:
+ 8, itoa end
+
+
+// 数値を10進文字列に変換する
+dec:
+ __p1#=
+ if __p1#>=0 then __p1#, 10, itoa end
+ __p1#,  neg 10, itoa
+ MINUS,  __sign$=
+ __sign, end
+
+
+// 数値を16進文字列に変換する
+hex:
+ 16, itoa end
+
+
+// read文の読み込み位置を設定する
+restore:
+ read_p#=
+ end
+
+
+// data文で与えられたデータを読み込む
+read:
+ read_p#, 3, + read_p#=
+ (read_p)#(-1), end
+
+
+// 数値の絶対値を求める
+abs:
+  __p1#=
+  if __p1#>=0 then __p1#, end
+  0, __p1#, - end
+
+
+// 定数エリア
+__000: data 0
+__001: data 1
+__0x800000: data 0x800000
+__NaN:  data NaN
+

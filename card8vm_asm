@@ -1,0 +1,30 @@
+#!/bin/sh
+
+option="nop"
+if test $# -gt 0 
+then
+ option=$1
+fi
+
+if test $option = "-list"
+then
+./bin/card8_asmpp ./asm/card8vm.s asm.s
+java -jar jar/card8_asm.jar -list asm.s a.out
+rm asm.s
+echo "assemble end"
+exit 0
+fi
+
+if test $option = "-label"
+then
+./bin/card8_asmpp ./asm/card8vm.s asm.s
+java -jar jar/card8_asm.jar -label asm.s a.out
+rm asm.s
+echo "assemble end"
+exit 0
+fi
+
+./bin/card8_asmpp ./asm/card8vm.s asm.s
+java -jar jar/card8_asm.jar asm.s a.out
+rm asm.s
+echo "assemble end"
