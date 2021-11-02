@@ -946,10 +946,10 @@ if( run_mode != 0 ){
 <codetext>static final int hlt=0;	// 停止する
 static final int jmp=1;	// ジャンプする(アドレスは直接指定)
 static final int xxjmp=2;	// r0に格納されているアドレスにジャンプする
-static final int jge=3;	// 演算結果が&gt;=0ならジャンプする
-static final int jlt=4;	// 演算結果が&gt;0ならジャンプする
-static final int jz=5;	// 演算結果が==0ならジャンプする
-static final int jnz=6;	// 演算結果が!=0ならジャンプする
+static final int jge=3;	// r1&gt;=r0ならジャンプする
+static final int jlt=4;	// r1&gt;r0ならジャンプする
+static final int jz=5;	// r1==r0ならジャンプする
+static final int jnz=6;	// r1!=r0ならジャンプする
 static final int call=7;	// サブルーチンを呼び出す(アドレスは直接指定)
 static final int callxx=8;	// サブルーチンを呼び出す(アドレスは間接指定)
 static final int xxcall=9;	// r0に格納されているアドレスを呼び出す
