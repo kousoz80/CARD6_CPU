@@ -2,10 +2,10 @@
 /*
 
 
-  "card8_asmpp.c" 
-  CARD8アセンブラ用プリプロセッサ
+  "card6_asmpp.c" 
+  CARD6アセンブラ用プリプロセッサ
 
-  コンパイル: gcc -o card8_asmpp card8_asmpp.c 
+  コンパイル: gcc -o card6_asmpp card6_asmpp.c 
 
 
 */

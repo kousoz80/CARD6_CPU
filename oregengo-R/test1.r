@@ -3,6 +3,6 @@
 main:
   count i#
   for i#=0 to 10
-   i#, printd nl
+   i#, '0', + putchar nl //printd nl
   next i#
   end

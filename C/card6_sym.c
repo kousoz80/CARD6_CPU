@@ -1,5 +1,5 @@
-// "card8_sym.c" CARD8エミュレータのC言語による実装 ver 1.0
-// コンパイル: gcc -ptherad -o card8_sym card8_sym.c 
+// "card6_sym.c" CARD6エミュレータのC言語による実装 ver 1.0
+// コンパイル: gcc -ptherad -o card6_sym card8_sym.c 
 
 
 #include <stdio.h>
@@ -9,14 +9,13 @@
 #include <unistd.h>
 #include <fcntl.h>
 
-#define MEM_SIZE	0x1000000
+#define MEM_SIZE	0x40000
 #define DATA_INS 24
 
 // I/Oポート
-#define KEY_CODE	0xfffffd
-#define PRT_STROBE	0xfffffe
-#define PRT_DATA	0xffffff
-
+int KeyCode;
+int PrtData;
+int is_break;
 
 // 命令コードのビット割り当て
 #define IO  0x80
@@ -44,8 +43,6 @@ static int mem_c[MEM_SIZE];
 static int mem_a[MEM_SIZE];
 static int mem_r[MEM_SIZE];
 static int mem_d[MEM_SIZE];
-
-int is_break, KeyCode;
 
 // プログラムをロード
 int load_prog( char* fname ){
@@ -130,35 +127,35 @@ int getch(){
 // I/O同期処理
 void io_sync(){
 
-if( KeyCode != 0 ){
- mem_d[KEY_CODE] = KeyCode;
- KeyCode = 0;
-}
-if( mem_d[PRT_STROBE] != 0 ){
-  int c;
-  mem_d[PRT_STROBE] = 0;
-  c = mem_d[PRT_DATA];
-  putchar(c);
+if( PrtData != 0xff ){
+  if(PrtData == 0x61 ) PrtData = '\n';// 改行コード
+  else if(PrtData == 0x62 ) PrtData = '\n';// エスケープコード
+  else if(PrtData == 0x63 ) PrtData = '\0';// ヌル文字
+  else PrtData += 0x20;
+  putchar(PrtData);
+  PrtData = 0xff;
 }
 
-
 }
+
 
 
 // 1サイクル実行
 void exec_one_cycle(){
 int address;
 
-//レジスター＞メモリ サイクル
-if( (reg_c & PTR) != 0 ) address = reg_h * 65536 + reg_m * 256 + reg_l; else address = reg_a;
+//レジスター＞メモリ(I/O) サイクル
+if( (reg_c & PTR) != 0 ) address = reg_h * 4096 + reg_m * 64 + reg_l; else address = reg_a;
 if( (reg_c & RET) != 0 ) mem_a[address] = reg_r;
-if( (reg_c & ST)  != 0 ) mem_d[address] = reg_d;
+if( (reg_c & IO)  != 0 && (reg_c & ST)  != 0 ) PrtData = reg_d;			// I/Oアクセス
+if( (reg_c & IO)  == 0 && (reg_c & ST)  != 0 ) mem_d[address] = reg_d;	// メモリアクセス
 
-// メモリー＞レジスタ サイクル
+// メモリ(I/O)ー＞レジスタ サイクル
 reg_c = mem_c[address];
 reg_a = mem_a[address];
 reg_r = mem_r[address];
-if( (reg_c & LD)  != 0 ) reg_d = mem_d[address];
+if( (reg_c & IO)  != 0 && (reg_c & LD)  != 0 ){ reg_d = KeyCode; KeyCode = 0x3f;}	// I/Oアクセス
+if( (reg_c & IO)  == 0 && (reg_c & LD)  != 0 ) reg_d = mem_d[address];				// メモリアクセス
 if( (reg_c & LDH) != 0 ) reg_h = mem_d[address];
 if( (reg_c & LDM) != 0 ) reg_m = mem_d[address];
 if( (reg_c & LDL) != 0 ) reg_l = mem_d[address];
@@ -213,9 +210,14 @@ printf("If you want to break, please type \'\\\' key.\n");
   pthread_create( &ThreadMain,     NULL, mainThread,     NULL );
   while( !is_break ){
     int c = getch();
-    if( c == (int)'\r' ) c =(int)'\n';
     if( c == '\\' ) is_break = 1;
-    KeyCode = c;
+    else if( c != 0 ){
+      if( c == '\n' ) KeyCode = 61;
+      else if( c == '\r' ) KeyCode = 61;
+      else if( c < 0x20 )  KeyCode = 62;
+      else if( c >= 0x20 && c <= 0x5f ) KeyCode = c - 0x20;
+      else if( c >= 'a' && c <= 'z' )   KeyCode = c - 'a' + 'A' - ' ';
+    }
   }
   pthread_join( ThreadMain,     NULL );
 

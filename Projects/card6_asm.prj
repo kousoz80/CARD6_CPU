@@ -7,7 +7,7 @@
 <width>200</width>
 <height>100</height>
 <ID_maker>31</ID_maker>
-<objectname>card8_asm</objectname>
+<objectname>card6_asm</objectname>
 <description>新規のアプリケーション</description>
 <プロパティ>
 <ID>properties</ID>
@@ -338,16 +338,17 @@ String[] ins_data = {
  &quot;read@&quot;,     &quot;0&quot;, &quot;1&quot;, &quot;104&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;-1&quot;,&quot;END&quot;,
  &quot;write \\&quot;,  &quot;0&quot;, &quot;1&quot;, &quot;56&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
  &quot;write@&quot;,    &quot;0&quot;, &quot;1&quot;, &quot;120&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;in \\&quot;,     &quot;0&quot;, &quot;1&quot;, &quot;168&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;in@&quot;,       &quot;0&quot;, &quot;1&quot;, &quot;232&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;out \\&quot;,    &quot;0&quot;, &quot;1&quot;, &quot;184&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;out@&quot;,      &quot;0&quot;, &quot;1&quot;, &quot;248&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;set.h&quot;,     &quot;0&quot;, &quot;1&quot;, &quot;12&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;set.m&quot;,     &quot;0&quot;, &quot;1&quot;, &quot;10&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;set.l&quot;,     &quot;0&quot;, &quot;1&quot;, &quot;9&quot;,   &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;in&quot;,        &quot;0&quot;, &quot;1&quot;, &quot;136&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;out&quot;,       &quot;0&quot;, &quot;1&quot;, &quot;152&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;set(h)&quot;,     &quot;0&quot;, &quot;1&quot;, &quot;12&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;set(m)&quot;,     &quot;0&quot;, &quot;1&quot;, &quot;10&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;set(l)&quot;,     &quot;0&quot;, &quot;1&quot;, &quot;9&quot;,   &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
  &quot;jmp \\&quot;,    &quot;0&quot;, &quot;1&quot;, &quot;8&quot;,   &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
  &quot;jmp@&quot;,      &quot;0&quot;, &quot;1&quot;, &quot;72&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;-1&quot;,&quot;END&quot;,
  &quot;data \\&quot;,   &quot;0&quot;, &quot;1&quot;, &quot;24&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;0&quot;, &quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;8&quot; ,&quot;96&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;data(h) \\&quot;,&quot;0&quot;, &quot;1&quot;, &quot;28&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;0&quot;, &quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;8&quot; ,&quot;96&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;data(m) \\&quot;,&quot;0&quot;, &quot;1&quot;, &quot;26&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;0&quot;, &quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;8&quot; ,&quot;96&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;data(l) \\&quot;,&quot;0&quot;, &quot;1&quot;, &quot;25&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;0&quot;, &quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;8&quot; ,&quot;96&quot;,&quot;-1&quot;,&quot;END&quot;,
 };
 </codetext>
 </codeclip>
@@ -707,9 +708,9 @@ if(debug) System.out.println(&quot;case hex-decimal&quot;);
             switch( op ){
             case &apos;+&apos;: value += term_val; break;
             case &apos;-&apos;: value -= term_val; break;
-            case &apos;h&apos;: value = (value&gt;&gt;16) &amp; 0xff; break;
-            case &apos;m&apos;: value = (value&gt;&gt;8) &amp; 0xff; break;
-            case &apos;l&apos;: value = value &amp; 0xff; break;
+            case &apos;h&apos;: value = (value&gt;&gt;12) &amp; 0x3f; break;
+            case &apos;m&apos;: value = (value&gt;&gt;6) &amp; 0x3f; break;
+            case &apos;l&apos;: value = value &amp; 0x3f; break;
             case &apos;H&apos;: value = value+2; break;
             case &apos;M&apos;: value = value+1; break;
             case &apos;L&apos;: value = value+0; break;
@@ -765,11 +766,11 @@ if(debug) System.out.println(&quot;bit_width=&quot;+bit_width+&quot;,bit_pos=&qu
         break;
 
       case PAGE:
-        if( location % 256 &gt; 0 ) location = (location / 256) * 256 + 256;
+        if( location % 64 &gt; 0 ) location = (location / 64) * 64 + 64;
         break;
 
       case SECTION:
-        if( location % 65536 &gt; 0 ) location = (location / 65536) *65536  + 65536;
+        if( location % 4096 &gt; 0 ) location = (location / 4096) *4096  + 4096;
         break;
 
       }        
@@ -985,7 +986,7 @@ BufferedReader din = new BufferedReader( new FileReader(infile) );
 <y0>8</y0>
 <width>275</width>
 <height>27</height>
-<codetext>// CARD8 ネイティブアセンブラ ver 0.1
+<codetext>// CARD6 ネイティブアセンブラ ver 0.1
 </codetext>
 </codeclip>
 <operation>

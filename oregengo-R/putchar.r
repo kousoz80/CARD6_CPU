@@ -2,7 +2,7 @@
  count i#,j#
 
 main:
-  'a', putchar
+  'A', putchar
   end
 
 

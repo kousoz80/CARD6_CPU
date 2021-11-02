@@ -1,2 +1,2 @@
 #!/bin/sh
-java -jar jar/card8vm_sym.jar
+java -jar jar/card6vm_sym.jar

@@ -1,5 +1,5 @@
 // hello world プログラム
 
 main:
- "hello world", prints nl
+ "HELLO WORLD", prints nl
  end

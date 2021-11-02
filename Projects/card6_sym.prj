@@ -6,8 +6,8 @@
 <y0>0</y0>
 <width>200</width>
 <height>100</height>
-<ID_maker>110</ID_maker>
-<objectname>card8_sym</objectname>
+<ID_maker>111</ID_maker>
+<objectname>card6_sym</objectname>
 <description>新規のアプリケーション</description>
 <codeclip>
 <ID>_CSTART</ID>
@@ -63,10 +63,13 @@ try{
 
 BufferedWriter dout = new BufferedWriter( new FileWriter(ini_file));
 dout.write(&quot;edit_command=&quot;+edit_command+&quot;\n&quot;);
+dout.write(&quot;edit_inifile_command=&quot;+edit_inifile_command+&quot;\n&quot;);
 dout.write(&quot;asm_edit_command=&quot;+asm_edit_command+&quot;\n&quot;);
 dout.write(&quot;compile_command=&quot;+compile_command+&quot;\n&quot;);
 dout.write(&quot;assemble_command=&quot;+assemble_command+&quot;\n&quot;);
 dout.write(&quot;fast_run_command=&quot;+fast_run_command+&quot;\n&quot;);
+dout.write(&quot;.entry\n&quot;);
+dout.write(entry_field.getText()+&quot;\n&quot;);
 dout.write(&quot;.break\n&quot;);
 dout.write(break_field.getText()+&quot;\n&quot;);
 dout.write(&quot;.watch\n&quot;);
@@ -80,6 +83,7 @@ dout.close();
 
 
 System.exit(0);
+
 </codetext>
 </operation>
 <relation>
@@ -320,23 +324,24 @@ if( break_adrs !=0 &amp;&amp; (break_adrs == address) ){
   run_stop();
 }
 
-// メモリ内容と周辺装置の状態を同期させる
-io_sync();
+//レジスター＞メモリ(I/O) サイクル
+if( (reg_c &amp; POINTER) != 0 ) address = reg_h * 4096 + reg_m * 64 + reg_l; else address = reg_a;
+if( (reg_c &amp; RET) != 0 ) mem_a[address] = reg_r;
+if( (reg_c &amp; IO)  != 0 &amp;&amp; (reg_c &amp; ST)  != 0 ) PrtData = reg_d;			// I/Oアクセス
+if( (reg_c &amp; IO)  == 0 &amp;&amp; (reg_c &amp; ST)  != 0 ) mem_d[address] = reg_d;	// メモリアクセス
 
-// メモリー＞レジスタ サイクル
+// メモリ(I/O)ー＞レジスタ サイクル
 reg_c = mem_c[address];
 reg_a = mem_a[address];
 reg_r = mem_r[address];
-if( (reg_c &amp; LD)  != 0 ) reg_d = mem_d[address];
+if( (reg_c &amp; IO)  != 0 &amp;&amp; (reg_c &amp; LD)  != 0 ){ reg_d = KeyCode0; KeyCode0 = 0x3f;}	// I/Oアクセス
+if( (reg_c &amp; IO)  == 0 &amp;&amp; (reg_c &amp; LD)  != 0 ) reg_d = mem_d[address];				// メモリアクセス
 if( (reg_c &amp; LDH) != 0 ) reg_h = mem_d[address];
 if( (reg_c &amp; LDM) != 0 ) reg_m = mem_d[address];
 if( (reg_c &amp; LDL) != 0 ) reg_l = mem_d[address];
 
-
-//レジスター＞メモリ サイクル
-if( (reg_c &amp; POINTER) != 0 ) address = reg_h * 65536 + reg_m * 256 + reg_l; else address = reg_a;
-if( (reg_c &amp; RET)     != 0 ) mem_a[address] = reg_r;
-if( (reg_c &amp; ST)      != 0 ) mem_d[address] = reg_d;
+// I/O同期
+io_sync();
 
 // レジスタ表示処理
 address_field.setText(hex6(address));
@@ -680,8 +685,9 @@ end_field.setText(hex6(w.end));
 memory_windows = new Vector();
 list_no =0;
 name_field.setText(&quot;&quot;);
-start_field.setText(&quot;000000&quot;);
-end_field.setText(&quot;000000&quot;);
+start_field.setText(&quot;0000&quot;);
+end_field.setText(&quot;0000&quot;);
+address_field.setText( entry_field.getText() );
 </codetext>
 </operation>
 <relation>
@@ -710,25 +716,23 @@ JTextField address_field; int address;
 JTextField no_field, name_field, start_field, end_field;
 JTextField cmd_line;
 JTextField break_field;int break_adrs = 0;
+JTextField entry_field;
 static final int AD_SIZE = 0x1000000;
 int is_break;
 
- int KeyCode=0;
+ int KeyCode=0, KeyCode0 = 0x3f, PrtData=0xff;
  int KeyAck = 0;
  boolean      is_gets = false;
  int list_no = 0;
 
 String edit_command=&quot;&quot;; // コンパイラのソースファイルを編集するコマンド
+String edit_inifile_command=&quot;&quot;; // 設定ファイルを編集するコマンド
 String asm_edit_command=&quot;&quot;;// アセンブラのソースファイルを編集するコマンド
 String compile_command=&quot;&quot;;// コンパイルコマンド
 String assemble_command=&quot;&quot;;//アセンブルコマンド
 String fast_run_command=&quot;&quot;;// 高速エミュレータ起動コマンド
 
-static final int KEY_CODE=0xfffffd;
-static final int PRT_STROBE=0xfffffe;
-static final int PRT_DATA=0xffffff;
-
-File ini_file = new File(&quot;card8_sym.ini&quot;);
+File ini_file = new File(&quot;card6_sym.ini&quot;);
 </codetext>
 </codeclip>
 <relation>
@@ -745,9 +749,9 @@ File ini_file = new File(&quot;card8_sym.ini&quot;);
 <ID>_X19</ID>
 <x0>421</x0>
 <y0>278</y0>
-<width>233</width>
-<height>437</height>
-<ID_maker>75</ID_maker>
+<width>235</width>
+<height>456</height>
+<ID_maker>78</ID_maker>
 <objectname>set_variables</objectname>
 <description></description>
 <pin>
@@ -902,8 +906,8 @@ File ini_file = new File(&quot;card8_sym.ini&quot;);
 </pin>
 <pin>
 <ID>_P16</ID>
-<x0>768</x0>
-<y0>63</y0>
+<x0>800</x0>
+<y0>71</y0>
 <width>52</width>
 <height>25</height>
 <text>start()</text>
@@ -924,8 +928,8 @@ File ini_file = new File(&quot;card8_sym.ini&quot;);
 <ID>_O18</ID>
 <state1>_SINIT</state1>
 <state2>_SINIT</state2>
-<x0>849</x0>
-<y0>5</y0>
+<x0>871</x0>
+<y0>7</y0>
 <width>115</width>
 <height>48</height>
 <inconnectx0>0</inconnectx0>
@@ -968,13 +972,21 @@ try{
 
 BufferedReader din = new BufferedReader( new FileReader(ini_file));
 while( ((line=din.readLine())!=null)){
+if(&quot;.entry&quot;.equals(line) )    break;
 if( &quot;.break&quot;.equals(line) )   break;
 if( &quot;.watch&quot;.equals(line) )   break;
 if( line.startsWith(&quot;edit_command=&quot;)) edit_command=line.substring(13);
+if( line.startsWith(&quot;edit_inifile_command=&quot;)) edit_inifile_command=line.substring(21);
 if( line.startsWith(&quot;asm_edit_command=&quot;)) asm_edit_command=line.substring(17);
 if( line.startsWith(&quot;compile_command=&quot;)) compile_command=line.substring(16);
 if( line.startsWith(&quot;assemble_command=&quot;)) assemble_command=line.substring(17);
 if( line.startsWith(&quot;fast_run_command=&quot;)) fast_run_command=line.substring(17);
+}
+if(&quot;.entry&quot;.equals(line)){
+  if( (line=din.readLine()) != null) {
+    entry_field.setText(line);
+    line=din.readLine();
+  }
 }
 if( &quot;.break&quot;.equals(line) ){
   if( (line=din.readLine()) != null) {
@@ -1690,7 +1702,7 @@ din.close();
 <height>21</height>
 <text>break_field_is(JTextField t)</text>
 <px>0</px>
-<py>417</py>
+<py>436</py>
 </pin>
 <operation>
 <ID>_O69</ID>
@@ -1740,8 +1752,8 @@ din.close();
 <state2>_SINIT</state2>
 <x0>622</x0>
 <y0>1</y0>
-<width>204</width>
-<height>51</height>
+<width>216</width>
+<height>50</height>
 <inconnectx0>0</inconnectx0>
 <inconnecty0>40</inconnecty0>
 <outconnectx0>0</outconnectx0>
@@ -1752,21 +1764,37 @@ din.close();
 <inpinwidth>40</inpinwidth>
 <inpinheight>20</inpinheight>
 <outpintext>out()</outpintext>
-<outpinx0>155</outpinx0>
+<outpinx0>166</outpinx0>
 <outpiny0>31</outpiny0>
 <outpinwidth>40</outpinwidth>
 <outpinheight>20</outpinheight>
 <inpinlinkcount>1</inpinlinkcount>
 <description></description>
-<codetext>// 初期化ファイルを再設定する
+<codetext>// 設定ファイルを更新・編集する
 
+try{
 
-JFileChooser chooser = new JFileChooser(new File(&quot;.&quot;));
-chooser.setDialogTitle( &quot;Select .ini File&quot; );
-chooser.setFileSelectionMode( JFileChooser.FILES_AND_DIRECTORIES );
-if( chooser.showSaveDialog(null) != JFileChooser.APPROVE_OPTION ) return;
+BufferedWriter dout = new BufferedWriter( new FileWriter(ini_file));
+dout.write(&quot;edit_command=&quot;+edit_command+&quot;\n&quot;);
+dout.write(&quot;edit_inifile_command=&quot;+edit_inifile_command+&quot;\n&quot;);
+dout.write(&quot;asm_edit_command=&quot;+asm_edit_command+&quot;\n&quot;);
+dout.write(&quot;compile_command=&quot;+compile_command+&quot;\n&quot;);
+dout.write(&quot;assemble_command=&quot;+assemble_command+&quot;\n&quot;);
+dout.write(&quot;fast_run_command=&quot;+fast_run_command+&quot;\n&quot;);
+dout.write(&quot;.entry\n&quot;);
+dout.write(entry_field.getText()+&quot;\n&quot;);
+dout.write(&quot;.break\n&quot;);
+dout.write(break_field.getText()+&quot;\n&quot;);
+dout.write(&quot;.watch\n&quot;);
+int nn = memory_windows.size();
+for( int i = 0;i &lt; nn; i++ ){
+  memory_window w = (memory_window)(memory_windows.get(i));
+  dout.write( w.name+&quot;\n&quot;+w.start+&quot;\n&quot;+w.end+&quot;\n&quot;);
+}
+dout.close();
+} catch( Exception e ){}
 
-ini_file = chooser.getSelectedFile();
+exec_command(edit_inifile_command);
 </codetext>
 </operation>
 <relation>
@@ -1778,6 +1806,48 @@ ini_file = chooser.getSelectedFile();
 <ID>_R74</ID>
 <pin1name>_O72</pin1name>
 <pin2name>_O18</pin2name>
+</relation>
+<pin>
+<ID>_P75</ID>
+<x0>506</x0>
+<y0>539</y0>
+<width>176</width>
+<height>27</height>
+<text>entry_field_is(JTextField t)</text>
+<px>1</px>
+<py>416</py>
+</pin>
+<operation>
+<ID>_O76</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>765</x0>
+<y0>566</y0>
+<width>125</width>
+<height>50</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in(JTextField t)</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>104</inpinwidth>
+<inpinheight>24</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>entry_field = t;
+</codetext>
+</operation>
+<relation>
+<ID>_R77</ID>
+<pin1name>_P75</pin1name>
+<pin2name>_O76</pin2name>
 </relation>
 </xobject>
 <relation>
@@ -3014,18 +3084,31 @@ class keyinput_listener implements DocumentListener{
 <outpinheight>20</outpinheight>
 <inpinlinkcount>1</inpinlinkcount>
 <description></description>
-<codetext>// メモリと周辺装置の同期 (メモリマップドIO)
+<codetext>// メモリと周辺装置の同期
 
 
-if( KeyCode != 0 ) mem_d[KEY_CODE] = KeyCode;
-KeyCode = 0;
-cmd_line.setText(&quot;&quot;);
-if( mem_d[PRT_STROBE] != 0 ){
-  mem_d[PRT_STROBE] = 0;
-  int c = mem_d[PRT_DATA];
-  if( c == 12 ) disp.setText(&quot;&quot;);
-  else disp.append(&quot;&quot;+(char)(byte)(c &amp; 0xff));
+
+if( KeyCode != 0 ){
+  if( KeyCode == &apos;\n&apos; ) KeyCode0 = 61;
+  else if( KeyCode == &apos;\r&apos; ) KeyCode0 = 61;
+  else if( KeyCode &lt; 32 )  KeyCode0 = 62;
+  else if( KeyCode &gt;= 0x20 &amp;&amp; KeyCode &lt;= 0x5f ) KeyCode0 = KeyCode - 0x20;
+  else if( KeyCode &gt;= &apos;a&apos; &amp;&amp; KeyCode &lt;= &apos;z&apos; )   KeyCode0 = KeyCode - &apos;a&apos; + &apos;A&apos; - &apos; &apos;;
+  KeyCode = 0;
+  cmd_line.setText(&quot;&quot;);
 }
+
+if( PrtData != 0xff ){
+  int c = PrtData;
+  if(c == 61 ) c = &apos;\n&apos;;// 改行コード
+  else if(c == 62 ) c = &apos;\r&apos;;// エスケープコード
+  else if(c == 63 ) c = &apos;\0&apos;;// ヌル文字
+  else c+= 32;
+  if( c == &apos;\r&apos; ) disp.setText(&quot;&quot;);
+  else disp.append(&quot;&quot;+(char)(byte)(c));
+  PrtData = 0xff;
+}
+
 </codetext>
 </operation>
 <pin>
@@ -3114,9 +3197,14 @@ class PrintThread extends Thread{
 <pin1name>_A0(_PAinifile_button)</pin1name>
 <pin2name>_X19(_P71)</pin2name>
 </relation>
+<relation>
+<ID>_R110</ID>
+<pin1name>_A0(_Pentry_field)</pin1name>
+<pin2name>_X19(_P75)</pin2name>
+</relation>
 <aobject>
 <ID>_A0</ID>
-<x0>124</x0>
+<x0>123</x0>
 <y0>0</y0>
 <width>280</width>
 <objectname>GUI</objectname>
@@ -3526,104 +3614,114 @@ XGUI x = new XGUI();
 <py>648</py>
 </pin>
 <pin>
-<ID>_Pbreak_field</ID>
+<ID>_Pentry_field</ID>
 <x0>0</x0>
 <y0>1034</y0>
 <width>200</width>
 <height>26</height>
-<text>break_field_created(JTextField t)</text>
+<text>entry_field_created(JTextField t)</text>
 <px>0</px>
 <py>666</py>
 </pin>
 <pin>
-<ID>_PAcompile_button</ID>
+<ID>_Pbreak_field</ID>
 <x0>0</x0>
 <y0>1062</y0>
 <width>200</width>
 <height>26</height>
-<text>compile_button_clicked()</text>
+<text>break_field_created(JTextField t)</text>
 <px>0</px>
 <py>684</py>
 </pin>
 <pin>
-<ID>_PAclr_button</ID>
+<ID>_PAcompile_button</ID>
 <x0>0</x0>
 <y0>1090</y0>
 <width>200</width>
 <height>26</height>
-<text>clr_button_clicked()</text>
+<text>compile_button_clicked()</text>
 <px>0</px>
 <py>702</py>
 </pin>
 <pin>
-<ID>_PAasm_button</ID>
+<ID>_PAclr_button</ID>
 <x0>0</x0>
 <y0>1118</y0>
 <width>200</width>
 <height>26</height>
-<text>asm_button_clicked()</text>
+<text>clr_button_clicked()</text>
 <px>0</px>
 <py>720</py>
 </pin>
 <pin>
-<ID>_PAasm_edit_button</ID>
+<ID>_PAasm_button</ID>
 <x0>0</x0>
 <y0>1146</y0>
 <width>200</width>
 <height>26</height>
-<text>asm_edit_button_clicked()</text>
+<text>asm_button_clicked()</text>
 <px>0</px>
 <py>738</py>
 </pin>
 <pin>
-<ID>_PAfast_run_button</ID>
+<ID>_PAasm_edit_button</ID>
 <x0>0</x0>
 <y0>1174</y0>
 <width>200</width>
 <height>26</height>
-<text>fast_run_button_clicked()</text>
+<text>asm_edit_button_clicked()</text>
 <px>0</px>
 <py>756</py>
 </pin>
 <pin>
-<ID>_PAedit_button</ID>
+<ID>_PAfast_run_button</ID>
 <x0>0</x0>
 <y0>1202</y0>
 <width>200</width>
 <height>26</height>
-<text>edit_button_clicked()</text>
+<text>fast_run_button_clicked()</text>
 <px>0</px>
 <py>774</py>
 </pin>
 <pin>
-<ID>_Pcmd_field</ID>
+<ID>_PAedit_button</ID>
 <x0>0</x0>
 <y0>1230</y0>
 <width>200</width>
 <height>26</height>
-<text>cmd_field_created(JTextField t)</text>
+<text>edit_button_clicked()</text>
 <px>0</px>
 <py>792</py>
 </pin>
 <pin>
-<ID>_PAcmd_field</ID>
+<ID>_Pcmd_field</ID>
 <x0>0</x0>
 <y0>1258</y0>
 <width>200</width>
 <height>26</height>
-<text>cmd_field_input(String s)</text>
+<text>cmd_field_created(JTextField t)</text>
 <px>0</px>
 <py>810</py>
 </pin>
 <pin>
-<ID>_Pdisp_area</ID>
+<ID>_PAcmd_field</ID>
 <x0>0</x0>
 <y0>1286</y0>
 <width>200</width>
 <height>26</height>
-<text>disp_area_created(JTextArea t)</text>
+<text>cmd_field_input(String s)</text>
 <px>0</px>
 <py>828</py>
+</pin>
+<pin>
+<ID>_Pdisp_area</ID>
+<x0>0</x0>
+<y0>1314</y0>
+<width>200</width>
+<height>26</height>
+<text>disp_area_created(JTextArea t)</text>
+<px>0</px>
+<py>846</py>
 </pin>
 <codeclip>
 <ID>_CXSTART</ID>
@@ -3809,7 +3907,7 @@ inifile_button Iinifile_button;
  setBackground( new Color(  192, 192, 192 ));
  setHorizontalAlignment( 0 );
  setVerticalAlignment( 0 );
- setText( &quot;Select .ini File&quot; );
+ setText( &quot;Edit Ini File&quot; );
  addActionListener( this );
 }
  public void actionPerformed( ActionEvent e ){ inifile_button_clicked(); }
@@ -4114,6 +4212,18 @@ interval_field Iinterval_field;
  interval_field_created( this );
 }
 }
+entry_field Ientry_field;
+ class entry_field extends JTextField{
+  entry_field(){
+ setOpaque( true );
+ setName(  &quot;entry_field&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 10 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  255, 255, 255 ));
+ setText( &quot;0&quot; );
+ entry_field_created( this );
+}
+}
 break_field Ibreak_field;
  class break_field extends JTextField{
   break_field(){
@@ -4361,10 +4471,23 @@ LABEL50 ILABEL50;
  setText( &quot;Break address&quot; );
 }
 }
+LABEL53 ILABEL53;
+ class LABEL53 extends JLabel{
+  LABEL53(){
+ setOpaque( true );
+ setName(  &quot;LABEL53&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;entry address&quot; );
+}
+}
  XGUI(){
- setTitle(&quot;CARD8シミュレータ&quot;);
+ setTitle(&quot;CARD6シミュレータ&quot;);
  cnt = new JPanel( new BorderLayout() );
- cnt.setPreferredSize(  new  Dimension( 923, 615 ) );
+ cnt.setPreferredSize(  new  Dimension( 923, 617 ) );
  ((Component)cnt).setBackground( new Color( 252, 243, 83 ) );
  Isingle_button = new single_button();
  cnt.add( Isingle_button, 0 );
@@ -4469,7 +4592,7 @@ LABEL50 ILABEL50;
  Imessage_area = new message_area();
  cnt.add( Imessage_area.scrl, 0 );
  cnt.getLayout().removeLayoutComponent( Imessage_area.scrl );
- (  Imessage_area.scrl ).setBounds( 1, 183, 404, 426 );
+ (  Imessage_area.scrl ).setBounds( 4, 185, 404, 426 );
  ILABEL24 = new LABEL24();
  cnt.add( ILABEL24, 0 );
  cnt.getLayout().removeLayoutComponent( ILABEL24 );
@@ -4506,10 +4629,14 @@ LABEL50 ILABEL50;
  cnt.add( Iinterval_field, 0 );
  cnt.getLayout().removeLayoutComponent( Iinterval_field );
  Iinterval_field.setBounds( 116, 132, 75, 25 );
+ Ientry_field = new entry_field();
+ cnt.add( Ientry_field, 0 );
+ cnt.getLayout().removeLayoutComponent( Ientry_field );
+ Ientry_field.setBounds( 116, 158, 96, 23 );
  Ibreak_field = new break_field();
  cnt.add( Ibreak_field, 0 );
  cnt.getLayout().removeLayoutComponent( Ibreak_field );
- Ibreak_field.setBounds( 115, 158, 76, 23 );
+ Ibreak_field.setBounds( 328, 158, 76, 23 );
  ILABEL33 = new LABEL33();
  cnt.add( ILABEL33, 0 );
  cnt.getLayout().removeLayoutComponent( ILABEL33 );
@@ -4577,7 +4704,11 @@ LABEL50 ILABEL50;
  ILABEL50 = new LABEL50();
  cnt.add( ILABEL50, 0 );
  cnt.getLayout().removeLayoutComponent( ILABEL50 );
- ILABEL50.setBounds( 2, 158, 107, 22 );
+ ILABEL50.setBounds( 219, 158, 107, 22 );
+ ILABEL53 = new LABEL53();
+ cnt.add( ILABEL53, 0 );
+ cnt.getLayout().removeLayoutComponent( ILABEL53 );
+ ILABEL53.setBounds( 1, 158, 110, 22 );
  setContentPane( cnt );
  pack();
  addWindowListener( this );
@@ -4594,11 +4725,11 @@ LABEL50 ILABEL50;
 }
 </codetext>
 </codeclip>
-<ID_maker>63</ID_maker>
-<height>850</height>
-<レイアウト>CARD8シミュレータ
+<ID_maker>64</ID_maker>
+<height>868</height>
+<レイアウト>CARD6シミュレータ
 923
-615
+617
 252
 243
 83
@@ -4614,7 +4745,7 @@ BUTTON;run_button;run;292;2;44;27;51;51;51;192;192;192;Dialog;12;null;0;0;1;1;1;
 BUTTON;inc_addr;+;241;59;28;23;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
 BUTTON;dec_addr;-;241;85;28;23;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
 BUTTON;mem_set;WRT;272;59;42;49;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
-BUTTON;inifile_button;Select .ini File;772;3;144;29;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
+BUTTON;inifile_button;Edit Ini File;772;3;144;29;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
 TEXTFIELD;addr_reg;000000;2;86;57;24;51;51;51;255;255;255;Dialog;10;1;1;1;JTextField;
 TEXTFIELD;c_reg;00;61;86;29;24;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
 TEXTFIELD;a_reg;000000;91;86;56;24;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
@@ -4628,7 +4759,7 @@ LABEL;ld_flg;LD;207;34;37;21;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;0;JLabe
 LABEL;ldh_flg;LDH;249;34;46;21;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;0;JLabel;
 LABEL;ldm_flg;LDM;300;34;49;21;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;0;JLabel;
 LABEL;ldl_flg;LDL;354;34;50;21;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;0;JLabel;
-TEXTAREA;message_area;null;1;183;404;426;51;51;51;255;255;255;Dialog;12;1;1;1;JTextArea;
+TEXTAREA;message_area;null;4;185;404;426;51;51;51;255;255;255;Dialog;12;1;1;1;JTextArea;
 LABEL;LABEL24;CYCLE:;2;111;59;22;51;51;51;192;192;192;Dialog;12;null;2;0;1;0;0;JLabel;
 TEXTFIELD;clock_field;0;3;135;56;22;51;51;51;255;255;255;Dialog;12;1;1;0;JTextField;
 LABEL;LABEL27;Name;226;113;64;19;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
@@ -4638,7 +4769,8 @@ TEXTFIELD;name_field;null;225;134;67;22;51;51;51;255;255;255;Dialog;10;1;1;0;JTe
 TEXTFIELD;start_field;0;295;135;54;21;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
 TEXTFIELD;end_field;0;352;134;52;22;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
 TEXTFIELD;interval_field;1;116;132;75;25;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
-TEXTFIELD;break_field;0;115;158;76;23;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
+TEXTFIELD;entry_field;0;116;158;96;23;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
+TEXTFIELD;break_field;0;328;158;76;23;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
 LABEL;LABEL33;interval time;115;114;105;15;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
 LABEL;LABEL34;ms;194;133;27;23;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
 LABEL;LABEL36;ADDR:;2;59;57;25;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
@@ -4655,7 +4787,8 @@ BUTTON;edit_button;edit;153;3;42;27;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;
 TEXTFIELD;cmd_field;null;507;3;260;30;51;51;51;255;255;255;Dialog;12;1;1;1;JTextField;
 LABEL;LABEL42;Command:;411;2;91;29;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
 TEXTAREA;disp_area;null;411;36;507;576;29;255;32;1;1;1;Dialog;20;1;1;1;JTextArea;
-LABEL;LABEL50;Break address;2;158;107;22;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
+LABEL;LABEL50;Break address;219;158;107;22;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
+LABEL;LABEL53;entry address;1;158;110;22;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
 </レイアウト>
 </aobject>
 </xobject>

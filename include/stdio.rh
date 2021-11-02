@@ -1,28 +1,32 @@
-// "stdio.rh" oregengo-R コンパイラ for CARD8VM用ヘッダファイル 
-/ org 0x70000/  // 実行開始アドレスは仮想マシンの実装に依存する
+// "stdio.rh" oregengo-R コンパイラ for CARD6VM用ヘッダファイル 
+/ org 0x1000/  // 実行開始アドレスは仮想マシンの実装に依存する
 
  const EOF      255         /* ファイルの終わりをあらわす文字コード */
  const ERROR    -1          /* エラーが発生したことをあらわす */
  const NULL     0           /* ヌルポインタ */
- const SPACE    32          /* 空白文字 */
- const CR       13          /* キャリッジリターンコード */
- const LF       10          /* ラインフィードコード */
- const PLUS     43          /* プラス記号の文字コード */
- const MINUS    45          /* マイナス記号の文字コード */
- const ESC      27          /* ESCキーの文字コード */
- const NaN      0x800000    /* ゼロ除算が発生したことをあらわす */
- const STACK_SIZE 8000
+ const CNULL    63          /* ヌルキャラクタ */
+ const SPACE    0           /* 空白文字 */
+ const CR       61          /* キャリッジリターンコード */
+ const LF       61          /* ラインフィードコード */
+ const PLUS     11          /* プラス記号の文字コード */
+ const MINUS    13          /* マイナス記号の文字コード */
+ const ESC      62          /* ESCキーの文字コード */
+ const NaN      0x20000     /* ゼロ除算が発生したことをあらわす */
+ const STACK_SIZE 2000
  const SIZEOF_CHAR 1
  const SIZEOF_SHORT 1
  const SIZEOF_INT 3
  const SIZEOF_LONG 3
 
-
- // 入出力エリア
- const KEY_DATA 0xfffffd
- const PRT_STB  0xfffffe
- const PRT_DATA 0xffffff
-
+ // レジスタ領域
+ const reg_pc 0x3ffec
+ const reg_sp 0x3ffef
+ const reg_r0 0x3fff2
+ const reg_r1 0x3fff5
+ const reg_r2 0x3fff8
+ const reg_r3 0x3fffb
+ const reg_cf 0x3fffe
+ const reg_zf 0x3ffff
 
  // 作業変数
  char  __sign$(1),__nbuf$(64)
@@ -36,219 +40,32 @@
 
 // プログラム開始位置 */
 _start:
-/ x=__stack_top/
-/ sp=x/
-/ call main/
+ __stack_top, reg_sp#=
+ main
 _end_loop:
-/ jmp _end_loop/
+ goto _end_loop
 
 
-// 符号付き乗算( __ans = r0 * r1 )
-mul:
-/ x=r0+2/
-/ a=(x)/
-/ x=__0x800000+2/
-/ a&=(x)/
-/ x=r1+2/
-/ a+=(x)+cf/
-/ x=__sgn/
-/ (x)=a/
-/ x=(r0)/
-/ x-=(__0x800000)/
-/ jb mul1/
-/ x=0/
-/ x-=(r0)/
-/ (r0)=x/
-mul1:
-/ x=(r1)/
-/ x-=(__0x800000)/
-/ jb mul2/
-/ x=0/
-/ x-=(r1)/
-/ (r1)=x/
-mul2:
-/ call umul/
-/ x=__sgn/
-/ a=(x)/
-/ x=__0x800000+2/
-/ a&=(x)/
-/ jz mul3/
-/ x=0/
-/ x-=(__ans)/
-/ (__ans)=x/
-mul3:
-/ ret/
 
-
-// 符号なし乗算( __ans = r0 * r1 )
-umul:
-/ x=0/
-/ (__ans)=x/
-umul1:
-/ x=r1+2/
-/ a&=(x)/ // CFクリア
-/ ror (x)/
-/ x--/
-/ ror (x)/
-/ x--/
-/ ror (x)/
-/ jnc umul2/
-/ x=(__ans)/
-/ x+=(r0)/
-/ (__ans)=x/
-umul2:
-/ x=r0/
-/ a&=(x)/ // cf=0
-/ rol (x)/
-/ x++/
-/ rol (x)/
-/ x++/
-/ rol (x)/
-/ x=0/
-/ x+=(r1)/
-/ jnz umul1/
-/ ret/
-
-
-// 符号付き除算( __ans = r1 / r0,  r1 = r1 % r0)
-div:
-/ x=0/
-/ x+=(r1)/
-/ jz div_zero/
-/ x=r0+2/
-/ a=(x)/
-/ x=__0x800000+2/
-/ a&=(x)/
-/ x=r1+2/
-/ a+=(x)+cf/
-/ x=__sgn/
-/ (x)=a/
-/ x=(r0)/
-/ x-=(__0x800000)/
-/ jb div1/
-/ x=0/
-/ x-=(r0)/
-/ (r0)=x/
-div1:
-/ x=(r1)/
-/ x-=(__0x800000)/
-/ jb div2/
-/ x=0/
-/ x-=(r1)/
-/ (r1)=x/
-div2:
-/ call udiv/
-/ x=__sgn/
-/ a=(x)/
-/ x=__0x800000+2/
-/ a&=(x)/
-/ jz div3/
-/ x=0/
-/ x-=(__ans)/
-/ (__ans)=x/
-div3:
-/ ret/
-
-
-// 符号なし除算( __ans = r1 / r0, r1 = r1 % r0)
-udiv:
-/ x=(r1)/
-/ x-=(r0)/
-/ jb div_under/
-/ x=0/
-/ (__ans)=x/
-/ x+=(r0)/
-/ jz div_zero/
-udiv1:
-/ x=__ans+2/
-/ ror (x)/
-/ x--/
-/ ror (x)/
-/ x--/
-/ ror (x)/
-/ x=r0/
-/ rol (x)/
-/ x++/
-/ rol (x)/
-/ x++/
-/ rol (x)/
-/ x=(r1)/
-/ x-=(r0)/
-/ jnb udiv1/
-udiv2:
-/ x=r0+2/
-/ a&=(x)/ // cf=0
-/ ror (x)/
-/ x--/
-/ ror (x)/
-/ x--/
-/ ror (x)/
-/ x=(r1)/
-/ x-=(r0)/
-/ jb udiv3/
-/ (r1)=x/
-udiv3:
-/ x=__ans/
-/ rol (x)/
-/ x++/
-/ rol (x)/
-/ x++/
-/ rol (x)/
-/ jc udiv2/
-/ ret/
-
-
-// 除算エラー(演算結果はNaN)
-div_zero:
-/ x=NaN/
-/ (__ans)=x/
-/ ret/
-
-
-// アンダーフロー(演算結果は0)
-div_under:
-/ x=0/
-/ (__ans)=x/
-/ ret/
-
-
-// コンソールからから一文字読み込む */
+// コンソールからから一文字読み込む
 getchar:
-/ a=0/
-/ x=KEY_DATA/
-/ (x)=a/
-getchar1:
-/ a=0/
-/ a|=(x)/
-/ jz getchar1/
-/ x=r0/
-/ (x)=a/
-/ a=0/
-/ x++/
-/ (x)=a/
-/ x++/
-/ (x)=a/
-/ call putchar/
-/ ret/
+ in __tmp#=
+ if __tmp#=63 goto getchar
+ __tmp#, end
 
 
 // コンソールへ一文字出力する
 putchar:
-/ x=r0/
-/ a=(x)/
-/ x=PRT_DATA/
-/ (x)=a/
-/ a=1/
-/ x=PRT_STB/
-/ (x)=a/
-/ ret/
+ __tmp#=
+ __tmp#, out
+ end
 
 
 // 文字列を表示する
 prints:
  __p6#=
  __prints1:
-  if (__p6)$=NULL then NULL, end
+  if (__p6)$=CNULL then NULL, end
   (__p6)$, putchar
   __p6#++
  goto __prints1
@@ -262,44 +79,33 @@ printd:
 
 // 改行する
 nl:
- 32, putchar LF, putchar
+ 61, putchar
  end
 
 
 // 画面消去
 cls:
-  32, putchar
-  12, putchar
+  62, putchar
+//  1,  putchar
   end
 
 
 // キー入力(実装されていない)
 inkey:
-/ x=KEY_DATA/
-/ a=(x)/
-/ x=r0/
-/ (x)=a/
-/ a=0/
-/ x++/
-/ (x)=a/
-/ x++/
-/ (x)=a/
-/ x=KEY_DATA/
-/ (x)=a
-/ ret/
-
+ in
+ end
 
 // コンソールから文字列を入力する
 inputs:
  __p6#=
  __inputs1:
-  getchar __p5$=
+  getchar __p5$= putchar
   if __p5$=LF  goto __inputs2
   __p5$, (__p6)$=
   __p6#++
  goto __inputs1
  __inputs2:
- NULL,  (__p6)$=
+ CNULL,  (__p6)$=
  __p5$, end
 
 
@@ -308,7 +114,7 @@ strcmp:
  __p2#= swap __p1#=
  __strcmp1:
   if (__p1)$<>(__p2)$ then 1, end
-  if (__p1)$=NULL then 0, end
+  if (__p1)$=CNULL then 0, end
   __p1#++
   __p2#++
  goto __strcmp1
@@ -320,7 +126,7 @@ strncmp:
  __strncmp1:
   if __p3#<=0 then 0, end
   if (__p1)$<>(__p2)$ then 1, end
-  if (__p1)$=NULL then 0, end
+  if (__p1)$=CNULL then 0, end
   __p1#++
   __p2#++
   __p3#--
@@ -334,7 +140,7 @@ strcpy:
   (__p1)$, (__p2)$= __p3#=
   __p1#++
   __p2#++
- if __p3#<>NULL goto __strcpy1
+ if __p3#<>CNULL goto __strcpy1
  end
 
 
@@ -342,12 +148,12 @@ strcpy:
 strncpy:
  __p3#= pop __p2#= pop __p1#=
  __strncpy1:
-  if __p3#<=0 then NULL, (__p2)$= end
+  if __p3#<=0 then CNULL, (__p2)$= end
   (__p1)$, (__p2)$= __p4#=
   __p1#++
   __p2#++
   __p3#--
- if __p4#<>NULL goto __strncpy1
+ if __p4#<>CNULL goto __strncpy1
  end
 
 
@@ -355,12 +161,12 @@ strncpy:
 strcat:
  __p2#= swap __p1#=
 __strcat1:
- if (__p2)$<>NULL then __p2#++ goto__strcat1
+ if (__p2)$<>CNULL then __p2#++ goto__strcat1
 __strcat2:
  (__p1)$, (__p2)$= __p3#=
  __p1#++
  __p2#++
- if __p3#<>NULL goto __strcat2
+ if __p3#<>CNULL goto __strcat2
  end
 
 
@@ -368,14 +174,14 @@ __strcat2:
 strncat:
  __p3#= pop __p2#= pop __p1#=
 __strncat1:
- if (__p2)$<>NULL then __p2#++ goto__strncat1
+ if (__p2)$<>CNULL then __p2#++ goto__strncat1
 __strncat2:
- if __p3#<=0 then NULL, (__p2)$= end
+ if __p3#<=0 then CNULL, (__p2)$= end
  (__p1)$, (__p2)$= __p4#=
  __p1#++
  __p2#++
  __p3#--
- if __p4#<>NULL goto __strncat2
+ if __p4#<>CNULL goto __strncat2
  end
 
 
@@ -383,14 +189,14 @@ __strncat2:
 strstr:
  __p2#= swap __p1#=
 __strstr1:
- if (__p1)$=NULL then NULL, end
+ if (__p1)$=CNULL then NULL, end
  __p1#, __p3#=
  __p2#, __p4#=
 __strstr2:
  if (__p3)$<>(__p4)$ then __p1#++ goto__strstr1
  __p3#++
  __p4#++
- if (__p4)$<>NULL goto __strstr2
+ if (__p4)$<>CNULL goto __strstr2
  __p1#, end
 
 
@@ -399,7 +205,7 @@ strlen:
  __p1#=
  0, __p2#=
 __strlen1:
- if (__p1)$=NULL then __p2#, end
+ if (__p1)$=CNULL then __p2#, end
  __p1#++
  __p2#++
  goto __strlen1
@@ -436,11 +242,11 @@ __itoa1:
 __itoa2:
   __p1#, __p4#, udiv __p5#=
   __p4#, __p5#, umul __p1#, swap - __p1#=
-  "0123456789abcdef"$(__p5#),  (__p3)$=
+  "0123456789ABCDEF"$(__p5#),  (__p3)$=
   __p3#++
   __p4#, __p2#, udiv __p4#=
   if __p4#<>0 goto __itoa2
- NULL, (__p3)$=
+  CNULL, (__p3)$=
  __nbuf, end
 
 

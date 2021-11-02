@@ -7,7 +7,7 @@
 <width>200</width>
 <height>100</height>
 <ID_maker>40</ID_maker>
-<objectname>card8vm_asm</objectname>
+<objectname>card6vm_asm</objectname>
 <description>新規のアプリケーション</description>
 <プロパティ>
 <ID>properties</ID>
@@ -15,7 +15,7 @@
 <MainWinx0>0</MainWinx0>
 <MainWiny0>0</MainWiny0>
 <MainWinWidth>1024</MainWinWidth>
-<MainWinHeight>740</MainWinHeight>
+<MainWinHeight>741</MainWinHeight>
 <MesgWinx0>0</MesgWinx0>
 <MesgWiny0>0</MesgWiny0>
 <MesgWinWidth>1024</MesgWinWidth>
@@ -330,57 +330,79 @@ String[] ins_data = {
 &quot;= \\0664&quot;,&quot;2&quot;,&quot;0&quot;,&quot;-1&quot;,&quot;END&quot;,
 &quot;+= \\0664&quot;,&quot;5&quot;,&quot;0&quot;,&quot;-1&quot;,&quot;END&quot;,
 &quot;memory \\0264&quot;,&quot;3&quot;,&quot;0&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;byte \\0664&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;8&quot;,&quot;0&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;int \\0664&quot;,&quot;0&quot;,&quot;3&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;0&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;push a&quot;,&quot;0&quot;,&quot;1&quot;,&quot;35&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;push x&quot;,&quot;0&quot;,&quot;1&quot;,&quot;36&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;pop a&quot;,&quot;0&quot;,&quot;1&quot;,&quot;37&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;pop x&quot;,&quot;0&quot;,&quot;1&quot;,&quot;38&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;sp=x&quot;,&quot;0&quot;,&quot;1&quot;,&quot;39&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;x=sp&quot;,&quot;0&quot;,&quot;1&quot;,&quot;40&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;x++&quot;,&quot;0&quot;,&quot;1&quot;,&quot;41&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;x--&quot;,&quot;0&quot;,&quot;1&quot;,&quot;42&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;y++&quot;,&quot;0&quot;,&quot;1&quot;,&quot;43&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;y--&quot;,&quot;0&quot;,&quot;1&quot;,&quot;44&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;rol (y)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;45&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;ror (y)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;46&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;jmp (x)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;20&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;jmp (y)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;21&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;a+=(x)+cf&quot;,&quot;0&quot;,&quot;1&quot;,&quot;9&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;a-=(x)+bf&quot;,&quot;0&quot;,&quot;1&quot;,&quot;10&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;a&amp;=(x)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;11&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;a|=(x)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;12&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;a=(x)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;7&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;(x)=a&quot;,&quot;0&quot;,&quot;1&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;a+=(y)+cf&quot;,&quot;0&quot;,&quot;1&quot;,&quot;29&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;a-=(y)+bf&quot;,&quot;0&quot;,&quot;1&quot;,&quot;30&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;a&amp;=(y)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;31&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;a|=(y)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;a=(y)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;27&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;(y)=a&quot;,&quot;0&quot;,&quot;1&quot;,&quot;28&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;rol (x)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;14&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;ror (x)&quot;,&quot;0&quot;,&quot;1&quot;,&quot;13&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;ret&quot;,&quot;0&quot;,&quot;1&quot;,&quot;34&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;jmp \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;15&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;jc \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;18&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;jnc \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;19&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;jnb \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;18&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;jb \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;19&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;jz \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;16&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;jnz \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;17&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;x+=(\\0664)&quot;,&quot;0&quot;,&quot;4&quot;,&quot;3&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;x-=(\\0664)&quot;,&quot;0&quot;,&quot;4&quot;,&quot;4&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;x=(\\0664)&quot;,&quot;0&quot;,&quot;4&quot;,&quot;2&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;x=\\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;(\\0664)=x&quot;,&quot;0&quot;,&quot;4&quot;,&quot;5&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;y+=(\\0664)&quot;,&quot;0&quot;,&quot;4&quot;,&quot;24&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;y-=(\\0664)&quot;,&quot;0&quot;,&quot;4&quot;,&quot;25&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;y=(\\0664)&quot;,&quot;0&quot;,&quot;4&quot;,&quot;23&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;y=\\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;22&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;(\\0664)=y&quot;,&quot;0&quot;,&quot;4&quot;,&quot;26&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;a=\\0664&quot;,&quot;0&quot;,&quot;2&quot;,&quot;6&quot;,&quot;0&quot;,&quot;8&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
-&quot;call \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;33&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;24&quot;,&quot;8&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;byte \\0664&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;6&quot;,&quot;0&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;int \\0664&quot;,&quot;0&quot;,&quot;3&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;0&quot;,&quot;-1&quot;,&quot;END&quot;,
+
+&quot;jmp \\0664&quot;,  &quot;0&quot;,&quot;4&quot;,&quot;1&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;jge \\0664&quot;,  &quot;0&quot;,&quot;4&quot;,&quot;3&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;jlt \\0664&quot;,  &quot;0&quot;,&quot;4&quot;,&quot;4&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;jz \\0664&quot;,   &quot;0&quot;,&quot;4&quot;,&quot;5&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;jnz \\0664&quot;,  &quot;0&quot;,&quot;4&quot;,&quot;6&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;call \\0664&quot;, &quot;0&quot;,&quot;4&quot;,&quot;7&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;call@ \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;8&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+
+&quot;@jmp&quot;, &quot;0&quot;,&quot;1&quot;,&quot;2&quot;, &quot;-1&quot;,&quot;END&quot;,
+&quot;@call&quot;,&quot;0&quot;,&quot;1&quot;,&quot;9&quot;, &quot;-1&quot;,&quot;END&quot;,
+&quot;ret&quot;,  &quot;0&quot;,&quot;1&quot;,&quot;10&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;add&quot;,  &quot;0&quot;,&quot;1&quot;,&quot;11&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;sub&quot;,  &quot;0&quot;,&quot;1&quot;,&quot;12&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;mul&quot;,  &quot;0&quot;,&quot;1&quot;,&quot;13&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;div&quot;,  &quot;0&quot;,&quot;1&quot;,&quot;14&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;umul&quot;, &quot;0&quot;,&quot;1&quot;,&quot;15&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;udiv&quot;, &quot;0&quot;,&quot;1&quot;,&quot;16&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;mod&quot;,  &quot;0&quot;,&quot;1&quot;,&quot;17&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;and&quot;,  &quot;0&quot;,&quot;1&quot;,&quot;18&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;or&quot;,   &quot;0&quot;,&quot;1&quot;,&quot;19&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;neg&quot;,  &quot;0&quot;,&quot;1&quot;,&quot;20&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;not&quot;,  &quot;0&quot;,&quot;1&quot;,&quot;21&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;in&quot;,   &quot;0&quot;,&quot;1&quot;,&quot;22&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;out&quot;,  &quot;0&quot;,&quot;1&quot;,&quot;23&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;swap&quot;, &quot;0&quot;,&quot;1&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;pushr&quot;,&quot;0&quot;,&quot;1&quot;,&quot;25&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;popr&quot;, &quot;0&quot;,&quot;1&quot;,&quot;26&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;pushs&quot;,&quot;0&quot;,&quot;1&quot;,&quot;27&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;pops&quot;, &quot;0&quot;,&quot;1&quot;,&quot;28&quot;,&quot;-1&quot;,&quot;END&quot;,
+
+&quot;inc.l \\0664&quot;,   &quot;0&quot;,&quot;4&quot;,&quot;29&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;dec.l \\0664&quot;,   &quot;0&quot;,&quot;4&quot;,&quot;30&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;inc.b \\0664&quot;,   &quot;0&quot;,&quot;4&quot;,&quot;31&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;dec.b \\0664&quot;,   &quot;0&quot;,&quot;4&quot;,&quot;32&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;call@mbr \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;33&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;st_mbr.l \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;34&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;st_mbr.b \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;35&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;ld_mbr.l \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;36&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;ld_mbr.b \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;37&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;lea_mbr \\0664&quot;, &quot;0&quot;,&quot;4&quot;,&quot;38&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+
+&quot;ld@a_v.l \\0664,\\0664&quot;,&quot;0&quot;,&quot;7&quot;,&quot;39&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;18&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;ld_a_v.l \\0664,\\0664&quot;,&quot;0&quot;,&quot;7&quot;,&quot;40&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;18&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;ld@a_v.b \\0664,\\0664&quot;,&quot;0&quot;,&quot;7&quot;,&quot;41&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;18&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;ld_a_v.b \\0664,\\0664&quot;,&quot;0&quot;,&quot;7&quot;,&quot;42&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;18&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;st@a_v.l \\0664,\\0664&quot;,&quot;0&quot;,&quot;7&quot;,&quot;43&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;18&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;st_a_v.l \\0664,\\0664&quot;,&quot;0&quot;,&quot;7&quot;,&quot;44&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;18&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;st@a_v.b \\0664,\\0664&quot;,&quot;0&quot;,&quot;7&quot;,&quot;45&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;18&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;st_a_v.b \\0664,\\0664&quot;,&quot;0&quot;,&quot;7&quot;,&quot;46&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;18&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;ld@a_k.l \\0664,\\0664&quot;,&quot;0&quot;,&quot;7&quot;,&quot;47&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;18&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;ld_a_k.l \\0664,\\0664&quot;,&quot;0&quot;,&quot;7&quot;,&quot;48&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;18&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;ld@a_k.b \\0664,\\0664&quot;,&quot;0&quot;,&quot;7&quot;,&quot;49&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;18&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;ld_a_k.b \\0664,\\0664&quot;,&quot;0&quot;,&quot;7&quot;,&quot;50&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;18&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;st@a_k.l \\0664,\\0664&quot;,&quot;0&quot;,&quot;7&quot;,&quot;51&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;18&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;st_a_k.l \\0664,\\0664&quot;,&quot;0&quot;,&quot;7&quot;,&quot;52&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;18&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;st@a_k.b \\0664,\\0664&quot;,&quot;0&quot;,&quot;7&quot;,&quot;53&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;18&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;st_a_k.b \\0664,\\0664&quot;,&quot;0&quot;,&quot;7&quot;,&quot;54&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;18&quot;,&quot;24&quot;,&quot;-1&quot;,&quot;END&quot;,
+
+&quot;ld@v.l \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;55&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;ld_v.l \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;56&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;ld@v.b \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;57&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;ld_v.b \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;58&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;ld_k \\0664&quot;,  &quot;0&quot;,&quot;4&quot;,&quot;59&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;st@v.l \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;60&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;st_v.l \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;61&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;st@v.b \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;62&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+&quot;st_v.b \\0664&quot;,&quot;0&quot;,&quot;4&quot;,&quot;63&quot;,&quot;0&quot;,&quot;0&quot;,&quot;0&quot;,&quot;18&quot;,&quot;6&quot;,&quot;-1&quot;,&quot;END&quot;,
+
 &quot;hlt&quot;,&quot;0&quot;,&quot;1&quot;,&quot;0&quot;,&quot;-1&quot;,&quot;END&quot;
+
 };
 </codetext>
 </codeclip>
@@ -556,7 +578,7 @@ public void create_symbol( String name, String type, long value ){
 <y0>86</y0>
 <width>425</width>
 <height>36</height>
-<codetext>/* ビット列をコピーする */
+<codetext>// ビット列をコピーする(1バイト６ビットなので注意)
 public void bit_copy( long src, int[] dst, int pos, int width ){
   long  x;
   int  y, z;
@@ -564,8 +586,8 @@ public void bit_copy( long src, int[] dst, int pos, int width ){
   if( width &lt;= 0 ) return;
   for( int i = 0; i &lt; width; i++ ){
     x = 1L &lt;&lt; i;
-    y = pos / 8;
-    z = 1 &lt;&lt; (pos % 8);
+    y = pos / 6;         // 1バイトが6ビットなので注意
+    z = 1 &lt;&lt; (pos % 6);  // 1バイトが6ビットなので注意
     if( (src &amp; x) != 0L ) dst[y] = dst[y]^z;
     pos++;
   }
@@ -730,22 +752,8 @@ public int asm_1line( String xbuf, int pass ){
 
               /* 先頭に&apos;\&apos;&apos; があるときは続く1文字のアスキーコードとする*/
               case &apos;\&apos;&apos;:
-                term_val = (long)term.charAt(1);
+                term_val = (((long)term.charAt(1))-0x20)&amp;0x3f;
                 break;
-
-              /* 先頭に&apos;^&apos; があるときはプラスの浮動小数点数として処理する */
-              case &apos;^&apos;:              /* 先頭に&apos;^&apos; があるとき */
-              try{
-                 term_val = Double.doubleToLongBits(Double.valueOf(term.substring(1)).doubleValue());
-               } catch(Exception e){ term_val = 0L; }
-               break;
-
-              /* 先頭に&apos;~&apos; があるときはマイナスの浮動小数点数として処理する */
-              case &apos;~&apos;:              /* 先頭に&apos;^&apos; があるとき */
-              try{
-                 term_val = Double.doubleToLongBits(Double.valueOf(&quot;-&quot;+term.substring(1)).doubleValue());
-               } catch(Exception e){ term_val = 0L; }
-               break;
 
               case &apos;0&apos;:
                 if( term.length() == 1 ) term_val =0L;
@@ -1158,7 +1166,7 @@ public void set_symbols( String[] syms ){
 <y0>10</y0>
 <width>285</width>
 <height>23</height>
-<codetext>//  CARD8VM   ア  セ  ン  ブ  ラ  ver 0.1
+<codetext>//  CARD6VM   ア  セ  ン  ブ  ラ  ver 0.1
 </codetext>
 </codeclip>
 <operation>
@@ -1224,7 +1232,7 @@ public void set_symbols( String[] syms ){
 <height>33</height>
 <codetext>// 使用法を表示して終了する
 public void print_usage(){
-  System.out.println(&quot;card8vm_asm [-list] [-label] input_file [output_file]&quot;);
+  System.out.println(&quot;card6vm_asm [-list] [-label] input_file [output_file]&quot;);
   System.exit(0);
 }
 </codetext>

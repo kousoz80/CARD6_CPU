@@ -2,12 +2,12 @@
 /*
 
 
-  "card8vm_orc.c" 
+  "card6vm_orc.c" 
 
     oregengo_R
-    独自言語コンパイラ ver 0.1 for CARD8 CPU
+    独自言語コンパイラ ver 0.1 for CARD6 CPU
 
-  ・CARD8 CPU用式のアセンブラソースファイルを生成
+  ・CARD6 CPU用式のアセンブラソースファイルを生成
   ・ソースファイル名は "asm.s"となる
   ・オリジナルとは若干言語仕様が異なる
 
@@ -100,9 +100,9 @@ char*  pass3[] = {
   " goto \\",                      " jmp \\1\n",
 
 // for-next (cpu依存する部分あり) ---> ジャンプアドレス($+xxx)
-  " for \\#=\\ to \\ step \\",     " \\2,\n \\1#=\n \\3,\n \\1+3#=\n \\4,\n \\1+6#=\n $+16,\n \\1+9#=\n",
-  " for \\#=\\ to \\",             " \\2,\n \\1#=\n \\3,\n \\1+3#=\n 1,\n \\1+6#=\n $+16,\n \\1+9#=\n",
-  " next \\#",                     " \\1#,\n \\1+3#,\n jz $+125\n \\1#,\n \\1+6#,\n +\n \\1#=\n \\1+9#,\n jmp@\n",
+  " for \\#=\\ to \\ step \\",     " \\2,\n \\1#=\n \\3,\n \\1+3#=\n \\4,\n \\1+6#=\n $+8,\n \\1+9#=\n",
+  " for \\#=\\ to \\",             " \\2,\n \\1#=\n \\3,\n \\1+3#=\n 1,\n \\1+6#=\n $+8,\n \\1+9#=\n",
+  " next \\#",                     " \\1#,\n \\1+3#,\n jz $+22\n \\1#,\n \\1+6#,\n +\n \\1#=\n \\1+9#,\n jmp@\n",
 
 // data文
   " data \\,\\,\\,\\,\\,\\,\\,\\", " data\\1\n data\\2\n data\\3\n data\\4\n data\\5\n data\\6\n data\\7\n data\\8\n",
@@ -132,73 +132,71 @@ char* codegen[] = {
 "/\\/", "\\1\n",
 " \\:", "\\1:\n",
 "\\:", "\\1:\n",
-" jge \\", " x=(r1)\n x-=(r0)\n (__tmp)=x\n x=__tmp+2\n a=0x80\n a&=(x)\n jz \\1\n",
-" jlt \\", " x=(r1)\n x-=(r0)\n (__tmp)=x\n x=__tmp+2\n a=0x80\n a&=(x)\n jnz \\1\n",
-" jz \\", " x=(r1)\n x-=(r0)\n jz \\1\n",
-" jnz \\", " x=(r1)\n x-=(r0)\n jnz \\1\n",
-" jmp \\", " jmp \\1\n",
 " goto\\", " jmp \\1\n",
-" +", " x=(r1)\n x+=(r0)\n (r0)=x\n",
-" -", " x=(r1)\n x-=(r0)\n (r0)=x\n",
-" *", " call mul\n x=(__ans)\n (r0)=x\n",
-" umul", " call umul\n x=(__ans)\n (r0)=x\n",
-" /", " call div\n x=(__ans)\n (r0)=x\n",
-" udiv", " call udiv\n x=(__ans)\n (r0)=x\n",
-" neg", " x=0\n x-=(r0)\n (r0)=x\n",
-" not", " x=0xffffff\n x-=(r0)\n (r0)=x\n",
-" mod", " call udiv\n x=(r1)\n (r0)=x\n",
-" swap", " x=(r0)\n (__tmp)=x\n x=(r1)\n (r0)=x\n x=(__tmp)\n (r1)=x\n",
-" push", " x=(r2)\n (r3)=x\n x=(r1)\n (r2)=x\n x=(r0)\n (r1)=x\n",
-" pop", " x=(r1)\n (r0)=x\n x=(r2)\n (r1)=x\n x=(r3)\n (r2)=x\n",
-" PUSH", " x=(r0)\n push x\n",
-" POP", " pop x\n (r0)=x\n",
-" and", " x=r1\n a=(x)\n x=r0\n a&=(x)\n (x)=a\n x=r1+1\n a=(x)\n x=r0+1\n a&=(x)\n (x)=a\n x=r1+2\n a=(x)\n x=r0+2\n a&=(x)\n (x)=a\n",
-" or", " x=r1\n a=(x)\n x=r0\n a|=(x)\n (x)=a\n x=r1+1\n a=(x)\n x=r0+1\n a|=(x)\n (x)=a\n x=r1+2\n a=(x)\n x=r0+2\n a|=(x)\n (x)=a\n",
-" getchar$,", " call getchar\n",
-" inkey$,", " call inkey\n",
-" \\(pc),", " x=(r2)\n (r3)=x\n x=(r1)\n (r2)=x\n x=(r0)\n (r1)=x\n x=$-24+\\1\n (r0)=x\n",
+" jge \\", " jge \\1\n",
+" jlt \\", " jlt \\1\n",
+" jz \\",  " jz \\1\n",
+" jnz \\", " jnz \\1\n",
+" jmp \\", " jmp \\1\n",
+" jmp@", " @jmp\n",
+" call@", " @call\n",
+" ret", " ret\n",
 " end", " ret\n",
-" jmp@", " x=(r0)\n jmp (x)\n",
-" call@", " x=$+10\n push x\n x=(r0)\n jmp (x)\n",
-" ->@\\(\\)", " x=&\\2\n (arg0)=x\n x=\\1\n x+=(r0)\n y=r0\n a=(x)\n (y)=a\n x++\n y++\n a=(x)\n (y)=a\n x++\n y++\n a=(x)\n (y)=a\n x=$+10\n push x\n x=(r0)\n jmp (x)\n",
-" ->@\\", " x=\\1\n x+=(r0)\n y=r0\n a=(x)\n (y)=a\n x++\n y++\n a=(x)\n (y)=a\n x++\n y++\n a=(x)\n (y)=a\n x=$+10\n push x\n x=(r0)\n jmp (x)\n",
-" ->\\#=", " x=\\1\n x+=(r0)\n y=r1\n a=(y)\n (x)=a\n x++\n y++\n a=(y)\n (x)=a\n x++\n y++\n a=(y)\n (x)=a\n",
-" ->\\$=", " x=\\1\n x+=(r0)\n y=r1\n a=(y)\n (x)=a\n",
-" ->\\#", " x=\\1\n x+=(r0)\n y=r0\n a=(x)\n (y)=a\n x++\n y++\n a=(x)\n (y)=a\n x++\n y++\n a=(x)\n (y)=a\n",
-" ->\\$", " x=\\1\n x+=(r0)\n y=r0\n a=(x)\n (y)=a\n",
-" ->\\", " x=\\1\n x+=(r0)\n (r0)=x\n",
-" (\\)#(\\#),", " x=(r2)\n (r3)=x\n x=(r1)\n (r2)=x\n x=(r0)\n (r1)=x\n x=(\\1)\n x+=(\\2)\n x+=(\\2)\n x+=(\\2)\n y=r0\n a=(x)\n (y)=a\n x++\n y++\n a=(x)\n (y)=a\n x++\n y++\n a=(x)\n (y)=a\n",
-" \\#(\\#),", " x=(r2)\n (r3)=x\n x=(r1)\n (r2)=x\n x=(r0)\n (r1)=x\n x=\\1\n x+=(\\2)\n x+=(\\2)\n x+=(\\2)\n y=r0\n a=(x)\n (y)=a\n x++\n y++\n a=(x)\n (y)=a\n x++\n y++\n a=(x)\n (y)=a\n",
-" (\\)$(\\#),", " x=(r2)\n (r3)=x\n x=(r1)\n (r2)=x\n x=(r0)\n (r1)=x\n x=(\\1)\n x+=(\\2)\n y=r0\n a=(x)\n (y)=a\n a=0\n y++\n (y)=a\n y++\n (y)=a\n",
-" \\$(\\#),", " x=(r2)\n (r3)=x\n x=(r1)\n (r2)=x\n x=(r0)\n (r1)=x\n x=\\1\n x+=(\\2)\n y=r0\n a=(x)\n (y)=a\n a=0\n y++\n (y)=a\n y++\n (y)=a\n",
-" (\\)#(\\#)=", " x=(\\1)\n x+=(\\2)\n x+=(\\2)\n x+=(\\2)\n y=r0\n a=(y)\n (x)=a\n x++\n y++\n a=(y)\n (x)=a\n x++\n y++\n a=(y)\n (x)=a\n",
-" \\#(\\#)=", " x=\\1\n x+=(\\2)\n x+=(\\2)\n x+=(\\2)\n y=r0\n a=(y)\n (x)=a\n x++\n y++\n a=(y)\n (x)=a\n x++\n y++\n a=(y)\n (x)=a\n",
-" (\\)$(\\#)=", " x=(\\1)\n x+=(\\2)\n y=r0\n a=(y)\n (x)=a\n",
-" \\$(\\#)=", " x=\\1\n x+=(\\2)\n y=r0\n a=(y)\n (x)=a\n",
-" (\\)#(\\),", " x=(r2)\n (r3)=x\n x=(r1)\n (r2)=x\n x=(r0)\n (r1)=x\n x=\\2+\\2+\\2\n x+=(\\1)\n y=r0\n a=(x)\n (y)=a\n x++\n y++\n a=(x)\n (y)=a\n x++\n y++\n a=(x)\n (y)=a\n",
-" \\#(\\),", " x=(r2)\n (r3)=x\n x=(r1)\n (r2)=x\n x=(r0)\n (r1)=x\n x=\\1+\\2+\\2+\\2\n y=r0\n a=(x)\n (y)=a\n x++\n y++\n a=(x)\n (y)=a\n x++\n y++\n a=(x)\n (y)=a\n",
-" (\\)$(\\),", " x=(r2)\n (r3)=x\n x=(r1)\n (r2)=x\n x=(r0)\n (r1)=x\n x=\\2\n x+=(\\1)\n y=r0\n a=(x)\n (y)=a\n y++\n a=0\n (y)=a\n y++\n (y)=a\n",
-" \\$(\\),", " x=(r2)\n (r3)=x\n x=(r1)\n (r2)=x\n x=(r0)\n (r1)=x\n x=\\1+\\2\n y=r0\n a=(x)\n (y)=a\n y++\n a=0\n (y)=a\n y++\n (y)=a\n",
-" (\\)#(\\)=", " x=\\2+\\2+\\2\n x+=(\\1)\n y=r0\n a=(y)\n (x)=a\n x++\n y++\n a=(y)\n (x)=a\n x++\n y++\n a=(y)\n (x)=a\n",
-" \\#(\\)=", " x=\\1+\\2+\\2+\\2\n y=r0\n a=(y)\n (x)=a\n x++\n y++\n a=(y)\n (x)=a\n x++\n y++\n a=(y)\n (x)=a\n",
-" (\\)$(\\)=", " x=\\2\n x+=(\\1)\n y=r0\n a=(y)\n (x)=a\n",
-" \\$(\\)=", " x=\\1+\\2\n y=r0\n a=(y)\n (x)=a\n",
-" \\#++", " x=(\\1)\n x++\n (\\1)=x\n",
-" \\#--", " x=(\\1)\n x--\n (\\1)=x\n",
-" \\$++", " x=\\1\n a&=(x)\n a=(x)\n y=__001\n a+=(y)+cf\n (x)=a\n",
-" \\$--", " x=\\1\n a&=(x)\n a=(x)\n y=__001\n a-=(y)+bf\n (x)=a\n",
-" (\\)#,", " x=(r2)\n (r3)=x\n x=(r1)\n (r2)=x\n x=(r0)\n (r1)=x\n x=(\\1)\n y=r0\n a=(x)\n (y)=a\n x++\n y++\n a=(x)\n (y)=a\n x++\n y++\n a=(x)\n (y)=a\n",
-" \\#,", " x=(r2)\n (r3)=x\n x=(r1)\n (r2)=x\n x=(r0)\n (r1)=x\n x=(\\1)\n (r0)=x\n",
-" (\\)$,", " x=(r2)\n (r3)=x\n x=(r1)\n (r2)=x\n x=(r0)\n (r1)=x\n x=(\\1)\n y=r0\n a=(x)\n (y)=a\n y++\n a=0\n (y)=a\n y++\n (y)=a\n",
-" \\$,", " x=(r2)\n (r3)=x\n x=(r1)\n (r2)=x\n x=(r0)\n (r1)=x\n x=\\1\n y=r0\n a=(x)\n (y)=a\n y++\n a=0\n (y)=a\n y++\n (y)=a\n",
-" \\,", " x=(r2)\n (r3)=x\n x=(r1)\n (r2)=x\n x=(r0)\n (r1)=x\n x=\\1\n (r0)=x\n",
-" (\\)#=", " x=(\\1)\n y=r0\n a=(y)\n (x)=a\n x++\n y++\n a=(y)\n (x)=a\n x++\n y++\n a=(y)\n (x)=a\n",
-" \\#=", " x=(r0)\n (\\1)=x\n",
-" (\\)$=", " x=(\\1)\n y=r0\n a=(y)\n (x)=a\n",
-" \\$=", " x=\\1\n y=r0\n a=(y)\n (x)=a\n",
+" +", " add\n",
+" -", " sub\n",
+" *", " mul\n",
+" /", " div\n",
+" umul", " umul\n",
+" udiv", " udiv\n",
+" mod", " mod\n",
+" and", " and\n",
+" or", " or\n",
+" neg", " neg\n",
+" not", " not\n",
+" in", " in\n",
+" out", " out\n",
+" swap", " swap\n",
+" push", " pushr\n",
+" pop", " popr\n",
+" PUSH", " pushs\n",
+" POP", " pops\n",
+" \\#++", " inc.l \\1\n",
+" \\#--", " dec.l \\1\n",
+" \\$++", " inc.b \\1\n",
+" \\$--", " dec.b \\1\n",
+" ->@\\", " call@mbr \\1\n",
+" ->\\#=", " st_mbr.l \\1\n",
+" ->\\$=", " st_mbr.b \\1\n",
+" ->\\#", " ld_mbr.l \\1\n",
+" ->\\$", " ld_mbr.b \\1\n",
+" ->\\", " lea_mbr \\1\n",
+" (\\)#(\\#),", " ld@a_v.l \\1,\\2\n",
+" \\#(\\#),", " ld_a_v.l \\1,\\2\n",
+" (\\)$(\\#),", " ld@a_v.b \\1,\\2\n",
+" \\$(\\#),", " ld_a_v.b \\1,\\2\n",
+" (\\)#(\\#)=", " st@a_v.l \\1,\\2\n",
+" \\#(\\#)=", " st_a_v.l \\1,\\2\n",
+" (\\)$(\\#)=", " st@a_v.b \\1,\\2\n",
+" \\$(\\#)=", " st_a_v.b \\1,\\2\n",
+" (\\)#(\\),", " ld@a_k.l \\1,\\2\n",
+" \\#(\\),", " ld_a_k.l \\1,\\2\n",
+" (\\)$(\\),", " ld@a_k.b \\1,\\2\n",
+" \\$(\\),", " ld_a_k.b \\1,\\2\n",
+" (\\)#(\\)=", " st@a_k.l \\1,\\2\n",
+" \\#(\\)=", " st_a_k.l \\1,\\2\n",
+" (\\)$(\\)=", " st@a_k.b \\1,\\2\n",
+" \\$(\\)=", " st_a_k.b \\1,\\2\n",
+" (\\)#,", " ld@v.l \\1\n",
+" \\#,", " ld_v.l \\1\n",
+" (\\)$,", " ld@v.b \\1\n",
+" \\$,", " ld_v.b \\1\n",
+" (\\)#=", " st@v.l \\1\n",
+" \\#=", " st_v.l \\1\n",
+" (\\)$=", " st@v.b \\1\n",
+" \\$=", " st_v.b \\1\n",
+" \\,", " ld_k \\1\n",
 " data\\", " int \\1\n",
-" @\\(\\)", " x=$+18\n push x\n x=\\2\n (arg0)=x\n x=(\\1)\n jmp (x)\n",
-" @\\", " x=$+10\n push x\n x=(\\1)\n jmp (x)\n",
+" @\\", " call@ \\1\n",
 " \\", " call \\1\n",
 
 NULL
@@ -207,6 +205,7 @@ NULL
 
 /* プロトタイプ宣言  */
 void catFile( char* fname );
+void removeComment();
 void strProcess();
 void compile_s();
 void compile( int pass );
@@ -236,12 +235,10 @@ int main( int argc, char* argv[] ){
 
   if( argc < 2 ) return 0;
 
-//  printf("compile:\n");
-
-  /* 文字列IDを初期化する */
+  // 文字列IDを初期化する
   StringID = 1;
 
-  /* 入力ファイルの結合 */
+  // 入力ファイルの結合
   if( ( hOutFile = fopen( OutFile, "w") ) == NULL ){
     printf("ファイルが開けません");
     return 0;
@@ -254,43 +251,50 @@ int main( int argc, char* argv[] ){
   OutFile = InFile;
   InFile  = Tmp;
 
-  /* コンパイル開始 */
-  strProcess();  // 文字列の処理
+  // コメントを除去
+  removeComment();
   Tmp     = OutFile;
   OutFile = InFile;
   InFile  = Tmp;
 
-  compile_s();   // struct/enum構文の処理
+  // 文字列の処理
+  strProcess();
+  Tmp     = OutFile;
+  OutFile = InFile;
+  InFile  = Tmp;
+
+  // struct/enum構文の処理
+  compile_s();
   Tmp     = InFile;
   InFile  = OutFile;
   OutFile = VarFile;
   VarFile = Tmp;
 
-  compile( 0 );   /* 宣言文の処理 */
+  // 宣言文の処理
+  compile( 0 );
   Tmp     = OutFile;
   OutFile = VarFile;
   VarFile = Tmp;
 
+  // 手続き文の処理
   for( i = 1; i < MAX_PASS; i++ ){
-    compile( i );  // 手続き文の処理
+    compile( i );
     Tmp     = OutFile;
     OutFile = InFile;
     InFile  = Tmp;
   }
 
-  /* 出力ファイル（アセンブラソース）の生成 */
+  // 出力ファイル（アセンブラソース）の生成
   if( ( hOutFile = fopen( AsmFile, "w") ) != NULL ){
-    catFile( InFile );  // プログラム
-//    fprintf( hOutFile, "  align 8\n" );
+    catFile( InFile );   // プログラム
     catFile( StrFile );  // 文字列
-//    fprintf( hOutFile, "  align 8\n" );
     catFile( VarFile );  // 変数
     fclose( hOutFile );
   }
 }
 
 
-/* ファイル結合サブルーチン */
+// ファイル結合
 void catFile( char* fname ){
   int c;
 
@@ -305,7 +309,33 @@ void catFile( char* fname ){
 }
 
 
-/* 文字列処理サブルーチン(ダブルクォーテーションで囲まれた文字列をバイトコードに変換する) */
+// コメント除去
+void removeComment(){
+  char buf[1024],*s;
+
+  if( ( hInFile = fopen( InFile,  "r" ) ) == NULL ){
+    printf( "コメント除去:入力エラー" ) ;
+    return;
+  }
+  if( ( hOutFile = fopen( OutFile, "w") ) == NULL ){
+    printf( "コメント除去:出力エラー" ) ;
+    fclose( hInFile );
+    return;
+  }
+  while( fgets(buf, 1024, hInFile ) != NULL ){
+
+    // コメントをすてる
+    if( ( s = strstr( buf, Comment1 ) ) != NULL ) *s = '\0';
+    if( ( s = strstr( buf, Comment2 ) ) != NULL ) *s = '\0';
+
+    fprintf( hOutFile, "%s\n", buf );
+  }
+  fclose( hInFile );
+  fclose( hOutFile );
+}
+
+
+// 文字列処理(ダブルクォーテーションで囲まれた文字列をバイトコードに変換する)
 void strProcess(){
   int  c;
 
@@ -329,14 +359,20 @@ void strProcess(){
       fprintf( hOutFile, "S%d", StringID );
       fprintf( hStrFile, "S%d:\n", StringID++ );
       while( ( c = getc( hInFile  ) ) != '\"' && c != EOF ){
-        fprintf( hStrFile, "  byte %d\n", c );
+
+         // 6ビット文字コードに変換する
+		 if( c == '\n' || c == '\r' ) c = 61;
+		 else if( c < 32 ) c = 62;
+		 else if( c == '\0' ) c = 63; 
+		 else c = (( c - 32 ) & 0x3f);
+         fprintf( hStrFile, "  byte %d\n", c );
       }
-      fprintf( hStrFile, "  byte 0\n" );
+      fprintf( hStrFile, "  byte 63\n" );
       if( c == EOF ) break;
     }
     else if( c == (int)'\'' ){
       if( ( c = getc( hInFile  ) ) == EOF ) break;
-      fprintf( hOutFile, "%d", c );
+      fprintf( hOutFile, "%d", (c-0x20)&0x3f );
       while( ( c = getc( hInFile  ) ) != '\'' && c != EOF ) {}
       if( c == EOF ) break;
     }
