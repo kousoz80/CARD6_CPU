@@ -166,7 +166,7 @@ Function:
 <codetext>// プログラムを消去する
 clear_program:
 
-  ProgArea, EndProg#=
+  CNULL, ProgArea, EndProg#= -&gt;Program.text$=
   end
 </codetext>
 </codeclip>
@@ -756,8 +756,8 @@ cmd_run:
 
 // &quot;CMD RUN:&quot;, prints nl
 
-//  cmd_clear               // 変数をクリア
-  ForStackArea,      ForStackP#=      // FOR-NEXT用スタックをクリア
+  cmd_clear                      // 変数をクリア
+  ForStackArea,   ForStackP#=    // FOR-NEXT用スタックをクリア
   GosubStackArea, GosubStackP#=  // GOSUB-RETURN用スタックをクリア
   ProgArea, CurrentProg#=
   if CurrentProg#=NULL then TERMINATE, end
@@ -2180,11 +2180,6 @@ start_basic:
               -1, DirectArea, -&gt;Program.lineno#=
               ptext, DirectArea, -&gt;Program.text strcpy
               ptext, strlen SIZEOF_LONG*2+1, + plen#=
-              
-              // x86_64のアライメント(8バイト)に考慮したコード、CARD8の場合はコメントアウトする
-              // plen#, 8, mod  tt#=
-              // if tt#&lt;&gt;0 then 8, tt#, - plen#, + plen#=
-              
               plen#, DirectArea, -&gt;Program.length#=
               DirectArea, plen#, + tt#=
               -1, tt#, -&gt;Program.length#=

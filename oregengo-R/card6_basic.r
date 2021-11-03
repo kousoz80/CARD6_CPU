@@ -125,7 +125,7 @@ Function:
 // プログラムを消去する
 clear_program:
 
-  ProgArea, EndProg#=
+  CNULL, ProgArea, EndProg#= ->Program.text$=
   end
 
 // 指定された行番号の位置を返す
@@ -1038,8 +1038,8 @@ cmd_run:
 
 // "CMD RUN:", prints nl
 
-//  cmd_clear               // 変数をクリア
-  ForStackArea,      ForStackP#=      // FOR-NEXT用スタックをクリア
+  cmd_clear                      // 変数をクリア
+  ForStackArea,   ForStackP#=    // FOR-NEXT用スタックをクリア
   GosubStackArea, GosubStackP#=  // GOSUB-RETURN用スタックをクリア
   ProgArea, CurrentProg#=
   if CurrentProg#=NULL then TERMINATE, end
@@ -1985,10 +1985,10 @@ main:
   _INIT_STATES
   goto _PSTART
 _PSTART:
- _728722488_in
+ _1539967402_in
 
  end
-_728722488_in:
+_1539967402_in:
 // BASICを起動する
 start_basic:
 
@@ -2067,11 +2067,6 @@ start_basic:
               -1, DirectArea, ->Program.lineno#=
               ptext, DirectArea, ->Program.text strcpy
               ptext, strlen SIZEOF_LONG*2+1, + plen#=
-              
-              // x86_64のアライメント(8バイト)に考慮したコード、CARD8の場合はコメントアウトする
-              // plen#, 8, mod  tt#=
-              // if tt#<>0 then 8, tt#, - plen#, + plen#=
-              
               plen#, DirectArea, ->Program.length#=
               DirectArea, plen#, + tt#=
               -1, tt#, ->Program.length#=
