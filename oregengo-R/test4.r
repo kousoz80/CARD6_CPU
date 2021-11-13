@@ -3,9 +3,13 @@
  char buf$(64)
 
 main:
- "> ", prints
- buf, inputs
- "IN=", prints buf, prints nl
+  for i#=0 to 100
+  i#, printd nl
+  next i#
+
+// "> ", prints
+// buf, inputs
+// "IN=", prints buf, prints nl
   end
 
 

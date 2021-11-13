@@ -3488,19 +3488,19 @@ sfl_long:
 sfl_long1:
         move.b sfl_out,sfl_long_out(l)
         move.b zero,zero2
-        move.b sfl_long_in(m),sfl_in
-        move.l @sfl_long2,sfl_ret
-        jmp sfl
+        move.b sfl_long_in(m),rol_in
+        move.l @sfl_long2,rol_ret
+        jmp rol
 @sfl_long2: data.l sfl_long2
 sfl_long2:
-        move.b sfl_out,sfl_long_out(m)
+        move.b rol_out,sfl_long_out(m)
         move.b zero,zero1
-        move.b sfl_long_in(h),sfl_in
-        move.l @sfl_long3,sfl_ret
-        jmp sfl
+        move.b sfl_long_in(h),rol_in
+        move.l @sfl_long3,rol_ret
+        jmp rol
 @sfl_long3: data.l sfl_long3
 sfl_long3:
-        move.b sfl_out,sfl_long_out(h)
+        move.b rol_out,sfl_long_out(h)
         move.b carry,sfl_long_cf
         move.b zero,and_in0
         move.b zero1,and_in1
@@ -3535,19 +3535,19 @@ sfr_long:
 sfr_long1:
         move.b sfr_out,sfr_long_out(h)
         move.b zero,zero2
-        move.b sfr_long_in(m),sfr_in
-        move.l @sfr_long2,sfr_ret
-        jmp sfr
+        move.b sfr_long_in(m),ror_in
+        move.l @sfr_long2,ror_ret
+        jmp ror
 @sfr_long2: data.l sfr_long2
 sfr_long2:
-        move.b sfr_out,sfr_long_out(m)
+        move.b ror_out,sfr_long_out(m)
         move.b zero,zero1
-        move.b sfr_long_in(l),sfr_in
-        move.l @sfr_long3,sfr_ret
-        jmp sfr
+        move.b sfr_long_in(l),ror_in
+        move.l @sfr_long3,ror_ret
+        jmp ror
 @sfr_long3: data.l sfr_long3
 sfr_long3:
-        move.b sfr_out,sfr_long_out(l)
+        move.b ror_out,sfr_long_out(l)
         move.b carry,sfr_long_cf
         move.b zero,and_in0
         move.b zero1,and_in1
