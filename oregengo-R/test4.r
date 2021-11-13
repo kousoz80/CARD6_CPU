@@ -5,7 +5,6 @@
 main:
  "> ", prints
  buf, inputs
- 
  "IN=", prints buf, prints nl
   end
 

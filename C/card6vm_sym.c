@@ -13,8 +13,10 @@ int KeyCode, KeyCode0;
 int PrtData;
 int is_break;
 
-// レジスタ領域
+
+// アドレス設定
 #define MEM_SIZE	0x40000
+#define VM_START    0x9000
 #define REG_PC 	 	0x3ffec
 #define REG_SP 		0x3ffef
 #define REG_R0 		0x3fff2
@@ -701,7 +703,7 @@ void* mainThread( void* pParam ){
 
 printf("enter main thread\r\n");
 
-  reg_pc = 0x1000;
+  reg_pc = VM_START;
   reg_sp = 0;
   reg_r0 = reg_r1 = reg_r2 = reg_r3 = 0;
   mem[0] = (int)hlt;

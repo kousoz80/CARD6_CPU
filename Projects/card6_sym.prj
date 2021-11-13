@@ -324,12 +324,6 @@ if( break_adrs !=0 &amp;&amp; (break_adrs == address) ){
   run_stop();
 }
 
-//レジスター＞メモリ(I/O) サイクル
-if( (reg_c &amp; POINTER) != 0 ) address = reg_h * 4096 + reg_m * 64 + reg_l; else address = reg_a;
-if( (reg_c &amp; RET) != 0 ) mem_a[address] = reg_r;
-if( (reg_c &amp; IO)  != 0 &amp;&amp; (reg_c &amp; ST)  != 0 ) PrtData = reg_d;			// I/Oアクセス
-if( (reg_c &amp; IO)  == 0 &amp;&amp; (reg_c &amp; ST)  != 0 ) mem_d[address] = reg_d;	// メモリアクセス
-
 // メモリ(I/O)ー＞レジスタ サイクル
 reg_c = mem_c[address];
 reg_a = mem_a[address];
@@ -340,8 +334,11 @@ if( (reg_c &amp; LDH) != 0 ) reg_h = mem_d[address];
 if( (reg_c &amp; LDM) != 0 ) reg_m = mem_d[address];
 if( (reg_c &amp; LDL) != 0 ) reg_l = mem_d[address];
 
-// I/O同期
-io_sync();
+//レジスター＞メモリ(I/O) サイクル
+if( (reg_c &amp; POINTER) != 0 ) address = reg_h * 4096 + reg_m * 64 + reg_l; else address = reg_a;
+if( (reg_c &amp; RET) != 0 ) mem_a[address] = reg_r;
+if( (reg_c &amp; IO)  != 0 &amp;&amp; (reg_c &amp; ST)  != 0 ) PrtData = reg_d;			// I/Oアクセス
+if( (reg_c &amp; IO)  == 0 &amp;&amp; (reg_c &amp; ST)  != 0 ) mem_d[address] = reg_d;	// メモリアクセス
 
 // レジスタ表示処理
 address_field.setText(hex6(address));
@@ -360,7 +357,8 @@ if( (reg_c &amp; LDH)     != 0 ) ldh_label.setBackground(Color.green);     else 
 if( (reg_c &amp; LDM)     != 0 ) ldm_label.setBackground(Color.green);     else  ldm_label.setBackground(Color.lightGray);
 if( (reg_c &amp; LDL)     != 0 ) ldl_label.setBackground(Color.green);     else  ldl_label.setBackground(Color.lightGray);
 
-
+// I/O同期
+io_sync();
 
     // メモリウィンドウ表示処理
     int n = memory_windows.size();
@@ -3085,7 +3083,6 @@ class keyinput_listener implements DocumentListener{
 <inpinlinkcount>1</inpinlinkcount>
 <description></description>
 <codetext>// メモリと周辺装置の同期
-
 
 
 if( KeyCode != 0 ){

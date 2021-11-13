@@ -13,7 +13,7 @@
 #define DATA_INS 24
 
 // I/Oポート
-int KeyCode;
+int KeyCode, KeyCode0;
 int PrtData;
 int is_break;
 
@@ -128,11 +128,12 @@ int getch(){
 void io_sync(){
 
 if( PrtData != 0xff ){
-  if(PrtData == 0x61 ) PrtData = '\n';// 改行コード
-  else if(PrtData == 0x62 ) PrtData = '\n';// エスケープコード
-  else if(PrtData == 0x63 ) PrtData = '\0';// ヌル文字
-  else PrtData += 0x20;
-  putchar(PrtData);
+  int c = PrtData;
+  if(c == 61 ) c = '\n';// 改行コード
+  else if(c == 62 ) c = '\r';// エスケープコード
+  else if(c == 63 ) c = '\0';// ヌル文字
+  else c+= 32;
+  putchar(c);
   PrtData = 0xff;
 }
 
@@ -154,8 +155,13 @@ if( (reg_c & IO)  == 0 && (reg_c & ST)  != 0 ) mem_d[address] = reg_d;	// メモ
 reg_c = mem_c[address];
 reg_a = mem_a[address];
 reg_r = mem_r[address];
-if( (reg_c & IO)  != 0 && (reg_c & LD)  != 0 ){ reg_d = KeyCode; KeyCode = 0x3f;}	// I/Oアクセス
-if( (reg_c & IO)  == 0 && (reg_c & LD)  != 0 ) reg_d = mem_d[address];				// メモリアクセス
+if( (reg_c & IO)  != 0 && (reg_c & LD)  != 0 ){ // I/Oアクセス
+  reg_d= KeyCode0;
+  KeyCode0 = 0x3f;
+}
+if( (reg_c & IO)  == 0 && (reg_c & LD)  != 0 ){	// メモリアクセス
+	 reg_d = mem_d[address];
+}
 if( (reg_c & LDH) != 0 ) reg_h = mem_d[address];
 if( (reg_c & LDM) != 0 ) reg_m = mem_d[address];
 if( (reg_c & LDL) != 0 ) reg_l = mem_d[address];
@@ -207,16 +213,18 @@ printf("If you want to break, please type \'\\\' key.\n");
   if( argc > 2 ) load_data( argv[2] );
 
   is_break = 0;
+  KeyCode0 = 0x3f;
   pthread_create( &ThreadMain,     NULL, mainThread,     NULL );
   while( !is_break ){
-    int c = getch();
-    if( c == '\\' ) is_break = 1;
-    else if( c != 0 ){
-      if( c == '\n' ) KeyCode = 61;
-      else if( c == '\r' ) KeyCode = 61;
-      else if( c < 0x20 )  KeyCode = 62;
-      else if( c >= 0x20 && c <= 0x5f ) KeyCode = c - 0x20;
-      else if( c >= 'a' && c <= 'z' )   KeyCode = c - 'a' + 'A' - ' ';
+    KeyCode = getch();
+    if( KeyCode == '\\' ) is_break = 1;
+    if( KeyCode != 0 ){
+      if( KeyCode == '\n' ) KeyCode0 = 61;
+      else if( KeyCode == '\r' ) KeyCode0 = 61;
+      else if( KeyCode < 32 )  KeyCode0 = 62;
+      else if( KeyCode >= 0x20 && KeyCode <= 0x5f ) KeyCode0 = KeyCode - 0x20;
+      else if( KeyCode >= 'a' && KeyCode <= 'z' )   KeyCode0 = KeyCode - 'a' + 'A' - ' ';
+      KeyCode = 0;
     }
   }
   pthread_join( ThreadMain,     NULL );

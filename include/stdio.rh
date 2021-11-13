@@ -1,5 +1,5 @@
 // "stdio.rh" oregengo-R コンパイラ for CARD6VM用ヘッダファイル 
-/ org 0x1000/  // 実行開始アドレスは仮想マシンの実装に依存する
+/ org 0x9000/  // 実行開始アドレスは仮想マシンの実装に依存する
 
  const EOF      255         /* ファイルの終わりをあらわす文字コード */
  const ERROR    -1          /* エラーが発生したことをあらわす */
@@ -25,8 +25,6 @@
  const reg_r1 0x3fff5
  const reg_r2 0x3fff8
  const reg_r3 0x3fffb
- const reg_cf 0x3fffe
- const reg_zf 0x3ffff
 
  // 作業変数
  char  __sign$(1),__nbuf$(64)
@@ -36,7 +34,7 @@
  long  __stack#(STACK_SIZE)
  long  __stack_top#
  long arg0#,r0#,r1#,r2#,r3#
- long __tmp#,__ans#,__sgn#
+ long __tmp#,__ans#,__sgn#,__tt#
 
 // プログラム開始位置 */
 _start:
@@ -49,9 +47,9 @@ _end_loop:
 
 // コンソールからから一文字読み込む
 getchar:
- in __tmp#=
- if __tmp#=63 goto getchar
- __tmp#, end
+ in __tt#=
+ if __tt#=63 goto getchar
+ __tt#, end
 
 
 // コンソールへ一文字出力する
