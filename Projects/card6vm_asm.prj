@@ -468,6 +468,7 @@ public int read_int(){
   long boffset = 0L; //ブランチオフセット
   boolean blist = false;      // リスト表示モード
   boolean blabel = false;    // ラベルリスト表示モード
+  boolean bheader = false;    // ヘッダ生成モード
   
 </codetext>
 </codeclip>
@@ -1048,7 +1049,18 @@ int len;
    for( int i = 0;i &lt; symbols.size(); i++ ){
      s = (xSymbol)(symbols.get(i));
      if( s.type.equals(&quot;LABEL&quot;)){
-       System.out.print( s.name + &quot;  0x&quot;); print_hex( s.value, 16, &quot;\n&quot; );
+       System.out.print( s.name + &quot;  0x&quot;); print_hex( s.value, 6, &quot;\n&quot; );
+     }
+   }
+ }
+
+// ヘッダ生成モードの時はヘッダを表示する
+ if( bheader ){
+   xSymbol s;
+   for( int i = 0;i &lt; symbols.size(); i++ ){
+     s = (xSymbol)(symbols.get(i));
+     if( s.type.equals(&quot;LABEL&quot;)){
+       System.out.print( &quot; const &quot; + s.name + &quot;  0x&quot;); print_hex( s.value, 6, &quot;\n&quot; );
      }
    }
  }
@@ -1202,8 +1214,9 @@ public void set_symbols( String[] syms ){
  if( ARGS.length == 0 ) print_usage();
  else{
    for( int i = 0; i &lt; ARGS.length; i++ ){
-     if( ARGS[i].equals(&quot;-list&quot;) )       blist      = true;
+     if( ARGS[i].equals(&quot;-list&quot;) )          blist     = true;
      else if( ARGS[i].equals(&quot;-label&quot;) )    blabel    = true;
+     else if( ARGS[i].equals(&quot;-header&quot;) )   bheader   = true;
      else{
       if( input_file == null ) input_file = ARGS[i];
       else output_file = ARGS[i];

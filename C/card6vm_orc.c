@@ -34,6 +34,20 @@ char*  pass1[] = {
   " long \\#,\\#",                         "\\1: memory 3\n\\2: memory 3\n",
   " long \\#",                             "\\1: memory 3\n",
 
+  " int \\#(\\),\\#(\\),\\#(\\),\\#(\\)", "\\1: memory \\2*3\n\\3: memory \\4*3\n\\5: memory \\6*3\n\\7: memory \\8*3\n",
+  " int \\#(\\),\\#(\\),\\#(\\)",         "\\1: memory \\2*3\n\\3: memory \\4*3\n\\5: memory \\6*3\n",
+  " int \\#(\\),\\#(\\)",                 "\\1: memory \\2*3\n\\3: memory \\4*3\n",
+  " int \\#(\\)",                         "\\1: memory \\2*3\n",
+
+  " int \\#,\\#,\\#,\\#,\\#,\\#,\\#,\\#", "\\1: memory 3\n\\2: memory 3\n\\3: memory 3\n\\4: memory 3\n\\5: memory 3\n\\6: memory 3\n\\7: memory 3\n\\8: memory 3\n",
+  " int \\#,\\#,\\#,\\#,\\#,\\#,\\#",     "\\1: memory 3\n\\2: memory 3\n\\3: memory 3\n\\4: memory 3\n\\5: memory 3\n\\6: memory 3\n\\7: memory 3\n",
+  " int \\#,\\#,\\#,\\#,\\#,\\#",         "\\1: memory 3\n\\2: memory 3\n\\3: memory 3\n\\4: memory 3\n\\5: memory 3\n\\6: memory 3\n",
+  " int \\#,\\#,\\#,\\#,\\#",             "\\1: memory 3\n\\2: memory 3\n\\3: memory 3\n\\4: memory 3\n\\5: memory 3\n",
+  " int \\#,\\#,\\#,\\#",                 "\\1: memory 3\n\\2: memory 3\n\\3: memory 3\n\\4: memory 3\n",
+  " int \\#,\\#,\\#",                     "\\1: memory 3\n\\2: memory 3\n\\3: memory 3\n",
+  " int \\#,\\#",                         "\\1: memory 3\n\\2: memory 3\n",
+  " int \\#",                             "\\1: memory 3\n",
+
   " char \\$(\\),\\$(\\),\\$(\\),\\$(\\)", "\\1: memory \\2\n\\3: memory \\4\n\\5: memory \\6\n\\7: memory \\8\n",
   " char \\$(\\),\\$(\\),\\$(\\)",         "\\1: memory \\2\n\\3: memory \\4\n\\5: memory \\6\n",
   " char \\$(\\),\\$(\\)",                 "\\1: memory \\2\n\\3: memory \\4\n",
@@ -84,6 +98,7 @@ char*  pass3[] = {
 
 // 宣言文は無視する
   " long \\",      "",
+  " int \\",      "",
   " char \\",     "",
   " count \\",    "",
   " const \\ \\", "/\\1: = \\2/\n",

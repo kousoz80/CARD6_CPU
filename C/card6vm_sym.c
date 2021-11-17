@@ -179,6 +179,7 @@ void exec_one_cycle(){
 
 case hlt:		// 停止する
 is_break = 1;
+printf("HALT INSTRUCTION: pc=0x%08x\n",reg_pc);
 break;
 
 case jmp:		// ジャンプする(アドレスは直接指定)

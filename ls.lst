@@ -1,0 +1,111 @@
+EOF: = 0x00003e
+ERROR: = 0xffffff
+NULL: = 0x000000
+CNULL: = 0x00003f
+SPACE: = 0x000000
+CR: = 0x00003d
+LF: = 0x00003d
+PLUS: = 0x00000b
+MINUS: = 0x00000d
+ESC: = 0x00003e
+NaN: = 0x020000
+STACK_SIZE: = 0x0007d0
+SIZEOF_CHAR: = 0x000001
+SIZEOF_INT: = 0x000003
+SIZEOF_LONG: = 0x000003
+RAMDISK: = 0x010000
+SEC_SIZE: = 0x000100
+TOPSEC: = 0x000000
+ENDSEC: = 0x0000fe
+NONSEC: = 0xffffff
+FILSIZ: = 0x000106
+CUR_SEC: = 0x000000
+FILTOP: = 0x000001
+BUFP: = 0x000002
+BUFF: = 0x000009
+NEXT_SEC: = 0x000003
+NEXT_FIL: = 0x000004
+FNAME: = 0x00000f
+FCONT0: = 0x000023
+FCONT1: = 0x00000c
+BUF_END: = 0x000109
+cmd_buf: = 0x03ff90
+argc: = 0x03ffd0
+argv: = 0x03ffd3
+MAXCHAR: = 0x00003f
+reg_pc: = 0x03ffec
+reg_sp: = 0x03ffef
+reg_r0: = 0x03fff2
+reg_r1: = 0x03fff5
+reg_r2: = 0x03fff8
+reg_r3: = 0x03fffb
+_start: = 0x009000
+getchar: = 0x00908f
+putchar: = 0x0090a5
+prints: = 0x0090af
+printd: = 0x0090d0
+nl: = 0x0090d9
+cls: = 0x0090e2
+inkey: = 0x0090eb
+inputs: = 0x0090ed
+strcmp: = 0x009132
+strncmp: = 0x009169
+strcpy: = 0x0091ba
+strncpy: = 0x0091e4
+strcat: = 0x00922c
+strncat: = 0x00926a
+strstr: = 0x0092c6
+strlen: = 0x00931d
+atoi: = 0x009346
+itoa: = 0x0093d6
+bin: = 0x009493
+oct: = 0x00949c
+dec: = 0x0094a5
+hex: = 0x0094dc
+restore: = 0x0094e5
+read: = 0x0094ea
+abs: = 0x0094ff
+__000: = 0x00951e
+__001: = 0x009521
+__0x800000: = 0x009524
+__NaN: = 0x009527
+disk_setup: = 0x00952a
+falloc: = 0x009533
+ffree: = 0x009565
+getc: = 0x0095ce
+putc: = 0x00964b
+ropen: = 0x0096de
+wopen: = 0x009764
+rclose: = 0x00981d
+wclose: = 0x00981e
+rm: = 0x009865
+mv: = 0x0098c6
+finputs: = 0x009926
+fprints: = 0x00997c
+fprintd: = 0x0099a6
+fnl: = 0x0099b8
+load: = 0x0099c9
+_reads: = 0x009b2d
+_writes: = 0x009b95
+APP_START: = 0x00b6b6
+0000b6b6:
+main:
+0000b6b6:3b 00 00 00     ld_k TOPSEC
+0000b6ba:3d 2e 1b 0b     st_v.l i
+loop:
+0000b6be:3b 3a 1b 0b     ld_k fp+BUFF
+0000b6c2:38 2e 1b 0b     ld_v.l i
+0000b6c6:07 2d 2c 09     call _reads
+0000b6ca:3b 00 1c 0b     ld_k fp+FNAME
+0000b6ce:07 2f 02 09     call prints
+0000b6d2:07 19 03 09     call nl
+0000b6d6:30 31 1b 0b 04 00 00  ld_a_k.l fp,NEXT_FIL
+0000b6dd:3d 2e 1b 0b     st_v.l i
+0000b6e1:38 2e 1b 0b     ld_v.l i
+0000b6e5:3b 3f 3f 3f     ld_k NONSEC
+0000b6e9:06 3e 1a 0b     jnz loop
+0000b6ed:0a              ret
+i: memory 3
+0000b6ee: alloc 3bytes
+fp: memory FILSIZ
+0000b6f1: alloc 262bytes

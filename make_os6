@@ -1,0 +1,50 @@
+#!/bin/sh
+
+./bin/card6vm_orc ./os6/src/os6.r
+java -jar jar/card6vm_asm.jar  -header asm.s ./os6/obj/os6.obj | sed -f ./os6/os6.sed > ./include/os6.rh
+cat ./os6/os6.base >> ./include/os6.rh
+
+echo "compile cat.r"
+./bin/card6vm_orc ./include/os6.rh ./os6/src/cat.r
+java -jar jar/card6vm_asm.jar  asm.s ./os6/obj/cat.obj
+
+echo "compile cp.r"
+./bin/card6vm_orc ./include/os6.rh ./os6/src/cp.r
+java -jar jar/card6vm_asm.jar  asm.s ./os6/obj/cp.obj
+
+echo "compile ed.r"
+./bin/card6vm_orc ./include/os6.rh ./os6/src/ed.r
+java -jar jar/card6vm_asm.jar  asm.s ./os6/obj/ed.obj
+
+echo "compile ls.r"
+./bin/card6vm_orc ./include/os6.rh ./os6/src/ls.r
+java -jar jar/card6vm_asm.jar  asm.s ./os6/obj/ls.obj
+
+echo "compile mv.r"
+./bin/card6vm_orc ./include/os6.rh ./os6/src/mv.r
+java -jar jar/card6vm_asm.jar  asm.s os6/obj/mv.obj
+
+echo "compile rm.r"
+./bin/card6vm_orc ./include/os6.rh ./os6/src/rm.r
+java -jar jar/card6vm_asm.jar  asm.s os6/obj/rm.obj
+
+echo "compile rm.r"
+./bin/card6vm_orc ./include/os6.rh ./os6/src/dump.r
+java -jar jar/card6vm_asm.jar  asm.s os6/obj/dump.obj
+
+
+ rm __tmp1
+ rm __tmp2
+ rm __str
+ rm __var
+ rm asm.s
+ echo "compile end"
+
+echo "create os6 image file"
+cat ./os6/obj/os6.obj > ./os6/os6.img 
+java -jar ./jar/create_os6_ramdisk.jar
+cat ramdisk.img >> ./os6/os6.img
+rm ramdisk.img
+cp ./os6/os6.img r.out
+echo "done."
+

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+if test $# -eq 0
+then
+./bin/card6vm_sym ./os6/os6.img
+exit 0
+fi
+
+
+if test $1 = "vm"
+then
+./bin/card6vm_sym ./os6/os6.img
+exit 0
+fi
+
+if test $1 = "native"
+then
+./bin/card6_sym a.out ./os6/os6.img
+exit 0
+fi
