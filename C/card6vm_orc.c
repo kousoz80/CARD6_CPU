@@ -220,7 +220,6 @@ NULL
 
 /* プロトタイプ宣言  */
 void catFile( char* fname );
-void removeComment();
 void strProcess();
 void compile_s();
 void compile( int pass );
@@ -262,12 +261,6 @@ int main( int argc, char* argv[] ){
     catFile( argv[ i ] );
   }  
   fclose( hOutFile );
-  Tmp     = OutFile;
-  OutFile = InFile;
-  InFile  = Tmp;
-
-  // コメントを除去
-  removeComment();
   Tmp     = OutFile;
   OutFile = InFile;
   InFile  = Tmp;
@@ -321,32 +314,6 @@ void catFile( char* fname ){
     printf( "ファイル結合: ファイル\"%s\"を開くことができません\n", fname ) ;
   }
 
-}
-
-
-// コメント除去
-void removeComment(){
-  char buf[1024],*s;
-
-  if( ( hInFile = fopen( InFile,  "r" ) ) == NULL ){
-    printf( "コメント除去:入力エラー" ) ;
-    return;
-  }
-  if( ( hOutFile = fopen( OutFile, "w") ) == NULL ){
-    printf( "コメント除去:出力エラー" ) ;
-    fclose( hInFile );
-    return;
-  }
-  while( fgets(buf, 1024, hInFile ) != NULL ){
-
-    // コメントをすてる
-    if( ( s = strstr( buf, Comment1 ) ) != NULL ) *s = '\0';
-    if( ( s = strstr( buf, Comment2 ) ) != NULL ) *s = '\0';
-
-    fprintf( hOutFile, "%s\n", buf );
-  }
-  fclose( hInFile );
-  fclose( hOutFile );
 }
 
 
@@ -474,15 +441,8 @@ void compile_s(){
       // int型
       else  if( strncmp( s, "int ", 4 ) == 0 ){
         for( s += 4; *s == ' ' || *s == '\t'; s++ ) {}    // 空白を読み飛ばす
-        if( ( t = strstr( s, "!" ) ) != NULL ) *t = '\0';
+        if( ( t = strstr( s, "#" ) ) != NULL ) *t = '\0';
         fprintf( hOutFile, " const_plus %s.%s SIZEOF_INT\n", sname, s );
-      }
-
-      // short型
-      else   if( strncmp( s, "short ", 6 ) == 0 ){
-        for( s += 6; *s == ' ' || *s == '\t'; s++ ) {}    // 空白を読み飛ばす
-        if( ( t = strstr( s, "%" ) ) != NULL ) *t = '\0';
-        fprintf( hOutFile, " const_plus %s.%s SIZEOF_SHORT\n", sname, s );
       }
 
       // char型

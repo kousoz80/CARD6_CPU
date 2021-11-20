@@ -88,5 +88,5 @@
  const _reads  0x009b39
  const _writes  0x009ba1
  const APP_START  0x00b6ef
-// "os6.rh" header file for os6 apllication. 
+// header file for os6 apllication. 
 / org APP_START/

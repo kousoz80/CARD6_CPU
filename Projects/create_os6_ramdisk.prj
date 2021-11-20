@@ -6,7 +6,7 @@
 <y0>0</y0>
 <width>200</width>
 <height>100</height>
-<ID_maker>9</ID_maker>
+<ID_maker>14</ID_maker>
 <objectname>create_os6_ramdisk</objectname>
 <description>新規のアプリケーション</description>
 <プロパティ>
@@ -295,9 +295,9 @@ int main( int argc, char** argv ){
 <codeclip>
 <ID>_C0</ID>
 <x0>456</x0>
-<y0>251</y0>
-<width>261</width>
-<height>331</height>
+<y0>337</y0>
+<width>249</width>
+<height>232</height>
 <codetext>int ramdisk_address = 0x10000;
 int ramdisk[] = new int[0xff00];
 
@@ -308,17 +308,9 @@ String objfile[]={
   &quot;os6/obj/ls.obj&quot;,
   &quot;os6/obj/mv.obj&quot;,
   &quot;os6/obj/rm.obj&quot;,
-  &quot;os6/obj/dump.obj&quot;
-};
-
-String fname[] = {
- &quot;CAT&quot;,
- &quot;CP&quot;,
- &quot;ED&quot;,
- &quot;LS&quot;,
- &quot;MV&quot;,
- &quot;RM&quot;,
- &quot;DUMP&quot;
+  &quot;os6/obj/dump.obj&quot;,
+  &quot;os6/obj/orc.obj&quot;,
+  &quot;os6/obj/asm.obj&quot;
 };
 </codetext>
 </codeclip>
@@ -328,7 +320,7 @@ String fname[] = {
 <y0>100</y0>
 <width>358</width>
 <height>36</height>
-<codetext>// 実行可能ファイルをRAMディスクに書き込む
+<codetext>// オブジェクトファイルをメモリにセット
 public void write_comfile( String infile, String fname ){
 
 
@@ -355,7 +347,7 @@ try{
     ramdisk[ sector*SECTOR_SIZE+bufp ] = Integer.parseInt(line);
     bufp++;
   }
-
+  din.close();
   sector++;
 } catch(Exception e ){ e.printStackTrace();}
 
@@ -368,7 +360,7 @@ try{
 <y0>146</y0>
 <width>300</width>
 <height>37</height>
-<codetext>// 整数をRAMディスクに書き込む
+<codetext>// 整数をメモリにセット
 public void set_int( int address, int data ){
 
   ramdisk[ address ]   = data &amp; 0x3f;
@@ -384,8 +376,8 @@ public void set_int( int address, int data ){
 <state2>_SINIT</state2>
 <x0>110</x0>
 <y0>113</y0>
-<width>300</width>
-<height>49</height>
+<width>297</width>
+<height>48</height>
 <inconnectx0>0</inconnectx0>
 <inconnecty0>40</inconnecty0>
 <outconnectx0>0</outconnectx0>
@@ -396,27 +388,18 @@ public void set_int( int address, int data ){
 <inpinwidth>40</inpinwidth>
 <inpinheight>20</inpinheight>
 <outpintext>out()</outpintext>
-<outpinx0>90</outpinx0>
-<outpiny0>40</outpiny0>
+<outpinx0>248</outpinx0>
+<outpiny0>27</outpiny0>
 <outpinwidth>40</outpinwidth>
 <outpinheight>20</outpinheight>
 <inpinlinkcount>1</inpinlinkcount>
 <description></description>
-<codetext>// 実行可能ファイルをRAMディスクに書き込む
+<codetext>// オブジェクトファイルをメモリにセット
 
 
 for( int i = 0; i &lt; objfile.length; i++ ){
   write_comfile( objfile[i], fname[i] );
 }
-
-try{
-  BufferedWriter dout = new BufferedWriter( new FileWriter(FILESYS_NAME));
-  for( int i = 0;i&lt;ramdisk.length; i++ ){
-    dout.write((ramdisk_address+i)+&quot;\n&quot;);
-    dout.write(ramdisk[i]+&quot;\n&quot;);
-  }
-  dout.close();
-} catch( Exception e ){e.printStackTrace();}
 </codetext>
 </operation>
 <relation>
@@ -430,7 +413,7 @@ try{
 <y0>195</y0>
 <width>333</width>
 <height>38</height>
-<codetext>// 文字列をRAMディスクに書き込む
+<codetext>// 文字列をメモリにセット
 public void set_string( int address, String data ){
 
   for( int i =0; i &lt; data.length(); i++ ){
@@ -446,8 +429,8 @@ public void set_string( int address, String data ){
 </codeclip>
 <codeclip>
 <ID>_C7</ID>
-<x0>142</x0>
-<y0>268</y0>
+<x0>140</x0>
+<y0>338</y0>
 <width>299</width>
 <height>221</height>
 <codetext>String FILESYS_NAME = &quot;ramdisk.img&quot;;
@@ -479,4 +462,146 @@ int bufp = 0;
 */
 </codetext>
 </codeclip>
+<codeclip>
+<ID>_C9</ID>
+<x0>732</x0>
+<y0>352</y0>
+<width>248</width>
+<height>231</height>
+<codetext>String fname[] = {
+ &quot;CAT&quot;,
+ &quot;CP&quot;,
+ &quot;ED&quot;,
+ &quot;LS&quot;,
+ &quot;MV&quot;,
+ &quot;RM&quot;,
+ &quot;DUMP&quot;,
+ &quot;ORC&quot;,
+ &quot;ASM&quot;
+};
+</codetext>
+</codeclip>
+<operation>
+<ID>_O10</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>114</x0>
+<y0>173</y0>
+<width>295</width>
+<height>66</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>244</inpinx0>
+<inpiny0>24</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>245</outpinx0>
+<outpiny0>45</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// ヘッダファイルをメモリにセット
+
+
+
+
+
+
+
+set_int( sector*SECTOR_SIZE+NEXT_SECTOR, NONSEC );
+set_int( sector*SECTOR_SIZE+NEXT_FILE_SECTOR, NONSEC );
+if( prev_file_sector &gt;= 0 ) set_int( prev_file_sector*SECTOR_SIZE+NEXT_FILE_SECTOR, sector );
+prev_file_sector = sector;
+set_string( sector*SECTOR_SIZE+FILE_NAME, &quot;OS6.RH&quot; );
+bufp = BUFP0;
+try{
+  FileReader din = new FileReader(&quot;./include/os6.rh&quot;);
+  int ch;
+  while(true){
+    ch = din.read();
+    if( ch &lt; 0 ) break;
+    if( bufp &gt;= SECTOR_SIZE ){
+      set_int( sector*SECTOR_SIZE+NEXT_SECTOR, sector+1 );
+      sector++;
+      set_int( sector*SECTOR_SIZE+NEXT_SECTOR, NONSEC );
+      bufp = BUFP1;
+    }
+    
+int ch2=0;
+    
+    if( ch == 10 || ch == 13 ) ch2 = 61;           // 改行コード
+    else if( ch &gt;=97 &amp;&amp; ch &lt;= 122 ) ch2 = ch -64;  // &apos;a&apos;~&apos;z&apos;は大文字に変換
+    else if( ch &gt;=32 &amp;&amp; ch &lt;=91 ) ch2 = ch -32;    // &apos; &apos;~&apos;[&apos;
+    else if( ch &gt;= 92 &amp;&amp; ch&lt;95 ) ch2 = 62;         // コントロールコード(リザーブ)
+    else if( ch == 95 ) ch2 = 59;                  // &apos;_&apos;は&apos;[&apos;に変換
+    else ch2 = 0;                                  // その他はスペースに変換
+
+int ch3= ch2+32;
+if( ch2 == 61 ) ch3 = 10;
+//System.out.print( ch+ &quot;/&quot;+ch2+&quot;:&quot; +((char)ch)+((char)ch3)+&quot; &quot; );
+
+
+    ramdisk[ sector*SECTOR_SIZE+bufp ] = ch2;
+    bufp++;
+  }
+  ramdisk[ sector*SECTOR_SIZE+bufp ] = 63;
+  din.close();
+  sector++;
+} catch(Exception e ){ e.printStackTrace();}
+
+
+</codetext>
+</operation>
+<relation>
+<ID>_R11</ID>
+<pin1name>_O4</pin1name>
+<pin2name>_O10</pin2name>
+</relation>
+<operation>
+<ID>_O12</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>116</x0>
+<y0>251</y0>
+<width>300</width>
+<height>49</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>250</inpinx0>
+<inpiny0>28</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>248</outpinx0>
+<outpiny0>27</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// メモリの内容をRAMディスクに書き込む
+
+
+try{
+  BufferedWriter dout = new BufferedWriter( new FileWriter(FILESYS_NAME));
+  for( int i = 0;i&lt;ramdisk.length; i++ ){
+    dout.write((ramdisk_address+i)+&quot;\n&quot;);
+    dout.write(ramdisk[i]+&quot;\n&quot;);
+  }
+  dout.close();
+} catch( Exception e ){e.printStackTrace();}
+</codetext>
+</operation>
+<relation>
+<ID>_R13</ID>
+<pin1name>_O10</pin1name>
+<pin2name>_O12</pin2name>
+</relation>
 </xobject>

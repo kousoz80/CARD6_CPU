@@ -12,7 +12,7 @@
  const PLUS        11          // プラス記号の文字コード 
  const MINUS       13          // マイナス記号の文字コード 
  const ESC         62          // ESCキーの文字コード 
- const NaN         0x20000     // ゼロ除算が発生したことをあらわす 
+ const NaN        0x20000     // ゼロ除算が発生したことをあらわす 
  const STACK_SIZE  2000
  const SIZEOF_CHAR 1
  const SIZEOF_INT  3

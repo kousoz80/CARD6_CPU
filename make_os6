@@ -28,9 +28,17 @@ echo "compile rm.r"
 ./bin/card6vm_orc ./include/os6.rh ./os6/src/rm.r
 java -jar jar/card6vm_asm.jar  asm.s os6/obj/rm.obj
 
-echo "compile rm.r"
+echo "compile dump.r"
 ./bin/card6vm_orc ./include/os6.rh ./os6/src/dump.r
 java -jar jar/card6vm_asm.jar  asm.s os6/obj/dump.obj
+
+echo "compile orc.r"
+./bin/card6vm_orc ./include/os6.rh ./os6/src/orc.r
+java -jar jar/card6vm_asm.jar  asm.s os6/obj/orc.obj
+
+echo "compile asm.r"
+./bin/card6vm_orc ./include/os6.rh ./os6/src/asm.r
+java -jar jar/card6vm_asm.jar asm.s os6/obj/asm.obj
 
 
  rm __tmp1
