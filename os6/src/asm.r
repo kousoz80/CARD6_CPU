@@ -420,7 +420,7 @@ power2:
 power21:
   if uuu#<=0 then vvv#, end
   uuu#--
-  vvv#, 2, umul vvv#=
+  vvv#, vvv#, + vvv#=
   goto power21
 
 
