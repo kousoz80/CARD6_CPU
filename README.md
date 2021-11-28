@@ -2,7 +2,7 @@
 
 
 
-# CARD8_CPU
+# CARD6_CPU
   
 ## ・シミュレータ
   
@@ -14,21 +14,27 @@
   
 
     
-###  ・実行画面
+###  ・os6実行画面(高速エミュレータ上)
   
-![enter image description here](https://imgur.com/PyoqBlu.jpg)  
+![enter image description here](image/os6.png?raw=true)  
   
 
-### ・アセンブラソースコードの編集画面
+### ・BASIC実行画面(エミュレータ上)
   
-![enter image description here](https://imgur.com/xseChi5.jpg)  
-  
-  
-  
-### ・実行結果
+![enter image description here](image/card6basic.png?raw=true)  
   
   
-![enter image description here](https://imgur.com/23sktb7.jpg)
+  
+### ・ブロック図
+  
+  
+![enter image description here](image/card6_cpu1.jpg?raw=true)
+  
+  
+### ・回路図
+  
+  
+![enter image description here](image/card6_cpu2.png?raw=true)
   
   
 ## ・アセンブラの命令
@@ -37,13 +43,9 @@
   
    ・・・カレントアドレスを数値xxxにセットする
 
-  align16
+  equ xxx
   
-   ・・・カレントアドレスを16ワード境界に揃える
-
-  align256
-  
-   ・・・カレントアドレスを256ワード境界に揃える
+   ・・・ラベルに数値xxxを割り付ける
 
   read xxx
   
@@ -63,17 +65,17 @@
   ・・・カレントアドレスのdフィールドの内容をのH,M,Lレジスタで指定されたアドレスのデータフィールドにセットする
 
 
-  set.h
+  set(h)
   
   ・・・カレントアドレスのdフィールドの内容をHレジスタにセットする
 
 
-  set.m
+  set(m)
   
   ・・・カレントアドレスのdフィールドの内容をMレジスタにセットする
 
 
-  set.l
+  set(l)
   
   ・・・カレントアドレスのdフィールドの内容をLレジスタにセットする
 
@@ -89,24 +91,45 @@
 
   data xxx
   
-  ・・・Dレジスタに数値xxxをセットする
+  ・・・数値xxxを該当番地に1バイト(6ビット)セットする
+ 
+  
+  data.b xxx
+  
+  ・・・数値xxxを該当番地に1バイト(6ビット)セットする
   
   
-  data.h xxx
+  data.l xxx(マクロ命令)
   
-  ・・・Hレジスタに数値xxxをセットする
-  
-  
-  data.m xxx
-  
-  ・・・Mレジスタに数値xxxをセットする
+  ・・・数値xxxを該当番地に1ロングワード(3バイト)セットする
   
   
-  data.l xxx
+  move.b xxx,yyy(マクロ命令)
+   
+  ・・・1バイト(6ビット)単位でxxx番地のデータをyyy番地に移動する
   
-  ・・・Lレジスタに数値xxxをセットする
   
   
+  move.l xxx,yyy(マクロ命令)
+  
+  ・・・1ロングワード(18ビット)単位でxxx番地のデータをyyy番地に移動する
+  
+  
+  read @xxx(マクロ命令)
+  
+  ・・・xxx番地に格納されているアドレスのデータを読み込む(マクロ命令)
+  
+  
+  jmp @xxx(マクロ命令)
+  
+  ・・・xxx番地に格納されているアドレスにジャンプする
+  
+  
+  set @xxx(マクロ命令)
+  
+  ・・・xxx番地に格納されているアドレスをHMLレジスタにセットする
+  
+
 ## ・コーディング例
 
 ### ・データ移動
