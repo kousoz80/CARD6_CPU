@@ -4,13 +4,13 @@
 
 # CARD6_CPU
   
-## ・シミュレータ
+## ・エミュレータ
   
   
-  実機のない環境でも開発/実行を体験できるようにシミュレータが用意されています。
+  実機のない環境でも開発/実行を体験できるようにエミュレータが用意されています。
   
   
-  CPUのシミュレーション、アセンブル、ソースコードの編集、デバッグ等がパソコン上で行えます。
+  CPUのエミュレータ、アセンブル、ソースコードの編集、デバッグ等がパソコン上で行えます。
   
 
     
@@ -39,6 +39,16 @@
   
 ## ・アセンブラの命令
   
+  page
+  
+   ・・・カレントアドレスをページ(６４バイト)区切りにセットする
+
+  
+  section
+  
+   ・・・カレントアドレスをセクション(4096バイト)区切りにセットする
+
+
   org xxx
   
    ・・・カレントアドレスを数値xxxにセットする
@@ -46,6 +56,10 @@
   equ xxx
   
    ・・・ラベルに数値xxxを割り付ける
+
+  = xxx
+  
+   ・・・ラベルに数値xxxを割り付ける(equ命令と同等)
 
   read xxx
   
@@ -134,12 +148,15 @@
 
 ### ・データ移動
   
-  　  //　アドレスxxxの内容をアドレスyyyにコピーする
+    //　アドレスxxxの内容をアドレスyyyにコピーする
   
-  　read xxx
+    read xxx
   
-  　write yyy
+    write yyy
   
+    move.b xxx,yyy
+  
+    move.l xxx,yyy
   ・
   
   ・
@@ -165,17 +182,21 @@ yyy:
   
  　 //　アドレスxxxの値を+1する
   
-　 read 　inc_table_h
+   read 　inc_table_h
   
-　 read 　inc_table_m
+   set(h) 
   
-　 read 　xxx
+   read 　inc_table_m
   
-　 set.l
+   set(m)
   
-　 read@
+   read 　xxx
   
-　 write 　xxx
+   set(l)
+  
+   read@
+  
+   write 　xxx
   
   
   ・
@@ -195,18 +216,18 @@ xxx:
   
 inc_table_h:
   
-　 data.h　 inc_table.h
+　 data   inc_table.h
   
 
 // インクリメント演算用テーブルのアドレス(M)
   
 inc_table_m:
   
-　 data.m　 inc_table.m
+　 data  　 inc_table.m
   
 // インクリメント演算用テーブル
   
-　 align16
+  page
    
 inc_table:
   
@@ -261,15 +282,19 @@ inc_table:
     
 
   
-  　 read 　jump_table_h
+     read 　jump_table_h
   
-  　 read 　jump_table_m
+     set(h)
   
-  　 read 　xxx
+     read 　jump_table_m
   
-  　 set.l
+     set(m)
   
-  　 jump@
+     read 　xxx
+  
+     set(l)
+  
+     jump@
   
   
   ・
@@ -288,14 +313,14 @@ xxx:
   
 jump_table_h:
   
-  　data.h　 jump_table.h
+  　data　 jump_table.h
   
 jump_table_m:
   
-  　data.m　 jump_table.m
+  　data　 jump_table.m
   
-  　align16
-  
+
+  page  
 jump_table:
   
   　 jmp yyy
@@ -310,15 +335,15 @@ jump_table:
   
   xxx.h
   
-  ・・・数値xxxの24ビット中の上位8ビットを与える
+  ・・・数値xxxの18ビット中の上位6ビットを与える
   
   xxx,m
   
-  ・・・数値xxxの24ビット中の中位8ビットを与える
+  ・・・数値xxxの18ビット中の中位6ビットを与える
   
   xxx.l
   
-  ・・・数値xxxの24ビット中の下位8ビットを与える
+  ・・・数値xxxの18ビット中の下位6ビットを与える
     
   
   
