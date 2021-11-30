@@ -379,5 +379,5 @@ https://github.com/kousoz80/oregengo_R
   
 ### ・BASIC
   
-BASICの仕様は電大版Tiny BASICとほぼ同じです。
+BASIC言語の仕様は電大版Tiny BASICとほぼ同じです。
   
