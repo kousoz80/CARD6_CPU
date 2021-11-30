@@ -14,7 +14,7 @@
   
 
     
-###  ・os6実行画面(高速エミュレータ上)
+###  ・自作OS実行画面(高速エミュレータ上)
   
 ![enter image description here](image/os6.png?raw=true)  
   
