@@ -24,6 +24,8 @@
 ![enter image description here](image/card6basic.png?raw=true)  
   
   
+## ・回路の構成
+  
   
 ### ・ブロック図
   
@@ -37,7 +39,10 @@
 ![enter image description here](image/card6_cpu2.png?raw=true)
   
   
-## ・アセンブラの命令
+## ・プログラミング
+  
+  
+### ・アセンブラの命令
   
   page
   
