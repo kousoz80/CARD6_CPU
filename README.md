@@ -41,9 +41,9 @@ CARD6 CPUは極めて簡素な構成なのでCPUだけでなくコンピュー�
   
 CARD6 CPUはその簡素な構造のため、基本的にデータ移動と無条件ジャンプ以外は何もできません。
   
-そのため、演算処理や条件ジャンプを実装するため、かなり余分な手間が必要となります。
+そのため、演算処理や条件ジャンプを実装するために余分な手間を必要とします。
   
-そこで、まず仮想マシンを実装して、その仮想マシンを利用することで普通のCPUと同じようなプログラミングを可能にしています。
+そこで、まず仮想マシンを実装して、その仮想マシンを利用することで普通のCPUと同じようなプログラミングを可能としています。
   
 後述のコンパイラやOS、BASIC等は全てその仮想マシンの命令コードで記述されています。
   
@@ -58,15 +58,15 @@ CARD6 CPUはその簡素な構造のため、基本的にデータ移動と無�
   
 ![enter image description here](image/sym1.png?raw=true)
   
+  高速エミュレータを起動したとき
+  
+![enter image description here](image/fast_sym1.png?raw=true)
+  
  ### run_vm(スクリプトファイル)
   
   仮想マシンのエミュレータを起動します。
   
 ![enter image description here](image/sym_vm1.png?raw=true)
-  
-  高速エミュレータを起動したとき
-  
-![enter image description here](image/fast_sym1.png?raw=true)
   
   直接仮想マシンのエミュレーションを行いますので高速に実行できます。
   
