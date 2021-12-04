@@ -455,3 +455,5 @@ https://github.com/kousoz80/oregengo_R
   
 BASIC言語の仕様は電大版Tiny BASICとほぼ同じです。
   
+https://ja.wikipedia.org/wiki/Tiny_BASIC
+  
