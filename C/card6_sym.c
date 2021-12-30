@@ -1,5 +1,5 @@
 // "card6_sym.c" CARD6エミュレータのC言語による実装 ver 1.0
-// コンパイル: gcc -ptherad -o card6_sym card8_sym.c 
+// コンパイル: gcc -ptherad -o card6_sym card6_sym.c 
 
 
 #include <stdio.h>
