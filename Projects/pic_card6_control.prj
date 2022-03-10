@@ -1,0 +1,746 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!-- なんちゃってXML version 0.1( ObjectEditor専用 ) -->
+<xobject>
+<ID>project</ID>
+<x0>0</x0>
+<y0>0</y0>
+<width>200</width>
+<height>100</height>
+<ID_maker>83</ID_maker>
+<objectname>pic_card6_control</objectname>
+<description>新規のアプリケーション</description>
+<プロパティ>
+<ID>properties</ID>
+<LookandFeel>javax.swing.plaf.metal.MetalLookAndFeel</LookandFeel>
+<MainWinx0>0</MainWinx0>
+<MainWiny0>0</MainWiny0>
+<MainWinWidth>1024</MainWinWidth>
+<MainWinHeight>740</MainWinHeight>
+<MesgWinx0>0</MesgWinx0>
+<MesgWiny0>503</MesgWiny0>
+<MesgWinWidth>1024</MesgWinWidth>
+<MesgWinHeight>235</MesgWinHeight>
+<FileWinx0>36</FileWinx0>
+<FileWiny0>478</FileWiny0>
+<FileWinWidth>578</FileWinWidth>
+<FileWinHeight>262</FileWinHeight>
+<EditWinx0>347</EditWinx0>
+<EditWiny0>0</EditWiny0>
+<EditWinWidth>676</EditWinWidth>
+<EditWinHeight>541</EditWinHeight>
+<PropWinx0>1</PropWinx0>
+<PropWiny0>1</PropWiny0>
+<PropWinWidth>615</PropWinWidth>
+<PropWinHeight>448</PropWinHeight>
+<DividerLocation1>2</DividerLocation1>
+<DividerLocation2>2</DividerLocation2>
+<ToolBarVisible>1</ToolBarVisible>
+<ViewSourceAtCompile>0</ViewSourceAtCompile>
+<NoSourceCreate>0</NoSourceCreate>
+<JavaEditCommand>geany</JavaEditCommand>
+<JavaViewCommand></JavaViewCommand>
+<HelpCommand>xdg-open ./help/manual.html</HelpCommand>
+<ApplicationType>6</ApplicationType>
+<CompileCommand0>./compile_java</CompileCommand0>
+<RunCommand0>./run_java</RunCommand0>
+<GUIDesignerCommand0>java -jar guidsin.jar -java</GUIDesignerCommand0>
+<ImportFiles0> import java.awt.*;
+ import java.awt.event.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+import java.awt.geom.*;
+import java.awt.print.*;
+import javax.swing.border.*;
+import javax.swing.filechooser.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+import java.awt.image.BufferedImage;
+import javax.sound.sampled.*;
+
+class Starter{
+  public static void main( String args[] ){
+    %AppName% ap = new %AppName%();
+    ap.ARGS = args;
+    ap.Start();
+  }
+}
+</ImportFiles0>
+<ProgramStartupCode0> String[] ARGS;
+</ProgramStartupCode0>
+<NativeHelpCommand0></NativeHelpCommand0>
+<CompileCommand1></CompileCommand1>
+<RunCommand1></RunCommand1>
+<GUIDesignerCommand1>java -jar guidsin.jar -applet</GUIDesignerCommand1>
+<ImportFiles1> import java.awt.*;
+ import java.awt.event.*;
+ import java.applet.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+ public class javatext extends Applet {
+   %AppName% ap;
+   public void init() {
+     ap = new %AppName%();
+     ap.APPLET = this;
+     ap.Start();
+   }
+ }
+</ImportFiles1>
+<ProgramStartupCode1> Applet APPLET;
+</ProgramStartupCode1>
+<NativeHelpCommand1></NativeHelpCommand1>
+<CompileCommand2></CompileCommand2>
+<RunCommand2></RunCommand2>
+<GUIDesignerCommand2></GUIDesignerCommand2>
+<ImportFiles2>#include &lt;stdio.h&gt;
+
+void Startup();
+</ImportFiles2>
+<ProgramStartupCode2>int main(){
+ Startup();
+ %AppName%::Start();
+ }
+</ProgramStartupCode2>
+<NativeHelpCommand2></NativeHelpCommand2>
+<CompileCommand3></CompileCommand3>
+<RunCommand3></RunCommand3>
+<GUIDesignerCommand3>java -jar guidsin.jar -cpp</GUIDesignerCommand3>
+<ImportFiles3>#include &lt;stdio.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;math.h&gt;
+#include &quot;Ekagen.h&quot;
+void Startup();
+</ImportFiles3>
+<ProgramStartupCode3>void Emain(){
+Startup();
+%AppName%::Start();
+}
+</ProgramStartupCode3>
+<NativeHelpCommand3></NativeHelpCommand3>
+<MoveStep>8</MoveStep>
+<ImageEditCommand></ImageEditCommand>
+<CompilerFileName>javac.exe</CompilerFileName>
+<CompileCommand4>./compile_android Test com example test</CompileCommand4>
+<RunCommand4>./run_android Test com example test</RunCommand4>
+<GUIDesignerCommand4>java -jar guidsin.jar -android</GUIDesignerCommand4>
+<ImportFiles4>package com.example.test;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.View;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.widget.Button;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+import android.widget.EditText;
+import android.text.SpannableStringBuilder;
+import android.text.TextWatcher;
+import android.text.Editable;
+import android.graphics.Matrix;
+import android.graphics.Typeface;
+import android.graphics.RectF;
+import android.graphics.BitmapFactory;
+import java.io.*;
+ import java.net.*;
+import java.util.*;
+import java.text.SimpleDateFormat;
+import android.media.MediaPlayer;
+import android.os.Handler;
+import android.content.res.Configuration;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.app.Activity;
+import android.graphics.Color;
+
+import android.widget.AbsoluteLayout;
+import android.widget.*;
+import android.view.Gravity;
+import android.view.View.OnClickListener;
+
+import android.hardware.Camera;
+
+public class HelloWorld extends Activity {
+  public void onCreate(Bundle bundle) {
+    super.onCreate(bundle);
+    %AppName% ap = new %AppName%();
+    ap.ACTIVITY = this;
+    ap.Start();
+  }
+}
+</ImportFiles4>
+<ProgramStartupCode4>Activity ACTIVITY;
+</ProgramStartupCode4>
+<NativeHelpCommand4>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    package=&quot;com.example.test&quot;
+    android:versionCode=&quot;1&quot;
+    android:versionName=&quot;1.0&quot; &gt;
+
+    
+    
+  &lt;uses-permission android:name=&quot;android.permission.CAMERA&quot; /&gt; 
+  &lt;uses-feature android:name=&quot;android.hardware.camera&quot; /&gt; 
+  &lt;uses-feature android:name=&quot;android.hardware.usb.host&quot; /&gt; 
+  &lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot;/&gt;
+  &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt; 
+  &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+
+  &lt;uses-sdk android:minSdkVersion=&quot;3&quot; android:targetSdkVersion=&quot;21&quot;/&gt;
+  
+ 
+    &lt;application android:label=&quot;@string/app_name&quot; &gt;
+        &lt;activity
+            android:name=&quot;HelloWorld&quot;
+            android:label=&quot;@string/app_name&quot; &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+
+                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;
+</NativeHelpCommand4>
+<HtmlEditCommand></HtmlEditCommand>
+<CompileCommand5></CompileCommand5>
+<RunCommand5></RunCommand5>
+<GUIDesignerCommand5></GUIDesignerCommand5>
+<ImportFiles5></ImportFiles5>
+<ProgramStartupCode5>gosub @_PSTART
+end
+</ProgramStartupCode5>
+<NativeHelpCommand5></NativeHelpCommand5>
+<NoOptimizePin>0</NoOptimizePin>
+<CompileCommand6>./compile_card6</CompileCommand6>
+<RunCommand6></RunCommand6>
+<GUIDesignerCommand6></GUIDesignerCommand6>
+<ImportFiles6>#include &quot;sysconfig.h&quot;
+
+#include &lt;xc.h&gt;
+
+#include &quot;main.h&quot;
+#include &quot;usb_cdc_lib.h&quot;
+</ImportFiles6>
+<ProgramStartupCode6>int ARGC; char** ARGV;
+int main( int argc, char** argv ){
+  ARGC=argc;
+  ARGV=argv;
+  _PSTART();
+}
+</ProgramStartupCode6>
+<NativeHelpCommand6></NativeHelpCommand6>
+<IDF_LocalVariable5>\</IDF_LocalVariable5>
+<IDF_LocalVariable7>\</IDF_LocalVariable7>
+<CompileCommand7></CompileCommand7>
+<RunCommand7></RunCommand7>
+<GUIDesignerCommand7></GUIDesignerCommand7>
+<ImportFiles7></ImportFiles7>
+<ProgramStartupCode7></ProgramStartupCode7>
+<NativeHelpCommand7></NativeHelpCommand7>
+</プロパティ>
+<pin>
+<ID>_PSTART</ID>
+<x0>141</x0>
+<y0>335</y0>
+<width>55</width>
+<height>24</height>
+<text>Start()</text>
+<px>50</px>
+<py>50</py>
+</pin>
+<relation>
+<ID>_R64</ID>
+<pin1name>_PSTART</pin1name>
+<pin2name>_X_G67(_P68)</pin2name>
+</relation>
+<xobject>
+<ID>_X_G67</ID>
+<x0>278</x0>
+<y0>300</y0>
+<width>142</width>
+<height>59</height>
+<objectname>main</objectname>
+<description></description>
+<operation>
+<ID>_O62</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>113</x0>
+<y0>39</y0>
+<width>282</width>
+<height>59</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>39</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// USBポートで受信したコマンドを処理する
+
+
+
+
+
+    initUSBLib();
+    
+    // TODO: Initializing routines.   
+    
+    // 各I/Oピンの入出力の設定
+    TRISAbits.TRISA0 = 0;	// RA0出力
+    TRISAbits.TRISA1 = 0;	// RA1出力
+    TRISAbits.TRISA2 = 0;	// RA2出力
+    TRISAbits.TRISA3 = 0;	// RA3出力
+    TRISAbits.TRISA4 = 0;	// RA4出力
+    TRISAbits.TRISA5 = 0;	// RA5出力
+    TRISB = 0x00;			// PORTB 全て出力
+    TRISCbits.TRISC0 = 0;	// RC0出力
+    TRISD = 0xff;			// PORTD 全て入力
+    TRISEbits.TRISE0 = 0;	// RE0出力
+    TRISEbits.TRISE1 = 0;	// RE1出力
+    TRISEbits.TRISE2 = 0;	// RE2出力
+
+    // CPUをリセット
+    reset_cpu();
+    
+    while(1){
+        
+        if( isUSBReady() ){
+            uint8_t numBytesRead;
+            uint8_t p;
+
+            numBytesRead = getsUSBUSART( usbReadBuffer, sizeof(usbReadBuffer) );
+            usbWriteBuffer[0] = &apos;&gt;&apos;;
+
+            switch( usbReadBuffer[0] ){
+
+            case READ_PORT_L:
+              READ_PORT=0;
+              break;
+ 
+            case READ_PORT_H:
+              READ_PORT=1;
+              break;
+ 
+            case WRITE_PORT_L:
+              WRITE_PORT=0;
+              break;
+ 
+            case WRITE_PORT_H:
+              WRITE_PORT=1;
+              break;
+ 
+            case CPU_RESET_L:
+              CPU_RESET=0;  
+              break;
+ 
+            case CPU_RESET_H:  
+              CPU_RESET=1;  
+              break;
+ 
+            case CPU_HALT_L:
+              CPU_HALT=0;     
+              break;
+ 
+            case CPU_HALT_H:     
+              CPU_HALT=1;     
+              break;
+ 
+            case CPU_CLK_L:     
+              CPU_CLK=0;
+              break;
+ 
+            case CPU_CLK_H:      
+              CPU_CLK=1;
+              break;
+ 
+            case OSC_ENABLE_L:
+              OSC_ENABLE=0;
+              break;
+ 
+            case OSC_ENABLE_H:
+              OSC_ENABLE=1;
+              break;
+ 
+            case SERIAL_DISABLE_L:
+              SERIAL_DISABLE=0;
+              break;
+ 
+            case SERIAL_DISABLE_H:
+              SERIAL_DISABLE=1;
+              break;
+ 
+            case SERIAL_CLK_L:
+              SERIAL_CLK=0;     
+              break;
+ 
+            case SERIAL_CLK_H:     
+              SERIAL_CLK=1;     
+              break;
+ 
+            case SERIAL_DATA_L:   
+              SERIAL_DATA=0;
+              break;
+ 
+            case SERIAL_DATA_H:   
+              SERIAL_DATA=1;
+              break;
+ 
+            case SERIAL_WRITE_L:  
+              SERIAL_WRITE=0;
+              break;
+ 
+            case SERIAL_WRITE_H:  
+              SERIAL_WRITE=1;
+              break;
+ 
+            case RESET:
+              reset_cpu();
+              break;
+ 
+            case SINGLE_STEP:
+              exec_single_step();
+              break;
+ 
+            case WRITE_MEMORY:
+              if( numBytesRead &gt;= 12 ){
+                int ad = usbReadBuffer[1] + usbReadBuffer[2] * 64 + usbReadBuffer[3]  * 4096;
+                int c  = usbReadBuffer[4];
+                int a  = usbReadBuffer[5] + usbReadBuffer[6] * 64 + usbReadBuffer[7]  * 4096;
+                int r  = usbReadBuffer[8] + usbReadBuffer[9] * 64 + usbReadBuffer[10] * 4096;
+                int d  = usbReadBuffer[11];
+                write_memory( ad, c, a, r, d );
+              }
+              else usbWriteBuffer[0] = &apos;?&apos;;
+              break;
+ 
+            case SET_RESET_INTERVAL:
+              if( numBytesRead &gt;= 3 ) reset_interval = usbReadBuffer[1] + usbReadBuffer[2] * 256;
+              else usbWriteBuffer[0] = &apos;?&apos;;
+              break;
+ 
+            case SET_WAIT_INTERVAL:
+              if( numBytesRead &gt;= 3 ) wait_interval = usbReadBuffer[1] + usbReadBuffer[2] * 256;
+              else usbWriteBuffer[0] = &apos;?&apos;;
+              break;
+
+            case PORT:
+              if( numBytesRead &gt;= 2 )  p = usbReadBuffer[1]; else p = 0;
+              usbWriteBuffer[0] = port( p );
+              break;
+ 
+            default:
+              break;
+ 
+            }
+ 
+            if( numBytesRead &gt; 0 ){
+              usbWriteBuffer[1] = 13;
+              usbWriteBuffer[2] = 10;
+              usbWriteBuffer[3] = 0;
+              putUSBUSART( usbWriteBuffer, 4 );
+            }
+        }
+        CDCTxService();
+    }
+
+</codetext>
+</operation>
+<pin>
+<ID>_P68</ID>
+<text>start()</text>
+<x0>20</x0>
+<y0>20</y0>
+<width>80</width>
+<height>24</height>
+<px>1</px>
+<py>37</py>
+</pin>
+<relation>
+<ID>_R69</ID>
+<pin2name>_O62</pin2name>
+<pin1name>_P68</pin1name>
+</relation>
+<ID_maker>78</ID_maker>
+<codeclip>
+<ID>_C70</ID>
+<x0>108</x0>
+<y0>276</y0>
+<width>447</width>
+<height>115</height>
+<codetext>// 割り込み処理
+void __interrupt() mainISR (void)
+{
+    processUSBTasks();
+    
+    // TODO: Place interrupt handlers related to other peripherals.
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C76</ID>
+<x0>110</x0>
+<y0>232</y0>
+<width>344</width>
+<height>34</height>
+<codetext>// 1ワードメモリに書き込む
+void write_memory( int ad, int c, int a, int r, int d ){
+
+  // シフトレジスタに値をセットする
+  push_shift_register( ad, 0x20000 );
+  push_shift_register( c, 0x80 );
+  push_shift_register( a, 0x20000 );
+  push_shift_register( r, 0x20000 );
+  push_shift_register( d, 0x20 );
+
+  // メモリに書き込む
+  SERIAL_DISABLE = 0;
+  wait();
+  SERIAL_WRITE = 0;
+  wait();
+  SERIAL_WRITE = 1;
+  wait();
+  SERIAL_DISABLE = 1;
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C75</ID>
+<x0>110</x0>
+<y0>108</y0>
+<width>197</width>
+<height>34</height>
+<codetext>// ポートの値を読み書きする
+int port( int p ){
+  int r;
+  INPUT_PORT = p;
+  WRITE_PORT = 0;
+  wait();
+  WRITE_PORT = 1;
+  READ_PORT = 0;
+  wait();
+  r = OUTPUT_PORT;
+  READ_PORT = 1;
+  return r;
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C74</ID>
+<x0>110</x0>
+<y0>150</y0>
+<width>236</width>
+<height>34</height>
+<codetext>// CPUをリセットして停止状態にする
+void reset_cpu(){
+  int i;
+  READ_PORT = 1;
+  WRITE_PORT = 1;
+  CPU_RESET = 1;
+  CPU_HALT = 1;
+  CPU_CLK = 1;
+  OSC_ENABLE = 0;
+  SERIAL_DISABLE = 1;
+  SERIAL_CLK = 1;
+  SERIAL_DATA = 0;
+  SERIAL_WRITE = 1;
+  for( i = 0; i &lt; reset_interval; i++ ) {}
+  CPU_HALT = 0;
+  wait();
+  CPU_CLK = 0;
+  wait();
+  CPU_CLK = 1;
+  CPU_RESET = 0;
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C73</ID>
+<x0>109</x0>
+<y0>190</y0>
+<width>161</width>
+<height>32</height>
+<codetext>// シングルステップ実行
+exec_single_step(){
+  CPU_HALT = 1;
+  OSC_ENABLE = 0;
+  wait();
+  CPU_HALT = 0;
+
+  // 原クロックを４分周して読み出し/書き込み信号を作っているので
+  // ４回パルスを出す
+  wait();
+  CPU_CLK = 0;
+  wait();
+  CPU_CLK = 1;
+  wait();
+  CPU_CLK = 0;
+  wait();
+  CPU_CLK = 1;
+  wait();
+  CPU_CLK = 0;
+  wait();
+  CPU_CLK = 1;
+  wait();
+  CPU_CLK = 0;
+  wait();
+  CPU_CLK = 1;
+
+}
+</codetext>
+</codeclip>
+</xobject>
+<codeclip>
+<ID>_C68</ID>
+<x0>67</x0>
+<y0>56</y0>
+<width>594</width>
+<height>203</height>
+<codetext>// 制御信号のI/Oピン割り当て
+#define INPUT_PORT	LATD		// 入力ポート
+#define OUTPUT_PORT	PORTB		// 出力ポート
+#define READ_PORT	LATAbits.LATA0	// 出力ポートの値を読み込む 
+#define WRITE_PORT	LATAbits.LATA1	// 入力ポートに値を書き込む
+#define CPU_RESET	LATCbits.LATC0	// CPUをリセットする
+#define CPU_HALT	LATEbits.LATE0	// CPUを停止状態にする
+#define CPU_CLK	LATEbits.LATE1	// CPUクロック
+#define OSC_ENABLE	LATEbits.LATE2	// CPUクロック発振器有効
+#define SERIAL_DISABLE	LATAbits.LATA3	// シリアルレジスタ無効
+#define SERIAL_CLK	LATAbits.LATA2	// シリアルレジスタの書き込み用クロック
+#define SERIAL_DATA	LATAbits.LATA4	// シリアルレジスタの書き込み用データ
+#define SERIAL_WRITE	LATAbits.LATA5	// シリアルレジスタのデータをメモリに転送
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C70</ID>
+<x0>268</x0>
+<y0>7</y0>
+<width>363</width>
+<height>38</height>
+<codetext>// PICマイコン用CARD6 CPU 制御プログラム ver 0.1
+// 制御用マイコン：PIC18F4550
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C71</ID>
+<x0>681</x0>
+<y0>3</y0>
+<width>239</width>
+<height>635</height>
+<codetext>// コマンド
+enum {
+
+// 各制御信号をセット
+ READ_PORT_L=&apos;a&apos;,
+ READ_PORT_H,
+ WRITE_PORT_L,
+ WRITE_PORT_H,
+ CPU_RESET_L,  
+ CPU_RESET_H,  
+ CPU_HALT_L,     
+ CPU_HALT_H,     
+ CPU_CLK_L,     
+ CPU_CLK_H,      
+ OSC_ENABLE_L,
+ OSC_ENABLE_H,
+ SERIAL_DISABLE_L,
+ SERIAL_DISABLE_H,
+ SERIAL_CLK_L,     
+ SERIAL_CLK_H,     
+ SERIAL_DATA_L,   
+ SERIAL_DATA_H,   
+ SERIAL_WRITE_L,  
+ SERIAL_WRITE_H,  
+
+ // リセット
+ RESET,
+
+ // シングルステップ実行
+ SINGLE_STEP,
+
+// メモリー書き込み
+ WRITE_MEMORY,
+
+// インターバルを設定
+ SET_RESET_INTERVAL,
+ SET_WAIT_INTERVAL,
+
+// ポートの入出力
+  PORT
+
+};
+
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C72</ID>
+<x0>67</x0>
+<y0>266</y0>
+<width>199</width>
+<height>50</height>
+<codetext>//  インターバル用変数
+int reset_interval = 1000;
+int wait_interval = 10;
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C76</ID>
+<x0>144</x0>
+<y0>374</y0>
+<width>174</width>
+<height>33</height>
+<codetext>// 制御信号発生用ウェイト
+void wait(){
+  int i;
+  for( i = 0; i &lt; wait_interval; i++ ) {}
+}
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C82</ID>
+<x0>143</x0>
+<y0>416</y0>
+<width>335</width>
+<height>34</height>
+<codetext>// プログラムロード用シフトレジスタに値をセットする
+void push_shift_register( int val, int digit ){
+
+  do{
+    SERIAL_DATA = ( ( val &amp; digit ) != 0 );
+    SERIAL_CLK = 0;
+    wait();
+    SERIAL_CLK = 1;
+    wait();
+    digit &gt;&gt;= 1;
+  } while( digit &gt; 0 );
+}
+
+</codetext>
+</codeclip>
+</xobject>

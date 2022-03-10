@@ -1,0 +1,10 @@
+#!/bin/sh
+
+if test $# -eq 0
+then
+ echo "can not edit."
+ exit 0
+fi
+
+# ここに好みのエディタを起動するコマンドを記述してください
+geany $1

@@ -67,7 +67,7 @@ dout.write(&quot;edit_inifile_command=&quot;+edit_inifile_command+&quot;\n&quot;
 dout.write(&quot;asm_edit_command=&quot;+asm_edit_command+&quot;\n&quot;);
 dout.write(&quot;compile_command=&quot;+compile_command+&quot;\n&quot;);
 dout.write(&quot;assemble_command=&quot;+assemble_command+&quot;\n&quot;);
-dout.write(&quot;fast_run_command=&quot;+fast_run_command+&quot;\n&quot;);
+dout.write(&quot;terminal_command=&quot;+terminal_command+&quot;\n&quot;);
 dout.write(&quot;.entry\n&quot;);
 dout.write(entry_field.getText()+&quot;\n&quot;);
 dout.write(&quot;.break\n&quot;);
@@ -728,7 +728,7 @@ String edit_inifile_command=&quot;&quot;; // 設定ファイルを編集する�
 String asm_edit_command=&quot;&quot;;// アセンブラのソースファイルを編集するコマンド
 String compile_command=&quot;&quot;;// コンパイルコマンド
 String assemble_command=&quot;&quot;;//アセンブルコマンド
-String fast_run_command=&quot;&quot;;// 高速エミュレータ起動コマンド
+String terminal_command=&quot;&quot;;// 高速エミュレータ起動コマンド
 
 File ini_file = new File(&quot;card6_sym.ini&quot;);
 </codetext>
@@ -978,7 +978,7 @@ if( line.startsWith(&quot;edit_inifile_command=&quot;)) edit_inifile_command=lin
 if( line.startsWith(&quot;asm_edit_command=&quot;)) asm_edit_command=line.substring(17);
 if( line.startsWith(&quot;compile_command=&quot;)) compile_command=line.substring(16);
 if( line.startsWith(&quot;assemble_command=&quot;)) assemble_command=line.substring(17);
-if( line.startsWith(&quot;fast_run_command=&quot;)) fast_run_command=line.substring(17);
+if( line.startsWith(&quot;terminal_command=&quot;)) terminal_command=line.substring(17);
 }
 if(&quot;.entry&quot;.equals(line)){
   if( (line=din.readLine()) != null) {
@@ -1778,7 +1778,7 @@ dout.write(&quot;edit_inifile_command=&quot;+edit_inifile_command+&quot;\n&quot;
 dout.write(&quot;asm_edit_command=&quot;+asm_edit_command+&quot;\n&quot;);
 dout.write(&quot;compile_command=&quot;+compile_command+&quot;\n&quot;);
 dout.write(&quot;assemble_command=&quot;+assemble_command+&quot;\n&quot;);
-dout.write(&quot;fast_run_command=&quot;+fast_run_command+&quot;\n&quot;);
+dout.write(&quot;terminal_command=&quot;+terminal_command+&quot;\n&quot;);
 dout.write(&quot;.entry\n&quot;);
 dout.write(entry_field.getText()+&quot;\n&quot;);
 dout.write(&quot;.break\n&quot;);
@@ -2880,7 +2880,7 @@ din.close();
 <outpinheight>20</outpinheight>
 <inpinlinkcount>1</inpinlinkcount>
 <description></description>
-<codetext>exec_command(fast_run_command);
+<codetext>exec_command(terminal_command);
 
 
 </codetext>
@@ -3201,7 +3201,7 @@ class PrintThread extends Thread{
 </relation>
 <aobject>
 <ID>_A0</ID>
-<x0>123</x0>
+<x0>127</x0>
 <y0>0</y0>
 <width>280</width>
 <objectname>GUI</objectname>
@@ -4355,7 +4355,7 @@ fast_run_button Ifast_run_button;
  setBackground( new Color(  192, 192, 192 ));
  setHorizontalAlignment( 0 );
  setVerticalAlignment( 0 );
- setText( &quot;Fast run&quot; );
+ setText( &quot;Terminal&quot; );
  addActionListener( this );
 }
  public void actionPerformed( ActionEvent e ){ fast_run_button_clicked(); }
@@ -4776,7 +4776,7 @@ BUTTON;compile_button;Compile;196;3;60;27;51;51;51;192;192;192;Dialog;12;null;0;
 BUTTON;clr_button;CLR;258;3;33;27;51;51;51;192;192;192;Dialog;10;null;0;0;1;0;1;JButton;
 BUTTON;asm_button;assemble;78;2;74;28;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
 BUTTON;asm_edit_button;asm edit;3;2;74;28;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
-BUTTON;fast_run_button;Fast run;338;2;68;28;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
+BUTTON;fast_run_button;Terminal;338;2;68;28;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
 LABEL;LABEL2;R:;148;59;55;24;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
 LABEL;LABEL3;A:;90;59;55;24;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
 LABEL;LABEL4;C:;61;59;27;24;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;

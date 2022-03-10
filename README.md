@@ -26,15 +26,13 @@
 CARD6 CPUはプログラムカウンタやALUを持たない極めて単純な構成となっています。
   
   
-### ・ブロック図
-  
   
 ![enter image description here](image/card6_cpu1.jpg?raw=true)
   
   
-### ・CPUの動作
+## ・CPUの動作
   
-### ・回路図
+## ・回路図
   
 CARD6 CPUは極めて簡単な構成なのでCPUだけでなくコンピュータ全体が一枚の回路図に収まります。
   
