@@ -3397,7 +3397,10 @@ exec_command(reset_command);
 <codetext>// Basicを起動
 
 
-
+if( a51basic != null ){
+  cmd_in(&quot;bye&quot;);
+  try{  a51basic.ThreadBasic.join(); } catch(Exception e ){};
+}
 a51basic = new A51Basic();
 a51basic.startBasic();
 </codetext>
@@ -4033,7 +4036,7 @@ class BasicThread extends Thread{
              if( Status == QUIT ){
               cmd_new();
               disp_puts(&quot;&lt;&lt; BYE &gt;&gt;\n&quot; );_disp();
-              System.exit(0);
+              run_basic = false;
               return;
             }
             if( Status != TERMINATE ) assertError(&quot;ダイレクト実行できません&quot;);
@@ -7275,9 +7278,7 @@ int xparseInt( String s ){
 
 
 disp_exec(basic_edit_command);
-try{
-a51basic.ThreadBasic.load_basic(basic_file_name);
-} catch(Exception e){}
+cmd_in(&quot;load \&quot;&quot;+basic_file_name+&quot;\&quot;&quot;);
 </codetext>
 </operation>
 <relation>
