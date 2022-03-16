@@ -6,7 +6,7 @@
 <y0>0</y0>
 <width>200</width>
 <height>100</height>
-<ID_maker>111</ID_maker>
+<ID_maker>112</ID_maker>
 <objectname>card6_sym</objectname>
 <description>新規のアプリケーション</description>
 <codeclip>
@@ -2631,7 +2631,7 @@ int main( int argc, char** argv ){
 <y0>439</y0>
 <width>85</width>
 <height>25</height>
-<text>fast_run()</text>
+<text>terminal()</text>
 <px>0</px>
 <py>113</py>
 </pin>
@@ -3175,11 +3175,6 @@ class PrintThread extends Thread{
 </codetext>
 </codeclip>
 <relation>
-<ID>_R102</ID>
-<pin1name>_A0(_PAfast_run_button)</pin1name>
-<pin2name>_X79(_P4)</pin2name>
-</relation>
-<relation>
 <ID>_R103</ID>
 <pin1name>_A0(_PAclear_list)</pin1name>
 <pin2name>_X6(_P41)</pin2name>
@@ -3201,7 +3196,7 @@ class PrintThread extends Thread{
 </relation>
 <aobject>
 <ID>_A0</ID>
-<x0>127</x0>
+<x0>126</x0>
 <y0>0</y0>
 <width>280</width>
 <objectname>GUI</objectname>
@@ -3671,12 +3666,12 @@ XGUI x = new XGUI();
 <py>756</py>
 </pin>
 <pin>
-<ID>_PAfast_run_button</ID>
+<ID>_PAterminal_button</ID>
 <x0>0</x0>
 <y0>1202</y0>
 <width>200</width>
 <height>26</height>
-<text>fast_run_button_clicked()</text>
+<text>terminal_button_clicked()</text>
 <px>0</px>
 <py>774</py>
 </pin>
@@ -4345,11 +4340,11 @@ asm_edit_button Iasm_edit_button;
 }
  public void actionPerformed( ActionEvent e ){ asm_edit_button_clicked(); }
 }
-fast_run_button Ifast_run_button;
- class fast_run_button extends JButton implements ActionListener{
-  fast_run_button(){
+terminal_button Iterminal_button;
+ class terminal_button extends JButton implements ActionListener{
+  terminal_button(){
  setOpaque( true );
- setName(  &quot;fast_run_button&quot; );
+ setName(  &quot;terminal_button&quot; );
  setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
  setForeground( new Color(  51, 51, 51 ));
  setBackground( new Color(  192, 192, 192 ));
@@ -4358,7 +4353,7 @@ fast_run_button Ifast_run_button;
  setText( &quot;Terminal&quot; );
  addActionListener( this );
 }
- public void actionPerformed( ActionEvent e ){ fast_run_button_clicked(); }
+ public void actionPerformed( ActionEvent e ){ terminal_button_clicked(); }
 }
 LABEL2 ILABEL2;
  class LABEL2 extends JLabel{
@@ -4666,10 +4661,10 @@ LABEL53 ILABEL53;
  cnt.add( Iasm_edit_button, 0 );
  cnt.getLayout().removeLayoutComponent( Iasm_edit_button );
  Iasm_edit_button.setBounds( 3, 2, 74, 28 );
- Ifast_run_button = new fast_run_button();
- cnt.add( Ifast_run_button, 0 );
- cnt.getLayout().removeLayoutComponent( Ifast_run_button );
- Ifast_run_button.setBounds( 338, 2, 68, 28 );
+ Iterminal_button = new terminal_button();
+ cnt.add( Iterminal_button, 0 );
+ cnt.getLayout().removeLayoutComponent( Iterminal_button );
+ Iterminal_button.setBounds( 338, 2, 68, 28 );
  ILABEL2 = new LABEL2();
  cnt.add( ILABEL2, 0 );
  cnt.getLayout().removeLayoutComponent( ILABEL2 );
@@ -4776,7 +4771,7 @@ BUTTON;compile_button;Compile;196;3;60;27;51;51;51;192;192;192;Dialog;12;null;0;
 BUTTON;clr_button;CLR;258;3;33;27;51;51;51;192;192;192;Dialog;10;null;0;0;1;0;1;JButton;
 BUTTON;asm_button;assemble;78;2;74;28;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
 BUTTON;asm_edit_button;asm edit;3;2;74;28;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
-BUTTON;fast_run_button;Terminal;338;2;68;28;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
+BUTTON;terminal_button;Terminal;338;2;68;28;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
 LABEL;LABEL2;R:;148;59;55;24;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
 LABEL;LABEL3;A:;90;59;55;24;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
 LABEL;LABEL4;C:;61;59;27;24;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
@@ -4788,4 +4783,9 @@ LABEL;LABEL50;Break address;219;158;107;22;51;51;51;192;192;192;Dialog;12;null;0
 LABEL;LABEL53;entry address;1;158;110;22;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
 </レイアウト>
 </aobject>
+<relation>
+<ID>_R111</ID>
+<pin1name>_A0(_PAterminal_button)</pin1name>
+<pin2name>_X79(_P4)</pin2name>
+</relation>
 </xobject>

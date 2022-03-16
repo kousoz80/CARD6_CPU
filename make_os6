@@ -37,7 +37,7 @@ echo "compile orc.r"
 java -jar jar/card6vm_asm.jar  asm.s os6/obj/orc.obj
 
 echo "compile asm.r"
-./bin/card6vm_orc ./include/os6.rh ./os6/src/asm.r
+./bin/card6vm_orc ./include/os6.rh ./os6/src/asm2.r
 java -jar jar/card6vm_asm.jar asm.s os6/obj/asm.obj
 
 

@@ -544,10 +544,10 @@ mod:
 
 // reg_r0=reg_r1%reg_r0;
 
-         move.l reg_r1,idiv_long_in0
-         move.l reg_r0,idiv_long_in1
-         move.l @mod1,idiv_long_ret
-         jmp idiv_long
+         move.l reg_r1,udiv_long_in0
+         move.l reg_r0,udiv_long_in1
+         move.l @mod1,udiv_long_ret
+         jmp udiv_long
 @mod1:   data.l mod1
 mod1:
          move.l udiv_long_in0,reg_r0
@@ -561,21 +561,21 @@ and_long:
 
          move.b reg_r1(l),and_in0
          move.b reg_r0(l),and_in1
-         move.l @and_long1,idiv_long_ret
+         move.l @and_long1,and_ret
          jmp and
 @and_long1: data.l and_long1
 and_long1:
          move.b and_out,reg_r0(l)
          move.b reg_r1(m),and_in0
          move.b reg_r0(m),and_in1
-         move.l @and_long2,idiv_long_ret
+         move.l @and_long2,and_ret
          jmp and
 @and_long2: data.l and_long2
 and_long2:
          move.b and_out,reg_r0(m)
          move.b reg_r1(h),and_in0
          move.b reg_r0(h),and_in1
-         move.l @and_long3,idiv_long_ret
+         move.l @and_long3,and_ret
          jmp and
 @and_long3: data.l and_long3
 and_long3:

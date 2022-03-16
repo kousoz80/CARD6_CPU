@@ -576,6 +576,7 @@ void reset_cpu(){
   CPU_CLK = 0;
   wait();
   CPU_CLK = 1;
+  CPU_HALT = 1;
   CPU_RESET = 0;
 }
 </codetext>

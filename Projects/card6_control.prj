@@ -303,7 +303,7 @@ int main( int argc, char** argv ){
 //
 // card6_control &lt;デバイス名&gt; WAIT_INTERVAL  &lt;数値&gt;	... ウェイトインターバルを設定
 //
-// card6 &lt;デバイス名&gt; &lt;その他のコマンド&gt;		... 信号線を制御する(コマンド参照)  
+// card6_control &lt;デバイス名&gt; &lt;その他のコマンド&gt;		... 信号線を制御する(コマンド参照)  
 //
 // ※ &lt;デバイス名&gt;は通信ケーブルのデバイス名(例 &quot;/dev/ttyACM0&quot;)
 </codetext>
@@ -407,7 +407,8 @@ void write_memory( char* ad, char* c, char* a, char* r, char* d ){
    buf[10] = (unsigned char)xd;
    buf[11] = &apos;\0&apos;;
    write( fd, buf, 11 );
-   read( fd, buf, sizeof(buf));
+//   read( fd, buf, sizeof(buf));
+   printf(&quot;write address=0x%06x\n&quot;,xad);
    close( fd );
 }
 </codetext>
@@ -432,8 +433,10 @@ void set_reset_interval( char* time ){
    buf[2]  = (unsigned char)((xtime&gt;&gt;8) &amp; 0xff);
    buf[11] = &apos;\0&apos;;
    write( fd, buf, 3 );
-   read( fd, buf, sizeof(buf));
+//   read( fd, buf, sizeof(buf));
    close( fd );
+printf(&quot;reset interval=%d\n&quot;,xtime);
+
 }
 </codetext>
 </codeclip>
@@ -457,8 +460,10 @@ void set_wait_interval( char* time ){
    buf[2]  = (unsigned char)((xtime&gt;&gt;8) &amp; 0xff);
    buf[11] = &apos;\0&apos;;
    write( fd, buf, 3 );
-   read( fd, buf, sizeof(buf));
+//   read( fd, buf, sizeof(buf));
    close( fd );
+   
+   printf(&quot;wait interval=%d\n&quot;, xtime );
 }
 </codetext>
 </codeclip>
@@ -501,8 +506,14 @@ void control_signal( char* command ){
     else if( strcmp( command, &quot;RESET&quot; ) ==0 )			buf[0] = RESET;
     else if( strcmp( command, &quot;SINGLE_STEP&quot; ) ==0 )		buf[0] = SINGLE_STEP;
 
+    else{
+      printf(&quot;unknown command\n&quot;);
+      buf[0] = 0;
+    }
+    
+
     write( fd, buf, 1 );
-    read( fd, buf, sizeof(buf));
+//    read( fd, buf, sizeof(buf));
     close( fd );
 }
 </codetext>
@@ -550,7 +561,7 @@ void* mainThread( void* pParam ){
     write( fd, buf, 2 );
     usleep( 5000 );
     key_code0 = 63;
-    len = read( fd, buf, sizeof(buf));
+    len = read( fd, buf, 1);
     if( len &gt; 0 ){
       int c = (int)buf[0];
       if( c == 61 ) c = &apos;\n&apos;;// 改行コード
@@ -573,7 +584,7 @@ void* mainThread( void* pParam ){
 void exec_terminal(){
 
   pthread_t ThreadMain;
-  fd = open( dev, O_RDWR );
+  fd = open( dev, O_RDWR | O_NONBLOCK );
   if( fd &lt; 0 ){
     printf( &quot;can not open %s\n&quot;, dev );
     return;
