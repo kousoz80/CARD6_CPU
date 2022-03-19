@@ -6,7 +6,7 @@
 <y0>0</y0>
 <width>200</width>
 <height>100</height>
-<ID_maker>112</ID_maker>
+<ID_maker>113</ID_maker>
 <objectname>card6_sym</objectname>
 <description>新規のアプリケーション</description>
 <codeclip>
@@ -328,17 +328,17 @@ if( break_adrs !=0 &amp;&amp; (break_adrs == address) ){
 reg_c = mem_c[address];
 reg_a = mem_a[address];
 reg_r = mem_r[address];
-if( (reg_c &amp; IO)  != 0 &amp;&amp; (reg_c &amp; LD)  != 0 ){ reg_d = KeyCode0; KeyCode0 = 0x3f;}	// I/Oアクセス
-if( (reg_c &amp; IO)  == 0 &amp;&amp; (reg_c &amp; LD)  != 0 ) reg_d = mem_d[address];				// メモリアクセス
-if( (reg_c &amp; LDH) != 0 ) reg_h = mem_d[address];
-if( (reg_c &amp; LDM) != 0 ) reg_m = mem_d[address];
-if( (reg_c &amp; LDL) != 0 ) reg_l = mem_d[address];
+if( (reg_c &amp; IO)  == 0 &amp;&amp; (reg_c &amp; LD)  == 0 ){ reg_d = KeyCode0; KeyCode0 = 0x3f;}	// I/Oアクセス
+if( (reg_c &amp; IO)  != 0 &amp;&amp; (reg_c &amp; LD)  == 0 ) reg_d = mem_d[address];				// メモリアクセス
+if( (reg_c &amp; LDH) == 0 ) reg_h = mem_d[address];
+if( (reg_c &amp; LDM) == 0 ) reg_m = mem_d[address];
+if( (reg_c &amp; LDL) == 0 ) reg_l = mem_d[address];
 
 //レジスター＞メモリ(I/O) サイクル
-if( (reg_c &amp; POINTER) != 0 ) address = reg_h * 4096 + reg_m * 64 + reg_l; else address = reg_a;
-if( (reg_c &amp; RET) != 0 ) mem_a[address] = reg_r;
-if( (reg_c &amp; IO)  != 0 &amp;&amp; (reg_c &amp; ST)  != 0 ) PrtData = reg_d;			// I/Oアクセス
-if( (reg_c &amp; IO)  == 0 &amp;&amp; (reg_c &amp; ST)  != 0 ) mem_d[address] = reg_d;	// メモリアクセス
+if( (reg_c &amp; POINTER) == 0 ) address = reg_h * 4096 + reg_m * 64 + reg_l; else address = reg_a;
+if( (reg_c &amp; RET) == 0 ) mem_a[address] = reg_r;
+if( (reg_c &amp; IO)  == 0 &amp;&amp; (reg_c &amp; ST)  == 0 ) PrtData = reg_d;			// I/Oアクセス
+if( (reg_c &amp; IO)  != 0 &amp;&amp; (reg_c &amp; ST)  == 0 ) mem_d[address] = reg_d;	// メモリアクセス
 
 // レジスタ表示処理
 address_field.setText(hex6(address));
@@ -347,15 +347,7 @@ a_field.setText(hex6(reg_a));
 r_field.setText(hex6(reg_r));
 d_field.setText(hex2(reg_d));
 
-// 制御信号表示処理
-if( (reg_c &amp; IO)      != 0 ) io_label.setBackground(Color.green);      else  io_label.setBackground(Color.lightGray);
-if( (reg_c &amp; POINTER) != 0 ) pointer_label.setBackground(Color.green); else  pointer_label.setBackground(Color.lightGray);
-if( (reg_c &amp; RET)     != 0 ) ret_label.setBackground(Color.green);     else  ret_label.setBackground(Color.lightGray);
-if( (reg_c &amp; ST)      != 0 ) st_label.setBackground(Color.green);      else  st_label.setBackground(Color.lightGray);
-if( (reg_c &amp; LD)      != 0 ) ld_label.setBackground(Color.green);      else  ld_label.setBackground(Color.lightGray);
-if( (reg_c &amp; LDH)     != 0 ) ldh_label.setBackground(Color.green);     else  ldh_label.setBackground(Color.lightGray);
-if( (reg_c &amp; LDM)     != 0 ) ldm_label.setBackground(Color.green);     else  ldm_label.setBackground(Color.lightGray);
-if( (reg_c &amp; LDL)     != 0 ) ldl_label.setBackground(Color.green);     else  ldl_label.setBackground(Color.lightGray);
+update_control();
 
 // I/O同期
 io_sync();
@@ -1975,16 +1967,7 @@ a_field.setText(hex6(mem_a[address]));
 r_field.setText(hex6(mem_r[address]));
 d_field.setText(hex2(mem_d[address]));
 
-// 制御信号表示処理
-int mc = mem_c[address];
-if( (mc &amp; IO)      != 0 ) io_label.setBackground(Color.green);      else  io_label.setBackground(Color.lightGray);
-if( (mc &amp; POINTER) != 0 ) pointer_label.setBackground(Color.green); else  pointer_label.setBackground(Color.lightGray);
-if( (mc &amp; RET)     != 0 ) ret_label.setBackground(Color.green);     else  ret_label.setBackground(Color.lightGray);
-if( (mc &amp; ST)      != 0 ) st_label.setBackground(Color.green);      else  st_label.setBackground(Color.lightGray);
-if( (mc &amp; LD)      != 0 ) ld_label.setBackground(Color.green);      else  ld_label.setBackground(Color.lightGray);
-if( (mc &amp; LDH)     != 0 ) ldh_label.setBackground(Color.green);     else  ldh_label.setBackground(Color.lightGray);
-if( (mc &amp; LDM)     != 0 ) ldm_label.setBackground(Color.green);     else  ldm_label.setBackground(Color.lightGray);
-if( (mc &amp; LDL)     != 0 ) ldl_label.setBackground(Color.green);     else  ldl_label.setBackground(Color.lightGray);
+update_control();
 </codetext>
 </operation>
 <relation>
@@ -2028,16 +2011,7 @@ a_field.setText(hex6(mem_a[address]));
 r_field.setText(hex6(mem_r[address]));
 d_field.setText(hex2(mem_d[address]));
 
-// 制御信号表示処理
-int mc = mem_c[address];
-if( (mc &amp; IO)      != 0 ) io_label.setBackground(Color.green);      else  io_label.setBackground(Color.lightGray);
-if( (mc &amp; POINTER) != 0 ) pointer_label.setBackground(Color.green); else  pointer_label.setBackground(Color.lightGray);
-if( (mc &amp; RET)     != 0 ) ret_label.setBackground(Color.green);     else  ret_label.setBackground(Color.lightGray);
-if( (mc &amp; ST)      != 0 ) st_label.setBackground(Color.green);      else  st_label.setBackground(Color.lightGray);
-if( (mc &amp; LD)      != 0 ) ld_label.setBackground(Color.green);      else  ld_label.setBackground(Color.lightGray);
-if( (mc &amp; LDH)     != 0 ) ldh_label.setBackground(Color.green);     else  ldh_label.setBackground(Color.lightGray);
-if( (mc &amp; LDM)     != 0 ) ldm_label.setBackground(Color.green);     else  ldm_label.setBackground(Color.lightGray);
-if( (mc &amp; LDL)     != 0 ) ldl_label.setBackground(Color.green);     else  ldl_label.setBackground(Color.lightGray);
+update_control();
 </codetext>
 </operation>
 <relation>
@@ -2081,16 +2055,7 @@ a_field.setText(hex6(mem_a[address]));
 r_field.setText(hex6(mem_r[address]));
 d_field.setText(hex2(mem_d[address]));
 
-// 制御信号表示処理
-int mc = mem_c[address];
-if( (mc &amp; IO)      != 0 ) io_label.setBackground(Color.green);      else  io_label.setBackground(Color.lightGray);
-if( (mc &amp; POINTER) != 0 ) pointer_label.setBackground(Color.green); else  pointer_label.setBackground(Color.lightGray);
-if( (mc &amp; RET)     != 0 ) ret_label.setBackground(Color.green);     else  ret_label.setBackground(Color.lightGray);
-if( (mc &amp; ST)      != 0 ) st_label.setBackground(Color.green);      else  st_label.setBackground(Color.lightGray);
-if( (mc &amp; LD)      != 0 ) ld_label.setBackground(Color.green);      else  ld_label.setBackground(Color.lightGray);
-if( (mc &amp; LDH)     != 0 ) ldh_label.setBackground(Color.green);     else  ldh_label.setBackground(Color.lightGray);
-if( (mc &amp; LDM)     != 0 ) ldm_label.setBackground(Color.green);     else  ldm_label.setBackground(Color.lightGray);
-if( (mc &amp; LDL)     != 0 ) ldl_label.setBackground(Color.green);     else  ldl_label.setBackground(Color.lightGray);
+update_control();
 </codetext>
 </operation>
 <relation>
@@ -2131,16 +2096,8 @@ mem_a[address] = Integer.parseInt( a_field.getText(), 16 );
 mem_r[address] = Integer.parseInt( r_field.getText(), 16 );
 mem_d[address] = Integer.parseInt( d_field.getText(), 16 );
 
-// 制御信号表示処理
-int mc = mem_c[address];
-if( (mc &amp; IO)      != 0 ) io_label.setBackground(Color.green);      else  io_label.setBackground(Color.lightGray);
-if( (mc &amp; POINTER) != 0 ) pointer_label.setBackground(Color.green); else  pointer_label.setBackground(Color.lightGray);
-if( (mc &amp; RET)     != 0 ) ret_label.setBackground(Color.green);     else  ret_label.setBackground(Color.lightGray);
-if( (mc &amp; ST)      != 0 ) st_label.setBackground(Color.green);      else  st_label.setBackground(Color.lightGray);
-if( (mc &amp; LD)      != 0 ) ld_label.setBackground(Color.green);      else  ld_label.setBackground(Color.lightGray);
-if( (mc &amp; LDH)     != 0 ) ldh_label.setBackground(Color.green);     else  ldh_label.setBackground(Color.lightGray);
-if( (mc &amp; LDM)     != 0 ) ldm_label.setBackground(Color.green);     else  ldm_label.setBackground(Color.lightGray);
-if( (mc &amp; LDL)     != 0 ) ldl_label.setBackground(Color.green);     else  ldl_label.setBackground(Color.lightGray);
+
+update_control();
 </codetext>
 </operation>
 <relation>
@@ -2214,7 +2171,7 @@ static final int LDH=4;
 static final int LDM=2;
 static final int LDL=1;
 
-static final int DATA_INS = 24; // data命令
+static final int DATA_INS = 0xe7; // data命令
 </codetext>
 </codeclip>
 <relation>
@@ -2673,7 +2630,7 @@ int main( int argc, char** argv ){
 
 
  address_field.setText(&quot;000000&quot;);
- c_field.setText(&quot;00&quot;);
+ c_field.setText(&quot;ff&quot;);
  a_field.setText(&quot;000000&quot;);
  r_field.setText(&quot;000000&quot;);
  d_field.setText(&quot;00&quot;);
@@ -2788,7 +2745,7 @@ while(true){
   adrs = Integer.parseInt(line);
   if((line=din.readLine()) == null )  break;
   data = Integer.parseInt(line);
-  mem_c[adrs] = 24; // data命令
+  mem_c[adrs] = DATA_INS; // data命令
   mem_a[adrs] = 0;
   mem_r[adrs] = 0;
   mem_d[adrs] = data;
@@ -3193,6 +3150,11 @@ class PrintThread extends Thread{
 <ID>_R110</ID>
 <pin1name>_A0(_Pentry_field)</pin1name>
 <pin2name>_X19(_P75)</pin2name>
+</relation>
+<relation>
+<ID>_R111</ID>
+<pin1name>_A0(_PAterminal_button)</pin1name>
+<pin2name>_X79(_P4)</pin2name>
 </relation>
 <aobject>
 <ID>_A0</ID>
@@ -3926,7 +3888,7 @@ c_reg Ic_reg;
  setFont( new Font( &quot;Dialog&quot;, 0, 10 ));
  setForeground( new Color(  51, 51, 51 ));
  setBackground( new Color(  255, 255, 255 ));
- setText( &quot;00&quot; );
+ setText( &quot;ff&quot; );
  c_reg_created( this );
 }
 }
@@ -4739,7 +4701,7 @@ BUTTON;dec_addr;-;241;85;28;23;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JBu
 BUTTON;mem_set;WRT;272;59;42;49;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
 BUTTON;inifile_button;Edit Ini File;772;3;144;29;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
 TEXTFIELD;addr_reg;000000;2;86;57;24;51;51;51;255;255;255;Dialog;10;1;1;1;JTextField;
-TEXTFIELD;c_reg;00;61;86;29;24;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
+TEXTFIELD;c_reg;ff;61;86;29;24;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
 TEXTFIELD;a_reg;000000;91;86;56;24;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
 TEXTFIELD;r_reg;000000;148;86;56;24;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
 TEXTFIELD;d_reg;00;206;85;33;25;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
@@ -4783,9 +4745,25 @@ LABEL;LABEL50;Break address;219;158;107;22;51;51;51;192;192;192;Dialog;12;null;0
 LABEL;LABEL53;entry address;1;158;110;22;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
 </レイアウト>
 </aobject>
-<relation>
-<ID>_R111</ID>
-<pin1name>_A0(_PAterminal_button)</pin1name>
-<pin2name>_X79(_P4)</pin2name>
-</relation>
+<codeclip>
+<ID>_C112</ID>
+<x0>787</x0>
+<y0>787</y0>
+<width>201</width>
+<height>37</height>
+<codetext>// 制御信号表示処理
+public void update_control(){
+
+int mc = mem_c[address];
+if( (mc &amp; IO)      == 0 ) io_label.setBackground(Color.green);      else  io_label.setBackground(Color.lightGray);
+if( (mc &amp; POINTER) == 0 ) pointer_label.setBackground(Color.green); else  pointer_label.setBackground(Color.lightGray);
+if( (mc &amp; RET)     == 0 ) ret_label.setBackground(Color.green);     else  ret_label.setBackground(Color.lightGray);
+if( (mc &amp; ST)      == 0 ) st_label.setBackground(Color.green);      else  st_label.setBackground(Color.lightGray);
+if( (mc &amp; LD)      == 0 ) ld_label.setBackground(Color.green);      else  ld_label.setBackground(Color.lightGray);
+if( (mc &amp; LDH)     == 0 ) ldh_label.setBackground(Color.green);     else  ldh_label.setBackground(Color.lightGray);
+if( (mc &amp; LDM)     == 0 ) ldm_label.setBackground(Color.green);     else  ldm_label.setBackground(Color.lightGray);
+if( (mc &amp; LDL)     == 0 ) ldl_label.setBackground(Color.green);     else  ldl_label.setBackground(Color.lightGray);
+}
+</codetext>
+</codeclip>
 </xobject>

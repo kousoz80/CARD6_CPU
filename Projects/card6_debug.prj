@@ -1172,7 +1172,7 @@ static final int LDH=4;
 static final int LDM=2;
 static final int LDL=1;
 
-static final int DATA_INS = 24; // data命令
+static final int DATA_INS = 0xe7; // data命令
 </codetext>
 </codeclip>
 <relation>
@@ -1602,7 +1602,7 @@ int main( int argc, char** argv ){
 
 
  address_field.setText(&quot;000000&quot;);
- c_field.setText(&quot;00&quot;);
+ c_field.setText(&quot;ff&quot;);
  a_field.setText(&quot;000000&quot;);
  r_field.setText(&quot;000000&quot;);
  d_field.setText(&quot;00&quot;);
@@ -1716,7 +1716,7 @@ while(true){
   adrs = Integer.parseInt(line);
   if((line=din.readLine()) == null )  break;
   data = Integer.parseInt(line);
-  mem_c[adrs] = 24; // data命令
+  mem_c[adrs] = DATA_INS; // data命令
   mem_a[adrs] = 0;
   mem_r[adrs] = 0;
   mem_d[adrs] = data;
@@ -1963,17 +1963,18 @@ clock = Integer.parseInt( clock_field.getText() );
 reg_c = mem_c[address];
 reg_a = mem_a[address];
 reg_r = mem_r[address];
-//if( (reg_c &amp; IO)  != 0 &amp;&amp; (reg_c &amp; LD)  != 0 ){ reg_d = KeyCode0; KeyCode0 = 0x3f;}	// I/Oアクセス
-//if( (reg_c &amp; IO)  == 0 &amp;&amp; (reg_c &amp; LD)  != 0 ) reg_d = mem_d[address];				// メモリアクセス
-if( (reg_c &amp; LDH) != 0 ) reg_h = mem_d[address];
-if( (reg_c &amp; LDM) != 0 ) reg_m = mem_d[address];
-if( (reg_c &amp; LDL) != 0 ) reg_l = mem_d[address];
+//if( (reg_c &amp; IO)  == 0 &amp;&amp; (reg_c &amp; LD)  == 0 ){ reg_d = KeyCode0; KeyCode0 = 0x3f;}	// I/Oアクセス
+if( (reg_c &amp; IO)  != 0 &amp;&amp; (reg_c &amp; LD)  == 0 ) reg_d = mem_d[address];				// メモリアクセス
+if( (reg_c &amp; LDH) == 0 ) reg_h = mem_d[address];
+if( (reg_c &amp; LDM) == 0 ) reg_m = mem_d[address];
+if( (reg_c &amp; LDL) == 0 ) reg_l = mem_d[address];
 
 //レジスター＞メモリ(I/O) サイクル
-if( (reg_c &amp; POINTER) != 0 ) address = reg_h * 4096 + reg_m * 64 + reg_l; else address = reg_a;
-if( (reg_c &amp; RET) != 0 ) mem_a[address] = reg_r;
-//if( (reg_c &amp; IO)  != 0 &amp;&amp; (reg_c &amp; ST)  != 0 ) PrtData = reg_d;			// I/Oアクセス
-if( (reg_c &amp; IO)  == 0 &amp;&amp; (reg_c &amp; ST)  != 0 ) mem_d[address] = reg_d;	// メモリアクセス
+if( (reg_c &amp; POINTER) == 0 ) address = reg_h * 4096 + reg_m * 64 + reg_l; else address = reg_a;
+if( (reg_c &amp; RET) == 0 ) mem_a[address] = reg_r;
+//if( (reg_c &amp; IO)  == 0 &amp;&amp; (reg_c &amp; ST)  == 0 ) PrtData = reg_d;			// I/Oアクセス
+if( (reg_c &amp; IO)  != 0 &amp;&amp; (reg_c &amp; ST)  == 0 ) mem_d[address] = reg_d;	// メモリアクセス
+
 
 // レジスタ表示処理
 address_field.setText(hex6(address));

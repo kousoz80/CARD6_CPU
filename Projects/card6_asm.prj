@@ -334,21 +334,21 @@ String[] ins_data = {
  &quot;= \\&quot;,      &quot;2&quot;, &quot;0&quot;, &quot;-1&quot;,  &quot;END&quot;,
  &quot;.page&quot;,     &quot;3&quot;, &quot;0&quot;, &quot;-1&quot;,  &quot;END&quot;,
  &quot;.section&quot;,  &quot;4&quot;, &quot;0&quot;, &quot;-1&quot;,  &quot;END&quot;,
- &quot;read \\&quot;,   &quot;0&quot;, &quot;1&quot;, &quot;40&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;read@&quot;,     &quot;0&quot;, &quot;1&quot;, &quot;104&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;write \\&quot;,  &quot;0&quot;, &quot;1&quot;, &quot;48&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;write@&quot;,    &quot;0&quot;, &quot;1&quot;, &quot;112&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;in&quot;,        &quot;0&quot;, &quot;1&quot;, &quot;136&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;out&quot;,       &quot;0&quot;, &quot;1&quot;, &quot;144&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;set(h)&quot;,     &quot;0&quot;, &quot;1&quot;, &quot;12&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;set(m)&quot;,     &quot;0&quot;, &quot;1&quot;, &quot;10&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;set(l)&quot;,     &quot;0&quot;, &quot;1&quot;, &quot;9&quot;,   &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;jmp \\&quot;,    &quot;0&quot;, &quot;1&quot;, &quot;8&quot;,   &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;jmp@&quot;,      &quot;0&quot;, &quot;1&quot;, &quot;72&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;data \\&quot;,   &quot;0&quot;, &quot;1&quot;, &quot;24&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;0&quot;, &quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;8&quot; ,&quot;96&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;data(h) \\&quot;,&quot;0&quot;, &quot;1&quot;, &quot;28&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;0&quot;, &quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;8&quot; ,&quot;96&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;data(m) \\&quot;,&quot;0&quot;, &quot;1&quot;, &quot;26&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;0&quot;, &quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;8&quot; ,&quot;96&quot;,&quot;-1&quot;,&quot;END&quot;,
- &quot;data(l) \\&quot;,&quot;0&quot;, &quot;1&quot;, &quot;25&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;0&quot;, &quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;8&quot; ,&quot;96&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;read \\&quot;,   &quot;0&quot;, &quot;1&quot;, &quot;215&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;read@&quot;,     &quot;0&quot;, &quot;1&quot;, &quot;151&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;write \\&quot;,  &quot;0&quot;, &quot;1&quot;, &quot;207&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;write@&quot;,    &quot;0&quot;, &quot;1&quot;, &quot;143&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;in&quot;,        &quot;0&quot;, &quot;1&quot;, &quot;119&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;out&quot;,       &quot;0&quot;, &quot;1&quot;, &quot;111&quot;, &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;set(h)&quot;,     &quot;0&quot;, &quot;1&quot;, &quot;243&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;set(m)&quot;,     &quot;0&quot;, &quot;1&quot;, &quot;245&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;set(l)&quot;,     &quot;0&quot;, &quot;1&quot;, &quot;246&quot;,   &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;jmp \\&quot;,    &quot;0&quot;, &quot;1&quot;, &quot;247&quot;,   &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;24&quot;,&quot;32&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;jmp@&quot;,      &quot;0&quot;, &quot;1&quot;, &quot;183&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;24&quot;,&quot;64&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;data \\&quot;,   &quot;0&quot;, &quot;1&quot;, &quot;231&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;0&quot;, &quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;8&quot; ,&quot;96&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;data(h) \\&quot;,&quot;0&quot;, &quot;1&quot;, &quot;227&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;0&quot;, &quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;8&quot; ,&quot;96&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;data(m) \\&quot;,&quot;0&quot;, &quot;1&quot;, &quot;229&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;0&quot;, &quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;8&quot; ,&quot;96&quot;,&quot;-1&quot;,&quot;END&quot;,
+ &quot;data(l) \\&quot;,&quot;0&quot;, &quot;1&quot;, &quot;230&quot;,  &quot;0&quot;, &quot;0&quot;, &quot;0&quot;,  &quot;0&quot;, &quot;64&quot;,&quot;0&quot;, &quot;32&quot;,&quot;8&quot; ,&quot;96&quot;,&quot;-1&quot;,&quot;END&quot;,
 };
 </codetext>
 </codeclip>
@@ -983,10 +983,11 @@ BufferedReader din = new BufferedReader( new FileReader(infile) );
 <codeclip>
 <ID>_C24</ID>
 <x0>202</x0>
-<y0>8</y0>
-<width>275</width>
-<height>27</height>
-<codetext>// CARD6 ネイティブアセンブラ ver 0.1
+<y0>3</y0>
+<width>272</width>
+<height>43</height>
+<codetext>// CARD6 ネイティブアセンブラ ver 0.2
+// ver0.2 OPコードを負論理に変更
 </codetext>
 </codeclip>
 <operation>

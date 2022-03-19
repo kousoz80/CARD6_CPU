@@ -1,0 +1,6 @@
+#!/bin/sh
+
+./bin/card6_asmpp ./asm/card6_debug_test.s asm.s
+java -jar jar/card6_asm.jar -list asm.s a.out
+rm asm.s
+echo "assemble end"

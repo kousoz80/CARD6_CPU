@@ -1,5 +1,8 @@
-// "card6_sym.c" CARD6エミュレータのC言語による実装 ver 1.0
+// "card6_sym.c" CARD6エミュレータのC言語による実装 ver 1.1
 // コンパイル: gcc -ptherad -o card6_sym card6_sym.c 
+// 修正点
+// ver 1.1 OPコードを負論理に変更
+
 
 
 #include <stdio.h>
@@ -10,7 +13,7 @@
 #include <fcntl.h>
 
 #define MEM_SIZE	0x40000
-#define DATA_INS 24
+#define DATA_INS 231
 
 // I/Oポート
 int KeyCode, KeyCode0;
@@ -146,25 +149,25 @@ void exec_one_cycle(){
 int address;
 
 //レジスター＞メモリ(I/O) サイクル
-if( (reg_c & PTR) != 0 ) address = reg_h * 4096 + reg_m * 64 + reg_l; else address = reg_a;
-if( (reg_c & RET) != 0 ) mem_a[address] = reg_r;
-if( (reg_c & IO)  != 0 && (reg_c & ST)  != 0 ) PrtData = reg_d;			// I/Oアクセス
-if( (reg_c & IO)  == 0 && (reg_c & ST)  != 0 ) mem_d[address] = reg_d;	// メモリアクセス
+if( (reg_c & PTR) == 0 ) address = reg_h * 4096 + reg_m * 64 + reg_l; else address = reg_a;
+if( (reg_c & RET) == 0 ) mem_a[address] = reg_r;
+if( (reg_c & IO)  == 0 && (reg_c & ST)  == 0 ) PrtData = reg_d;			// I/Oアクセス
+if( (reg_c & IO)  != 0 && (reg_c & ST)  == 0 ) mem_d[address] = reg_d;	// メモリアクセス
 
 // メモリ(I/O)ー＞レジスタ サイクル
 reg_c = mem_c[address];
 reg_a = mem_a[address];
 reg_r = mem_r[address];
-if( (reg_c & IO)  != 0 && (reg_c & LD)  != 0 ){ // I/Oアクセス
+if( (reg_c & IO)  == 0 && (reg_c & LD)  == 0 ){ // I/Oアクセス
   reg_d= KeyCode0;
   KeyCode0 = 0x3f;
 }
-if( (reg_c & IO)  == 0 && (reg_c & LD)  != 0 ){	// メモリアクセス
+if( (reg_c & IO)  != 0 && (reg_c & LD)  == 0 ){	// メモリアクセス
 	 reg_d = mem_d[address];
 }
-if( (reg_c & LDH) != 0 ) reg_h = mem_d[address];
-if( (reg_c & LDM) != 0 ) reg_m = mem_d[address];
-if( (reg_c & LDL) != 0 ) reg_l = mem_d[address];
+if( (reg_c & LDH) == 0 ) reg_h = mem_d[address];
+if( (reg_c & LDM) == 0 ) reg_m = mem_d[address];
+if( (reg_c & LDL) == 0 ) reg_l = mem_d[address];
 
 // I/O同期
 io_sync();
@@ -177,7 +180,7 @@ void* mainThread( void* pParam ){
 
 printf("enter main thread\r\n");
 
-  reg_c = 0;
+  reg_c = 255;
   reg_a = 0;
   reg_r = 0;
   reg_d = 0;
