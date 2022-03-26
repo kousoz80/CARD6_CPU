@@ -42,7 +42,7 @@ end
 ' 1ワードメモリに書き込む
 @write_memory:
 
-  serial_disable 0
+  sdisable 0
 
   ' シフトレジスタに値をセットする
   vv=mem_c(adrs):digit=&h80:   gosub @push_shift_register
