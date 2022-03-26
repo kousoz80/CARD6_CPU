@@ -318,26 +318,26 @@ int main( int argc, char** argv ){
 enum {
 
 // 各制御信号をセット
- READ_PORT_L=&apos;a&apos;,
- READ_PORT_H,
- WRITE_PORT_L,
- WRITE_PORT_H,
+ RD_PORT_L=&apos;a&apos;,
+ RD_PORT_H,
+ WR_PORT_L,
+ WR_PORT_H,
  CPU_RESET_L,  
  CPU_RESET_H,  
  CPU_HALT_L,     
  CPU_HALT_H,     
- CPU_CLK_L,     
- CPU_CLK_H,      
+ OSC_L,     
+ OSC_H,      
  OSC_ENABLE_L,
  OSC_ENABLE_H,
- SERIAL_DISABLE_L,
- SERIAL_DISABLE_H,
- SERIAL_CLK_L,     
- SERIAL_CLK_H,     
- SERIAL_DATA_L,   
- SERIAL_DATA_H,   
- SERIAL_WRITE_L,  
- SERIAL_WRITE_H,  
+ SDISABLE_L,
+ SDISABLE_H,
+ SCLK_L,     
+ SCLK_H,     
+ SDATA_L,   
+ SDATA_H,   
+ SWRITE_L,  
+ SWRITE_H,  
 
  // リセット
  RESET,
@@ -349,8 +349,8 @@ enum {
  WRITE_MEMORY,
 
 // インターバルを設定
- SET_RESET_INTERVAL,
- SET_WAIT_INTERVAL,
+ RESET_INTERVAL,
+ WAIT_INTERVAL,
 
 // ポートの入出力
   PORT
@@ -428,7 +428,7 @@ void set_reset_interval( char* time ){
      return;
    }
    xtime = atoi( time );
-   buf[0]  = (unsigned char)SET_RESET_INTERVAL;
+   buf[0]  = (unsigned char)RESET_INTERVAL;
    buf[1]  = (unsigned char)(xtime      &amp; 0xff);
    buf[2]  = (unsigned char)((xtime&gt;&gt;8) &amp; 0xff);
    buf[11] = &apos;\0&apos;;
@@ -455,7 +455,7 @@ void set_wait_interval( char* time ){
      return;
    }
    xtime = atoi( time );
-   buf[0]  = (unsigned char)SET_WAIT_INTERVAL;
+   buf[0]  = (unsigned char)WAIT_INTERVAL;
    buf[1]  = (unsigned char)(xtime      &amp; 0xff);
    buf[2]  = (unsigned char)((xtime&gt;&gt;8) &amp; 0xff);
    buf[11] = &apos;\0&apos;;
@@ -483,26 +483,26 @@ void control_signal( char* command ){
     }
     buf[0] = 0xff;
 
-    if( strcmp( command, &quot;READ_PORT_L&quot; ) ==0 )			buf[0] = READ_PORT_L;
-    else if( strcmp( command, &quot;READ_PORT_H&quot; ) ==0 )		buf[0] = READ_PORT_H;
-    else if( strcmp( command, &quot;WRITE_PORT_L&quot; ) ==0 )	buf[0] = WRITE_PORT_L;
-    else if( strcmp( command, &quot;WRITE_PORT_H&quot; ) ==0 )	buf[0] = WRITE_PORT_H;
+    if( strcmp( command, &quot;RD_PORT_L&quot; ) ==0 )			buf[0] = RD_PORT_L;
+    else if( strcmp( command, &quot;RD_PORT_H&quot; ) ==0 )		buf[0] = RD_PORT_H;
+    else if( strcmp( command, &quot;WR_PORT_L&quot; ) ==0 )		buf[0] = WR_PORT_L;
+    else if( strcmp( command, &quot;WR_PORT_H&quot; ) ==0 )		buf[0] = WR_PORT_H;
     else if( strcmp( command, &quot;CPU_RESET_L&quot; ) ==0 )		buf[0] = CPU_RESET_L;
     else if( strcmp( command, &quot;CPU_RESET_H&quot; ) ==0 )		buf[0] = CPU_RESET_H;
     else if( strcmp( command, &quot;CPU_HALT_L&quot; ) ==0 )		buf[0] = CPU_HALT_L;
     else if( strcmp( command, &quot;CPU_HALT_H&quot; ) ==0 )		buf[0] = CPU_HALT_H;
-    else if( strcmp( command, &quot;CPU_CLK_L&quot; ) ==0 )		buf[0] = CPU_CLK_L;
-    else if( strcmp( command, &quot;CPU_CLK_H&quot; ) ==0 )		buf[0] = CPU_CLK_H;
+    else if( strcmp( command, &quot;OSC_L&quot; ) ==0 )			buf[0] = OSC_L;
+    else if( strcmp( command, &quot;OSC_H&quot; ) ==0 )			buf[0] = OSC_H;
     else if( strcmp( command, &quot;OSC_ENABLE_L&quot; ) ==0 )	buf[0] = OSC_ENABLE_L;
     else if( strcmp( command, &quot;OSC_ENABLE_H&quot; ) ==0 )	buf[0] = OSC_ENABLE_H;
-    else if( strcmp( command, &quot;SERIAL_DISABLE_L&quot; ) ==0 )buf[0] = SERIAL_DISABLE_L;
-    else if( strcmp( command, &quot;SERIAL_DISABLE_H&quot; ) ==0 )buf[0] = SERIAL_DISABLE_H;
-    else if( strcmp( command, &quot;SERIAL_CLK_L&quot; ) ==0 )	buf[0] = SERIAL_CLK_L;
-    else if( strcmp( command, &quot;SERIAL_CLK_H&quot; ) ==0 )	buf[0] = SERIAL_CLK_H;
-    else if( strcmp( command, &quot;SERIAL_DATA_L&quot; ) ==0 )	buf[0] = SERIAL_DATA_L;
-    else if( strcmp( command, &quot;SERIAL_DATA_H&quot; ) ==0 )	buf[0] = SERIAL_DATA_H;
-    else if( strcmp( command, &quot;SERIAL_WRITE_L&quot; ) ==0 )	buf[0] = SERIAL_WRITE_L;
-    else if( strcmp( command, &quot;SERIAL_WRITE_H&quot; ) ==0 )	buf[0] = SERIAL_WRITE_H;
+    else if( strcmp( command, &quot;SDISABLE_L&quot; ) ==0 )		buf[0] = SDISABLE_L;
+    else if( strcmp( command, &quot;SDISABLE_H&quot; ) ==0 )		buf[0] = SDISABLE_H;
+    else if( strcmp( command, &quot;SCLK_L&quot; ) ==0 )			buf[0] = SCLK_L;
+    else if( strcmp( command, &quot;SCLK_H&quot; ) ==0 )			buf[0] = SCLK_H;
+    else if( strcmp( command, &quot;SDATA_L&quot; ) ==0 )			buf[0] = SDATA_L;
+    else if( strcmp( command, &quot;SDATA_H&quot; ) ==0 )			buf[0] = SDATA_H;
+    else if( strcmp( command, &quot;SWRITE_L&quot; ) ==0 )		buf[0] = SWRITE_L;
+    else if( strcmp( command, &quot;SWRITE_H&quot; ) ==0 )		buf[0] = SWRITE_H;
     else if( strcmp( command, &quot;RESET&quot; ) ==0 )			buf[0] = RESET;
     else if( strcmp( command, &quot;SINGLE_STEP&quot; ) ==0 )		buf[0] = SINGLE_STEP;
 

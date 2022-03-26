@@ -1,6 +1,8 @@
 
 ' メインコントロールプログラム
 ' ダウンロードやステップ実行をおこなう
+wt=100
+rs=100
 
 ' メニューを表示
 @start_menu:
@@ -9,10 +11,11 @@ gosub @reset_cpu
 print "Menu"
 print "0:Download"
 print "1:Single Step Run"
+print "2:exit"
 print "input No";:input c
-if c=0 then @download
-if c=1 then @single_step_run
-goto @start_menu
+if c=0 then  @download
+if c=1 then  @single_step_run
+if c<>2 then @start_menu
 end
 
 
@@ -22,10 +25,9 @@ end
   input "End Address",ead
   if ead<sad then @start_menu
   for adrs=sad to ead
-  print "address:";hex$(adrs)
   gosub @write_memory
   next
-  goto @stat_menu
+  goto @start_menu
 
 
 ' シングルステップ実行
@@ -40,83 +42,91 @@ end
 ' 1ワードメモリに書き込む
 @write_memory:
 
+  serial_disable 0
+
   ' シフトレジスタに値をセットする
-  val=adrs:       digit=&h20000:gosub @push_shift_register
-  val=mem_c(adrs):digit=&h80:   gosub @push_shift_register
-  val=mem_a(adrs):digit=&h20000:gosub @push_shift_register
-  val=mem_r(adrs):digit=&h20000:gosub @push_shift_register
-  val=mem_d(adrs):digit=&h80:   gosub @push_shift_register
+  vv=mem_c(adrs):digit=&h80:   gosub @push_shift_register
+  vv=mem_a(adrs):digit=&h20000:gosub @push_shift_register
+  vv=mem_r(adrs):digit=&h20000:gosub @push_shift_register
+  vv=mem_d(adrs):digit=&h20:   gosub @push_shift_register
+  vv=adrs:       digit=&h20000:gosub @push_shift_register
+
+  ' 最後に1回シフトパルスを入れる
+  sdata 0
+  sclk 0
+  wait wt
+  sclk 1
+  wait wt
+
+  print "ad:";adrs;", c:";mem_c(adrs);", a:";mem_a(adrs);", r:";mem_r(adrs);", d:";mem_d(adrs);:input t$
 
   ' メモリに書き込む
-  serial_disable 0
+  swrite 0
   wait wt
-  serial_write 0
-  wait wt
-  serial_write 1
-  wait wt
-  serial_disable 1
+  swrite 1
+
+  sdisable 1
   return
 
 
 ' プログラムロード用シフトレジスタに値をセットする
 @push_shift_register:
-    serial_data (val and digit)<>0
-    serial_clk 0
+    sdata (vv and digit)<>0
+    sclk 0
     wait wt
-    serial_clk 1
+    sclk 1
     wait wt
     digit=digit/2
-  if digit>=1 goto @push_shift_register
+  if inkey$="s" then c$=input$(1)
+  if digit>=1 then @push_shift_register
   return
 
 
 ' CPUをリセットして停止状態にする
 @reset_cpu:
-  read_port 1
-  write_port 1
+  rd_port 1
+  wr_port 1
   cpu_reset 1
   cpu_halt 1
-  cpu_clk 1
+  osc 1
   osc_enable 0
-  serial_disable 1
-  serial_clk 1
-  serial_data 0
-  serial_write 1
+  sdisable 1
+  sclk 1
+  sdata 0
+  swrite 1
   wait rs
+  cpu_reset 0
+  cpu_halt 0
+  wait wt
+  osc 0
+  wait wt
+  osc 1
   cpu_halt 1
   wait wt
-  cpu_clk 0
-  wait wt
-  cpu_clk 1
-  cpu_reset 0
   return
 
 
 ' シングルステップ実行
 @exec_single_step:
-  cpu_halt 1
-  osc_enable 0
-  wait wt
-  cpu_halt 0
 
   ' 原クロックを４分周して読み出し/書き込み信号を作っているので
   ' ４回パルスを出す
   wait();
-  cpu_clk 0
+  osc 0
   wait wt
-  cpu_clk 1
+  osc 1
   wait wt
-  cpu_clk 0
+  osc 0
   wait wt
-  cpu_clk 1
+  osc 1
   wait wt
-  cpu_clk 0
+  osc 0
   wait wt
-  cpu_clk 1
+  osc 1
   wait wt
-  cpu_clk 0
+  osc 0
   wait wt
-  cpu_clk 1
+  osc 1
   wait wt
 
   return

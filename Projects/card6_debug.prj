@@ -6,7 +6,7 @@
 <y0>0</y0>
 <width>200</width>
 <height>100</height>
-<ID_maker>169</ID_maker>
+<ID_maker>186</ID_maker>
 <objectname>card6_debug</objectname>
 <description>新規のアプリケーション</description>
 <codeclip>
@@ -92,15 +92,16 @@ JTextField interval_field; int interval=1000;
 JTextField address_field; int address;
 JTextField no_field, name_field, start_field, end_field;
 static final int AD_SIZE = 0x1000000;
-JButton read_port_button,write_port_button;
-JButton cpu_reset_button,cpu_halt_button,cpu_clk_button;
-JButton osc_enable_button;
-JButton serial_disable_button,serial_clk_button,serial_data_button;
-JButton serial_write_button;
+JButton rd_port_button,wr_port_button;
+JButton cpu_reset_button,cpu_halt_button;
+JButton osc_button,osc_enable_button;
+JButton sdisable_button,sclk_button,sdata_button,swrite_button;
 JTextField reset_interval_box,wait_interval_box,cmd_line;
 
-boolean xread_port=true,xwrite_port=true,xcpu_reset=false,xcpu_halt=true,xcpu_clk=true;
-boolean xosc_enable=false,xserial_disable=true,xserial_clk=true,xserial_data=false,xserial_write=true;
+boolean xrd_port=true,xwr_port=true;
+boolean xcpu_reset=false,xcpu_halt=true;
+boolean xosc=true,xosc_enable=false;
+boolean xsdisable=true,xsclk=true,xsdata=false,xswrite=true;
 
 String edit_command=&quot;&quot;; // コンパイラのソースファイルを編集するコマンド
 String edit_inifile_command=&quot;&quot;; // 設定ファイルを編集するコマンド
@@ -108,26 +109,26 @@ String asm_edit_command=&quot;&quot;;// アセンブラのソースファイル�
 String compile_command=&quot;&quot;;// コンパイルコマンド
 String assemble_command=&quot;&quot;;//アセンブルコマンド
 String terminal_command=&quot;&quot;;// ターミナル起動コマンド
-String read_port_l_command = &quot;&quot;;//
-String read_port_h_command = &quot;&quot;;//
-String write_port_l_command = &quot;&quot;;//
-String write_port_h_command = &quot;&quot;;//
+String rd_port_l_command = &quot;&quot;;//
+String rd_port_h_command = &quot;&quot;;//
+String wr_port_l_command = &quot;&quot;;//
+String wr_port_h_command = &quot;&quot;;//
 String cpu_reset_l_command = &quot;&quot;;//
 String cpu_reset_h_command = &quot;&quot;;//
 String cpu_halt_l_command = &quot;&quot;;//
 String cpu_halt_h_command = &quot;&quot;;//
-String cpu_clk_l_command = &quot;&quot;;//
-String cpu_clk_h_command = &quot;&quot;;//
+String osc_l_command = &quot;&quot;;//
+String osc_h_command = &quot;&quot;;//
 String osc_enable_l_command = &quot;&quot;;//
 String osc_enable_h_command = &quot;&quot;;//
-String serial_disable_l_command = &quot;&quot;;//
-String serial_disable_h_command = &quot;&quot;;//
-String serial_clk_l_command = &quot;&quot;;//
-String serial_clk_h_command = &quot;&quot;;//
-String serial_data_l_command = &quot;&quot;;//
-String serial_data_h_command = &quot;&quot;;//
-String serial_write_l_command = &quot;&quot;;//
-String serial_write_h_command = &quot;&quot;;//
+String sdisable_l_command = &quot;&quot;;//
+String sdisable_h_command = &quot;&quot;;//
+String sclk_l_command = &quot;&quot;;//
+String sclk_h_command = &quot;&quot;;//
+String sdata_l_command = &quot;&quot;;//
+String sdata_h_command = &quot;&quot;;//
+String swrite_l_command = &quot;&quot;;//
+String swrite_h_command = &quot;&quot;;//
 String reset_command = &quot;&quot;;//
 String single_step_command = &quot;&quot;;//
 String reset_interval_command = &quot;&quot;;//
@@ -1969,13 +1970,6 @@ if( (reg_c &amp; LDH) == 0 ) reg_h = mem_d[address];
 if( (reg_c &amp; LDM) == 0 ) reg_m = mem_d[address];
 if( (reg_c &amp; LDL) == 0 ) reg_l = mem_d[address];
 
-//レジスター＞メモリ(I/O) サイクル
-if( (reg_c &amp; POINTER) == 0 ) address = reg_h * 4096 + reg_m * 64 + reg_l; else address = reg_a;
-if( (reg_c &amp; RET) == 0 ) mem_a[address] = reg_r;
-//if( (reg_c &amp; IO)  == 0 &amp;&amp; (reg_c &amp; ST)  == 0 ) PrtData = reg_d;			// I/Oアクセス
-if( (reg_c &amp; IO)  != 0 &amp;&amp; (reg_c &amp; ST)  == 0 ) mem_d[address] = reg_d;	// メモリアクセス
-
-
 // レジスタ表示処理
 address_field.setText(hex6(address));
 c_field.setText(hex2(reg_c));
@@ -1984,6 +1978,13 @@ r_field.setText(hex6(reg_r));
 d_field.setText(hex2(reg_d));
 
 update_control();
+
+//レジスター＞メモリ(I/O) サイクル
+if( (reg_c &amp; POINTER) == 0 ) address = reg_h * 4096 + reg_m * 64 + reg_l; else address = reg_a;
+if( (reg_c &amp; RET) == 0 ) mem_a[address] = reg_r;
+//if( (reg_c &amp; IO)  == 0 &amp;&amp; (reg_c &amp; ST)  == 0 ) PrtData = reg_d;			// I/Oアクセス
+if( (reg_c &amp; IO)  != 0 &amp;&amp; (reg_c &amp; ST)  == 0 ) mem_d[address] = reg_d;	// メモリアクセス
+
 
 if(load_done) exec_command(single_step_command);
 
@@ -2228,7 +2229,7 @@ class PrintThread extends Thread{
 <y0>9</y0>
 <width>215</width>
 <height>23</height>
-<text>read_port_buttin_is(JButton b)</text>
+<text>rd_port_buttin_is(JButton b)</text>
 <px>0</px>
 <py>27</py>
 </pin>
@@ -2238,7 +2239,7 @@ class PrintThread extends Thread{
 <y0>58</y0>
 <width>218</width>
 <height>23</height>
-<text>write_port_button_is(JButton b)</text>
+<text>wr_port_button_is(JButton b)</text>
 <px>0</px>
 <py>58</py>
 </pin>
@@ -2248,7 +2249,7 @@ class PrintThread extends Thread{
 <y0>18</y0>
 <width>90</width>
 <height>27</height>
-<text>read_port()</text>
+<text>rd_port()</text>
 <px>0</px>
 <py>41</py>
 </pin>
@@ -2258,7 +2259,7 @@ class PrintThread extends Thread{
 <y0>69</y0>
 <width>89</width>
 <height>28</height>
-<text>write_port()</text>
+<text>wr_port()</text>
 <px>0</px>
 <py>69</py>
 </pin>
@@ -2308,7 +2309,7 @@ class PrintThread extends Thread{
 <y0>211</y0>
 <width>196</width>
 <height>31</height>
-<text>cpu_clk_button_is(JButton b)</text>
+<text>osc_button_is(JButton b)</text>
 <px>0</px>
 <py>142</py>
 </pin>
@@ -2318,7 +2319,7 @@ class PrintThread extends Thread{
 <y0>227</y0>
 <width>60</width>
 <height>30</height>
-<text>cpu_clk()</text>
+<text>osc()</text>
 <px>0</px>
 <py>157</py>
 </pin>
@@ -2348,7 +2349,7 @@ class PrintThread extends Thread{
 <y0>321</y0>
 <width>232</width>
 <height>29</height>
-<text>serial_disable_button_is(JButton b)</text>
+<text>sdisable_button_is(JButton b)</text>
 <px>0</px>
 <py>204</py>
 </pin>
@@ -2358,7 +2359,7 @@ class PrintThread extends Thread{
 <y0>341</y0>
 <width>99</width>
 <height>26</height>
-<text>serial_disable()</text>
+<text>sdisable()</text>
 <px>0</px>
 <py>219</py>
 </pin>
@@ -2368,7 +2369,7 @@ class PrintThread extends Thread{
 <y0>372</y0>
 <width>209</width>
 <height>30</height>
-<text>serial_clk_button_is(JButton b)</text>
+<text>sclk_button_is(JButton b)</text>
 <px>0</px>
 <py>240</py>
 </pin>
@@ -2378,7 +2379,7 @@ class PrintThread extends Thread{
 <y0>388</y0>
 <width>81</width>
 <height>30</height>
-<text>serial_clk()</text>
+<text>sclk()</text>
 <px>0</px>
 <py>257</py>
 </pin>
@@ -2388,7 +2389,7 @@ class PrintThread extends Thread{
 <y0>420</y0>
 <width>228</width>
 <height>30</height>
-<text>serial_data_button_is(JButton b)</text>
+<text>sdata_button_is(JButton b)</text>
 <px>0</px>
 <py>275</py>
 </pin>
@@ -2398,7 +2399,7 @@ class PrintThread extends Thread{
 <y0>440</y0>
 <width>84</width>
 <height>30</height>
-<text>serial_data()</text>
+<text>sdata()</text>
 <px>0</px>
 <py>292</py>
 </pin>
@@ -2408,7 +2409,7 @@ class PrintThread extends Thread{
 <y0>473</y0>
 <width>224</width>
 <height>27</height>
-<text>serial_write_button_is(JButton b)</text>
+<text>swrite_button_is(JButton b)</text>
 <px>0</px>
 <py>310</py>
 </pin>
@@ -2418,7 +2419,7 @@ class PrintThread extends Thread{
 <y0>493</y0>
 <width>91</width>
 <height>29</height>
-<text>serial_write()</text>
+<text>swrite()</text>
 <px>0</px>
 <py>329</py>
 </pin>
@@ -2496,7 +2497,7 @@ class PrintThread extends Thread{
 <outpinheight>20</outpinheight>
 <inpinlinkcount>1</inpinlinkcount>
 <description></description>
-<codetext>read_port_button = b;
+<codetext>rd_port_button = b;
 </codetext>
 </operation>
 <relation>
@@ -2532,8 +2533,8 @@ class PrintThread extends Thread{
 
 
 
-if(xread_port) exec_command(read_port_l_command); else exec_command(read_port_h_command);
-xread_port= !xread_port;
+if(xrd_port) exec_command(rd_port_l_command); else exec_command(rd_port_h_command);
+xrd_port= !xrd_port;
 update_control();
 </codetext>
 </operation>
@@ -2566,7 +2567,7 @@ update_control();
 <outpinheight>20</outpinheight>
 <inpinlinkcount>1</inpinlinkcount>
 <description></description>
-<codetext>write_port_button = b;</codetext>
+<codetext>wr_port_button = b;</codetext>
 </operation>
 <relation>
 <ID>_R31</ID>
@@ -2659,7 +2660,7 @@ update_control();
 <outpinheight>20</outpinheight>
 <inpinlinkcount>1</inpinlinkcount>
 <description></description>
-<codetext>cpu_clk_button = b;</codetext>
+<codetext>osc_button = b;</codetext>
 </operation>
 <relation>
 <ID>_R37</ID>
@@ -2721,7 +2722,7 @@ update_control();
 <outpinheight>20</outpinheight>
 <inpinlinkcount>1</inpinlinkcount>
 <description></description>
-<codetext>serial_disable_button = b;</codetext>
+<codetext>sdisable_button = b;</codetext>
 </operation>
 <relation>
 <ID>_R41</ID>
@@ -2752,7 +2753,7 @@ update_control();
 <outpinheight>20</outpinheight>
 <inpinlinkcount>1</inpinlinkcount>
 <description></description>
-<codetext>serial_clk_button = b;</codetext>
+<codetext>sclk_button = b;</codetext>
 </operation>
 <relation>
 <ID>_R43</ID>
@@ -2783,7 +2784,7 @@ update_control();
 <outpinheight>20</outpinheight>
 <inpinlinkcount>1</inpinlinkcount>
 <description></description>
-<codetext>serial_data_button = b;</codetext>
+<codetext>sdata_button = b;</codetext>
 </operation>
 <relation>
 <ID>_R45</ID>
@@ -2814,7 +2815,7 @@ update_control();
 <outpinheight>20</outpinheight>
 <inpinlinkcount>1</inpinlinkcount>
 <description></description>
-<codetext>serial_write_button = b;</codetext>
+<codetext>swrite_button = b;</codetext>
 </operation>
 <relation>
 <ID>_R47</ID>
@@ -2911,8 +2912,8 @@ update_control();
 
 
 
-if(xwrite_port) exec_command(write_port_l_command); else exec_command(write_port_h_command);
-xwrite_port = !xwrite_port;
+if(xwr_port) exec_command(wr_port_l_command); else exec_command(wr_port_h_command);
+xwr_port = !xwr_port;
 update_control();
 </codetext>
 </operation>
@@ -3016,8 +3017,8 @@ update_control();
 
 
 
-if(xcpu_clk) exec_command(cpu_clk_l_command); else exec_command(cpu_clk_h_command);
-xcpu_clk = !xcpu_clk;
+if(xosc) exec_command(osc_l_command); else exec_command(osc_h_command);
+xosc = !xosc;
 update_control();
 </codetext>
 </operation>
@@ -3082,8 +3083,8 @@ update_control();
 
 
 
-if(xserial_disable) exec_command(serial_disable_l_command); else exec_command(serial_disable_h_command);
-xserial_disable = !xserial_disable;
+if(xsdisable) exec_command(sdisable_l_command); else exec_command(sdisable_h_command);
+xsdisable = !xsdisable;
 update_control();
 </codetext>
 </operation>
@@ -3115,8 +3116,8 @@ update_control();
 
 
 
-if(xserial_clk) exec_command(serial_clk_l_command); else exec_command(serial_clk_h_command);
-xserial_clk = !xserial_clk;
+if(xsclk) exec_command(sclk_l_command); else exec_command(sclk_h_command);
+xsclk = !xsclk;
 update_control();
 </codetext>
 </operation>
@@ -3148,8 +3149,8 @@ update_control();
 
 
 
-if(xserial_data) exec_command(serial_data_l_command); else exec_command(serial_data_h_command);
-xserial_data = !xserial_data;
+if(xsdata) exec_command(sdata_l_command); else exec_command(sdata_h_command);
+xsdata = !xsdata;
 update_control();
 </codetext>
 </operation>
@@ -3181,8 +3182,8 @@ update_control();
 
 
 
-if(xserial_write) exec_command(serial_write_l_command); else exec_command(serial_write_h_command);
-xserial_write = !xserial_write;
+if(xswrite) exec_command(swrite_l_command); else exec_command(swrite_h_command);
+xswrite = !xswrite;
 update_control();
 </codetext>
 </operation>
@@ -3826,16 +3827,16 @@ String Command[] ={
   &quot;play&quot;,
   &quot;send&quot;,
 
-  &quot;read_port&quot;,
-  &quot;write_port&quot;,
+  &quot;rd_port&quot;,
+  &quot;wr_port&quot;,
   &quot;cpu_reset&quot;,
   &quot;cpu_halt&quot;,
-  &quot;cpu_clk&quot;,
+  &quot;osc&quot;,
   &quot;osc_enable&quot;,
-  &quot;serial_disable&quot;,
-  &quot;serial_clk&quot;,
-  &quot;serial_data&quot;,
-  &quot;serial_write&quot;,
+  &quot;sdisable&quot;,
+  &quot;sclk&quot;,
+  &quot;sdata&quot;,
+  &quot;swrite&quot;,
   &quot;reset&quot;,
   &quot;reset_interval&quot;,
   &quot;wait_interval&quot;,
@@ -4494,16 +4495,16 @@ int doBasicCommand( int cmd ) throws BasicError{
   case 36: return cmd_play();
   case 37: return cmd_send();
 
-  case 38: return cmd_read_port();
-  case 39: return cmd_write_port();
+  case 38: return cmd_rd_port();
+  case 39: return cmd_wr_port();
   case 40: return cmd_cpu_reset();
   case 41: return cmd_cpu_halt();
-  case 42: return cmd_cpu_clk();
+  case 42: return cmd_osc();
   case 43: return cmd_osc_enable();
-  case 44: return cmd_serial_disable();
-  case 45: return cmd_serial_clk();
-  case 46: return cmd_serial_data();
-  case 47: return cmd_serial_write();
+  case 44: return cmd_sdisable();
+  case 45: return cmd_sclk();
+  case 46: return cmd_sdata();
+  case 47: return cmd_swrite();
   case 48: return cmd_reset();
   case 49: return cmd_reset_interval();
   case 50: return cmd_wait_interval();
@@ -5623,20 +5624,20 @@ int cmd_send() throws BasicError{
 
 
 // 制御信号コマンド
-int cmd_read_port() throws BasicError{
+int cmd_rd_port() throws BasicError{
   clear_value();
   eval_expression();
-  xread_port = (int)get_number() != 0;
-  if( xread_port ) disp_exec(read_port_h_command); else disp_exec(read_port_l_command); 
+  xrd_port = (int)get_number() != 0;
+  if( xrd_port ) disp_exec(rd_port_h_command); else disp_exec(rd_port_l_command); 
   update_control();
   return DONE;
 }
 
-int cmd_write_port() throws BasicError{
+int cmd_wr_port() throws BasicError{
   clear_value();
   eval_expression();
-  xwrite_port = (int)get_number() != 0;
-  if( xwrite_port ) disp_exec(write_port_h_command); else disp_exec(write_port_l_command); 
+  xwr_port = (int)get_number() != 0;
+  if( xwr_port ) disp_exec(wr_port_h_command); else disp_exec(wr_port_l_command); 
   update_control();
   return DONE;
 }
@@ -5659,11 +5660,11 @@ int cmd_cpu_halt() throws BasicError{
   return DONE;
 }
 
-int cmd_cpu_clk() throws BasicError{
+int cmd_osc() throws BasicError{
   clear_value();
   eval_expression();
-  xcpu_clk = (int)get_number() != 0;
-  if( xcpu_clk ) disp_exec(cpu_clk_h_command); else disp_exec(cpu_clk_l_command); 
+  xosc = (int)get_number() != 0;
+  if( xosc ) disp_exec(osc_h_command); else disp_exec(osc_l_command); 
   update_control();
   return DONE;
 }
@@ -5677,38 +5678,38 @@ int cmd_osc_enable() throws BasicError{
   return DONE;
 }
 
-int cmd_serial_disable() throws BasicError{
+int cmd_sdisable() throws BasicError{
   clear_value();
   eval_expression();
-  xserial_disable = (int)get_number() != 0;
-  if( xserial_disable ) disp_exec(serial_disable_h_command); else disp_exec(serial_disable_l_command); 
+  xsdisable = (int)get_number() != 0;
+  if( xsdisable ) disp_exec(sdisable_h_command); else disp_exec(sdisable_l_command); 
   update_control();
   return DONE;
 }
 
-int cmd_serial_clk() throws BasicError{
+int cmd_sclk() throws BasicError{
   clear_value();
   eval_expression();
-  xserial_clk = (int)get_number() != 0;
-  if( xserial_clk ) disp_exec(serial_clk_h_command); else disp_exec(serial_clk_l_command); 
+  xsclk = (int)get_number() != 0;
+  if( xsclk ) disp_exec(sclk_h_command); else disp_exec(sclk_l_command); 
   update_control();
   return DONE;
 }
 
-int cmd_serial_data() throws BasicError{
+int cmd_sdata() throws BasicError{
   clear_value();
   eval_expression();
-  xserial_data = (int)get_number() != 0;
-  if( xserial_data ) disp_exec(serial_data_h_command); else disp_exec(serial_data_l_command); 
+  xsdata = (int)get_number() != 0;
+  if( xsdata ) disp_exec(sdata_h_command); else disp_exec(sdata_l_command); 
   update_control();
   return DONE;
 }
 
-int cmd_serial_write() throws BasicError{
+int cmd_swrite() throws BasicError{
   clear_value();
   eval_expression();
-  xserial_write = (int)get_number() != 0;
-  if( xserial_write ) disp_exec(serial_write_h_command); else disp_exec(serial_write_l_command); 
+  xswrite = (int)get_number() != 0;
+  if( xswrite ) disp_exec(swrite_h_command); else disp_exec(swrite_l_command); 
   update_control();
   return DONE;
 }
@@ -7388,39 +7389,39 @@ try{
 
 BufferedReader din = new BufferedReader( new FileReader(ini_file));
 while( ((line=din.readLine())!=null)){
-if( line.startsWith(&quot;edit_command=&quot;)) edit_command=line.substring(13);
-if( line.startsWith(&quot;edit_inifile_command=&quot;)) edit_inifile_command=line.substring(21);
-if( line.startsWith(&quot;asm_edit_command=&quot;)) asm_edit_command=line.substring(17);
-if( line.startsWith(&quot;compile_command=&quot;)) compile_command=line.substring(16);
-if( line.startsWith(&quot;assemble_command=&quot;)) assemble_command=line.substring(17);
-if( line.startsWith(&quot;terminal_command=&quot;)) terminal_command=line.substring(17);
-if( line.startsWith(&quot;read_port_l_command=&quot;))  read_port_l_command=line.substring(20);//
-if( line.startsWith(&quot;read_port_h_command=&quot;))  read_port_h_command=line.substring(20);//
-if( line.startsWith(&quot;write_port_l_command=&quot;))  write_port_l_command=line.substring(21);//
-if( line.startsWith(&quot;write_port_h_command=&quot;))  write_port_h_command=line.substring(21);//
-if( line.startsWith(&quot;cpu_reset_l_command=&quot;))  cpu_reset_l_command=line.substring(20);//
-if( line.startsWith(&quot;cpu_reset_h_command=&quot;))  cpu_reset_h_command=line.substring(20);//
-if( line.startsWith(&quot;cpu_halt_l_command=&quot;))  cpu_halt_l_command=line.substring(19);//
-if( line.startsWith(&quot;cpu_halt_h_command=&quot;))  cpu_halt_h_command=line.substring(19);//
-if( line.startsWith(&quot;cpu_clk_l_command=&quot;))  cpu_clk_l_command=line.substring(18);//
-if( line.startsWith(&quot;cpu_clk_h_command=&quot;))  cpu_clk_h_command=line.substring(18);//
-if( line.startsWith(&quot;osc_enable_l_command=&quot;))  osc_enable_l_command=line.substring(21);//
-if( line.startsWith(&quot;osc_enable_h_command=&quot;))  osc_enable_h_command=line.substring(21);//
-if( line.startsWith(&quot;serial_disable_l_command=&quot;))  serial_disable_l_command=line.substring(25);//
-if( line.startsWith(&quot;serial_disable_h_command=&quot;))  serial_disable_h_command=line.substring(25);//
-if( line.startsWith(&quot;serial_clk_l_command=&quot;))  serial_clk_l_command=line.substring(21);//
-if( line.startsWith(&quot;serial_clk_h_command=&quot;))  serial_clk_h_command=line.substring(21);//
-if( line.startsWith(&quot;serial_data_l_command=&quot;))  serial_data_l_command=line.substring(22);//
-if( line.startsWith(&quot;serial_data_h_command=&quot;))  serial_data_h_command=line.substring(22);//
-if( line.startsWith(&quot;serial_write_l_command=&quot;))  serial_write_l_command=line.substring(23);//
-if( line.startsWith(&quot;serial_write_h_command=&quot;))  serial_write_h_command=line.substring(23);//
-if( line.startsWith(&quot;reset_command=&quot;))  reset_command=line.substring(14);//
-if( line.startsWith(&quot;single_step_command=&quot;))  single_step_command=line.substring(20);//
-if( line.startsWith(&quot;reset_interval_command=&quot;))  reset_interval_command=line.substring(23);//
+if( line.startsWith(&quot;edit_command=&quot;))			edit_command=line.substring(13);
+if( line.startsWith(&quot;edit_inifile_command=&quot;))	edit_inifile_command=line.substring(21);
+if( line.startsWith(&quot;asm_edit_command=&quot;))		asm_edit_command=line.substring(17);
+if( line.startsWith(&quot;compile_command=&quot;))		compile_command=line.substring(16);
+if( line.startsWith(&quot;assemble_command=&quot;))		assemble_command=line.substring(17);
+if( line.startsWith(&quot;terminal_command=&quot;))		terminal_command=line.substring(17);
+if( line.startsWith(&quot;rd_port_l_command=&quot;))		rd_port_l_command=line.substring(18);//
+if( line.startsWith(&quot;rd_port_h_command=&quot;))		rd_port_h_command=line.substring(18);//
+if( line.startsWith(&quot;wr_port_l_command=&quot;))		wr_port_l_command=line.substring(18);//
+if( line.startsWith(&quot;wr_port_h_command=&quot;))		wr_port_h_command=line.substring(18);//
+if( line.startsWith(&quot;cpu_reset_l_command=&quot;))	cpu_reset_l_command=line.substring(20);//
+if( line.startsWith(&quot;cpu_reset_h_command=&quot;))	cpu_reset_h_command=line.substring(20);//
+if( line.startsWith(&quot;cpu_halt_l_command=&quot;))		cpu_halt_l_command=line.substring(19);//
+if( line.startsWith(&quot;cpu_halt_h_command=&quot;))		cpu_halt_h_command=line.substring(19);//
+if( line.startsWith(&quot;osc_l_command=&quot;))  		osc_l_command=line.substring(14);//
+if( line.startsWith(&quot;osc_h_command=&quot;))			osc_h_command=line.substring(14);//
+if( line.startsWith(&quot;osc_enable_l_command=&quot;))	osc_enable_l_command=line.substring(21);//
+if( line.startsWith(&quot;osc_enable_h_command=&quot;))	osc_enable_h_command=line.substring(21);//
+if( line.startsWith(&quot;sdisable_l_command=&quot;))		sdisable_l_command=line.substring(19);//
+if( line.startsWith(&quot;sdisable_h_command=&quot;))		sdisable_h_command=line.substring(19);//
+if( line.startsWith(&quot;sclk_l_command=&quot;))			sclk_l_command=line.substring(15);//
+if( line.startsWith(&quot;sclk_h_command=&quot;))			sclk_h_command=line.substring(15);//
+if( line.startsWith(&quot;sdata_l_command=&quot;))		sdata_l_command=line.substring(16);//
+if( line.startsWith(&quot;sdata_h_command=&quot;))		sdata_h_command=line.substring(16);//
+if( line.startsWith(&quot;swrite_l_command=&quot;))		swrite_l_command=line.substring(17);//
+if( line.startsWith(&quot;swrite_h_command=&quot;))		swrite_h_command=line.substring(17);//
+if( line.startsWith(&quot;reset_command=&quot;))			reset_command=line.substring(14);//
+if( line.startsWith(&quot;single_step_command=&quot;))	single_step_command=line.substring(20);//
+if( line.startsWith(&quot;reset_interval_command=&quot;))	reset_interval_command=line.substring(23);//
 if( line.startsWith(&quot;wait_interval_command=&quot;))  wait_interval_command=line.substring(22);//
-if( line.startsWith(&quot;write_memory_command=&quot;))  write_memory_command=line.substring(21);//
-if( line.startsWith(&quot;basic_edit_command=&quot;))  basic_edit_command=line.substring(19);
-if( line.startsWith(&quot;basic_file_name=&quot;))  basic_file_name=line.substring(16);
+if( line.startsWith(&quot;write_memory_command=&quot;))	write_memory_command=line.substring(21);//
+if( line.startsWith(&quot;basic_edit_command=&quot;))		basic_edit_command=line.substring(19);
+if( line.startsWith(&quot;basic_file_name=&quot;))		basic_file_name=line.substring(16);
 }
 din.close();
 } catch( Exception e ){}
@@ -7493,58 +7494,37 @@ exec_command(edit_inifile_command);
 <y0>643</y0>
 <width>201</width>
 <height>34</height>
-<codetext>// 表示更新処理
+<codetext>// 制御信号表示処理
 public void update_control(){
 
-if( (reg_c &amp; IO)      != 0 ) io_label.setBackground(Color.green);      else  io_label.setBackground(Color.lightGray);
-if( (reg_c &amp; POINTER) != 0 ) pointer_label.setBackground(Color.green); else  pointer_label.setBackground(Color.lightGray);
-if( (reg_c &amp; RET)     != 0 ) ret_label.setBackground(Color.green);     else  ret_label.setBackground(Color.lightGray);
-if( (reg_c &amp; ST)      != 0 ) st_label.setBackground(Color.green);      else  st_label.setBackground(Color.lightGray);
-if( (reg_c &amp; LD)      != 0 ) ld_label.setBackground(Color.green);      else  ld_label.setBackground(Color.lightGray);
-if( (reg_c &amp; LDH)     != 0 ) ldh_label.setBackground(Color.green);     else  ldh_label.setBackground(Color.lightGray);
-if( (reg_c &amp; LDM)     != 0 ) ldm_label.setBackground(Color.green);     else  ldm_label.setBackground(Color.lightGray);
-if( (reg_c &amp; LDL)     != 0 ) ldl_label.setBackground(Color.green);     else  ldl_label.setBackground(Color.lightGray);
-
+int mc = mem_c[address];
+if( (mc &amp; IO)      == 0 ) io_label.setBackground(Color.green);      else  io_label.setBackground(Color.lightGray);
+if( (mc &amp; POINTER) == 0 ) pointer_label.setBackground(Color.green); else  pointer_label.setBackground(Color.lightGray);
+if( (mc &amp; RET)     == 0 ) ret_label.setBackground(Color.green);     else  ret_label.setBackground(Color.lightGray);
+if( (mc &amp; ST)      == 0 ) st_label.setBackground(Color.green);      else  st_label.setBackground(Color.lightGray);
+if( (mc &amp; LD)      == 0 ) ld_label.setBackground(Color.green);      else  ld_label.setBackground(Color.lightGray);
+if( (mc &amp; LDH)     == 0 ) ldh_label.setBackground(Color.green);     else  ldh_label.setBackground(Color.lightGray);
+if( (mc &amp; LDM)     == 0 ) ldm_label.setBackground(Color.green);     else  ldm_label.setBackground(Color.lightGray);
+if( (mc &amp; LDL)     == 0 ) ldl_label.setBackground(Color.green);     else  ldl_label.setBackground(Color.lightGray);
 
 if(load_done) run_button.setForeground(Color.red); else run_button.setForeground(Color.black);
 
-if(xread_port) read_port_button.setForeground(Color.red); else read_port_button.setForeground(Color.black);
-if(xwrite_port) write_port_button.setForeground(Color.red); else write_port_button.setForeground(Color.black);
-if(xcpu_reset) cpu_reset_button.setForeground(Color.red); else cpu_reset_button.setForeground(Color.black);
-if(xcpu_halt) cpu_halt_button.setForeground(Color.red); else cpu_halt_button.setForeground(Color.black);
-if(xcpu_clk) cpu_clk_button.setForeground(Color.red); else cpu_clk_button.setForeground(Color.black);
-if(xosc_enable) osc_enable_button.setForeground(Color.red); else osc_enable_button.setForeground(Color.black);
-if(xserial_disable) serial_disable_button.setForeground(Color.red); else serial_disable_button.setForeground(Color.black);
-if(xserial_clk) serial_clk_button.setForeground(Color.red); else serial_clk_button.setForeground(Color.black);
-if(xserial_data) serial_data_button.setForeground(Color.red); else serial_data_button.setForeground(Color.black);
-if(xserial_write) serial_write_button.setForeground(Color.red); else serial_write_button.setForeground(Color.black);
-
+if(!xrd_port)	rd_port_button.setForeground(Color.green);	else rd_port_button.setForeground(Color.black);
+if(!xwr_port)	wr_port_button.setForeground(Color.green);	else wr_port_button.setForeground(Color.black);
+if(xcpu_reset)	cpu_reset_button.setForeground(Color.red);	else cpu_reset_button.setForeground(Color.black);
+if(xcpu_halt)	cpu_halt_button.setForeground(Color.red);	else cpu_halt_button.setForeground(Color.black);
+if(xosc)		osc_button.setForeground(Color.red); else	osc_button.setForeground(Color.black);
+if(xosc_enable)	osc_enable_button.setForeground(Color.red);	else osc_enable_button.setForeground(Color.black);
+if(xsdisable)	sdisable_button.setForeground(Color.red);	else sdisable_button.setForeground(Color.black);
+if(xsclk)		sclk_button.setForeground(Color.red);		else sclk_button.setForeground(Color.black);
+if(xsdata)		sdata_button.setForeground(Color.red);		else sdata_button.setForeground(Color.black);
+if(!xswrite)	swrite_button.setForeground(Color.green);	else swrite_button.setForeground(Color.black);
 
 cmd_line.requestFocus();
 
 }
 </codetext>
 </codeclip>
-<relation>
-<ID>_R142</ID>
-<pin1name>_A0(_Pread_port_button)</pin1name>
-<pin2name>_X111(_P0)</pin2name>
-</relation>
-<relation>
-<ID>_R143</ID>
-<pin1name>_A0(_PAread_port_button)</pin1name>
-<pin2name>_X111(_P2)</pin2name>
-</relation>
-<relation>
-<ID>_R144</ID>
-<pin1name>_A0(_Pwrite_port_button)</pin1name>
-<pin2name>_X111(_P1)</pin2name>
-</relation>
-<relation>
-<ID>_R145</ID>
-<pin1name>_A0(_PAwrite_port_button)</pin1name>
-<pin2name>_X111(_P3)</pin2name>
-</relation>
 <relation>
 <ID>_R146</ID>
 <pin1name>_A0(_Pcpu_reset_button)</pin1name>
@@ -7566,16 +7546,6 @@ cmd_line.requestFocus();
 <pin2name>_X111(_P7)</pin2name>
 </relation>
 <relation>
-<ID>_R150</ID>
-<pin1name>_A0(_Pcpu_clk_button)</pin1name>
-<pin2name>_X111(_P8)</pin2name>
-</relation>
-<relation>
-<ID>_R151</ID>
-<pin1name>_A0(_PAcpu_clk_button)</pin1name>
-<pin2name>_X111(_P9)</pin2name>
-</relation>
-<relation>
 <ID>_R152</ID>
 <pin1name>_A0(_Posc_enable_button)</pin1name>
 <pin2name>_X111(_P10)</pin2name>
@@ -7584,46 +7554,6 @@ cmd_line.requestFocus();
 <ID>_R153</ID>
 <pin1name>_A0(_PAosc_enable_button)</pin1name>
 <pin2name>_X111(_P11)</pin2name>
-</relation>
-<relation>
-<ID>_R154</ID>
-<pin1name>_A0(_Pserial_disable_button)</pin1name>
-<pin2name>_X111(_P12)</pin2name>
-</relation>
-<relation>
-<ID>_R155</ID>
-<pin1name>_A0(_PAserial_disable_button)</pin1name>
-<pin2name>_X111(_P13)</pin2name>
-</relation>
-<relation>
-<ID>_R156</ID>
-<pin1name>_A0(_Pserial_clk_button)</pin1name>
-<pin2name>_X111(_P14)</pin2name>
-</relation>
-<relation>
-<ID>_R157</ID>
-<pin1name>_A0(_PAserial_clk_button)</pin1name>
-<pin2name>_X111(_P15)</pin2name>
-</relation>
-<relation>
-<ID>_R158</ID>
-<pin1name>_A0(_Pserial_data_button)</pin1name>
-<pin2name>_X111(_P16)</pin2name>
-</relation>
-<relation>
-<ID>_R159</ID>
-<pin1name>_A0(_PAserial_data_button)</pin1name>
-<pin2name>_X111(_P17)</pin2name>
-</relation>
-<relation>
-<ID>_R160</ID>
-<pin1name>_A0(_Pserial_write_button)</pin1name>
-<pin2name>_X111(_P18)</pin2name>
-</relation>
-<relation>
-<ID>_R161</ID>
-<pin1name>_A0(_PAserial_write_button)</pin1name>
-<pin2name>_X111(_P19)</pin2name>
 </relation>
 <relation>
 <ID>_R162</ID>
@@ -7669,26 +7599,26 @@ dout.write(&quot;asm_edit_command=&quot;+asm_edit_command+&quot;\n&quot;);
 dout.write(&quot;compile_command=&quot;+compile_command+&quot;\n&quot;);
 dout.write(&quot;assemble_command=&quot;+assemble_command+&quot;\n&quot;);
 dout.write(&quot;terminal_command=&quot;+terminal_command+&quot;\n&quot;);
-dout.write(&quot;read_port_l_command=&quot;+read_port_l_command+&quot;\n&quot;);
-dout.write(&quot;read_port_h_command=&quot;+read_port_h_command+&quot;\n&quot;);
-dout.write(&quot;write_port_l_command=&quot;+write_port_l_command+&quot;\n&quot;);
-dout.write(&quot;write_port_h_command=&quot;+write_port_h_command+&quot;\n&quot;);
+dout.write(&quot;rd_port_l_command=&quot;+rd_port_l_command+&quot;\n&quot;);
+dout.write(&quot;rd_port_h_command=&quot;+rd_port_h_command+&quot;\n&quot;);
+dout.write(&quot;wr_port_l_command=&quot;+wr_port_l_command+&quot;\n&quot;);
+dout.write(&quot;write_port_h_command=&quot;+wr_port_h_command+&quot;\n&quot;);
 dout.write(&quot;cpu_reset_l_command=&quot;+cpu_reset_l_command+&quot;\n&quot;);
 dout.write(&quot;cpu_reset_h_command=&quot;+cpu_reset_h_command+&quot;\n&quot;);
 dout.write(&quot;cpu_halt_l_command=&quot;+cpu_halt_l_command+&quot;\n&quot;);
 dout.write(&quot;cpu_halt_h_command=&quot;+cpu_halt_h_command+&quot;\n&quot;);
-dout.write(&quot;cpu_clk_l_command=&quot;+cpu_clk_l_command+&quot;\n&quot;);
-dout.write(&quot;cpu_clk_h_command=&quot;+cpu_clk_h_command+&quot;\n&quot;);
+dout.write(&quot;osc_l_command=&quot;+osc_l_command+&quot;\n&quot;);
+dout.write(&quot;osc_h_command=&quot;+osc_h_command+&quot;\n&quot;);
 dout.write(&quot;osc_enable_l_command=&quot;+osc_enable_l_command+&quot;\n&quot;);
 dout.write(&quot;osc_enable_h_command=&quot;+osc_enable_h_command+&quot;\n&quot;);
-dout.write(&quot;serial_disable_l_command=&quot;+serial_disable_l_command+&quot;\n&quot;);
-dout.write(&quot;serial_disable_h_command=&quot;+serial_disable_h_command+&quot;\n&quot;);
-dout.write(&quot;serial_clk_l_command=&quot;+serial_clk_l_command+&quot;\n&quot;);
-dout.write(&quot;serial_clk_h_command=&quot;+serial_clk_h_command+&quot;\n&quot;);
-dout.write(&quot;serial_data_l_command=&quot;+serial_data_l_command+&quot;\n&quot;);
-dout.write(&quot;serial_data_h_command=&quot;+serial_data_h_command+&quot;\n&quot;);
-dout.write(&quot;serial_write_l_command=&quot;+serial_write_l_command+&quot;\n&quot;);
-dout.write(&quot;serial_write_h_command=&quot;+serial_write_h_command+&quot;\n&quot;);
+dout.write(&quot;sdisable_l_command=&quot;+sdisable_l_command+&quot;\n&quot;);
+dout.write(&quot;sdisable_h_command=&quot;+sdisable_h_command+&quot;\n&quot;);
+dout.write(&quot;sclk_l_command=&quot;+sclk_l_command+&quot;\n&quot;);
+dout.write(&quot;sclk_h_command=&quot;+sclk_h_command+&quot;\n&quot;);
+dout.write(&quot;sdata_l_command=&quot;+sdata_l_command+&quot;\n&quot;);
+dout.write(&quot;sdata_h_command=&quot;+sdata_h_command+&quot;\n&quot;);
+dout.write(&quot;swrite_l_command=&quot;+swrite_l_command+&quot;\n&quot;);
+dout.write(&quot;swrite_h_command=&quot;+swrite_h_command+&quot;\n&quot;);
 dout.write(&quot;reset_command=&quot;+reset_command+&quot;\n&quot;);
 dout.write(&quot;single_step_command=&quot;+single_step_command+&quot;\n&quot;);
 dout.write(&quot;reset_interval_command=&quot;+reset_interval_command+&quot;\n&quot;);
@@ -7702,10 +7632,86 @@ dout.close();
 }
 </codetext>
 </codeclip>
+<codeclip>
+<ID>_C168</ID>
+<x0>734</x0>
+<y0>682</y0>
+<width>230</width>
+<height>37</height>
+<codetext>// メッセージを表示
+public void print_msg( String s ){
+
+      message_area.append( s );
+      String ss = message_area.getText();
+      message_area.setCaretPosition( ss.length() );
+    }
+
+</codetext>
+</codeclip>
+<relation>
+<ID>_R171</ID>
+<pin1name>_A0(_Psdisable_button)</pin1name>
+<pin2name>_X111(_P12)</pin2name>
+</relation>
+<relation>
+<ID>_R172</ID>
+<pin1name>_A0(_PAsdisable_button)</pin1name>
+<pin2name>_X111(_P13)</pin2name>
+</relation>
+<relation>
+<ID>_R173</ID>
+<pin1name>_A0(_PAsclk_button)</pin1name>
+<pin2name>_X111(_P15)</pin2name>
+</relation>
+<relation>
+<ID>_R174</ID>
+<pin1name>_A0(_Psclk_button)</pin1name>
+<pin2name>_X111(_P14)</pin2name>
+</relation>
+<relation>
+<ID>_R175</ID>
+<pin1name>_A0(_Psdata_button)</pin1name>
+<pin2name>_X111(_P16)</pin2name>
+</relation>
+<relation>
+<ID>_R176</ID>
+<pin1name>_A0(_PAsdata_button)</pin1name>
+<pin2name>_X111(_P17)</pin2name>
+</relation>
+<relation>
+<ID>_R178</ID>
+<pin1name>_A0(_Pswrite_button)</pin1name>
+<pin2name>_X111(_P18)</pin2name>
+</relation>
+<relation>
+<ID>_R179</ID>
+<pin1name>_A0(_PAswrite_button)</pin1name>
+<pin2name>_X111(_P19)</pin2name>
+</relation>
+<relation>
+<ID>_R180</ID>
+<pin1name>_A0(_Prd_port_button)</pin1name>
+<pin2name>_X111(_P0)</pin2name>
+</relation>
+<relation>
+<ID>_R181</ID>
+<pin1name>_A0(_PArd_port_button)</pin1name>
+<pin2name>_X111(_P2)</pin2name>
+</relation>
+<relation>
+<ID>_R182</ID>
+<pin1name>_A0(_Pwr_port_button)</pin1name>
+<pin2name>_X111(_P1)</pin2name>
+</relation>
+<relation>
+<ID>_R183</ID>
+<pin1name>_A0(_PAwr_port_button)</pin1name>
+<pin2name>_X111(_P3)</pin2name>
+</relation>
 <aobject>
 <ID>_A0</ID>
-<x0>148</x0>
-<y0>0</y0>
+<x0>151</x0>
+<y0>21</y0>
 <width>280</width>
 <objectname>GUI</objectname>
 <description>GUIオブジェクト
@@ -8154,42 +8160,42 @@ XGUI x = new XGUI();
 <py>720</py>
 </pin>
 <pin>
-<ID>_Pread_port_button</ID>
+<ID>_Prd_port_button</ID>
 <x0>0</x0>
 <y0>1146</y0>
 <width>200</width>
 <height>26</height>
-<text>read_port_button_created(JButton b)</text>
+<text>rd_port_button_created(JButton b)</text>
 <px>0</px>
 <py>738</py>
 </pin>
 <pin>
-<ID>_PAread_port_button</ID>
+<ID>_PArd_port_button</ID>
 <x0>0</x0>
 <y0>1174</y0>
 <width>200</width>
 <height>26</height>
-<text>read_port_button_clicked()</text>
+<text>rd_port_button_clicked()</text>
 <px>0</px>
 <py>756</py>
 </pin>
 <pin>
-<ID>_Pwrite_port_button</ID>
+<ID>_Pwr_port_button</ID>
 <x0>0</x0>
 <y0>1202</y0>
 <width>200</width>
 <height>26</height>
-<text>write_port_button_created(JButton b)</text>
+<text>wr_port_button_created(JButton b)</text>
 <px>0</px>
 <py>774</py>
 </pin>
 <pin>
-<ID>_PAwrite_port_button</ID>
+<ID>_PAwr_port_button</ID>
 <x0>0</x0>
 <y0>1230</y0>
 <width>200</width>
 <height>26</height>
-<text>write_port_button_clicked()</text>
+<text>wr_port_button_clicked()</text>
 <px>0</px>
 <py>792</py>
 </pin>
@@ -8234,22 +8240,22 @@ XGUI x = new XGUI();
 <py>864</py>
 </pin>
 <pin>
-<ID>_Pcpu_clk_button</ID>
+<ID>_Posc_button</ID>
 <x0>0</x0>
 <y0>1370</y0>
 <width>200</width>
 <height>26</height>
-<text>cpu_clk_button_created(JButton b)</text>
+<text>osc_button_created(JButton b)</text>
 <px>0</px>
 <py>882</py>
 </pin>
 <pin>
-<ID>_PAcpu_clk_button</ID>
+<ID>_PAosc_button</ID>
 <x0>0</x0>
 <y0>1398</y0>
 <width>200</width>
 <height>26</height>
-<text>cpu_clk_button_clicked()</text>
+<text>osc_button_clicked()</text>
 <px>0</px>
 <py>900</py>
 </pin>
@@ -8274,82 +8280,82 @@ XGUI x = new XGUI();
 <py>936</py>
 </pin>
 <pin>
-<ID>_Pserial_disable_button</ID>
+<ID>_Psdisable_button</ID>
 <x0>0</x0>
 <y0>1482</y0>
 <width>200</width>
 <height>26</height>
-<text>serial_disable_button_created(JButton b)</text>
+<text>sdisable_button_created(JButton b)</text>
 <px>0</px>
 <py>954</py>
 </pin>
 <pin>
-<ID>_PAserial_disable_button</ID>
+<ID>_PAsdisable_button</ID>
 <x0>0</x0>
 <y0>1510</y0>
 <width>200</width>
 <height>26</height>
-<text>serial_disable_button_clicked()</text>
+<text>sdisable_button_clicked()</text>
 <px>0</px>
 <py>972</py>
 </pin>
 <pin>
-<ID>_Pserial_clk_button</ID>
+<ID>_Psclk_button</ID>
 <x0>0</x0>
 <y0>1538</y0>
 <width>200</width>
 <height>26</height>
-<text>serial_clk_button_created(JButton b)</text>
+<text>sclk_button_created(JButton b)</text>
 <px>0</px>
 <py>990</py>
 </pin>
 <pin>
-<ID>_PAserial_clk_button</ID>
+<ID>_PAsclk_button</ID>
 <x0>0</x0>
 <y0>1566</y0>
 <width>200</width>
 <height>26</height>
-<text>serial_clk_button_clicked()</text>
+<text>sclk_button_clicked()</text>
 <px>0</px>
 <py>1008</py>
 </pin>
 <pin>
-<ID>_Pserial_data_button</ID>
+<ID>_Psdata_button</ID>
 <x0>0</x0>
 <y0>1594</y0>
 <width>200</width>
 <height>26</height>
-<text>serial_data_button_created(JButton b)</text>
+<text>sdata_button_created(JButton b)</text>
 <px>0</px>
 <py>1026</py>
 </pin>
 <pin>
-<ID>_PAserial_data_button</ID>
+<ID>_PAsdata_button</ID>
 <x0>0</x0>
 <y0>1622</y0>
 <width>200</width>
 <height>26</height>
-<text>serial_data_button_clicked()</text>
+<text>sdata_button_clicked()</text>
 <px>0</px>
 <py>1044</py>
 </pin>
 <pin>
-<ID>_Pserial_write_button</ID>
+<ID>_Pswrite_button</ID>
 <x0>0</x0>
 <y0>1650</y0>
 <width>200</width>
 <height>26</height>
-<text>serial_write_button_created(JButton b)</text>
+<text>swrite_button_created(JButton b)</text>
 <px>0</px>
 <py>1062</py>
 </pin>
 <pin>
-<ID>_PAserial_write_button</ID>
+<ID>_PAswrite_button</ID>
 <x0>0</x0>
 <y0>1678</y0>
 <width>200</width>
 <height>26</height>
-<text>serial_write_button_clicked()</text>
+<text>swrite_button_clicked()</text>
 <px>0</px>
 <py>1080</py>
 </pin>
@@ -9010,37 +9016,37 @@ stop_button Istop_button;
 }
  public void actionPerformed( ActionEvent e ){ stop_button_clicked(); }
 }
-read_port_button Iread_port_button;
- class read_port_button extends JButton implements ActionListener{
-  read_port_button(){
+rd_port_button Ird_port_button;
+ class rd_port_button extends JButton implements ActionListener{
+  rd_port_button(){
  setOpaque( true );
- setName(  &quot;read_port_button&quot; );
+ setName(  &quot;rd_port_button&quot; );
  setFont( new Font( &quot;Dialog&quot;, 0, 11 ));
  setForeground( new Color(  51, 51, 51 ));
  setBackground( new Color(  192, 192, 192 ));
  setHorizontalAlignment( 0 );
  setVerticalAlignment( 0 );
- setText( &quot;READ_PORT&quot; );
+ setText( &quot;RD_PORT&quot; );
  addActionListener( this );
- read_port_button_created( this );
+ rd_port_button_created( this );
 }
- public void actionPerformed( ActionEvent e ){ read_port_button_clicked(); }
+ public void actionPerformed( ActionEvent e ){ rd_port_button_clicked(); }
 }
-write_port_button Iwrite_port_button;
- class write_port_button extends JButton implements ActionListener{
-  write_port_button(){
+wr_port_button Iwr_port_button;
+ class wr_port_button extends JButton implements ActionListener{
+  wr_port_button(){
  setOpaque( true );
- setName(  &quot;write_port_button&quot; );
+ setName(  &quot;wr_port_button&quot; );
  setFont( new Font( &quot;Dialog&quot;, 0, 11 ));
  setForeground( new Color(  51, 51, 51 ));
  setBackground( new Color(  192, 192, 192 ));
  setHorizontalAlignment( 0 );
  setVerticalAlignment( 0 );
- setText( &quot;WRITE_PORT&quot; );
+ setText( &quot;WR_PORT&quot; );
  addActionListener( this );
- write_port_button_created( this );
+ wr_port_button_created( this );
 }
- public void actionPerformed( ActionEvent e ){ write_port_button_clicked(); }
+ public void actionPerformed( ActionEvent e ){ wr_port_button_clicked(); }
 }
 cpu_reset_button Icpu_reset_button;
  class cpu_reset_button extends JButton implements ActionListener{
@@ -9074,21 +9080,21 @@ cpu_halt_button Icpu_halt_button;
 }
  public void actionPerformed( ActionEvent e ){ cpu_halt_button_clicked(); }
 }
-cpu_clk_button Icpu_clk_button;
- class cpu_clk_button extends JButton implements ActionListener{
-  cpu_clk_button(){
+osc_button Iosc_button;
+ class osc_button extends JButton implements ActionListener{
+  osc_button(){
  setOpaque( true );
- setName(  &quot;cpu_clk_button&quot; );
+ setName(  &quot;osc_button&quot; );
  setFont( new Font( &quot;Dialog&quot;, 0, 11 ));
  setForeground( new Color(  51, 51, 51 ));
  setBackground( new Color(  192, 192, 192 ));
  setHorizontalAlignment( 0 );
  setVerticalAlignment( 0 );
- setText( &quot;CPU_CLK&quot; );
+ setText( &quot;OSC&quot; );
  addActionListener( this );
- cpu_clk_button_created( this );
+ osc_button_created( this );
 }
- public void actionPerformed( ActionEvent e ){ cpu_clk_button_clicked(); }
+ public void actionPerformed( ActionEvent e ){ osc_button_clicked(); }
 }
 osc_enable_button Iosc_enable_button;
  class osc_enable_button extends JButton implements ActionListener{
@@ -9106,69 +9112,69 @@ osc_enable_button Iosc_enable_button;
 }
  public void actionPerformed( ActionEvent e ){ osc_enable_button_clicked(); }
 }
-serial_disable_button Iserial_disable_button;
- class serial_disable_button extends JButton implements ActionListener{
-  serial_disable_button(){
+sdisable_button Isdisable_button;
+ class sdisable_button extends JButton implements ActionListener{
+  sdisable_button(){
  setOpaque( true );
- setName(  &quot;serial_disable_button&quot; );
- setFont( new Font( &quot;Dialog&quot;, 0, 10 ));
- setForeground( new Color(  51, 51, 51 ));
- setBackground( new Color(  192, 192, 192 ));
- setHorizontalAlignment( 0 );
- setVerticalAlignment( 0 );
- setText( &quot;SERIAL_DISABLE&quot; );
- addActionListener( this );
- serial_disable_button_created( this );
-}
- public void actionPerformed( ActionEvent e ){ serial_disable_button_clicked(); }
-}
-serial_clk_button Iserial_clk_button;
- class serial_clk_button extends JButton implements ActionListener{
-  serial_clk_button(){
- setOpaque( true );
- setName(  &quot;serial_clk_button&quot; );
+ setName(  &quot;sdisable_button&quot; );
  setFont( new Font( &quot;Dialog&quot;, 0, 11 ));
  setForeground( new Color(  51, 51, 51 ));
  setBackground( new Color(  192, 192, 192 ));
  setHorizontalAlignment( 0 );
  setVerticalAlignment( 0 );
- setText( &quot;SERIAL_CLK&quot; );
+ setText( &quot;SDISABLE&quot; );
  addActionListener( this );
- serial_clk_button_created( this );
+ sdisable_button_created( this );
 }
- public void actionPerformed( ActionEvent e ){ serial_clk_button_clicked(); }
+ public void actionPerformed( ActionEvent e ){ sdisable_button_clicked(); }
 }
-serial_data_button Iserial_data_button;
- class serial_data_button extends JButton implements ActionListener{
-  serial_data_button(){
+sclk_button Isclk_button;
+ class sclk_button extends JButton implements ActionListener{
+  sclk_button(){
  setOpaque( true );
- setName(  &quot;serial_data_button&quot; );
+ setName(  &quot;sclk_button&quot; );
  setFont( new Font( &quot;Dialog&quot;, 0, 11 ));
  setForeground( new Color(  51, 51, 51 ));
  setBackground( new Color(  192, 192, 192 ));
  setHorizontalAlignment( 0 );
  setVerticalAlignment( 0 );
- setText( &quot;SERIAL_DATA&quot; );
+ setText( &quot;SCLK&quot; );
  addActionListener( this );
- serial_data_button_created( this );
+ sclk_button_created( this );
 }
- public void actionPerformed( ActionEvent e ){ serial_data_button_clicked(); }
+ public void actionPerformed( ActionEvent e ){ sclk_button_clicked(); }
 }
-serial_write_button Iserial_write_button;
- class serial_write_button extends JButton implements ActionListener{
-  serial_write_button(){
+sdata_button Isdata_button;
+ class sdata_button extends JButton implements ActionListener{
+  sdata_button(){
  setOpaque( true );
- setName(  &quot;serial_write_button&quot; );
+ setName(  &quot;sdata_button&quot; );
  setFont( new Font( &quot;Dialog&quot;, 0, 11 ));
  setForeground( new Color(  51, 51, 51 ));
  setBackground( new Color(  192, 192, 192 ));
  setHorizontalAlignment( 0 );
  setVerticalAlignment( 0 );
- setText( &quot;SERIAL_WRITE&quot; );
+ setText( &quot;SDATA&quot; );
  addActionListener( this );
- serial_write_button_created( this );
+ sdata_button_created( this );
 }
- public void actionPerformed( ActionEvent e ){ serial_write_button_clicked(); }
+ public void actionPerformed( ActionEvent e ){ sdata_button_clicked(); }
+}
+swrite_button Iswrite_button;
+ class swrite_button extends JButton implements ActionListener{
+  swrite_button(){
+ setOpaque( true );
+ setName(  &quot;swrite_button&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 11 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;SWRITE&quot; );
+ addActionListener( this );
+ swrite_button_created( this );
+}
+ public void actionPerformed( ActionEvent e ){ swrite_button_clicked(); }
 }
 LABEL47 ILABEL47;
  class LABEL47 extends JLabel{
@@ -9455,14 +9461,14 @@ LABEL54 ILABEL54;
  cnt.add( Istop_button, 0 );
  cnt.getLayout().removeLayoutComponent( Istop_button );
  Istop_button.setBounds( 303, 359, 76, 31 );
- Iread_port_button = new read_port_button();
- cnt.add( Iread_port_button, 0 );
- cnt.getLayout().removeLayoutComponent( Iread_port_button );
- Iread_port_button.setBounds( 197, 232, 93, 27 );
- Iwrite_port_button = new write_port_button();
- cnt.add( Iwrite_port_button, 0 );
- cnt.getLayout().removeLayoutComponent( Iwrite_port_button );
- Iwrite_port_button.setBounds( 293, 231, 95, 27 );
+ Ird_port_button = new rd_port_button();
+ cnt.add( Ird_port_button, 0 );
+ cnt.getLayout().removeLayoutComponent( Ird_port_button );
+ Ird_port_button.setBounds( 197, 232, 93, 27 );
+ Iwr_port_button = new wr_port_button();
+ cnt.add( Iwr_port_button, 0 );
+ cnt.getLayout().removeLayoutComponent( Iwr_port_button );
+ Iwr_port_button.setBounds( 293, 231, 95, 27 );
  Icpu_reset_button = new cpu_reset_button();
  cnt.add( Icpu_reset_button, 0 );
  cnt.getLayout().removeLayoutComponent( Icpu_reset_button );
@@ -9471,30 +9477,30 @@ LABEL54 ILABEL54;
  cnt.add( Icpu_halt_button, 0 );
  cnt.getLayout().removeLayoutComponent( Icpu_halt_button );
  Icpu_halt_button.setBounds( 113, 263, 83, 27 );
- Icpu_clk_button = new cpu_clk_button();
- cnt.add( Icpu_clk_button, 0 );
- cnt.getLayout().removeLayoutComponent( Icpu_clk_button );
- Icpu_clk_button.setBounds( 198, 263, 91, 27 );
+ Iosc_button = new osc_button();
+ cnt.add( Iosc_button, 0 );
+ cnt.getLayout().removeLayoutComponent( Iosc_button );
+ Iosc_button.setBounds( 198, 263, 91, 27 );
  Iosc_enable_button = new osc_enable_button();
  cnt.add( Iosc_enable_button, 0 );
  cnt.getLayout().removeLayoutComponent( Iosc_enable_button );
  Iosc_enable_button.setBounds( 293, 262, 95, 28 );
- Iserial_disable_button = new serial_disable_button();
- cnt.add( Iserial_disable_button, 0 );
- cnt.getLayout().removeLayoutComponent( Iserial_disable_button );
- Iserial_disable_button.setBounds( 2, 294, 108, 28 );
- Iserial_clk_button = new serial_clk_button();
- cnt.add( Iserial_clk_button, 0 );
- cnt.getLayout().removeLayoutComponent( Iserial_clk_button );
- Iserial_clk_button.setBounds( 113, 295, 83, 27 );
- Iserial_data_button = new serial_data_button();
- cnt.add( Iserial_data_button, 0 );
- cnt.getLayout().removeLayoutComponent( Iserial_data_button );
- Iserial_data_button.setBounds( 198, 294, 91, 28 );
- Iserial_write_button = new serial_write_button();
- cnt.add( Iserial_write_button, 0 );
- cnt.getLayout().removeLayoutComponent( Iserial_write_button );
- Iserial_write_button.setBounds( 293, 294, 96, 28 );
+ Isdisable_button = new sdisable_button();
+ cnt.add( Isdisable_button, 0 );
+ cnt.getLayout().removeLayoutComponent( Isdisable_button );
+ Isdisable_button.setBounds( 2, 294, 108, 28 );
+ Isclk_button = new sclk_button();
+ cnt.add( Isclk_button, 0 );
+ cnt.getLayout().removeLayoutComponent( Isclk_button );
+ Isclk_button.setBounds( 113, 295, 83, 27 );
+ Isdata_button = new sdata_button();
+ cnt.add( Isdata_button, 0 );
+ cnt.getLayout().removeLayoutComponent( Isdata_button );
+ Isdata_button.setBounds( 198, 294, 91, 28 );
+ Iswrite_button = new swrite_button();
+ cnt.add( Iswrite_button, 0 );
+ cnt.getLayout().removeLayoutComponent( Iswrite_button );
+ Iswrite_button.setBounds( 293, 294, 96, 28 );
  ILABEL47 = new LABEL47();
  cnt.add( ILABEL47, 0 );
  cnt.getLayout().removeLayoutComponent( ILABEL47 );
@@ -9595,16 +9601,16 @@ TEXTFIELD;command_box;null;2;359;218;32;51;51;51;255;255;255;Dialog;12;1;1;1;JTe
 BUTTON;enter_button;Enter;222;359;77;31;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
 LABEL;LABEL57;BASIC Command Line:;11;331;161;25;51;51;51;254;251;115;Dialog;14;null;2;0;1;0;0;JLabel;
 BUTTON;stop_button;Stop;303;359;76;31;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
-BUTTON;read_port_button;READ_PORT;197;232;93;27;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;1;JButton;
-BUTTON;write_port_button;WRITE_PORT;293;231;95;27;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;1;JButton;
+BUTTON;rd_port_button;RD_PORT;197;232;93;27;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;1;JButton;
+BUTTON;wr_port_button;WR_PORT;293;231;95;27;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;1;JButton;
 BUTTON;cpu_reset_button;CPU_RESET;2;263;107;27;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;1;JButton;
 BUTTON;cpu_halt_button;CPU_HALT;113;263;83;27;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;1;JButton;
-BUTTON;cpu_clk_button;CPU_CLK;198;263;91;27;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;1;JButton;
+BUTTON;osc_button;OSC;198;263;91;27;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;1;JButton;
 BUTTON;osc_enable_button;OSC_ENABLE;293;262;95;28;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;1;JButton;
-BUTTON;serial_disable_button;SERIAL_DISABLE;2;294;108;28;51;51;51;192;192;192;Dialog;10;null;0;0;1;1;1;JButton;
-BUTTON;serial_clk_button;SERIAL_CLK;113;295;83;27;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;1;JButton;
-BUTTON;serial_data_button;SERIAL_DATA;198;294;91;28;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;1;JButton;
-BUTTON;serial_write_button;SERIAL_WRITE;293;294;96;28;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;1;JButton;
+BUTTON;sdisable_button;SDISABLE;2;294;108;28;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;1;JButton;
+BUTTON;sclk_button;SCLK;113;295;83;27;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;1;JButton;
+BUTTON;sdata_button;SDATA;198;294;91;28;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;1;JButton;
+BUTTON;swrite_button;SWRITE;293;294;96;28;51;51;51;192;192;192;Dialog;11;null;0;0;1;1;1;JButton;
 LABEL;LABEL47;RESET INTERVAL:;0;162;135;26;51;51;51;251;253;105;Dialog;12;null;0;0;1;0;0;JLabel;
 TEXTFIELD;reset_interval_box;1000;136;161;87;27;51;51;51;255;255;255;Dialog;12;1;1;0;JTextField;
 BUTTON;reset_interval_button;SET;238;162;57;25;51;51;51;192;192;192;Dialog;11;null;0;0;1;0;1;JButton;
@@ -9615,20 +9621,14 @@ BUTTON;reset_button;RESET;305;113;81;42;51;51;51;192;192;192;Dialog;12;null;0;0;
 LABEL;LABEL54;CONTROL SIGNALS:;6;227;165;32;51;51;51;251;253;105;Dialog;14;null;0;0;1;0;0;JLabel;
 </レイアウト>
 </aobject>
-<codeclip>
-<ID>_C168</ID>
-<x0>734</x0>
-<y0>682</y0>
-<width>230</width>
-<height>37</height>
-<codetext>// メッセージを表示
-public void print_msg( String s ){
-
-      message_area.append( s );
-      String ss = message_area.getText();
-      message_area.setCaretPosition( ss.length() );
-    }
-
-</codetext>
-</codeclip>
+<relation>
+<ID>_R184</ID>
+<pin1name>_A0(_Posc_button)</pin1name>
+<pin2name>_X111(_P8)</pin2name>
+</relation>
+<relation>
+<ID>_R185</ID>
+<pin1name>_A0(_PAosc_button)</pin1name>
+<pin2name>_X111(_P9)</pin2name>
+</relation>
 </xobject>

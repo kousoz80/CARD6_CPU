@@ -340,20 +340,20 @@ int main( int argc, char** argv ){
 
             switch( usbReadBuffer[0] ){
 
-            case READ_PORT_L:
-              READ_PORT=0;
+            case RD_PORT_L:
+              RD_PORT=0;
               break;
  
-            case READ_PORT_H:
-              READ_PORT=1;
+            case RD_PORT_H:
+              RD_PORT=1;
               break;
  
-            case WRITE_PORT_L:
-              WRITE_PORT=0;
+            case WR_PORT_L:
+              WR_PORT=0;
               break;
  
-            case WRITE_PORT_H:
-              WRITE_PORT=1;
+            case WR_PORT_H:
+              WR_PORT=1;
               break;
  
             case CPU_RESET_L:
@@ -372,12 +372,12 @@ int main( int argc, char** argv ){
               CPU_HALT=1;     
               break;
  
-            case CPU_CLK_L:     
-              CPU_CLK=0;
+            case OSC_L:     
+              OSC=0;
               break;
  
-            case CPU_CLK_H:      
-              CPU_CLK=1;
+            case OSC_H:      
+              OSC=1;
               break;
  
             case OSC_ENABLE_L:
@@ -388,36 +388,36 @@ int main( int argc, char** argv ){
               OSC_ENABLE=1;
               break;
  
-            case SERIAL_DISABLE_L:
-              SERIAL_DISABLE=0;
+            case SDISABLE_L:
+              SDISABLE=0;
               break;
  
-            case SERIAL_DISABLE_H:
-              SERIAL_DISABLE=1;
+            case SDISABLE_H:
+              SDISABLE=1;
               break;
  
-            case SERIAL_CLK_L:
-              SERIAL_CLK=0;     
+            case SCLK_L:
+              SCLK=0;     
               break;
  
-            case SERIAL_CLK_H:     
-              SERIAL_CLK=1;     
+            case SCLK_H:     
+              SCLK=1;     
               break;
  
-            case SERIAL_DATA_L:   
-              SERIAL_DATA=0;
+            case SDATA_L:   
+              SDATA=0;
               break;
  
-            case SERIAL_DATA_H:   
-              SERIAL_DATA=1;
+            case SDATA_H:   
+              SDATA=1;
               break;
  
-            case SERIAL_WRITE_L:  
-              SERIAL_WRITE=0;
+            case SWRITE_L:  
+              SWRITE=0;
               break;
  
-            case SERIAL_WRITE_H:  
-              SERIAL_WRITE=1;
+            case SWRITE_H:  
+              SWRITE=1;
               break;
  
             case RESET:
@@ -440,12 +440,12 @@ int main( int argc, char** argv ){
               else usbWriteBuffer[0] = &apos;?&apos;;
               break;
  
-            case SET_RESET_INTERVAL:
+            case RESET_INTERVAL:
               if( numBytesRead &gt;= 3 ) reset_interval = usbReadBuffer[1] + usbReadBuffer[2] * 256;
               else usbWriteBuffer[0] = &apos;?&apos;;
               break;
  
-            case SET_WAIT_INTERVAL:
+            case WAIT_INTERVAL:
               if( numBytesRead &gt;= 3 ) wait_interval = usbReadBuffer[1] + usbReadBuffer[2] * 256;
               else usbWriteBuffer[0] = &apos;?&apos;;
               break;
@@ -520,13 +520,13 @@ void write_memory( int ad, int c, int a, int r, int d ){
   push_shift_register( d, 0x20 );
 
   // メモリに書き込む
-  SERIAL_DISABLE = 0;
+  SDISABLE = 0;
   wait();
-  SERIAL_WRITE = 0;
+  SWRITE = 0;
   wait();
-  SERIAL_WRITE = 1;
+  SWRITE = 1;
   wait();
-  SERIAL_DISABLE = 1;
+  SDISABLE = 1;
 }
 </codetext>
 </codeclip>
@@ -540,13 +540,13 @@ void write_memory( int ad, int c, int a, int r, int d ){
 int port( int p ){
   int r;
   INPUT_PORT = p;
-  WRITE_PORT = 0;
+  WR_PORT = 0;
   wait();
-  WRITE_PORT = 1;
-  READ_PORT = 0;
+  WR_PORT = 1;
+  RD_PORT = 0;
   wait();
   r = OUTPUT_PORT;
-  READ_PORT = 1;
+  RD_PORT = 1;
   return r;
 }
 </codetext>
@@ -560,22 +560,22 @@ int port( int p ){
 <codetext>// CPUをリセットして停止状態にする
 void reset_cpu(){
   int i;
-  READ_PORT = 1;
-  WRITE_PORT = 1;
+  RD_PORT = 1;
+  WR_PORT = 1;
   CPU_RESET = 1;
   CPU_HALT = 1;
-  CPU_CLK = 1;
+  OSC = 1;
   OSC_ENABLE = 0;
-  SERIAL_DISABLE = 1;
-  SERIAL_CLK = 1;
-  SERIAL_DATA = 0;
-  SERIAL_WRITE = 1;
+  SDISABLE = 1;
+  SCLK = 1;
+  SDATA = 0;
+  SWRITE = 1;
   for( i = 0; i &lt; reset_interval; i++ ) {}
   CPU_HALT = 0;
   wait();
-  CPU_CLK = 0;
+  OSC = 0;
   wait();
-  CPU_CLK = 1;
+  OSC = 1;
   CPU_HALT = 1;
   CPU_RESET = 0;
 }
@@ -597,21 +597,21 @@ exec_single_step(){
   // 原クロックを４分周して読み出し/書き込み信号を作っているので
   // ４回パルスを出す
   wait();
-  CPU_CLK = 0;
+  OSC = 0;
   wait();
-  CPU_CLK = 1;
+  OSC = 1;
   wait();
-  CPU_CLK = 0;
+  OSC = 0;
   wait();
-  CPU_CLK = 1;
+  OSC = 1;
   wait();
-  CPU_CLK = 0;
+  OSC = 0;
   wait();
-  CPU_CLK = 1;
+  OSC = 1;
   wait();
-  CPU_CLK = 0;
+  OSC = 0;
   wait();
-  CPU_CLK = 1;
+  OSC = 1;
 
 }
 </codetext>
@@ -626,16 +626,16 @@ exec_single_step(){
 <codetext>// 制御信号のI/Oピン割り当て
 #define INPUT_PORT	LATD		// 入力ポート
 #define OUTPUT_PORT	PORTB		// 出力ポート
-#define READ_PORT	LATAbits.LATA0	// 出力ポートの値を読み込む 
-#define WRITE_PORT	LATAbits.LATA1	// 入力ポートに値を書き込む
+#define RD_PORT	LATAbits.LATA0	// 出力ポートの値を読み込む 
+#define WR_PORT	LATAbits.LATA1	// 入力ポートに値を書き込む
 #define CPU_RESET	LATCbits.LATC0	// CPUをリセットする
 #define CPU_HALT	LATEbits.LATE0	// CPUを停止状態にする
-#define CPU_CLK	LATEbits.LATE1	// CPUクロック
+#define OSC		LATEbits.LATE1	// CPUクロック発信器出力
 #define OSC_ENABLE	LATEbits.LATE2	// CPUクロック発振器有効
-#define SERIAL_DISABLE	LATAbits.LATA3	// シリアルレジスタ無効
-#define SERIAL_CLK	LATAbits.LATA2	// シリアルレジスタの書き込み用クロック
-#define SERIAL_DATA	LATAbits.LATA4	// シリアルレジスタの書き込み用データ
-#define SERIAL_WRITE	LATAbits.LATA5	// シリアルレジスタのデータをメモリに転送
+#define SDISABLE	LATAbits.LATA3	// シリアルレジスタ無効
+#define SCLK	LATAbits.LATA2	// シリアルレジスタの書き込み用クロック
+#define SDATA	LATAbits.LATA4	// シリアルレジスタの書き込み用データ
+#define SWRITE	LATAbits.LATA5	// シリアルレジスタのデータをメモリに転送
 </codetext>
 </codeclip>
 <codeclip>
@@ -658,26 +658,26 @@ exec_single_step(){
 enum {
 
 // 各制御信号をセット
- READ_PORT_L=&apos;a&apos;,
- READ_PORT_H,
- WRITE_PORT_L,
- WRITE_PORT_H,
+ RD_PORT_L=&apos;a&apos;,
+ RD_PORT_H,
+ WR_PORT_L,
+ WR_PORT_H,
  CPU_RESET_L,  
  CPU_RESET_H,  
  CPU_HALT_L,     
  CPU_HALT_H,     
- CPU_CLK_L,     
- CPU_CLK_H,      
+ OSC_L,     
+ OSC_H,      
  OSC_ENABLE_L,
  OSC_ENABLE_H,
- SERIAL_DISABLE_L,
- SERIAL_DISABLE_H,
- SERIAL_CLK_L,     
- SERIAL_CLK_H,     
- SERIAL_DATA_L,   
- SERIAL_DATA_H,   
- SERIAL_WRITE_L,  
- SERIAL_WRITE_H,  
+ SDISABLE_L,
+ SDISABLE_H,
+ SCLK_L,     
+ SCLK_H,     
+ SDATA_L,   
+ SDATA_H,   
+ SWRITE_L,  
+ SWRITE_H,  
 
  // リセット
  RESET,
@@ -689,8 +689,8 @@ enum {
  WRITE_MEMORY,
 
 // インターバルを設定
- SET_RESET_INTERVAL,
- SET_WAIT_INTERVAL,
+ RESET_INTERVAL,
+ WAIT_INTERVAL,
 
 // ポートの入出力
   PORT
@@ -733,10 +733,10 @@ void wait(){
 void push_shift_register( int val, int digit ){
 
   do{
-    SERIAL_DATA = ( ( val &amp; digit ) != 0 );
-    SERIAL_CLK = 0;
+    SDATA = ( ( val &amp; digit ) != 0 );
+    SCLK = 0;
     wait();
-    SERIAL_CLK = 1;
+    SCLK = 1;
     wait();
     digit &gt;&gt;= 1;
   } while( digit &gt; 0 );
