@@ -77,7 +77,7 @@ CARD6 CPUはプログラムカウンタやALUを持たない極めて単純な�
   
     MSB　　７　　　６　　　５　　　４　　　３　　　２　　　１　　　０　　LSB
   
-          IO　POINTER 　RET 　 ST　　　LD　　LDH　　LDM　　LDL　　
+               IO　POINTER 　RET 　 ST　　　LD　　LDH　　LDM　　LDL　　
 
   
 ### OPコードの説明
