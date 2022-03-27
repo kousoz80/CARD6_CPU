@@ -6,6 +6,10 @@
   
 自作CPUを電子部品で組み立てて、BASICや自作のOSを動かしてセルフホストのコンパイラでプログラム開発などしています。
 
+  
+![enter image description here](image/card6_cpu3.jpg?raw=true)
+  
+  
 ## 特徴
   
 ・オリジナル6ビットCPU
