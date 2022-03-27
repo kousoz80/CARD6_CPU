@@ -511,18 +511,6 @@ jump_table:
   
 
 
-## ・回路図
-  
-  
-  
-CARD6 CPUは極めて簡単な構成なのでCPUだけでなくコンピュータ全体が一枚の回路図に収まります。
-  
-  
-![enter image description here](image/card6_cpu2.png?raw=true)
-  
-  
-  
-  
 ## デバッグツール
   
  ### run(スクリプトファイル)
@@ -587,12 +575,28 @@ https://ja.wikipedia.org/wiki/Tiny_BASIC
 
 
 
-### run_os6(スクリプトファイル)
+### OS
   
   OSの動作をエミュレーションします。
 
 ![enter image description here](image/os6.png?raw=true)
   
+  
+  
+  
+## ・回路図
+  
+  
+  
+CARD6 CPUは極めて簡単な構成なのでCPUだけでなくコンピュータ全体が一枚の回路図に収まります。
+  
+  
+![enter image description here](image/card6_cpu2.png?raw=true)
+  
+  
+  
+  
+## ・各ファイルの説明
   
   
   
