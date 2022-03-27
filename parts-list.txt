@@ -1,0 +1,185 @@
+部品表
+
+74HC08			5
+74HC14			1
+74HC32			5
+74HC107			1
+74HC257			5
+74HC374			13
+74HC595			9
+
+
+千石電商オンラインショップ
+
+ 	商品コード	商品名	数量	単価	金額	税	摘要	返品	重複
+ 	2Z2R-3SG6 	東芝(TOSHIBA)CMOSロジックIC
+TC74HC595AP
+※単価 	9 	179 	1,611 	込 	税抜 162円 	
+ 
+ 	5Z2G-3SG8 	東芝(TOSHIBA)CMOSロジックIC
+TC74HC374AP
+※単価 	13 	126 	1,638 	込 	税抜 114円 	
+ 
+ 	7Z2E-2SGS 	東芝(TOSHIBA)CMOSロジックIC
+TC74HC257AP
+※単価 	5 	105 	525 	込 	税抜 95円 	
+ 
+ 	EEHD-5LD7 	Texas InstrumentsCMOSロジックIC
+CD74HC107E
+※単価 	1 	84 	84 	込 	税抜 76円 	
+ 
+ 	6Z2G-3DGD 	東芝(TOSHIBA)CMOSロジックIC
+TC74HC32AP
+※単価 	10 	32 	320 	込 	税抜 29円 	
+ 
+ 	7Z2F-2DGZ 	東芝(TOSHIBA)CMOSロジックIC
+TC74HC08AP
+※単価 	10 	32 	320 	込 	税抜 29円 	
+ 
+ 	758P-A6EU 	東芝(TOSHIBA)CMOSロジックIC
+TC74HC14AP
+※単価 	1 	53 	53 	込 	税抜 48円 	
+ 
+合計金額 税込（送料含まず） 	4,551円
+
+
+
+
+
+
+628128相当品		10
+PIC18F4550ボード		1(在庫があるので注文しない)
+ユニバーサル基板特大	1
+配線コード20m		3
+40pin丸ピンソケット	1
+14pinソケット		20
+16pinソケット		20
+20pinソケット		20
+32pinソケット		16
+赤色LED抵抗入り		100
+緑色LED抵抗入り		20
+0.1uFパスコン		50
+10uF電解コン		1
+1/8W100kプルアップ抵抗	100
+100pFスチコン		1
+10k半固定抵抗		1
+ネジ付きスペーサ10mm	5
+糸はんだ100g		1
+ペースト			1
+
+
+  秋月電子通商 <https://akizukidenshi.com/catalog/top.aspx>
+通販コード 	商品名 	価格 	数量 	合計 	
+I-01634 <https://akizukidenshi.com/catalog/g/gI-01634/> 	ＳＲＡＭ　
+１Ｍｂ　Ｍ６８ＡＦ１２７Ｂ　（５個入）
+<https://akizukidenshi.com/catalog/g/gI-01634/> ＳＲＡＭ　１Ｍｂ　
+Ｍ６８ＡＦ１２７Ｂ　（５個入）
+<https://akizukidenshi.com/catalog/g/gI-01634/> 	1パック ￥250
+	数量:   パック 	￥500 	
+P-02189 <https://akizukidenshi.com/catalog/g/gP-02189/> 	両面ガラス・ユ
+ニバーサル基板　特大タイプ２．５４ｍｍピッチ　（３１０×２２８ｍｍ）
+<https://akizukidenshi.com/catalog/g/gP-02189/> 両面ガラス・ユニバーサル
+基板　特大タイプ２．５４ｍｍピッチ　（３１０×２２８ｍｍ）
+<https://akizukidenshi.com/catalog/g/gP-02189/> 	1枚 ￥1,750
+	数量:   枚 	￥1,750 	
+P-11091 <https://akizukidenshi.com/catalog/g/gP-11091/> 	耐熱電子ワイ
+ヤー　黒色　２０ｍ　導体外径０．５４ｍｍ（ＡＷＧ２４相当）
+<https://akizukidenshi.com/catalog/g/gP-11091/> 耐熱電子ワイヤー　黒色　
+２０ｍ　導体外径０．５４ｍｍ（ＡＷＧ２４相当）
+<https://akizukidenshi.com/catalog/g/gP-11091/> 	1巻 ￥600
+	数量:   巻 	￥1,800 	
+P-00006 <https://akizukidenshi.com/catalog/g/gP-00006/> 	ＩＣソケット　
+（１４Ｐ）　（１０個入） <https://akizukidenshi.com/catalog/g/gP-00006/>
+ＩＣソケット　（１４Ｐ）　（１０個入）
+<https://akizukidenshi.com/catalog/g/gP-00006/> 	1パック ￥100
+	数量:   パック 	￥200 	
+P-00007 <https://akizukidenshi.com/catalog/g/gP-00007/> 	ＩＣソケット　
+（１６Ｐ）　（１０個入） <https://akizukidenshi.com/catalog/g/gP-00007/>
+ＩＣソケット　（１６Ｐ）　（１０個入）
+<https://akizukidenshi.com/catalog/g/gP-00007/> 	1パック ￥100
+	数量:   パック 	￥200 	
+P-03612 <https://akizukidenshi.com/catalog/g/gP-03612/> 	丸ピンＩＣソ
+ケット　（３２Ｐ） <https://akizukidenshi.com/catalog/g/gP-03612/> 丸ピ
+ンＩＣソケット　（３２Ｐ）
+<https://akizukidenshi.com/catalog/g/gP-03612/> 	1個 ￥90
+	数量:   個 	￥1,440 	
+P-00009 <https://akizukidenshi.com/catalog/g/gP-00009/> 	ＩＣソケット　
+（２０Ｐ）　（１０個入） <https://akizukidenshi.com/catalog/g/gP-00009/>
+ＩＣソケット　（２０Ｐ）　（１０個入）
+<https://akizukidenshi.com/catalog/g/gP-00009/> 	1パック ￥100
+	数量:   パック 	￥200 	
+P-00034 <https://akizukidenshi.com/catalog/g/gP-00034/> 	丸ピンＩＣソ
+ケット　（４０Ｐ） <https://akizukidenshi.com/catalog/g/gP-00034/> 丸ピ
+ンＩＣソケット　（４０Ｐ）
+<https://akizukidenshi.com/catalog/g/gP-00034/> 	1個 ￥80
+	数量:   個 	￥80 	
+I-06250 <https://akizukidenshi.com/catalog/g/gI-06250/> 	抵抗内蔵
+５ｍｍＬＥＤ　１２Ｖ（５Ｖ省電力版）　赤色　６４０ｎｍ　
+ＯＳＲ６ＬＵ５Ｂ６４Ａ－１２Ｖ（１０個入）
+<https://akizukidenshi.com/catalog/g/gI-06250/> 抵抗内蔵５ｍｍＬＥＤ　
+１２Ｖ（５Ｖ省電力版）　赤色　６４０ｎｍ　
+ＯＳＲ６ＬＵ５Ｂ６４Ａ－１２Ｖ（１０個入）
+<https://akizukidenshi.com/catalog/g/gI-06250/> 	1パック ￥120
+	数量:   パック 	￥1,200 	
+I-06251 <https://akizukidenshi.com/catalog/g/gI-06251/> 	抵抗内蔵
+５ｍｍＬＥＤ　１２Ｖ（５Ｖ省電力版）　黄緑色　５７０ｎｍ　
+ＯＳＧ８ＮＵ５Ｂ６４Ａ－１２Ｖ（１０個入）
+<https://akizukidenshi.com/catalog/g/gI-06251/> 抵抗内蔵５ｍｍＬＥＤ　
+１２Ｖ（５Ｖ省電力版）　黄緑色　５７０ｎｍ　
+ＯＳＧ８ＮＵ５Ｂ６４Ａ－１２Ｖ（１０個入）
+<https://akizukidenshi.com/catalog/g/gI-06251/> 	1パック ￥150
+	数量:   パック 	￥300 	
+R-16104 <https://akizukidenshi.com/catalog/g/gR-16104/> 	カーボン抵抗
+（炭素皮膜抵抗）　１／６Ｗ１００ｋΩ　（１００本入）
+<https://akizukidenshi.com/catalog/g/gR-16104/> カーボン抵抗（炭素皮膜抵
+抗）　１／６Ｗ１００ｋΩ　（１００本入）
+<https://akizukidenshi.com/catalog/g/gR-16104/> 	1袋 ￥100
+2袋 ￥180
+	数量:   袋 	￥100 	
+P-13582 <https://akizukidenshi.com/catalog/g/gP-13582/> 	積層セラミック
+コンデンサー　０．１μＦ５０Ｖ　Ｘ７Ｒ　２．５４ｍｍ　（１０個入）
+<https://akizukidenshi.com/catalog/g/gP-13582/> 積層セラミックコンデン
+サー　０．１μＦ５０Ｖ　Ｘ７Ｒ　２．５４ｍｍ　（１０個入）
+<https://akizukidenshi.com/catalog/g/gP-13582/> 	1パック ￥100
+	数量:   パック 	￥500 	
+P-03116 <https://akizukidenshi.com/catalog/g/gP-03116/> 	電解コンデン
+サー１０μＦ５０Ｖ８５℃　ルビコンＰＫ
+<https://akizukidenshi.com/catalog/g/gP-03116/> 電解コンデンサー
+１０μＦ５０Ｖ８５℃　ルビコンＰＫ
+<https://akizukidenshi.com/catalog/g/gP-03116/> 	1個 ￥10
+	数量:   個 	￥10 	
+P-14428 <https://akizukidenshi.com/catalog/g/gP-14428/> 	スチロールコン
+デンサー　１００ｐＦ５０Ｖ　ＰＳＲ
+<https://akizukidenshi.com/catalog/g/gP-14428/> スチロールコンデンサー　
+１００ｐＦ５０Ｖ　ＰＳＲ
+<https://akizukidenshi.com/catalog/g/gP-14428/> 	1個 ￥20
+	数量:   個 	￥20 	
+P-14905 <https://akizukidenshi.com/catalog/g/gP-14905/> 	半固定ボリュー
+ム　ＧＦ０６３Ｐ　１０ｋΩ <https://akizukidenshi.com/catalog/g/gP-14905
+/> 半固定ボリューム　ＧＦ０６３Ｐ　１０ｋΩ
+<https://akizukidenshi.com/catalog/g/gP-14905/> 	1個 ￥30
+	数量:   個 	￥30 	
+P-01864 <https://akizukidenshi.com/catalog/g/gP-01864/> 	プラスチック
+ナット＋連結（６角ジョイント）スペーサー（１０ｍｍ）セット
+<https://akizukidenshi.com/catalog/g/gP-01864/> プラスチックナット＋連結
+（６角ジョイント）スペーサー（１０ｍｍ）セット
+<https://akizukidenshi.com/catalog/g/gP-01864/> 	1セット ￥100
+	数量:   セット 	￥100 	
+T-09530 <https://akizukidenshi.com/catalog/g/gT-09530/> 	日本アルミット
+　高性能ヤニ入りハンダ　０．８ｍｍ　１００ｇ
+<https://akizukidenshi.com/catalog/g/gT-09530/> 日本アルミット　高性能ヤ
+ニ入りハンダ　０．８ｍｍ　１００ｇ
+<https://akizukidenshi.com/catalog/g/gT-09530/> 	1個 ￥1,350
+	数量:   個 	￥1,350 	
+T-03640 <https://akizukidenshi.com/catalog/g/gT-03640/> 	はんだ付用ペー
+スト　ＢＳ－１０ <https://akizukidenshi.com/catalog/g/gT-03640/> はんだ
+付用ペースト　ＢＳ－１０
+<https://akizukidenshi.com/catalog/g/gT-03640/> 	1個 ￥130
+	数量:   個 	￥130 	
+  	  	商品小計 	￥9,910 	 
+  	  	送料（佐川急便の場合） 	￥500 	 
+  	  	合計金額（銀行振込、クレジット決済の場合） 	￥10,410 	 
+  	代引き手数料（金額に関係なく一律） 	￥300 	 
+  	  	合計金額（代引きの場合） 	￥10,710 	
+
+
