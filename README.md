@@ -8,6 +8,11 @@
 
 ![enter image description here](image/card6_cpu3.jpg?raw=true)
   
+
+[回路図](#kairozu)
+  
+  
+
 ## 特徴
   
 ・オリジナル6ビットCPU
@@ -465,7 +470,7 @@ https://ja.wikipedia.org/wiki/Tiny_BASIC
   
   
   
-## ・回路図
+<a name="kairozu">## ・回路図</a>
   
   
   
