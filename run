@@ -1,2 +1,2 @@
 #!/bin/sh
-java -jar jar/card6_sym.jar
+java -jar jar/card6_manager.jar

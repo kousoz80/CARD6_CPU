@@ -1,2 +1,0 @@
-#!/bin/sh
-java -jar jar/card6vm_sym.jar
