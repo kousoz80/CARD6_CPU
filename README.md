@@ -315,27 +315,17 @@ CARD6 CPUは構造が簡単な反面、プログラミング作業は初心者�
 
 ### ・データ移動
   
-    //　アドレスxxxの内容をアドレスyyyにコピーする
-  
-    read xxx
-  
-    write yyy
-  
-    move.b xxx,yyy
-  
-    move.l xxx,yyy
-    ・
-  
-    ・
-  
-    ・
-    
-    xxx:
-  
-    data 0
-  
-    yyy:
-  
+    //　アドレスxxxの内容をアドレスyyyにコピーする  
+    read xxx  
+    write yyy  
+    move.b xxx,yyy  
+    move.l xxx,yyy  
+    ・  
+    ・  
+    ・  
+    xxx:  
+    data 0  
+    yyy:  
     data 1
   
   　
@@ -349,88 +339,48 @@ CARD6 CPUは構造が簡単な反面、プログラミング作業は初心者�
 CARD6 CPUはALUを持っていないので定数テーブル参照を利用することで演算をおこないます。
   
   
-    //　アドレスxxxの値を+1する
+    //　アドレスxxxの値を+1する  
+    read 　inc_table_h  
+    set(h)  
+    read 　inc_table_m  
+    set(m)  
+    read 　xxx  
+    set(l)  
+    read@  
+    write 　xxx  
+    ・  
+    ・  
+    ・  
+    xxx:  
+    data 0  
   
-    read 　inc_table_h
+    // インクリメント演算用テーブルのアドレス(H)  
+    inc_table_h:  
+    data   inc_table.h  
   
-    set(h) 
-  
-    read 　inc_table_m
-  
-    set(m)
-  
-    read 　xxx
-  
-    set(l)
-  
-    read@
-  
-    write 　xxx
-  
-  
-    ・
-  
-    ・
-  
-    ・
-        
-    
-      
-    xxx:
-  
-    data 0
-  
-  
-    // インクリメント演算用テーブルのアドレス(H)
-  
-    inc_table_h:
-  
-    data   inc_table.h
-  
-
-    // インクリメント演算用テーブルのアドレス(M)
-  
+    // インクリメント演算用テーブルのアドレス(M)  
     inc_table_m:
+    data  　 inc_table.m  
   
-    data  　 inc_table.m
-  
-    // インクリメント演算用テーブル
-  
-    page
-   
-    inc_table:
-  
-    data 1
-  
-    data 2
-  
-    data 3
-  
-    data 4
-  
-    data 5
-  
-    data 6
-  
-    data 7
-  
-    data 8
-  
-    data 9
-  
-    data 10
-  
-    data 11
-  
-    data 12
-  
-    data 13
-  
-    data 14
-  
-    data 15
-  
-    data 0
+    // インクリメント演算用テーブル  
+    page  
+    inc_table:  
+    data 1  
+    data 2  
+    data 3  
+    data 4  
+    data 5  
+    data 6  
+    data 7  
+    data 8  
+    data 9  
+    data 10  
+    data 11  
+    data 12  
+    data 13  
+    data 14  
+    data 15  
+    data 0  
   
   　
   
@@ -443,66 +393,38 @@ CARD6 CPUはALUを持っていないので定数テーブル参照を利用す�
 条件分岐も演算同様に分岐先アドレスを格納したテーブルを参照することで条件分岐をおこないます。
   
   
-    // アドレスxxxの内容が0ならyyyにジャンプして1ならzzzにジャンプする
+    // アドレスxxxの内容が0ならyyyにジャンプして1ならzzzにジャンプする  
+    ・  
+    ・  
+    ・  
+    read 　jump_table_h  
+     set(h)  
+     read 　jump_table_m  
+     set(m)  
+     read 　xxx  
+     set(l)  
+     jump@  
+    ・  
+    ・  
+    ・  
+    xxx:  
+    data 0  
   
+    jump_table_h:  
+    data　 jump_table.h  
   
-  
-    ・
-  
-    ・
-  
-    ・
-    
-
-  
-    read 　jump_table_h
-  
-     set(h)
-  
-     read 　jump_table_m
-  
-     set(m)
-  
-     read 　xxx
-  
-     set(l)
-  
-     jump@
-  
-  
-    ・
-  
-    ・
-  
-    ・
-    
-
-  
-  
-    xxx:
-  
-    data 0
-  
-  
-    jump_table_h:
-  
-    data　 jump_table.h
-  
-    jump_table_m:
-  
-    data　 jump_table.m
-  
+    jump_table_m:  
+    data　 jump_table.m  
 
     page  
-    jump_table:
+    jump_table:  
   
-    jmp yyy
+    jmp yyy  
   
-    jmp zzz
+    jmp zzz  
   
-  　
   
-
+  
 
 ## デバッグツール
   
