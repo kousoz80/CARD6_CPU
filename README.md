@@ -8,7 +8,7 @@
 
 ![enter image description here](image/card6_cpu3.jpg?raw=true)
   
-[CPUの特徴](#tokutyou)
+[特徴](#tokutyou)
   
 [CPUの構成](#kousei)
   
