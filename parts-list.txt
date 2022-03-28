@@ -7,6 +7,8 @@
 74HC257			5
 74HC374			13
 74HC595			9
+32pinソケット		16
+
 
 
 千石電商オンラインショップ
@@ -40,10 +42,10 @@ TC74HC08AP
 TC74HC14AP
 ※単価 	1 	53 	53 	込 	税抜 48円 	
  
-合計金額 税込（送料含まず） 	4,551円
+ 	EEHD-4XSX 	ICソケット 平ピン 32P 600mil
 
-
-
+※単価 	16 	53 	848 	込 	税抜 48円 	
+  
 
 
 
@@ -55,7 +57,6 @@ PIC18F4550ボード		1(在庫があるので注文しない)
 14pinソケット		20
 16pinソケット		20
 20pinソケット		20
-32pinソケット		16
 赤色LED抵抗入り		100
 緑色LED抵抗入り		20
 0.1uFパスコン		50
@@ -98,11 +99,6 @@ P-00007 <https://akizukidenshi.com/catalog/g/gP-00007/> 	ＩＣソケット　
 ＩＣソケット　（１６Ｐ）　（１０個入）
 <https://akizukidenshi.com/catalog/g/gP-00007/> 	1パック ￥100
 	数量:   パック 	￥200 	
-P-03612 <https://akizukidenshi.com/catalog/g/gP-03612/> 	丸ピンＩＣソ
-ケット　（３２Ｐ） <https://akizukidenshi.com/catalog/g/gP-03612/> 丸ピ
-ンＩＣソケット　（３２Ｐ）
-<https://akizukidenshi.com/catalog/g/gP-03612/> 	1個 ￥90
-	数量:   個 	￥1,440 	
 P-00009 <https://akizukidenshi.com/catalog/g/gP-00009/> 	ＩＣソケット　
 （２０Ｐ）　（１０個入） <https://akizukidenshi.com/catalog/g/gP-00009/>
 ＩＣソケット　（２０Ｐ）　（１０個入）
@@ -176,10 +172,4 @@ T-03640 <https://akizukidenshi.com/catalog/g/gT-03640/> 	はんだ付用ペー
 付用ペースト　ＢＳ－１０
 <https://akizukidenshi.com/catalog/g/gT-03640/> 	1個 ￥130
 	数量:   個 	￥130 	
-  	  	商品小計 	￥9,910 	 
-  	  	送料（佐川急便の場合） 	￥500 	 
-  	  	合計金額（銀行振込、クレジット決済の場合） 	￥10,410 	 
-  	代引き手数料（金額に関係なく一律） 	￥300 	 
-  	  	合計金額（代引きの場合） 	￥10,710 	
-
 

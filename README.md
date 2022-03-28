@@ -87,47 +87,47 @@ CARD6 CPUはプログラムカウンタやALUを持たない極めて単純な�
   
   IO:
   
-      このビットが有効なときはメモリではなくIOポートにアクセスします(dフィールドのみ)。
+   このビットが有効なときはメモリではなくIOポートにアクセスします(dフィールドのみ)。
   
   
   POINTER:
   
-      このビットが有効なときはHMLレジスタの出力がメモリアドレスとなり
+   このビットが有効なときはHMLレジスタの出力がメモリアドレスとなり
   
-      そうでない場合Aレジスタの出力がメモリアドレスとなります。
+   そうでない場合Aレジスタの出力がメモリアドレスとなります。
   
   
   RET:
   
-      このビットが有効なとき、次に実行されるアドレスのaフィールドにRレジスタの値がセットされます。
+   このビットが有効なとき、次に実行されるアドレスのaフィールドにRレジスタの値がセットされます。
   
-      結果として、このビットが有効になったとき、次の命令を実行後、rフィールドのアドレスにジャンプします。  
+   結果として、このビットが有効になったとき、次の命令を実行後、rフィールドのアドレスにジャンプします。  
   
   
   
   ST:
   
-      このビットが有効なときはメモリのdフィールドにDレジスタの値がセットされます。
+   このビットが有効なときはメモリのdフィールドにDレジスタの値がセットされます。
   
   
   LD:
   
-      このビットが有効なときはDレジスタにメモリのdフィールドの値がセットされます。
+   このビットが有効なときはDレジスタにメモリのdフィールドの値がセットされます。
   
   
   LDH:
   
-      このビットが有効なときはHレジスタにメモリのdフィールドの値がセットされます。
+   このビットが有効なときはHレジスタにメモリのdフィールドの値がセットされます。
   
   
   LDM:
   
-      このビットが有効なときはMレジスタにメモリのdフィールドの値がセットされます。
+   このビットが有効なときはMレジスタにメモリのdフィールドの値がセットされます。
   
   
   LDL:
   
-      このビットが有効なときはLレジスタにメモリのdフィールドの値がセットされます。
+   このビットが有効なときはLレジスタにメモリのdフィールドの値がセットされます。
 
 
 
@@ -333,13 +333,13 @@ CARD6 CPUは構造が簡単な反面、プログラミング作業は初心者�
     move.b xxx,yyy
   
     move.l xxx,yyy
-  ・
+    ・
   
-  ・
+    ・
   
-  ・
+    ・
     
-xxx:
+    xxx:
   
   　  data 0
   
@@ -358,88 +358,88 @@ yyy:
 CARD6 CPUはALUを持っていないので定数テーブル参照を利用することで演算をおこないます。
   
   
- 　 //　アドレスxxxの値を+1する
+    //　アドレスxxxの値を+1する
   
-   read 　inc_table_h
+    read 　inc_table_h
   
-   set(h) 
+    set(h) 
   
-   read 　inc_table_m
+    read 　inc_table_m
   
-   set(m)
+    set(m)
   
-   read 　xxx
+    read 　xxx
   
-   set(l)
+    set(l)
   
-   read@
+    read@
   
-   write 　xxx
+    write 　xxx
   
   
-  ・
+    ・
   
-  ・
+    ・
   
-  ・
+    ・
+        
     
+      
+    xxx:
+  
+　  data 0
 
   
-xxx:
+    // インクリメント演算用テーブルのアドレス(H)
   
-　 data 0
-
+    inc_table_h:
   
-// インクリメント演算用テーブルのアドレス(H)
-  
-inc_table_h:
-  
-　 data   inc_table.h
+  　 data   inc_table.h
   
 
-// インクリメント演算用テーブルのアドレス(M)
+    // インクリメント演算用テーブルのアドレス(M)
   
-inc_table_m:
+    inc_table_m:
   
-　 data  　 inc_table.m
+    data  　 inc_table.m
   
-// インクリメント演算用テーブル
+    // インクリメント演算用テーブル
   
-  page
+    page
    
-inc_table:
+    inc_table:
   
- 　data 1
+    data 1
   
- 　data 2
+    data 2
   
- 　data 3
+    data 3
   
- 　data 4
+    data 4
   
- 　data 5
+    data 5
   
- 　data 6
+    data 6
   
- 　data 7
+    data 7
   
- 　data 8
+    data 8
   
- 　data 9
+    data 9
   
- 　data 10
+    data 10
   
- 　data 11
+    data 11
   
- 　data 12
+    data 12
   
- 　data 13
+    data 13
   
- 　data 14
+    data 14
   
- 　data 15
+    data 15
   
- 　data 0
+    data 0
   
   　
   
@@ -452,19 +452,19 @@ inc_table:
 条件分岐も演算同様に分岐先アドレスを格納したテーブルを参照することで条件分岐をおこないます。
   
   
-// アドレスxxxの内容が0ならyyyにジャンプして1ならzzzにジャンプする
+    // アドレスxxxの内容が0ならyyyにジャンプして1ならzzzにジャンプする
   
   
   
-  ・
+    ・
   
-  ・
+    ・
   
-  ・
+    ・
     
 
   
-     read 　jump_table_h
+    read 　jump_table_h
   
      set(h)
   
@@ -488,26 +488,26 @@ inc_table:
 
   
   
-xxx:
+    xxx:
   
-  　data 0
+    data 0
   
   
-jump_table_h:
+    jump_table_h:
   
-  　data　 jump_table.h
+    data　 jump_table.h
   
-jump_table_m:
+    jump_table_m:
   
-  　data　 jump_table.m
+    data　 jump_table.m
   
 
-  page  
-jump_table:
+    page  
+    jump_table:
   
-  　 jmp yyy
+    jmp yyy
   
-  　 jmp zzz
+    jmp zzz
   
   　
   
