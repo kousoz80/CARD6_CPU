@@ -20,7 +20,7 @@
   
 [回路図](#kairozu)
   
-[ファイルの説明](#setumei)
+[各ファイルの説明](#setumei)
   
   
 <a name="tokutyou"></a>
