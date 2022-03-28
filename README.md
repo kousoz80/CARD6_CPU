@@ -8,11 +8,23 @@
 
 ![enter image description here](image/card6_cpu3.jpg?raw=true)
   
-
+[CPUの特徴](#tokutyou)
+  
+[CPUの構成](#kousei)
+  
+[CPUの動作](#dousa)
+  
+[プログラミング](#programming)
+  
+[デバッグツール](#debug)
+  
 [回路図](#kairozu)
   
+[ファイルの説明](#setumei)
   
-
+  
+<a name="tokutyou"></a>
+  
 ## 特徴
   
 ・オリジナル6ビットCPU
@@ -27,6 +39,7 @@
   
 ・BASICインタプリタやOS等も付属
   
+<a name="kousei"></a>
 
 ## ・CPUの構成
   
@@ -130,6 +143,7 @@ CARD6 CPUはプログラムカウンタやALUを持たない極めて単純な�
 
 
   
+<a name="dousa"></a>
 ## ・CPUの動作
   
   
@@ -169,6 +183,7 @@ CARD6 CPUはプログラムカウンタやALUを持たない極めて単純な�
   
   
   
+<a name="programming"></a>
   
 ## ・プログラミング
   
@@ -396,6 +411,7 @@ CARD6 CPUはALUを持っていないので定数テーブル参照を利用す�
   
   
   
+<a name="debug"></a>
 
 ## デバッグツール
   
@@ -483,6 +499,7 @@ CARD6 CPUは極めて簡単な構成なのでCPUだけでなくコンピュー�
   
   
   
+<a name="setumei"></a>
 ## ・各ファイルの説明
   
   
