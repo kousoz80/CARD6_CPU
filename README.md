@@ -8,24 +8,24 @@
 
 ![enter image description here](image/card6_cpu3.jpg?raw=true)
   
-[特徴](#tokutyou)
+[・特徴](#tokutyou)
   
-[CPUの構成](#kousei)
+[・構成](#kousei)
   
-[CPUの動作](#dousa)
+[・動作](#dousa)
   
-[プログラミング](#programming)
+[・プログラミング](#programming)
   
-[デバッグツール](#debug)
+[・デバッグツール](#debug)
   
-[回路図](#kairozu)
+[・回路図](#kairozu)
   
-[各ファイルの説明](#setumei)
+[・各ファイルの説明](#setumei)
   
   
 <a name="tokutyou"></a>
   
-## 特徴
+## ・特徴
   
 ・オリジナル6ビットCPU
   
@@ -41,7 +41,7 @@
   
 <a name="kousei"></a>
 
-## ・CPUの構成
+## ・構成
   
 CARD6 CPUはプログラムカウンタやALUを持たない極めて単純な構成となっています。
   
@@ -144,8 +144,12 @@ CARD6 CPUはプログラムカウンタやALUを持たない極めて単純な�
 
   
 <a name="dousa"></a>
-## ・CPUの動作
+## ・動作
   
+  CARD6 CPUは全ての動作を1クロックで終了します。  
+  前半の半サイクルでメモリからレジスタ、後半の半サイクルでレジスタからメモリにデータを移動して完了します。  
+
+
   
 ### 分岐処理  
   
