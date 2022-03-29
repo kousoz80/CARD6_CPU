@@ -12,66 +12,67 @@
   
 [・構成](#kousei)
   
-	[メモリの構成](#memory_kousei)
+	
+[　　メモリの構成](#memory_kousei)
   
 		
-[cフィールド](#cfield)
+[　　　　cフィールド](#cfield)
   
 		
-[aフィールド](#afield)
+[　　　　aフィールド](#afield)
   
 		
-[rフィールド](#rfield)
+[　　　　rフィールド](#rfield)
   
 		
-[dフィールド](#dfield)
+[　　　　dフィールド](#dfield)
   
 	
-[OPコード](#op_code)
+[　　OPコード](#op_code)
   
 [・動作](#dousa)
   
 	
-[分岐](#bunki)
+[　　分岐](#bunki)
   
 	
-[逐次処理](#tikuji)
+[　　逐次処理](#tikuji)
   
 	
-[データ転送](#data)
+[　　データ転送](#data)
   
 [・プログラミング](#programming)
   
 	
-[アセンブラの命令](#meirei)
+[　　アセンブラの命令](#meirei)
   
 	
-[演算子](#enzanshi)
+[　　演算子](#enzanshi)
   
 	
-[コーディング例](#coding)
+[　　コーディング例](#coding)
   
 		
-[データ移動](#idou)
+[　　　　データ移動](#idou)
   
 		
-[演算](#enzan)
+[　　　　演算](#enzan)
   
 		
-[条件分岐](#jouken)
+[　　　　条件分岐](#jouken)
   
 [・デバッグツール](#debug)
   
 [・仮想マシン](#kasou)
   
 	
-[コンパイラ](#compiler)
+[　　コンパイラ](#compiler)
   
 	
-[BASIC](#basic)
+[　　BASIC](#basic)
   
 	
-[OS](#os)
+[　　OS](#os)
   
 [・回路図](#kairozu)
   
