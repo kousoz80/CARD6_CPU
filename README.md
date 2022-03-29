@@ -8,7 +8,7 @@
 
 ![enter image description here](image/card6_cpu3.jpg?raw=true)
   
-<span style="font-size: 200%;">
+<span style="font-size: 200%;color: red;">
 
 [・特徴](#tokutyou)
   
