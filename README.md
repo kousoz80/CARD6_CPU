@@ -8,8 +8,6 @@
 
 ![enter image description here](image/card6_cpu3.jpg?raw=true)
   
-<span style="font-size: 200%;color: red;">
-
 [・特徴](#tokutyou)
   
 [・構成](#kousei)
@@ -24,7 +22,6 @@
   
 [・各ファイルの説明](#setumei)
   
-</span>
   
 <a name="tokutyou"></a>
   
@@ -53,7 +50,7 @@ CARD6 CPUはプログラムカウンタやALUを持たない極めて単純な�
 ![enter image description here](image/card6_cpu1.jpg?raw=true)
   
   
-### メモリの説明
+### メモリの構成
   
   CPUのアーキテクチャはおおまかに分けるとプログラムとデータの区別をしないノイマン型と
   
@@ -88,7 +85,7 @@ CARD6 CPUはプログラムカウンタやALUを持たない極めて単純な�
   
   
   
-### OPコードのビット割り当て
+### OPコード
   
   
   OPコードの各ビットはメモリのcフィールドあるいはCレジスタの出力端子から出力されて
@@ -102,8 +99,6 @@ CARD6 CPUはプログラムカウンタやALUを持たない極めて単純な�
   
              IO　POINTER 　RET 　 ST　　　LD　　LDH　　LDM　　LDL　　
 
-  
-### OPコードの説明
   
   
   IO:  
@@ -154,7 +149,7 @@ CARD6 CPUはプログラムカウンタやALUを持たない極めて単純な�
 
 
   
-### 分岐処理  
+### 分岐  
   
   メモリのaフィールドのアドレスに分岐します。
   
