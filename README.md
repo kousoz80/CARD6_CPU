@@ -8,76 +8,33 @@
 
 ![enter image description here](image/card6_cpu3.jpg?raw=true)
   
-[・特徴](#tokutyou)
-  
-[・構成](#kousei)
-  
-	
-[　　メモリの構成](#memory_kousei)
-  
-		
-[　　　　cフィールド](#cfield)
-  
-		
-[　　　　aフィールド](#afield)
-  
-		
-[　　　　rフィールド](#rfield)
-  
-		
-[　　　　dフィールド](#dfield)
-  
-	
-[　　OPコード](#op_code)
-  
-[・動作](#dousa)
-  
-	
-[　　分岐](#bunki)
-  
-	
-[　　逐次処理](#tikuji)
-  
-	
-[　　データ転送](#data)
-  
-[・プログラミング](#programming)
-  
-	
-[　　アセンブラの命令](#meirei)
-  
-	
-[　　演算子](#enzanshi)
-  
-	
-[　　コーディング例](#coding)
-  
-		
-[　　　　データ移動](#idou)
-  
-		
-[　　　　演算](#enzan)
-  
-		
-[　　　　条件分岐](#jouken)
-  
-[・デバッグツール](#debug)
-  
-[・仮想マシン](#kasou)
-  
-	
-[　　コンパイラ](#compiler)
-  
-	
-[　　BASIC](#basic)
-  
-	
-[　　OS](#os)
-  
-[・回路図](#kairozu)
-  
-[・各ファイルの説明](#setumei)
-  
+[・特徴](#tokutyou)  
+[・構成](#kousei)  
+　　[メモリの構成](#memory_kousei)  
+　　　　[cフィールド](#cfield)  
+　　　　[aフィールド](#afield)  
+　　　　[rフィールド](#rfield)  
+　　　　[dフィールド](#dfield)  
+　　[OPコード](#op_code)  
+[・動作](#dousa)  
+　　[分岐](#bunki)  
+　　[逐次処理](#tikuji)  
+　　[データ転送](#data)  
+[・プログラミング](#programming)  
+　　[アセンブラの命令](#meirei)  
+　　[演算子](#enzanshi)  
+　　[コーディング例](#coding)  
+　　　　[データ移動](#idou)  
+　　　　[演算](#enzan)  
+　　　　[条件分岐](#jouken)  
+[・デバッグツール](#debug)  
+[・仮想マシン](#kasou)  
+　　[コンパイラ](#compiler)  
+　　[BASIC](#basic)  
+　　[OS](#os)  
+[・回路図](#kairozu)  
+[・各ファイルの説明](#setumei)  
+
 <a name="tokutyou"></a>
   
 ## ・特徴
