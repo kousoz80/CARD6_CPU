@@ -34,6 +34,7 @@
 　　[BASIC](#basic)  
 　　[OS](#os)  
 [・回路図](#kairozu)  
+[・動画](#douga)  
 [・各ファイルの説明](#setumei)  
 
 <a name="tokutyou"></a>
@@ -529,6 +530,10 @@ CARD6 CPUは極めて簡単な構成なのでCPUだけでなくコンピュー�
   
   
   
+<a name="douga"></a>
+## ・動画
+動作の様子を動画で公開しています  
+https://www.youtube.com/watch?v=zzh4TlBwuV4
   
 <a name="setumei"></a>
 ## ・各ファイルの説明
