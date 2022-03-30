@@ -533,6 +533,7 @@ CARD6 CPUは極めて簡単な構成なのでCPUだけでなくコンピュー�
 <a name="douga"></a>
 ## ・動画
 動作の様子を動画で公開しています  
+![enter image description here](image/douga1.png?raw=true)  
 https://www.youtube.com/watch?v=zzh4TlBwuV4
   
 <a name="setumei"></a>
