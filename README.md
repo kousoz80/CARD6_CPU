@@ -25,7 +25,8 @@
 　　[演算子](#enzanshi)  
 　　[コーディング例](#coding)  
 　　　　[データ移動](#idou)  
-　　　　[演算](#enzan)  
+　　　　[単項演算](#enzan1)  
+　　　　[二項演算](#enzan2)  
 　　　　[条件分岐](#jouken)  
 [・デバッグツール](#debug)  
 [・仮想マシン](#kasou)  
@@ -309,8 +310,8 @@ CARD6 CPUは構造が簡単な反面、プログラミング作業は初心者�
     	data 1
   
   　
-<a name="enzan"></a>
-#### ・演算
+<a name="enzan1"></a>
+#### 単項演算
 CARD6 CPUはALUを持っていないので定数テーブル参照を利用することで演算をおこないます。
   
   
@@ -337,6 +338,7 @@ CARD6 CPUはALUを持っていないので定数テーブル参照を利用す�
     inc_table_m:
     	data  　 inc_table.m  
   
+    	// アドレス64バイト境界に設定する
     	page  
   
     // インクリメント演算用テーブル  
@@ -352,6 +354,68 @@ CARD6 CPUはALUを持っていないので定数テーブル参照を利用す�
     	data 62  
     	data 63  
     	data 0  
+  
+  　
+<a name="enzan2"></a>
+#### 二項演算
+二項演算はMレジスタとLレジスタを使って演算処理をおこないます。  
+  
+    	//　アドレスxxxとyyyの値を加算してxxxにストアする  
+    	read 　add_table_h  
+    	set(h)  
+    	read 　xxx  
+    	set(m)  
+    	read 　yyy  
+    	set(l)  
+    	read@  
+    	write 　xxx  
+    ・  
+    ・  
+    ・  
+    xxx:  
+    	data 0  
+  
+    // 加算用テーブルのアドレス(H)  
+    add_table_h:  
+    	data   add_table.h  
+  
+    	// アドレス4Kバイト境界に設定する
+    	section  
+  
+    // 加算用テーブル  
+    add_table:  
+
+    	// 0+yyyを計算するテーブル  
+    	data 0  
+    	data 1  
+    	data 2  
+    	・  
+    	・  
+    	・  
+    	data 62  
+    	data 63  
+
+    	// 1+yyyを計算するテーブル  
+    	data 1  
+    	data 2  
+    	data 3  
+    	・  
+    	・  
+    	・  
+    	data 63  
+    	data 0  
+    	・  
+    	・  
+    	・  
+    	// 63+yyyを計算するテーブル  
+    	data 63  
+    	data 0  
+    	data 1  
+    	・  
+    	・  
+    	・  
+    	data 61  
+    	data 62  
   
   　
 <a name="jouken"></a>
@@ -395,9 +459,12 @@ CARD6 CPUはALUを持っていないので定数テーブル参照を利用す�
   カレントディレクトリに移動して"./run"と入力するとデバッガが起動します。  
   CPUのハードウェア制御やエミュレーション、デバッグ、コンパイル等がパソコン上で行えます。
   
-![enter image description here](image/sym1.png?raw=true)
+  ハードウェアデバッグモード  
   
-  高速エミュレータを起動したとき
+  
+![enter image description here](image/debug1.png?raw=true)
+  
+  ハードウェアデバッグモード
   
 ![enter image description here](image/fast_sym1.png?raw=true)
   
