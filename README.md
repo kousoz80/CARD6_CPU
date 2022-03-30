@@ -419,7 +419,7 @@ CARD6 CPUはALUを持っていないので定数テーブル参照を利用す�
   
   　
 <a name="jouken"></a>
-#### ・条件分岐
+#### 条件分岐
 条件分岐も演算同様に分岐先アドレスを格納したテーブルを参照することで条件分岐をおこないます。
   
   
@@ -459,32 +459,27 @@ CARD6 CPUはALUを持っていないので定数テーブル参照を利用す�
   カレントディレクトリに移動して"./run"と入力するとデバッガが起動します。  
   CPUのハードウェア制御やエミュレーション、デバッグ、コンパイル等がパソコン上で行えます。
   
-  ハードウェアデバッグモード  
-  
-  
+###  ハードウェアデバッグモード  
 ![enter image description here](image/debug1.png?raw=true)
   
-  ハードウェアデバッグモード
+  CARD6 CPUボードと接続してハードウェアのデバッグやテストをおこないます。  
+  BASICインタプリタを内蔵していて、テスト等を自動で実行することができます。  
   
-![enter image description here](image/fast_sym1.png?raw=true)
+###  エミュレーションモード
   
- ### run_vm(スクリプトファイル)
-  仮想マシンのエミュレータを起動します。
+![enter image description here](image/sym1.png?raw=true)
   
-![enter image description here](image/sym_vm1.png?raw=true)
+![enter image description here](image/sym2.png?raw=true)
   
-  直接仮想マシンのエミュレーションを行いますので高速に実行できます。  
-  複雑な処理のエミュレーションに向いています。
-　　
-![enter image description here](image/sym_vm1.png?raw=true)
+  エミュレーションモードにするとエミュレータが起動して実機がなくてもプログラムを開発・実行することができます。  
+
+
+###  仮想マシンのエミュレーションモード
   
-  BASICを実行したとき
+![enter image description here](image/vm_sym1.png?raw=true)
+
+  仮想マシンのエミュレータを起動します、エミュレーションモードよりも高速に動作します。  
   
-![enter image description here](image/card6basic.png?raw=true)  
-  
-  高速エミュレータを起動したとき
-  
-![enter image description here](image/fast_sym_vm1.png?raw=true)
   
 <a name="kasou"></a>
 ## ・仮想マシン
@@ -496,6 +491,8 @@ CARD6 CPUはその簡素な構造のため、できることは分岐処理と�
 
 <a name="compiler"></a>
 ### コンパイラ
+![enter image description here](image/compiler1.png?raw=true)
+  
 CARD6 CPUには自作言語のコンパイラが用意されています。  
 詳細は以下を参照して下さい。
   
@@ -504,6 +501,8 @@ https://github.com/kousoz80/oregengo_R
   
 <a name="basic"></a>
 ### BASIC
+![enter image description here](image/basic1.png?raw=true)
+  
 BASIC言語の仕様は電大版Tiny BASICとほぼ同じです。
   
 https://ja.wikipedia.org/wiki/Tiny_BASIC
