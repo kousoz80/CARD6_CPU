@@ -96,7 +96,7 @@ CARD6 CPUはプログラムカウンタやALUを持たない極めて単純な�
   OPコードの各ビットはメモリのcフィールドあるいはCレジスタの出力端子から出力されて  
   各レジスタやアドレスセレクタやIOポートを制御します。  
   そのビット割り当ては次のようになっています。  
-![enter image description here](image/opcode.jpg?raw=true)
+![enter image description here](image/opcode.png?raw=true)
   
   
   IO:  
