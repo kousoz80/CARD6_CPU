@@ -457,27 +457,23 @@ CARD6 CPUはALUを持っていないので定数テーブル参照を利用す�
   カレントディレクトリに移動して"./run"と入力するとデバッガが起動します。  
   CPUのハードウェア制御やエミュレーション、デバッグ、コンパイル等がパソコン上で行えます。
   
-###  ハードウェアデバッグモード  
-![enter image description here](image/debug1.png?raw=true)
-  
+###  ハードウェアデバッグモード
   CARD6 CPUボードと接続してハードウェアのデバッグやテストをおこないます。  
   BASICインタプリタを内蔵していて、テスト等を自動で実行することができます。  
+![enter image description here](image/debug1.png?raw=true)
+  
   
 ###  エミュレーションモード
-  
+  エミュレーションモードにするとエミュレータが起動して実機がなくてもプログラムを開発・実行することができます。  
 ![enter image description here](image/sym1.png?raw=true)
   
 ![enter image description here](image/sym2.png?raw=true)
   
-  エミュレーションモードにするとエミュレータが起動して実機がなくてもプログラムを開発・実行することができます。  
 
-
-###  仮想マシンのエミュレーションモード
-  
+###  仮想マシンのエミュレーションモード  
+  仮想マシンのエミュレータを起動します、エミュレーションモードよりも高速に動作します。  
 ![enter image description here](image/vm_sym1.png?raw=true)
 
-  仮想マシンのエミュレータを起動します、エミュレーションモードよりも高速に動作します。  
-  
   
 <a name="kasou"></a>
 ## ・仮想マシン
@@ -489,22 +485,22 @@ CARD6 CPUはその構成上、分岐処理とデータ移動処理以外のこ�
 
 <a name="compiler"></a>
 ### コンパイラ
-![enter image description here](image/compiler1.png?raw=true)
-  
 CARD6 CPUには自作言語のコンパイラが用意されています。  
 詳細は以下を参照して下さい。
   
 https://github.com/kousoz80/oregengo_R  
   
+![enter image description here](image/compiler1.png?raw=true)
+  
   
 <a name="basic"></a>
 ### BASIC
-![enter image description here](image/basic1.png?raw=true)
   
 BASIC言語の仕様は電大版Tiny BASICとほぼ同じです。
   
 https://ja.wikipedia.org/wiki/Tiny_BASIC
   
+![enter image description here](image/basic1.png?raw=true)
 
 
 
@@ -530,9 +526,10 @@ CARD6 CPUは極めて簡単な構成なのでCPUだけでなくコンピュー�
 <a name="douga"></a>
 ## ・動画
 動作の様子を動画で公開しています  
-![enter image description here](image/douga1.png?raw=true)  
 https://www.youtube.com/watch?v=zzh4TlBwuV4
   
+![enter image description here](image/douga1.png?raw=true)  
+
 <a name="setumei"></a>
 ## ・各ファイルの説明
   ### a.out
