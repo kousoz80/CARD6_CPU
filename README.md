@@ -157,7 +157,7 @@ CARD6 CPUはプログラムカウンタやALU、シーケンサ等が存在し�
   基本的に逐次処理はメモリのaフィールドに次のアドレスをセットしておくことによりおこなわれます。  
   
 <a name="data"></a>
-### データ転送
+### データ転送処理
   １.　レジスタにロード  
   メモリのaフィールドにロードする番地をセットして、rフィールドに次のアドレスをセットして  
   OPコードのRETビットを有効にするとレジスタに値がセットされて次のアドレスに戻ってきます。  
@@ -557,8 +557,10 @@ https://www.youtube.com/watch?v=zzh4TlBwuV4
   ### Project(ディレクトリ)
   アプリケーション等のObjectEditorプロジェクトファイルが格納されています。
   
-  ObjectEditorの詳細
-  
+  ※ObjectEditorとは回路図を描くような感覚でプログラムを作成することができる統合開発ツールです。  
   https://github.com/kousoz80/ObjectEditor
+  
+![enter image description here](image/objedit1.png?raw=true)
+  
   
 
