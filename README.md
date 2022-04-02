@@ -26,7 +26,7 @@
 　　[アセンブラの命令](#meirei)  
 　　[演算子](#enzanshi)  
 　　[コーディング例](#coding)  
-　　　　[データ移動](#idou)  
+　　　　[データ転送](#tensou)  
 　　　　[単項演算](#enzan1)  
 　　　　[二項演算](#enzan2)  
 　　　　[条件分岐](#jouken)  
@@ -299,8 +299,8 @@ CARD6 CPUは構造が簡単な反面、プログラミング作業は初心者�
 <a name="coding"></a>
 ### ・コーディング例
 
-<a name="data"></a>
-#### ・データ移動
+<a name="tensou"></a>
+#### ・データ転送
   
     	//　アドレスxxxの内容をアドレスyyyにコピーする  
     	read xxx  
