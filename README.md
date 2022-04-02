@@ -529,7 +529,7 @@ https://ja.wikipedia.org/wiki/Tiny_BASIC
 
 <a name="os"></a>
 ### OS
-  OSの動作をエミュレーションします。
+  RAMディスク上で動作する簡単なOSとそのOSで動くエディタやアセンブラ、コンパイラが用意されています。  
 
 ![enter image description here](image/os6.png?raw=true)
   
