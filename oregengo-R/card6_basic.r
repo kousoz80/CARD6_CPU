@@ -1,7 +1,7 @@
-//
-//    CARD6 BASIC VER 0.1
+//    CARD6 BASIC VER 0.2
 //    CARD6 コンピュータで動作するBASICインタプリタ
-//
+//変更点：nextコマンドの不具合修正
+
 // 定数・構造体定義
 
 // トークンタイプ
@@ -827,9 +827,13 @@ cmd_next:
 
   // nextの後に変数名がある場合
   if TokenType#<>VARIABLE goto cmd_next1
-    TokenText, get_var_adr ForStackP#, ->_ForStack.var# - tt#=
-    if tt#<>0 then "NEXT WITHOUT FOR", assertError
-    getToken
+  TokenText, get_var_adr for_var#=
+cmd_next0:
+    for_var#, ForStackP#, ->_ForStack.var# - tt#=
+    if tt#=0 then getToken gotocmd_next1
+    if ForStackP#<=ForStackArea then  "NEXT WITHOUT FOR", assertError
+    ForStackP#, _ForStack.SIZE, - ForStackP#=
+    goto cmd_next0
 
   // STEP値をループ変数へ加える
 cmd_next1:
@@ -1985,10 +1989,10 @@ main:
   _INIT_STATES
   goto _PSTART
 _PSTART:
- _1539967402_in
+ _122693273_in
 
  end
-_1539967402_in:
+_122693273_in:
 // BASICを起動する
 start_basic:
 

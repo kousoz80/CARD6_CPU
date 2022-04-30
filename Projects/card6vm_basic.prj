@@ -23,12 +23,12 @@
 <ID>_C0</ID>
 <x0>257</x0>
 <y0>16</y0>
-<width>355</width>
-<height>65</height>
-<codetext>//
-//    CARD6 BASIC VER 0.1
+<width>354</width>
+<height>52</height>
+<codetext>//    CARD6 BASIC VER 0.2
 //    CARD6 コンピュータで動作するBASICインタプリタ
-//</codetext>
+//変更点：nextコマンドの不具合修正
+</codetext>
 </codeclip>
 <codeclip>
 <ID>_C3</ID>
@@ -496,9 +496,13 @@ cmd_next:
 
   // nextの後に変数名がある場合
   if TokenType#&lt;&gt;VARIABLE goto cmd_next1
-    TokenText, get_var_adr ForStackP#, -&gt;_ForStack.var# - tt#=
-    if tt#&lt;&gt;0 then &quot;NEXT WITHOUT FOR&quot;, assertError
-    getToken
+  TokenText, get_var_adr for_var#=
+cmd_next0:
+    for_var#, ForStackP#, -&gt;_ForStack.var# - tt#=
+    if tt#=0 then getToken gotocmd_next1
+    if ForStackP#&lt;=ForStackArea then  &quot;NEXT WITHOUT FOR&quot;, assertError
+    ForStackP#, _ForStack.SIZE, - ForStackP#=
+    goto cmd_next0
 
   // STEP値をループ変数へ加える
 cmd_next1:
