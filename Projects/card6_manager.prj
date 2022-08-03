@@ -273,6 +273,15 @@ int main( int argc, char** argv ){
 <ImportFiles7></ImportFiles7>
 <ProgramStartupCode7></ProgramStartupCode7>
 <NativeHelpCommand7></NativeHelpCommand7>
+<OpenCompileDialog>0</OpenCompileDialog>
+<ScriptExecCommand></ScriptExecCommand>
+<RunCommand8></RunCommand8>
+<CompileCommand9></CompileCommand9>
+<RunCommand9></RunCommand9>
+<GUIDesignerCommand9></GUIDesignerCommand9>
+<ImportFiles9></ImportFiles9>
+<ProgramStartupCode9></ProgramStartupCode9>
+<NativeHelpCommand9></NativeHelpCommand9>
 </プロパティ>
 <codeclip>
 <ID>_CSTART</ID>
@@ -10082,7 +10091,7 @@ Menu;VMEmulator;48;/Menu;END;
 <y0>282</y0>
 <width>239</width>
 <height>100</height>
-<ID_maker>124</ID_maker>
+<ID_maker>126</ID_maker>
 <objectname>card6_sym</objectname>
 <description>新規のアプリケーション</description>
 <codeclip>
@@ -10108,8 +10117,8 @@ Menu;VMEmulator;48;/Menu;END;
 <ID>_O1</ID>
 <state1>_SINIT</state1>
 <state2>_SINIT</state2>
-<x0>810</x0>
-<y0>832</y0>
+<x0>830</x0>
+<y0>845</y0>
 <width>112</width>
 <height>65</height>
 <inconnectx0>0</inconnectx0>
@@ -11013,9 +11022,9 @@ File ini_file = new File(&quot;card6_sym.ini&quot;);
 
 
 memory_windows = new Vector();
-mem_r = new int[AD_SIZE];
-mem_a = new int[AD_SIZE];
 mem_c = new int[AD_SIZE];
+mem_a = new int[AD_SIZE];
+mem_r = new int[AD_SIZE];
 mem_d = new int[AD_SIZE];
 
 // すべてのメモリにdata命令をセットして読み書きできるようにしておく
@@ -12512,6 +12521,15 @@ int main( int argc, char** argv ){
 <ImportFiles7></ImportFiles7>
 <ProgramStartupCode7></ProgramStartupCode7>
 <NativeHelpCommand7></NativeHelpCommand7>
+<OpenCompileDialog>0</OpenCompileDialog>
+<ScriptExecCommand></ScriptExecCommand>
+<RunCommand8></RunCommand8>
+<CompileCommand9></CompileCommand9>
+<RunCommand9></RunCommand9>
+<GUIDesignerCommand9></GUIDesignerCommand9>
+<ImportFiles9></ImportFiles9>
+<ProgramStartupCode9></ProgramStartupCode9>
+<NativeHelpCommand9></NativeHelpCommand9>
 </プロパティ>
 <relation>
 <ID>_R60</ID>
@@ -13287,9 +13305,101 @@ if( (mc &amp; LDL)     == 0 ) ldl_label.setBackground(Color.green);     else  ld
 <px>0</px>
 <py>72</py>
 </pin>
+<relation>
+<ID>_R119</ID>
+<pin1name>_A0(_P_VMEmulator)</pin1name>
+<pin2name>_P117</pin2name>
+</relation>
+<pin>
+<ID>_P120</ID>
+<x0>732</x0>
+<y0>882</y0>
+<width>60</width>
+<height>30</height>
+<text>exit()</text>
+<px>145</px>
+<py>18</py>
+</pin>
+<relation>
+<ID>_R121</ID>
+<pin1name>_P120</pin1name>
+<pin2name>_O1</pin2name>
+</relation>
+<pin>
+<ID>_P122</ID>
+<x0>583</x0>
+<y0>104</y0>
+<width>60</width>
+<height>30</height>
+<text>close()</text>
+<px>147</px>
+<py>42</py>
+</pin>
+<relation>
+<ID>_R123</ID>
+<pin1name>_A0(_PGUIclosed)</pin1name>
+<pin2name>_P122</pin2name>
+</relation>
+<operation>
+<ID>_O124</ID>
+<state1>_SINIT</state1>
+<state2>_SINIT</state2>
+<x0>561</x0>
+<y0>864</y0>
+<width>132</width>
+<height>47</height>
+<inconnectx0>0</inconnectx0>
+<inconnecty0>40</inconnecty0>
+<outconnectx0>0</outconnectx0>
+<outconnecty0>40</outconnecty0>
+<inpintext>in()</inpintext>
+<inpinx0>0</inpinx0>
+<inpiny0>26</inpiny0>
+<inpinwidth>40</inpinwidth>
+<inpinheight>20</inpinheight>
+<outpintext>out()</outpintext>
+<outpinx0>90</outpinx0>
+<outpiny0>40</outpiny0>
+<outpinwidth>40</outpinwidth>
+<outpinheight>20</outpinheight>
+<inpinlinkcount>1</inpinlinkcount>
+<description></description>
+<codetext>// メモリダンプ
+
+
+
+
+// メモリの各フィールドの内容を、それぞれ別のファイルに書き出す
+// Verilog HDLの初期化ファイルとして使用可能
+// ファイル名はそれぞれ&quot;mem_c.txt&quot;,&quot;mem_a.txt&quot;,&quot;mem_r.txt&quot;,&quot;mem_d.txt&quot;
+int ad_size=262144;
+try{
+BufferedWriter dout = new BufferedWriter( new FileWriter(&quot;mem_c.txt&quot;));
+for( int adrs = 0; adrs &lt; ad_size; adrs++ ){
+  dout.write(Integer.toHexString(mem_c[ adrs ])+&quot;\n&quot;);
+}
+dout.close();
+dout = new BufferedWriter( new FileWriter(&quot;mem_a.txt&quot;));
+for( int adrs = 0; adrs &lt; ad_size; adrs++ ){
+  dout.write(Integer.toHexString(mem_a[ adrs ])+&quot;\n&quot;);
+}
+dout.close();
+dout = new BufferedWriter( new FileWriter(&quot;mem_r.txt&quot;));
+for( int adrs = 0; adrs &lt; ad_size; adrs++ ){
+  dout.write(Integer.toHexString(mem_r[ adrs ])+&quot;\n&quot;);
+}
+dout.close();
+dout = new BufferedWriter( new FileWriter(&quot;mem_d.txt&quot;));
+for( int adrs = 0; adrs &lt; ad_size; adrs++ ){
+  dout.write(Integer.toHexString(mem_d[ adrs ])+&quot;\n&quot;);
+}
+dout.close();
+} catch(Exception e){}
+</codetext>
+</operation>
 <aobject>
 <ID>_A0</ID>
-<x0>132</x0>
+<x0>127</x0>
 <y0>0</y0>
 <width>280</width>
 <objectname>GUI</objectname>
@@ -13331,7 +13441,7 @@ if( (mc &amp; LDL)     == 0 ) ldl_label.setBackground(Color.green);     else  ld
 <width>180</width>
 <height>26</height>
 <text>GUI_closed()</text>
-<px>100</px>
+<px>94</px>
 <py>6</py>
 </pin>
 <action>
@@ -13827,6 +13937,16 @@ XGUI x = new XGUI();
 <text>disp_area_created(JTextArea t)</text>
 <px>0</px>
 <py>882</py>
+</pin>
+<pin>
+<ID>_PAdump_button</ID>
+<x0>0</x0>
+<y0>1398</y0>
+<width>200</width>
+<height>26</height>
+<text>dump_button_clicked()</text>
+<px>0</px>
+<py>900</py>
 </pin>
 <codeclip>
 <ID>_CXSTART</ID>
@@ -14610,10 +14730,25 @@ LABEL53 ILABEL53;
  setText( &quot;entry address&quot; );
 }
 }
+dump_button Idump_button;
+ class dump_button extends JButton implements ActionListener{
+  dump_button(){
+ setOpaque( true );
+ setName(  &quot;dump_button&quot; );
+ setFont( new Font( &quot;Dialog&quot;, 0, 12 ));
+ setForeground( new Color(  51, 51, 51 ));
+ setBackground( new Color(  192, 192, 192 ));
+ setHorizontalAlignment( 0 );
+ setVerticalAlignment( 0 );
+ setText( &quot;DUMP&quot; );
+ addActionListener( this );
+}
+ public void actionPerformed( ActionEvent e ){ dump_button_clicked(); }
+}
  XGUI(){
  setTitle(&quot;CARD6シミュレータ&quot;);
  cnt = new JPanel( new BorderLayout() );
- cnt.setPreferredSize(  new  Dimension( 923, 617 ) );
+ cnt.setPreferredSize(  new  Dimension( 943, 617 ) );
  ((Component)cnt).setBackground( new Color( 252, 243, 83 ) );
 menubar = new JMenuBar();
 setJMenuBar( menubar );
@@ -14666,7 +14801,7 @@ menubar.add( new  _VMEmulator() );
  Iinifile_button = new inifile_button();
  cnt.add( Iinifile_button, 0 );
  cnt.getLayout().removeLayoutComponent( Iinifile_button );
- Iinifile_button.setBounds( 772, 3, 144, 29 );
+ Iinifile_button.setBounds( 772, 3, 94, 30 );
  Iaddr_reg = new addr_reg();
  cnt.add( Iaddr_reg, 0 );
  cnt.getLayout().removeLayoutComponent( Iaddr_reg );
@@ -14830,7 +14965,7 @@ menubar.add( new  _VMEmulator() );
  Idisp_area = new disp_area();
  cnt.add( Idisp_area.scrl, 0 );
  cnt.getLayout().removeLayoutComponent( Idisp_area.scrl );
- (  Idisp_area.scrl ).setBounds( 411, 36, 507, 576 );
+ (  Idisp_area.scrl ).setBounds( 411, 36, 527, 578 );
  ILABEL50 = new LABEL50();
  cnt.add( ILABEL50, 0 );
  cnt.getLayout().removeLayoutComponent( ILABEL50 );
@@ -14839,6 +14974,10 @@ menubar.add( new  _VMEmulator() );
  cnt.add( ILABEL53, 0 );
  cnt.getLayout().removeLayoutComponent( ILABEL53 );
  ILABEL53.setBounds( 1, 158, 110, 22 );
+ Idump_button = new dump_button();
+ cnt.add( Idump_button, 0 );
+ cnt.getLayout().removeLayoutComponent( Idump_button );
+ Idump_button.setBounds( 868, 3, 69, 30 );
  setContentPane( cnt );
  pack();
  addWindowListener( this );
@@ -14855,10 +14994,10 @@ menubar.add( new  _VMEmulator() );
 }
 </codetext>
 </codeclip>
-<ID_maker>66</ID_maker>
-<height>904</height>
+<ID_maker>67</ID_maker>
+<height>922</height>
 <レイアウト>CARD6シミュレータ
-923
+943
 617
 252
 243
@@ -14875,7 +15014,7 @@ BUTTON;run_button;run;292;2;44;27;51;51;51;192;192;192;Dialog;12;null;0;0;1;1;1;
 BUTTON;inc_addr;+;241;59;28;23;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
 BUTTON;dec_addr;-;241;85;28;23;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
 BUTTON;mem_set;WRT;272;59;42;49;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
-BUTTON;inifile_button;Edit Ini File;772;3;144;29;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
+BUTTON;inifile_button;Edit Ini File;772;3;94;30;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
 TEXTFIELD;addr_reg;000000;2;86;57;24;51;51;51;255;255;255;Dialog;10;1;1;1;JTextField;
 TEXTFIELD;c_reg;ff;61;86;29;24;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
 TEXTFIELD;a_reg;000000;91;86;56;24;51;51;51;255;255;255;Dialog;10;1;1;0;JTextField;
@@ -14916,47 +15055,18 @@ LABEL;LABEL4;C:;61;59;27;24;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel
 BUTTON;edit_button;edit;153;3;42;27;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
 TEXTFIELD;cmd_field;null;507;3;260;30;51;51;51;255;255;255;Dialog;12;1;1;1;JTextField;
 LABEL;LABEL42;Command:;411;2;91;29;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
-TEXTAREA;disp_area;null;411;36;507;576;29;255;32;1;1;1;Dialog;20;1;1;1;JTextArea;
+TEXTAREA;disp_area;null;411;36;527;578;29;255;32;1;1;1;Dialog;20;1;1;1;JTextArea;
 LABEL;LABEL50;Break address;219;158;107;22;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
 LABEL;LABEL53;entry address;1;158;110;22;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;0;JLabel;
+BUTTON;dump_button;DUMP;868;3;69;30;51;51;51;192;192;192;Dialog;12;null;0;0;1;0;1;JButton;
 Menu;Debugger;48;/Menu;END;
 Menu;VMEmulator;48;/Menu;END;
 </レイアウト>
 </aobject>
 <relation>
-<ID>_R119</ID>
-<pin1name>_A0(_P_VMEmulator)</pin1name>
-<pin2name>_P117</pin2name>
-</relation>
-<pin>
-<ID>_P120</ID>
-<x0>682</x0>
-<y0>863</y0>
-<width>60</width>
-<height>30</height>
-<text>exit()</text>
-<px>145</px>
-<py>18</py>
-</pin>
-<relation>
-<ID>_R121</ID>
-<pin1name>_P120</pin1name>
-<pin2name>_O1</pin2name>
-</relation>
-<pin>
-<ID>_P122</ID>
-<x0>583</x0>
-<y0>104</y0>
-<width>60</width>
-<height>30</height>
-<text>close()</text>
-<px>147</px>
-<py>42</py>
-</pin>
-<relation>
-<ID>_R123</ID>
-<pin1name>_A0(_PGUIclosed)</pin1name>
-<pin2name>_P122</pin2name>
+<ID>_R125</ID>
+<pin1name>_A0(_PAdump_button)</pin1name>
+<pin2name>_O124</pin2name>
 </relation>
 </xobject>
 <xobject>

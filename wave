@@ -1,0 +1,2 @@
+#!/bin/sh
+gtkwave card6.vcd

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+iverilog -o v.out card6.v card6_testbench.v
+
+if [ $? -eq 0 ]; then
+  vvp v.out
+fi
