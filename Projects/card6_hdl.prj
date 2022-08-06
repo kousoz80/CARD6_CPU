@@ -1,0 +1,941 @@
+<?xml version="1.0" encoding="Shift_JIS" ?>
+<!-- なんちゃってXML version 0.1( ObjectEditor専用 ) -->
+<xobject>
+<ID>project</ID>
+<x0>0</x0>
+<y0>0</y0>
+<width>200</width>
+<height>100</height>
+<ID_maker>4</ID_maker>
+<objectname>card6_hdl</objectname>
+<description>新規のアプリケーション</description>
+<プロパティ>
+<ID>properties</ID>
+<LookandFeel>javax.swing.plaf.metal.MetalLookAndFeel</LookandFeel>
+<MainWinx0>0</MainWinx0>
+<MainWiny0>0</MainWiny0>
+<MainWinWidth>1024</MainWinWidth>
+<MainWinHeight>740</MainWinHeight>
+<MesgWinx0>0</MesgWinx0>
+<MesgWiny0>0</MesgWiny0>
+<MesgWinWidth>1024</MesgWinWidth>
+<MesgWinHeight>745</MesgWinHeight>
+<FileWinx0>36</FileWinx0>
+<FileWiny0>478</FileWiny0>
+<FileWinWidth>578</FileWinWidth>
+<FileWinHeight>262</FileWinHeight>
+<EditWinx0>347</EditWinx0>
+<EditWiny0>0</EditWiny0>
+<EditWinWidth>676</EditWinWidth>
+<EditWinHeight>541</EditWinHeight>
+<PropWinx0>1</PropWinx0>
+<PropWiny0>1</PropWiny0>
+<PropWinWidth>615</PropWinWidth>
+<PropWinHeight>448</PropWinHeight>
+<DividerLocation1>2</DividerLocation1>
+<DividerLocation2>2</DividerLocation2>
+<ToolBarVisible>1</ToolBarVisible>
+<ViewSourceAtCompile>0</ViewSourceAtCompile>
+<NoSourceCreate>0</NoSourceCreate>
+<JavaEditCommand>geany</JavaEditCommand>
+<JavaViewCommand></JavaViewCommand>
+<HelpCommand>xdg-open ./help/manual.html</HelpCommand>
+<ApplicationType>10</ApplicationType>
+<CompileCommand0>./compile_java</CompileCommand0>
+<RunCommand0>./run_java</RunCommand0>
+<GUIDesignerCommand0>java -jar guidsin.jar -java</GUIDesignerCommand0>
+<ImportFiles0> import java.awt.*;
+ import java.awt.event.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+import java.awt.geom.*;
+import java.awt.print.*;
+import javax.swing.border.*;
+import javax.swing.filechooser.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+import java.awt.image.BufferedImage;
+import javax.sound.sampled.*;
+
+class Starter{
+  public static void main( String args[] ){
+    %AppName% ap = new %AppName%();
+    ap.ARGS = args;
+    ap.Start();
+  }
+}
+</ImportFiles0>
+<ProgramStartupCode0> String[] ARGS;
+</ProgramStartupCode0>
+<NativeHelpCommand0>                                        </NativeHelpCommand0>
+<CompileCommand1></CompileCommand1>
+<RunCommand1></RunCommand1>
+<GUIDesignerCommand1>java -jar guidsin.jar -applet</GUIDesignerCommand1>
+<ImportFiles1> import java.awt.*;
+ import java.awt.event.*;
+ import java.applet.*;
+ import javax.swing.*;
+ import javax.swing.event.*;
+ import javax.swing.tree.*;
+ import java.io.*;
+ import java.net.*;
+ import java.util.*;
+ public class javatext extends Applet {
+   %AppName% ap;
+   public void init() {
+     ap = new %AppName%();
+     ap.APPLET = this;
+     ap.Start();
+   }
+ }
+</ImportFiles1>
+<ProgramStartupCode1> Applet APPLET;
+</ProgramStartupCode1>
+<NativeHelpCommand1></NativeHelpCommand1>
+<CompileCommand2></CompileCommand2>
+<RunCommand2></RunCommand2>
+<GUIDesignerCommand2></GUIDesignerCommand2>
+<ImportFiles2>#include &lt;stdio.h&gt;
+
+void Startup();
+</ImportFiles2>
+<ProgramStartupCode2>int main(){
+ Startup();
+ %AppName%::Start();
+ }
+</ProgramStartupCode2>
+<NativeHelpCommand2></NativeHelpCommand2>
+<CompileCommand3></CompileCommand3>
+<RunCommand3></RunCommand3>
+<GUIDesignerCommand3>java -jar guidsin.jar -cpp</GUIDesignerCommand3>
+<ImportFiles3>#include &lt;stdio.h&gt;
+#include &lt;sys/stat.h&gt;
+#include &lt;math.h&gt;
+#include &quot;Ekagen.h&quot;
+void Startup();
+</ImportFiles3>
+<ProgramStartupCode3>void Emain(){
+Startup();
+%AppName%::Start();
+}
+</ProgramStartupCode3>
+<NativeHelpCommand3></NativeHelpCommand3>
+<MoveStep>8</MoveStep>
+<ImageEditCommand>mtpaint</ImageEditCommand>
+<CompilerFileName>javac.exe</CompilerFileName>
+<CompileCommand4>./compile_android Test com example test</CompileCommand4>
+<RunCommand4>./run_android Test com example test</RunCommand4>
+<GUIDesignerCommand4>java -jar guidsin.jar -android</GUIDesignerCommand4>
+<ImportFiles4>package com.example.test;
+
+import android.os.Bundle;
+import android.app.Activity;
+import android.view.View;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.widget.Button;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.view.SurfaceView;
+import android.widget.EditText;
+import android.text.SpannableStringBuilder;
+import android.text.TextWatcher;
+import android.text.Editable;
+import android.graphics.Matrix;
+import android.graphics.Typeface;
+import android.graphics.RectF;
+import android.graphics.BitmapFactory;
+import java.io.*;
+ import java.net.*;
+import java.util.*;
+import java.text.SimpleDateFormat;
+import android.media.MediaPlayer;
+import android.os.Handler;
+import android.content.res.Configuration;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import android.app.Activity;
+import android.graphics.Color;
+
+import android.widget.AbsoluteLayout;
+import android.widget.*;
+import android.view.Gravity;
+import android.view.View.OnClickListener;
+
+import android.hardware.Camera;
+
+public class HelloWorld extends Activity {
+  public void onCreate(Bundle bundle) {
+    super.onCreate(bundle);
+    %AppName% ap = new %AppName%();
+    ap.ACTIVITY = this;
+    ap.Start();
+  }
+}
+</ImportFiles4>
+<ProgramStartupCode4>Activity ACTIVITY;
+</ProgramStartupCode4>
+<NativeHelpCommand4>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    package=&quot;com.example.test&quot;
+    android:versionCode=&quot;1&quot;
+    android:versionName=&quot;1.0&quot; &gt;
+
+    
+    
+  &lt;uses-permission android:name=&quot;android.permission.CAMERA&quot; /&gt; 
+  &lt;uses-feature android:name=&quot;android.hardware.camera&quot; /&gt; 
+  &lt;uses-feature android:name=&quot;android.hardware.usb.host&quot; /&gt; 
+  &lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot;/&gt;
+  &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt; 
+  &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;
+
+  &lt;uses-sdk android:minSdkVersion=&quot;3&quot; android:targetSdkVersion=&quot;21&quot;/&gt;
+  
+ 
+    &lt;application android:label=&quot;@string/app_name&quot; &gt;
+        &lt;activity
+            android:name=&quot;HelloWorld&quot;
+            android:label=&quot;@string/app_name&quot; &gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.MAIN&quot; /&gt;
+
+                &lt;category android:name=&quot;android.intent.category.LAUNCHER&quot; /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/activity&gt;
+    &lt;/application&gt;
+
+&lt;/manifest&gt;
+</NativeHelpCommand4>
+<HtmlEditCommand></HtmlEditCommand>
+<CompileCommand5></CompileCommand5>
+<RunCommand5></RunCommand5>
+<GUIDesignerCommand5></GUIDesignerCommand5>
+<ImportFiles5></ImportFiles5>
+<ProgramStartupCode5>gosub @_PSTART
+end
+</ProgramStartupCode5>
+<NativeHelpCommand5></NativeHelpCommand5>
+<NoOptimizePin>0</NoOptimizePin>
+<CompileCommand6>
+</CompileCommand6>
+<RunCommand6></RunCommand6>
+<GUIDesignerCommand6></GUIDesignerCommand6>
+<ImportFiles6></ImportFiles6>
+<ProgramStartupCode6></ProgramStartupCode6>
+<NativeHelpCommand6></NativeHelpCommand6>
+<IDF_LocalVariable5>\</IDF_LocalVariable5>
+<IDF_LocalVariable7>\</IDF_LocalVariable7>
+<CompileCommand7></CompileCommand7>
+<RunCommand7></RunCommand7>
+<GUIDesignerCommand7></GUIDesignerCommand7>
+<ImportFiles7></ImportFiles7>
+<ProgramStartupCode7></ProgramStartupCode7>
+<NativeHelpCommand7></NativeHelpCommand7>
+<OpenCompileDialog>0</OpenCompileDialog>
+<ScriptExecCommand>bash</ScriptExecCommand>
+<RunCommand8></RunCommand8>
+<CompileCommand9>
+</CompileCommand9>
+<RunCommand9>xdg-open test.html
+</RunCommand9>
+<GUIDesignerCommand9>java -jar guidsin.jar -javascript
+</GUIDesignerCommand9>
+<ImportFiles9></ImportFiles9>
+<ProgramStartupCode9>_PSTART();
+</ProgramStartupCode9>
+<NativeHelpCommand9></NativeHelpCommand9>
+<CompileCommand10>#!/bin/sh
+
+iverilog test.v
+
+if [ $? -eq 0 ]; then
+  vvp a.out
+fi
+</CompileCommand10>
+<RunCommand10>#!/bin/sh
+gtkwave wave.vcd
+</RunCommand10>
+<GUIDesignerCommand10></GUIDesignerCommand10>
+<ImportFiles10></ImportFiles10>
+<ProgramStartupCode10></ProgramStartupCode10>
+<NativeHelpCommand10></NativeHelpCommand10>
+</プロパティ>
+<pin>
+<ID>_PSTART</ID>
+<x0>17</x0>
+<y0>116</y0>
+<width>55</width>
+<height>24</height>
+<text>Start()</text>
+<px>50</px>
+<py>50</py>
+</pin>
+<codeclip>
+<ID>_C0</ID>
+<x0>179</x0>
+<y0>403</y0>
+<width>315</width>
+<height>88</height>
+<codetext>// CARD6 コンピュータシステム
+module card6(clock,reset,adrs_bus,data_bus);
+input clock,reset;
+inout [17:0] adrs_bus;
+inout [ 5:0] data_bus;
+
+wire [ 7:0] c_bus;
+wire [17:0] a_bus;
+wire [17:0] r_bus;
+wire [ 5:0] d_bus;
+wire [17:0] adrs0;
+wire [17:0] adrs1;
+wire [ 7:0] control;
+wire rd_clk,wr_clk;
+wire d_clk,h_clk,m_clk,l_clk;
+wire oe_r,oe_d;
+wire io,pointer,ret,st,ld,ldh,ldm,ldl;
+
+// 制御信号
+assign rd_clk  = clock;
+assign wr_clk  = ~clock;
+assign d_clk   = rd_clk  | ld;
+assign h_clk   = rd_clk  | ldh; 
+assign m_clk   = rd_clk  | ldm; 
+assign l_clk   = rd_clk  | ldl; 
+assign oe_r    = wr_clk  | ret;
+assign oe_d    = wr_clk  | st;
+assign io      = control[7];
+assign pointer = control[6];
+assign ret     = control[5];
+assign st      = control[4];
+assign ld      = c_bus[3];
+assign ldh     = c_bus[2];
+assign ldm     = c_bus[1];
+assign ldl     = c_bus[0];
+
+// メモリ
+c_field mem_c(.we(1&apos;b1), .oe(rd_clk), .cs(1&apos;b0), .addr(adrs_bus), .data(c_bus));
+a_field mem_a(.we(oe_r), .oe(rd_clk), .cs(1&apos;b0), .addr(adrs_bus), .data(a_bus));
+r_field mem_r(.we(1&apos;b1), .oe(rd_clk), .cs(1&apos;b0), .addr(adrs_bus), .data(r_bus));
+d_field mem_d(.we(oe_d), .oe(rd_clk), .cs(1&apos;b0), .addr(adrs_bus), .data(d_bus));
+
+// レジスタ
+c_reg reg_c(.clk(rd_clk), .oe(1&apos;b0), .d(c_bus), .q(control));
+a_reg reg_a(.clk(rd_clk), .oe(1&apos;b0), .d(a_bus), .q(adrs0));
+r_reg reg_r(.clk(rd_clk), .oe(oe_r), .d(r_bus), .q(a_bus));
+d_reg reg_d(.clk(d_clk),  .oe(oe_d), .d(d_bus), .q(d_bus));
+d_reg reg_h(.clk(h_clk),  .oe(1&apos;b0), .d(d_bus), .q(adrs1[17:12]));
+d_reg reg_m(.clk(m_clk),  .oe(1&apos;b0), .d(d_bus), .q(adrs1[11: 6]));
+d_reg reg_l(.clk(l_clk),  .oe(1&apos;b0), .d(d_bus), .q(adrs1[ 5: 0]));
+
+// セレクタ
+adrs_sel select(.sel(pointer), .g(reset), .in0(adrs0), .in1(adrs1), .out(adrs_bus));
+
+endmodule
+
+
+// Cフィールド
+module c_field(we, oe, cs, addr, data);
+ parameter DWIDTH=8,AWIDTH=18,WORDS=262144;
+ input we,oe,cs;
+ input [AWIDTH-1:0] addr;
+ inout [DWIDTH-1:0] data;
+
+ reg [DWIDTH-1:0] mem [WORDS-1:0];
+ assign data = (~oe &amp; ~cs)? mem[addr] : 8&apos;bZ ;
+
+ always @(~we)
+   begin
+     if(~cs) mem[addr] &lt;= data;
+   end
+
+endmodule
+
+
+// Aフィールド
+module a_field(we, oe, cs, addr, data);
+ parameter DWIDTH=18,AWIDTH=18,WORDS=262144;
+ input we,oe,cs;
+ input [AWIDTH-1:0] addr;
+ inout [DWIDTH-1:0] data;
+
+ reg [DWIDTH-1:0] mem [WORDS-1:0];
+ assign data = (~oe &amp; ~cs)? mem[addr] : 18&apos;bZ ;
+
+ always @(~we)
+   begin
+     if(~cs) mem[addr] &lt;= data;
+   end
+
+endmodule
+
+
+// Rフィールド
+module r_field(we, oe, cs, addr, data);
+ parameter DWIDTH=18,AWIDTH=18,WORDS=262144;
+ input we,oe,cs;
+ input [AWIDTH-1:0] addr;
+ inout [DWIDTH-1:0] data;
+
+ reg [DWIDTH-1:0] mem [WORDS-1:0];
+ assign data = (~oe &amp; ~cs)? mem[addr] : 18&apos;bZ ;
+
+ always @(~we)
+   begin
+     if(~cs) mem[addr] &lt;= data;
+   end
+
+endmodule
+
+
+// Dフィールド
+module d_field(we, oe, cs, addr, data);
+ parameter DWIDTH=6,AWIDTH=18,WORDS=262144;
+ input we,oe,cs;
+ input [AWIDTH-1:0] addr;
+ inout [DWIDTH-1:0] data;
+
+ reg [DWIDTH-1:0] mem [WORDS-1:0];
+ assign data = (!oe &amp;&amp; !cs)? mem[addr] : 6&apos;bZ ;
+
+ always @(~we)
+   begin
+     if(~cs) mem[addr] &lt;= data;
+   end
+
+endmodule
+
+
+// Cレジスタ
+module c_reg(clk, oe, d, q);
+ parameter DWIDTH=8,AWIDTH=18,WORDS=262144;
+ input  clk,oe;
+ input  [DWIDTH-1:0] d;
+ output [DWIDTH-1:0] q;
+
+ reg [DWIDTH-1:0] r;
+ assign q = (~oe)? r : 8&apos;bZ ;
+
+ always @(posedge clk)
+   begin
+     r &lt;= d;
+   end
+
+endmodule
+
+
+// Aレジスタ
+module a_reg(clk, oe, d, q);
+ parameter DWIDTH=18,AWIDTH=18,WORDS=262144;
+ input  clk,oe;
+ input  [DWIDTH-1:0] d;
+ output [DWIDTH-1:0] q;
+
+ reg [DWIDTH-1:0] r;
+ assign q = (~oe)? r : 18&apos;bZ ;
+
+ always @(posedge clk)
+   begin
+     r &lt;= d;
+   end
+
+endmodule
+
+// Rレジスタ
+module r_reg(clk, oe, d, q);
+ parameter DWIDTH=18,AWIDTH=18,WORDS=262144;
+ input  clk,oe;
+ input  [DWIDTH-1:0] d;
+ output [DWIDTH-1:0] q;
+
+ reg [DWIDTH-1:0] r;
+ assign q = (~oe)? r : 18&apos;b0 ;
+
+ always @(posedge clk)
+   begin
+     r &lt;= d;
+   end
+
+endmodule
+
+
+// Dレジスタ
+module d_reg(clk, oe, d, q);
+ parameter DWIDTH=6,AWIDTH=18,WORDS=262144;
+ input  clk,oe;
+ input  [DWIDTH-1:0] d;
+ output [DWIDTH-1:0] q;
+
+ reg [DWIDTH-1:0] r;
+ assign q = (~oe)? r : 6&apos;bZ ;
+
+ always @(posedge clk)
+   begin
+     r &lt;= d;
+   end
+
+endmodule
+
+
+// アドレスセレクタ
+module adrs_sel(sel, g, in0, in1, out);
+ parameter AWIDTH=18,WORDS=262144;
+ input  sel, g;
+ input  [AWIDTH-1:0] in0;
+ input  [AWIDTH-1:0] in1;
+ output [AWIDTH-1:0] out;
+
+ assign out = g? (sel? in1 : in0) : 18&apos;bZ;
+
+ endmodule
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C1</ID>
+<x0>179</x0>
+<y0>177</y0>
+<width>457</width>
+<height>221</height>
+<codetext>// CARD6 CPU テストベンチ
+
+// 単位時間を1ナノ秒に設定
+`timescale 1ns / 1ps
+
+module card6_testbench;
+  // テストベンチのモジュールにはポートリストはない
+  parameter STEP = 10; // 10ナノ秒：100MHz
+  parameter TICKS = 19;
+
+  reg TEST_CLK;
+  reg TEST_RESET;
+  wire [17:0] TEST_ADRS;
+  wire [ 5:0] TEST_DATA;
+
+  // 各 initial ブロックは並列に実行される
+
+  // シミュレーション設定
+  initial
+    begin
+      // wave.vcd という名前で波形データファイルを出力
+      $dumpfile(&quot;wave.vcd&quot;);
+      // card6_1 に含まれる全てのポートを波形データに含める
+      $dumpvars(0, card6_1);
+      // シミュレータ実行時に card6_1 のポート adrs_bus と data_bus を
+      // モニタする（値が変化した時に表示）
+      $monitor(&quot;ADDR: %05x&quot;, card6_1.adrs_bus);
+      $monitor(&quot;DATA: %02x&quot;, card6_1.data_bus);
+    end
+
+  // クロックを生成
+  initial
+    begin
+      TEST_CLK = 1&apos;b1;
+      forever
+        begin
+          // #数値 で指定時間遅延させる
+          // ~ でビット反転
+          #(STEP / 2) TEST_CLK = ~TEST_CLK;
+        end
+    end
+
+  // 同期リセット信号を生成
+  initial
+    begin
+      TEST_RESET = 1&apos;b0;
+      // 2クロックの間リセット
+      repeat (2) @(posedge TEST_CLK) TEST_RESET &lt;= 1&apos;b1;
+      @(posedge TEST_CLK) TEST_RESET &lt;= 1&apos;b0;
+    end
+
+  // 指定クロックでシミュレーションを終了させる
+  initial
+    begin
+      repeat (TICKS) @(posedge TEST_CLK);
+      $finish;
+    end
+
+  // メモリ読み込み
+  initial
+    begin
+      $readmemh(&quot;mem_c.txt&quot;,card6_1.mem_c.mem, 0, 262143);
+      $readmemh(&quot;mem_a.txt&quot;,card6_1.mem_a.mem, 0, 262143);
+      $readmemh(&quot;mem_r.txt&quot;,card6_1.mem_r.mem, 0, 262143);
+      $readmemh(&quot;mem_d.txt&quot;,card6_1.mem_d.mem, 0, 262143);
+    end
+
+  // card6_1 という名前で CARD&amp; CPU モジュールをインスタンス化
+  card6 card6_1(.clock(TEST_CLK),.reset(TEST_RESET),.adrs_bus(TEST_ADRS),.data_bus(TEST_DATA));
+
+endmodule 
+</codetext>
+</codeclip>
+<codeclip>
+<ID>_C2</ID>
+<x0>180</x0>
+<y0>91</y0>
+<width>204</width>
+<height>45</height>
+<codetext>// CARD6コンピュータシステム
+// Verilog HDLによる実装
+</codetext>
+</codeclip>
+<ImgIcon>
+<ID>_I3</ID>
+<x0>395</x0>
+<y0>33</y0>
+<width>161</width>
+<height>139</height>
+<image>ppinppaoaaabkegejegeaabacaaaaabaaabaaaaapplnaadeaaiagagahagafaia
+hahahajajaiakamaebnamalalamajbcbdbpaebnbkbpbobnbkbmbmbacecochcac
+ccmcdcmbmbichdjcmcadbdedededpbhcjdndidcdmdocddedcdpplnaadebajaja
+jamalamaibnanaibcdbcmbbccdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd
+cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdppam
+aabbiaaahpaappdabaccaacabbbadabbbappemaapbaaaabafababababababaaa
+aaaaaaaaaaaaaabacadaeafagahaiajakalappemaaflabaacabadadacaeadafa
+faeaeaaaaabanhbacadaaaeabbfacbbcbdbegadbbfbghaccbhebcdbibjbkiadc
+ceblbmfbcfbnapecddcgchcijakagbhbibjbkbfcgchcicjckcedfdgdhdidjdkd
+deeefegeheiejekedfefffgfhfifjfkfdgegfggghgigjgkgdhehfhghhhihjhkh
+dieifigihiiijikicjdjejfjgjhjijjjkjckdkekfkgkhkikjkkkcldlelflglhl
+iljlklcmdmemfmgmhmimjmkmcndnenfngnhninjnknbocodoeofogohoiojokobp
+cpdpepfpgphpipjpkpppemaapbbaaadabababababababababaaaaaaaaaaaaaba
+cadaeafagahaiajakalappemaaflbbaacabacaeaeadaeahafaeaeaaabacahhaa
+bacadabbeafabcbdgacbbebfhabgbhdbcccdbiiaebcebjbkblbmjadcddcfapfb
+cgchbnkagbecedbofcbphbibjbkbgchcicjckcfdgdhdidjdkddeeefegeheieje
+kedfefffgfhfifjfkfdgegfggghgigjgkgdhehfhghhhihjhkhcidieifigihiii
+jikicjdjejfjgjhjijjjkjckdkekfkgkhkikjkkkcldlelflglhliljlklcmdmem
+fmgmhmimjmkmcndnenfngnhninjnkncodoeofogohoiojokocpdpepfpgphpipjp
+kpppknaamadabaaacabbdabbaapdaahpkpicckaikaicckaikaicckaikaicckai
+kaicckaikaicckaikaicckaikaicckaikaicnmebaabffeebaabffeebaabffeeb
+aabffeebaabffeebaabffeebaabffeebaabffeebaabffeebaabffeebaabffeeb
+aabffeebaabffegcaeakfaeknmhemcjkeafgeoagikdkecojfnpmmnippmkelich
+bmhdnjicidinbadapdmfcfmgjgnbfcbdnnbfleddfadajlidokccpglbkghbmaac
+alcnhpmeppaaehdlehhpgmkcelgnkjoihkobfdnjjejjpapdhgaehbapimgohjcd
+laddmkolbpobjjagfmggklaedmikdahhcpmkgmbpoogihigajoklgpfipicpmkif
+edniocmnbanbdkcblddldjmpkokmfmaaibabiknbbijkhofgchkjbnipdofebjai
+hbmcdddnbdadnklingcfkmcpadapmngmampimfpbimhnobgpgnogpdjhmgekpbde
+kihkocbiekomboeipclbgpccdemiopebdhliejepfgfhbgfjagohmjdndpnoofjg
+gdnjmkknemoebjmkklimbacmkdooeaopfdfjpgdopbgbjghlcahnifcjfdeobaic
+eiehpmkhkgigmfhkalbfkjcohmiifliobkjfhnmelflldhimejidofbdiofaofel
+bpgkjjkccknnjlglmjmjibincbbakpcojkjejagkehepefjgccimbifjbidfimac
+fpfbfcadkaicckaikaicckaikaicckaikaicckaikaicckaikaicckaikaicckai
+kaiceknoonaiabmjkacmgnmlleoajjkcknlncmhphlnocnkncbhdbakonhfaffgn
+fdjneojlnghcceieoofdabaeljbhbcbgpfcfnhnhkcfinjniolgimicbgfmlenmn
+gglfjijdbgojahpahnpifkeefknggifjimpgmcogfpdanbomllfhamjdkiknmnfj
+kcpagghokjgjbbpgcafjginngdojfienogmpjoibdljljhibmlpjonedobpepbhi
+fdnaglkfgfobcnaioainbjpehpejdhmeecdjgjecnpigimmdmahoonoidkebaiad
+bdcnkiicakcamioaenbfaeaafcoeefaokpcnkmccilfickojfbbjifagbljbpgcm
+cjkiaacmneddhfapmpnkfhdknfnlnoikjdlpebmmlebaojdimdkainalfneppmbb
+lfoogbbpmklifjgjabbdccbjenmblhhpjkfjknccjfifdilnfbhjjkihihofkmfh
+ncbbfmglhkjbmnbpdiflfgndbimpigdacepmkejlelhhpjdeenemoghmijoginal
+odamhgkibnelbpegbhmnnpdjifglhjpeijablkeciljajcfpcfoabhfpmknghdcf
+hiifmilmjacppocgfcfcpiibkcdmjkmpcpndlocfjenopgaglpodjkkaimakagne
+mifjkpbhgnkjdjdbhemfmkibgaeaabjheaobenkobonkokfhpcnaadmanklhbkho
+lcadfcfomiobembacjlclkalenngfpldieoonkegcbeedoacoidkinoigmeloeeo
+inplfejbckikbefeebafbafeebafbafebcacdfmdenecaijhnbhefkaajefeedad
+dcachojolebjaelafeebhifkaabcidokhgfmkfepgllanafieigenggemononieb
+aogmhkcihojobjjpgngmjkikfefkjghjhbdncadgbilaajkdmjghfbemkfonnmhg
+lggdhlchmdnnhedfbggpicinmhbnemaeaopabeojkglfalcnocknknhebolibdfg
+eapjigenooailglkdiniemaijdpdjjhmcnbjgebnbienmjdjkokgldlhjemcanji
+hplbjjoaegggkokhdopbmeenilamgaclogmoeklabigjpgklmlbjffmcfkhdhddf
+kehkbdjkamdagnmkmnidpipellggibemegppaakcnmapomoeminohndhogedmaen
+aafhdonkibnbniidmamibpepdkmiaipeodgiaidbebejcpaaekamakeafmfcidmi
+mabinejdmojakpghakcakiddmjbfmiepakcaajldemcmiginjiabcjhkpbcndibj
+fmgcjdnahmebbabjcolghcbnpoaobpgfojnkkbjdbbnngeakajdmmdblhmoelghg
+chlemahhbbmbhmcdgimeghnbhedpnkgjennkognoohgmjobjcdjhihacagcbbdnp
+lgniapmopkpgbhnhakoelenepgjcabjlibmmdgbkpbkmeihanfbkcigbbemjlkdb
+ejidpdoikhgnfcfpnlhneifdjdfdnfjdmekjmeeklblibfnialoaooaahohcpiom
+hkhfihlbehmededadipodfbmiknenahmljddhbnialnbadoahedofmjaelembndn
+ifonbmikjfdejhmglpaojjdedkbamidianfnmmhndangihonkbhnmicbmbjghbno
+gohehcececniaihfinbhknllbmdifpobfpkkhhfclkoackkikceiebbffeaadejc
+lajbdgdjeldbhmmhhfgjpmnhkkpikbkfkgclekknfgnkmolkgacnjncdkkojbamf
+aoegbpojmlhnlkgdiabmjoonmlljgmklgdfllhdonagpapnmbcahplfgfgdcmgih
+jbhcdnjdhmkfaaeplolnipedlojbogoopfegbbocgomgehebnnpdbfflfnnccbko
+kmbohcbikpcdmjdpjonomfghpjokihljifnlgldneobnfemlbbollmhnileokdai
+beaaobjlaobpponfgipjgkjfjoghgmlbicgbialijjkaacamjmmdmjaffabpcndi
+cnpicmdicnaiidppaagbnelbonkndemcfibchlgcjhafojfcoffiiepognikighl
+lanhkkodnkbhobngdkccldfcdcbadcdchcpbiifblikknmpckimpbhncmjmefefj
+cjeiejpkcfdhimnplcdkbdgmbjhemaaejhbdnaikkdbhfpfpmkekoolmlededehf
+ojlapjpcjmaabjmjbjondlaijdaadicnfjebacecmagggjjefaelncbdgmhennnm
+bcjjodgcnllfnacbehoffgbjiedoalfmpddmbbeiapmomcgeleaanedhhhgbhnof
+cdenpcedlojemelgngabcjjfnhbaecngobmpdhnfhcfiecpacklekgjegcfneijf
+mddjbijmfmecmablnhbdelnldleabofcecmbhpfmehgdkpehpaignfomeglnojnl
+ndlcmiipdidcjniogdkhcjdbljjfffiigpmcbanpnaehglhhdgcfcnnkpoakmhhm
+ccaiebhhcoaiacfceenoabjdagoebamdcfejaaaoapnhkcndkegdlegfllbidhed
+dabhjbgmhekhkjkmgoncpepehbajabihcaaeldobejaacmjaeabadjkfkbigglbb
+aljjbemhobnlkgejlmachljhccjpekafiepfafhafdkfcmkonagfennmjalakcdj
+olodijccaiecljjgnjcimaocoekcfkmocllfeeocdbijenaidmjpfnanijimdalo
+ojenaijcfajbbegfeafbodhimikiaamifbihcjeflpoibadajpbnkpgfgdnjldjo
+kjmmkjedeoelcbbladielhoaekkainbjcmieabmiciahjapoaeiabedfjlgaibch
+iamohekemmbpcfnlfjgnpjokjnaimkbkdgilbhaneomidjkfekbainbjgngjcoin
+kgkjfdomljpjjjdlacogaooihecpakeamcpkjiabmhmkbkbinbdpppaahnakmimi
+dgnkafanhgddiogbbncbmagjlocldepnacpjopnlpfpmhkfkdafclfihfdldhedn
+oghnchhoehhaidkcnpiikpmbgfhifioghklgjbmgpgnbekklcldjjmjhlblkbpaj
+bhepidmkakopdfmkkkiejcimhpfmiednfdhjkimopooncfglhnafpbedoafiipda
+epebconnimignobegagjkjiaacbbmighhkgfikajckkijcaieiegdfiedamidfdl
+iebedckiaaomfnohmnehjmnmhiejocfjjedebccmdipiofpnkfpkdkofmnmnjobp
+ljgoglhdbiaejjngfooakkheplcgjhlkhjgpjcphdgndekpiccecbnejgcgdbcgi
+bejbhablgoilncpbjekdheembgjgekncamclgipnhbncdccbibdjhmhcjkjokpan
+hafkdafjobcojkkokjeikfggljndeomnecieiffnonckilpmpbnfllbejgfkacim
+nlcgnkpibejellackfdldbdmgbgicngngphpeanlmonoachcklcjienklcjjeena
+kaobmahikiflbldgciiaafagccfamddgkjomenomnplgpebeanbchcapccblkhdl
+dedfkmkcinmdojnadhojadfnohdmcgbcdipcddnjblbinnnllokkcgbahgjdaaba
+mjkhoblcbjdncgkbhopicjcccklelffcdppbmdaihmdckjfdeaehopgaapjnanel
+cfocibjefhehmhjmmbfpbmjbaanpddifkpecpfdgbpoklkgkfblnebakomeihpmb
+damploplommnaaaadagkhaaaehokdefmldelpocbjgkfejkgfbmbljjhifoabkpi
+jbmpjkephbcfpbfblffchnfiooeekmjbebikacepeodofdpiaodpodiibpjghffe
+kjcnpobbjnlmmjaiemegdijoamfdlnpfjnfcmndbknjcnpmnjiajkhdibibjkphn
+hbhkcmkppodiocepimlaocjkgkimcnaeamaogieadohkogiempjginocghbaeacf
+mgajogoemipdmlpdnkbhhndjjeaophcbmkdlfoepndcemebldaijifapjagpidok
+hidmkncnlgkppfpobaoiopmnijfomiapchnloekdcphedolecongodnddfdmhhbd
+lejbhhafieaachaakohadnnkgcjahjceaajidhlajiagahkaalhodcpkcpoklgif
+elpjfeengallgkjklggeacmfcmldickophfjhgiohjhlohjbhlelfjnjpkehlegl
+dmklcanokgpachhabednechnchbcgiihjbbfcjlhlefidmebjdaabblojonpihck
+dmanekpkfbemjafhmgcoieecjbeaghpmdgbfcloachgepafbbibojkeganfhjgmp
+fdohiehlcgegelbjoihdcaahhaploflcekegkckealbmaadaopohejbahicolija
+pcelflllainoojmmgamfahpeiknmnemddoafbnacenbcacaaakbboohapdpifbnk
+cbpkjjjiaddgagchpadhmfpkhinfnooofdniccjoblgiggeiobjamajedodpakna
+fnbhmdjakcmjcaakdbpodfjnkmagllocahhhocpnpmkijmanogfafmlicmjhihin
+dimobankoamijjpmonpbomekmaniebnhlihffnepgojddgocafkhdanmlgaibeac
+fpgablhkccpdiieoiccmmmbahciolcngppaagnodlhobjcaicncdbdkobhaflgaf
+fdhngieekkjeiggkmfbbioibgggkhapjgmhkchoaliaheiegcaieobipbkoghaff
+dgahhjghbfmenjjbbelkfdbibojakbnecagadgojaklhchlgohglpedegdflgbaj
+cncndgmjdnbaigckkiaaciheifbnnjiikaakcjpeaabagnijnidbopgpndmkiaea
+kddoajnhfmbemklnfdoojinhmghkgogjhbbeomjdackigoodlbnnjjmpcdgjfgbl
+ncminidamambnombdadjepakoapngllhhnbbnkpbelipknjnifbpkgbihidodjnf
+glchkdopfdfmnfaimhpgjhojanhmpigngkdeoifogjjbnjoidhdpgffdbmhcfmgl
+blojcigbhmaobenkflaaileahhmkndbegjpbkbifciahofgcdapnbjjfiojfnklk
+mfokpjekpmehdoiajkdipjoffnleboojfjgpnhccngnedpgoonjlhcndahpafble
+comahljehklnifmkeenkmnakbhpneakbiobkkdojnjbgfaflnjaikckkoabeibjm
+ebacpgdedkaaaoapbhifolicbnppaahlmdpdfdgkcpokiabjoabhimeogfdhmfip
+nkjmlnmgablhbjoehipebpnboogfgpmplnhmfnciaachndjciipkbonhohonneoa
+iafdjacioflfcojdaajdecdjpiapkkglipbnolgcnpnjhbmgkdeinhlhcbbapdjj
+kkkfoibijgaopocbkflomooblgjgmnfmahjabojaamgfhmhnjpgnpmniefbmgkjn
+kogpkomaglcjlkjpdiokcniapdbkgkajiimhhfdkpefgihmdffdkgeofopfnphph
+oghkcaihklalodhkilfpjokfkjobhldgconbndfdlcgckmmjjidoaccihkildchn
+djhnpkkglnhlejmfkfdeaddmhaaejendcpgalgajbphagigodljlkdppaahidhpg
+nhjadpgcglpieikldaikbgdnidionhklanamlmkllgphhaihblcgjjefigkleooj
+lfbchacgblmbegehaamjoikglenjhaffapmgpmnhakbljlcndpgoleggmmadlimj
+blbfjmmdcgelnofdngpbhmkbmgkjnhmmlenaoodmijecgmiplnmbabnhbehokifm
+apekkfnlmlhpkbfcooaljoiklnfofnmfhjcbbchcpgeaaoeobhcejbphffkbphni
+epbalhfkoenafpdljaanajdelcociemfobhemdlhfnnopahfpeabiojkehdkngem
+aemcimbenalldaacnpnadgkoohabhnocfghdkfehnodggheiadbjpamabeomiaib
+imhcnkdhhfledopahakolinkmnkfjbnoibcgioemmncboehddgbkfpfpjkigfbpi
+gefgaoppaaoegmjlpehbgeednooelmlfaaaiifdcdgilgohlbkmlllmlfllelmlf
+chgncpaikmbeaomaahndkkojnljgocdkbollejilmeiaajcloimlaokjpebgdklc
+dmclijfljdajpjfpdkihhoblokiimiidnbaeidfbimighdcaneoegbhapbllffhm
+joopfdinilemilpbonopejacgggankcdkfihcngmjgoadaooaagnepeigbmcmlgi
+jbgajlpajbnaopacblaeieacdjhmcngleplbdnfhcgbgejdiecjfjbhccjickbge
+ajkciajmjbhcfkoekilbmejlibmogmdlpcmffmmdidecfgainplgcgpcdjlejlcg
+cdiadcbpccbigbmhabjeapenecojmopddfnfbcoklgamimdfdmafognblebbppaa
+nhkbjonengnbiilhlifeebdfabbffedchgmbfhakbaaidchafkjhhnbiiielbppg
+jiedgpmdjadekcojhkbidjjpkjepgdecmboamnkjfmflapfpnjolnlodhlpbijoc
+ogablccijnpflmjopikmaigdbmimomnabhhfekhcniokjmaoibdcopflknciiapm
+ibnomfpejikeknihokfmgmddghfkiafpfmmegihlochmhimhjkimgajlpgdbjlpi
+gmkhecilameagmohekpiapnknpkbjoogficmaadehmjceakhkagomlkhcnaeglhp
+bdnacnbecdhlnbahiagcclkhgbehklmolgikipplieclhclciajgoaldahfafhpl
+ehfahaakhmeolcpmmpddlkfeokihcjcncpgcjmabadahkhpkdcfbiofebejmpmpf
+deefgldbdbbhfpfkmdmimbajkhfnjeogojgcbcagggnbcdbagolkglfkehgagfim
+ojbhjmfmbabgkpglfjngnkjgdlifofcabnkeaaidaocikdabnhlgjicllgimecpj
+bmkblmgjoicocdmcpkiegobejmaaepjmaaghokknomgpkogogfjenkeeiejdnncj
+kggkplckheokifjplfmlliilomiohcdagonikleglhmbkjiggepgbipopbmodfjo
+hdneklkoomceaidjfnhakaphbbnfifpocigaihgomljjfhnbhfbmofadcingogan
+olpjkcjhpglhgbifjcndlngkcdohflkogjhnadnfamhjgbcpmkbjadmafkoeihed
+kfdmjdnmpgbmgpkhfkkmpflfmdgjkfejmaeckiiglfigmcoaaepgpocaheccjlpd
+eboflogfcfdenhikifbajheghhnkfnclfjjeaeiolbeccjidomkdhfkkobbebgmi
+oigelgobcocpkongbpnehkfmedjhgmhdoohaepnpicbecgpalaihllmebpoffjnb
+fofiampcmimdjfbaejoijlhahkfdllkcekbpedchckjmlbmacdalkokdkbcolbcm
+bdgkkkklojniiadnokihonbjmilcaadhimfbkneecnimiiecmehddhlnidlojpcn
+engfidlclinalfamcnmdkppgljikiocnjdhghlbhjlaoeaeofidchlmggffoflnm
+gkjlckmnlebgkdkmfcpigaadbeegideobbkolcgkbdfokaadmaekagciddbjmfoe
+dkaojjnofhjbfhpbnannljjcekjdcjpnpdkldghnhcaneoanandnidpioaganemg
+lngldahmjcmfhhgmlganfcpmknadjdfcamkphfbabobkedojedllcifoffogbomg
+kmabmjdbdjomahlcbncjpdodnohnmjaaibopebmkffelidpahboehigmapcmiacc
+mddokofejegknfljneneoeahcloblglclfajpnipdjbfolofajimebbbnojodfed
+jjnigghaakeaggeklgdgmkfnmjnhklenmamhmmiafmmgpfkengmhfdbhacmbjjca
+opmhhfnchhjcilenehcoekaokcgohlmlafmokjkacemjjjhcgfaahhjbjbgkflfc
+njgfbimgncehlhihbpdihlhcbpecgnbkikakbabgmibamiicopffncmgglddlhli
+feebdfaaekdcndjojgiapmkeaaembpgdbkgdjjbolnlnlldhjidgmifjcgcdbemo
+ohfjgjojfcilflipjhpgnkmniihollgdlidceaidgfcgldlheghfpedheahdghcn
+bmcdgakifekckmkhbbmfhdpignhnkeapnigkjiigljgbjgdggiibenhgkaiaimmp
+niaaghklnginoldnngokfncejidkoaebmbbibjkjkmbpodejhngnpbjghliinlno
+ilncoakdeofpfbhkgklflindoccninfpoifcofihmdpaopflnfdcoijjfmgcokia
+dppfiakgbhodpkdhebhiegmobiofddbmpnonalmpfhcolilapdgbjgklmalijjgc
+fgdpljghgbademfaealpopmhchadkghoemebphmaihpljebpfaclbbngjcbdmnkk
+oajaloilbignmlpmdogdkjdmemglkjmpmcpkjgkklnhicfjaldegafdajchmdeci
+hkdpepmkenogmolmolhjgdmldhcolaphdaihjilbcmkfmjcbonkekamnaeakkdem
+gebdimoodhdnnkefdjempbibfdiifjnofmenbdalmneabdkcegbbhnhchcfpmkpp
+aabiopobelhnmhlgechlbnjabgalhlddkkadimcdgbbadhpjmecjndfmnhodlndg
+niljkaiaeaepdahlkebnecelhcgfmhfidhdopdpbbenhncmkknopgkhlbbnjokci
+aomipbakcodkppaaeihmhmmiahmhbekkphaobeppaakbnlnkkfpmhhconjhhafbf
+glbdchdmhkhaaiphfkcgjjimagcamjbbjmikchbleljgnnmfjoehpcnbmpcehigf
+ciknlmcflhlnjibalneabomfadpocjaeopfhmoglpfcbopdmeoknihplkepjbejl
+ejnadjplpmpghcmghipbehaoobiamplogmmhpdngochjcongdbafpbedchjmfobj
+oijjhmiphfdnkbglpibgpkjgnmbgjkkfhmbhngkcmidkaigelhbbmnbbhneddnkl
+ccbhdljdpjpaihdmceipbibhlkiocomnnmfbdkngdggckaomekbjjliejdbmdcdc
+inkihjefjldnopkbihkhpodfdhedgjkeaoncelihmnlambaacdkhcalghonepdde
+hnheemlanpdccmgkkoldljlhjjdggenikmnonimfaiifoiindankkgihppaahebp
+onbjlgmgolhcmlojcofnmniimnoeofadnnoeihaaobdodcndbhoeimnipeoebppf
+fmbdjkjggfgfohlabjoofllgenmnagjihdedacbidmdgaiheoeflciklpdgmjhno
+denccmlnhgiphhocpoofaocollpnfiodfbclappodimooggbiaoppnhhabgjjgap
+lambcpebbbindaopfdiomabdlbbbendapiofejeccimojphaafbppfpiepnooelh
+lanjphcflfikoinbgbeobopealhapbfkhfppaaeidohmlkhnemkdhlpbepcpphgm
+elfhnhodlhpoeblokjiihcagklahddombhgnbldekelbgacdhfnbaejkdhledeff
+oekogofmhiempmiiadombjhmlknnmfjdeohekchimcldbpmikjfppfeamplgalol
+efdnmpcfoapjohpldcmfbjiiijkphdehndkhbppokjcpnohbnokdhejiehniieik
+ihfoccadiaaodignpkmpkgbnnkehpmdbbmfhkgbbgbgofbnckbmiabbhcjhebljm
+kkliklddejmgehgnonnccneppikiddjbeocddemhcmbdmcmekagmjajpjehmafje
+canlpcefencgbnehldnlgfjheebgbanfnmgmdhmnohfjcppoeiedjfmpdeconjld
+ledibcgkjjhhadhakaakeomjoidipboklciolnlkiemlnfcofdbnecnipjmednen
+ecmpabokdoibhahndipjgmgklealcoomcbnbdfjekdldkmhnimdloelealndjind
+kofobilfnjkchdgeoaniajibabbepkhfpheaihkhlfbhdajobnfjlcmibbknilpd
+cbipcbphnakeknokaibhegaielglihimdalndnfdoamcflfcblgbkikflpgfbhoi
+acbfpmcnklnoffeecjjokoheonafaemplggjapdclalmjefpagfkdgilkmailhbb
+bmibkpdijphfhfahhhlokpmdifamadhopbcejcbkddeldaaamaehcoojjcdkfkid
+gflkdgobbkfeebdfibbffeebaagnlpekhoflegkogfkhmgpifbgpfkmbjfblnaec
+chjeammiabbagcflimimppaakblmgnepbplkiohjgleanohbabelmhlpdignaijb
+lhokjgknfhflflnmnmkmmkhdmagbhcibbcjieodgfbikeicdcaekfbidackphnjb
+bkihchlgplgadmekihgijnhhgmfmdgknchefmaaibendoalcnkgljiagglkifbjm
+efafdibhjmacahcdigdafjbpingijfellgjgdonamahpfcpfdcmdcgjlpacbihoh
+cngnlbpnpakokkpfjemlgccocncgjhhlagaaknjaaodhimnbgmlgdlbpkbnbdeem
+kbfhblamoienjpcpdjioihibmpfeggkoanbmdololnninclaphgglfjcjfhkceff
+mlomakdahnmbobfjnbkeheejmhkdhlpfbampmejipchkfgblolgligaknjgigbce
+kemjahkhcibdpfieadjfdklcajffhiioheibpkbbpidmdeffflenmdbdkkgblflf
+jffbmopcgmleamaombegfhachognklnbpbhmhlohjbbjedpfmbdmecpaobcbnbff
+afeldbpcldlebbnjekbipnonkjhhgankkkidndleaehnmcfpnmogjneljoobomjf
+mialilmfciiabmopffnmnhoigbbgngallafjldkfcdodagieeppkmgbpgklknkpf
+joghkppidifhlbldijhnnpmhlehimchkecbbmiajihhmoejlpkocpibfbdnfndkp
+iohbhbkbmjeohoadalbahiaadjmicgdlmjkhdkkgdhcnmmandnepdlpdiimdldgk
+gmdhkddlkebpfpbceffhmpimpklhlljlhldnmoofkoooeggioneancecmiinkaaa
+eopjakfbfoobgbclelapfonnhmlimhfgphjglgphkcibbomikmhagjekchbkihec
+ajbdkfhblgjkmpafnjmgkjknhopeapkladjgfkkjpdoclggneafbffhafahfjlec
+dhoifaefeheenennmiiphecgmoopbcbpmcgppmkbkohnpmncdlieplddceifalid
+mdaodjhmokidoklkhmolobpeebihddbfdnghgogflimmeifpccfeldhjpjcegend
+logkglhlkignknldihhfmgbhicfebfgmaaibfbbcaamihghaokphnpehpflfajah
+pnkaflpdnopdcaindedcfbklblnmmkbpbldmdkbcacganbbehmidmdkphnihiekc
+ahhemdfhpkidhnmhpdkkihphemcnihdlcmapladjkceienedamaalpaepmkpfmjd
+ibahndkhppaandnjdahmojpbhnijfenahojnpoefbomooohmfjcdmjdacinkpmbh
+imaokjhhgnaojhfagnnicolapccblgajnagcjhnkgcjjeooifemfdikjgoembdeo
+emlmglihimhfmioibeidaokikppagmdkemhooelphffiokngmlfneajmmalknjdo
+mbaokpdofkihmhkjkljocpjelhhhbkmdkjeimmmaoiiobfhhehjmhcaiddbficnn
+nnlbdnojgjggoknjgkfejkipdmdmkpldahdgnifoahieeadgdakjpicopcfjcopd
+bbofbedgdamfkohfbamcnodgdaajblbldplbinahjhgpjkelnedgpebnooogocdo
+dpfdpnibnfbifolfjncijmabhcaiifahaadoodipokpkdmolcbolapfpnlgnhllh
+mbhhohfcolonccaacjglkkemnjaihpeomjpjmhffncbbcbhhkhibojpacnngmpnb
+bklmnbajlfpmbbnnpljnliikfacgeabjhmakhahcndpeanmakhgkpidghbhielii
+ngblolfoamjhmnmjgjajaiifdjfpfbdebmolkaelapmmpgehmodpkohdeamlclim
+fmaljejmaaghcahlfdcbbialakogndpekfnedjfbhhcgpcglomoedeaapabggfnc
+pomlgnabiebamnoachcdnabfdabipeeipandpajdmbmakhhhmkennjnmmjffoikb
+kmnpedplpblgkbeclpcgglejjpgnikadgaifmaaiodjlpdniehhjjfglhnehjmmn
+npimgldjoobhkjmmpepajfihhjfmhbhnhdbdcgkoenfbcifhecfbidibpmcnakpl
+llejinppaagglomabnkggloomaogdijidchaacbpmojdlkjeoodgncmokhihacdp
+oemknidaifdijfdncjcocbcdganbdhhpoeiehmjokffpkkenmmicckkiagebbffe
+aabcjojfkjgljkhgekjflblkjomdillemkeglpdjaipddbkfegaoggilpkjibipl
+bocbomjhleiklbodbmbmpmboaenbkifakcibmbcjdddjonejfodgidjpijoahame
+kjcigmbfncfimljjibigfjgindgmkghneaafhadbpdfifdnbhgifcjhpdfplefhi
+jgnibgfikeajjlidjmpmgcklljnaodpnnefllflgifcmccpiempjdflohfbhbejo
+iehhidnimbgibppjiibbffmelddkcdcacdjebmgmpafkkgonlfbejhdalnpmmadh
+cenndgbjdajckpdifmfgjoaalnippnnfgimepkknkejeabpdemaaacbjepfdgldm
+eaoiaokjgmkfddigkfhmhbhddmpblajmbdgjlajcmgnnoilekfmfmdeepimhmbfh
+gpcopjhbdmnhbbifgailfneobfmppaikkmefopnllcokhomdkachdaklcjmghlfb
+anlmcnmhlbbonncdbhndglbjmghcpbcpgnaenfpmoljehcfdenacbaahaaaaahaa
+aaaakcmkacciidlklgcmdpneldijjmbcdmbjhedonehoplkemfhogkjginhfbbai
+ackpkhgfgdblbonnlblfneklojjjjgfhbiaiegiigbpbdemipidmkjknaaggckej
+agbbkiocedahcjmhldbndkcgngogfdlfeegmmdllnggeifenpaaebacojkpifioj
+ibjgeihlahonofajchfefnlnimpaaopefdnnimadchbaikkhhgkihfggkiicpmdn
+ednehdgemifegkinlnkngejaibfiaanomnfppdnkkgcmbhoibaidmbbjpoafbpdf
+emaicipffobelmcbahaaeklnmbcjlecejhocbofliiledhkcgmjacmeodohcalob
+flnjlcmkdpdllclkmbeobahnfbamoniphigebppfliojknconpckbldnimbdnjfm
+dekmjahakolcojglenfhidmpfhbhddkokeglccnfamhjcmejephaplcankfeedbb
+niflndpgokgakdojojfloafkikbmdkjgchpnmnajkajkbdocahjfblangfmdolgd
+dnfkjgdcbnboljafklaacabjgmkehoobhkpienfnpcoajfpnihlkemcbonihcidb
+caknabbnjfgafabejodjpohnkifjfblheafkfgjkgnihodknieepbfhhgdeahnok
+hgfgdcfabeiopdbakienplcnnofdicjjocccgfimgmmomabifplkkibiebkcmiaa
+aaaamacgpjlffcegdhgdpodhdbbeapnmhihiohcnmceabiogmfldlcglaeacagdg
+dnkinnckkiagebbffeaaebbffeaafbpmihomamkoohebplfigafgbbhjmipheljd
+fbanfnncfelajodpkkfhicaempniaadgihkblplphecmgddbbdjmnimenefpofpa
+cpokejmbkicoodibkdhleibbddhijffomnhacgifbpnplghlbfaigaigbaigckdj
+edbahmihbnocedhndlhnnkabllknbloiefdapodcdgecnpbdkfapmflnkogbbjon
+kfilihekaacijldcidiohehlfdhkchbnnkmlnibclbcacjjnjbibkphfoijfkohn
+onoajhfdfojfokedlejjmingmgmjjpmfpjijlhobkhgfdhieilglkhiidfcjhapd
+cnojblmjdikipkdklokfogplmghcdnoocfbfelgbaeamfjpmikmbpikeeniadabb
+mibbpobflminolhgenmgjgbionfkioekdjanohejaahakgoaldeokiiggjoodhdd
+ihfmccoladljjemakcemedekmbkalfpljbknemaikncehpeamaajebmihfheglmd
+abbfiaodakafjkkbhomgigodkijcbidfleencofnngeabpcihkbkcfiaacopfdfh
+aiachokjaaafihaanhgaicimebifkaclgejhfmaeafoimnkianfgnadneafnncde
+bfdnepikmehnhljccbaioejbaiomndkckfkbajhebadhajidnbdhpnjomfhakimh
+jfocdkmdkjgciiholmdeglgoeoehmbajaefpfddicopajbkoofmcpnjggkjjmcel
+cnkemleiajomdkaibenbkcnbkdffkdkhdmaaaaheajoejddgmnhojkekmocfolmo
+jmojcncmnbggldhdbijfnbaeeaephcjlkpgndijogdcipdmcckclbaamhmmbenkf
+gipigdlkkkcckncjecbieajjnbhmmfohflgkhkmhieembgaiemdimbciidedmgfd
+gcfhohjblglfnggdgbglglienfefcidmcidhgmkhfnpojaldpdkifdnhhmajiijh
+pokjeoncpcnaellgoboecnamfhhpokljleklnepdgmmgmoohleindknijaopgcbm
+hcfbahmnjinndkanfancedabphamdndlkfijfiebbfaecmkiicakcakiicakeahc
+fblbicbdalloajphfjiegeigioicdapmollbdbmaknfpgkgecgnlidhaanmipjen
+hnakdibjlnappkjdhlglolaphpemjekbldjefgdnfpggjmbjefajmigejhhmmedg
+mbhnckbceaegcbohnlikbagmalmpfeconipddmgflmfddpaogdghikkobhlfflho
+ofpdkignlopfdnncpoccnadbeeeoglcdaekmhoebljcleaokkmcdipdnopdbjllb
+jeandojjdccfkblgojadaaacfjmpfefffneggcegblbibaglaiegbkjbfajlomph
+njcekjedkbbbojphpapfjmoghjidcdcaakmaoipjbkkklegkonmphmlpjeifcjje
+mdeghonkcgnnnmcfglekpahkjehkjipcedlihjcnoogajbjjidhfaahgeakbkoed
+pgjbloknogbjgppocbknhadliblamdkcjedcgkpeaelcgjjldnjffodnboojnphk
+ddmfkcedagcaiajdhppkigoigmmnjgjkggapdkamdciabfejfbdcnbiajohfebfm
+jcocgmoedjdonblbifafannncccbcddaalgagldokjonpejlkdbdnogifbfmkopf
+lamdfdphibcpackjcmaelnfjnofgacpaagekfjhmakaaagmamaoakciaodibpegg
+aaflbpoefkabhabkeebgkppikfghcgklndaaakdcbcjkmkbfgeleaooajlokjcmh
+pankdkciolddplkapdailfhmpihooedjamkhnjomfepmlifljbabgpifbjphofjg
+jfgpeahndhlkcjopomcchhnneebdinilfbomkoplabmpndeklcjjokhdfjjbemmh
+djjfcnmphccnocjbnaombkkkomdkfabjooaaoandjaafiampnaofdlipbgbolbjb
+majifkjaiboidlnmecilkpoghcebenifpodbeilliphlkklgdhmlobobgiiddojm
+fagohachgpombdneapcknmlhcoiohjemhfpmiklceeinhbecebhadaaibdkiepjl
+mhbcakinifnnlmjgfkbeebgkgcjdfebmecdakicpjfncpkmopobcklgbmibcjajm
+ahhfeakpmjkhefeddnenjghkckgbopicngfdlmlolbjgfbconiaplijblbaehcak
+fbobijnmfaloamefmpmnmigpfkfgkjghghoiknicnfjloclbidnpkcbbgkofjign
+bhghkilopmgafkeljnnfnalplghncnfllmlchimfgecpmcpgbjbmeaaikgnhohbm
+eppgdbnmebaknpoiepjjcjcfadkkjelpplkfgopgbjekeifcfnepgicepnkliaha
+onnokpconlpafmglpepddmleidpoecfgjlfflieheimhbmilnmcfhfeehdggdhgc
+haacniekhoajlhbbingnflekcdkogdabficfpcmklbmmhleccbifdoacnhkcmjof
+abgnfgelgiigfhefjcccfodeaaiapbeofnliphhaloapoehjjalkgmoimlciilgm
+paofnpjghcgglfhhfelppelikbmhdblandgfonlglhimimoinfipdahhmfpimgkb
+eplalainfhlaidoonklnehcfmajkomlglmpgmdnbeklnfconlklknffdgmbkccab
+bebfciammahhlonfhncicgcpmhdchkokbdejhcpbcfnelghbdhjcecoioikiickk
+ecicckkiaaicckkiaaicckkiaaoghapeomhjibkpbfongjaidbflahpfbbellili
+ljlcngkeomcdhngbnkcihaidcechoeldepfbpndfjbdejcmacdbdancnkgkpnald
+obebhjlgehiagjdeccbihpielcdnjdaklmhkogknagjdjolmfhnplgdlipnibkjo
+pdjndecfbjoppmbhjagcadeiicchkhcihadfofbhhkpegkkggdpombglhhgemhag
+cdciaahpimmkfkgblicfooehopobdngmblcoleigngafekghmioceccgchiajmib
+nbkhhnblmimakacppogihphdgbgbhlgbnefgddjmmchilmjllnfjdacldjnojmpk
+oemiidnimhcmladgmjoaddhffabkcbhhingjcjgjkibljakikficakdaebijfkck
+aikbaedceaegkbomgnelflfnehhnelmcabbdhalddhmigffjnbjkedijmfcppggb
+igbfiojieacgaejmodhhaaadoelcmjliiedpamigbmfgmdmaglbdofpmlkiggbkd
+lmeehnigmmcgimcfoakdhnhadopahaocnjhglaioghhnpcdcjdonabgjdojojfid
+lliokfhjdhgjnfocecgnelinjjleidilgfkcoakhbbgnnlliemkfkdlokhedglfg
+kidjkmbjhmdcfkcgihledmknmgbfgkakmcogbkllkndalamkeoobeodaknllccid
+lkkidnbfhdjkcoblmfmnlnmcgjhdocanmfkncboiekbjojijacojkcefplljdanp
+hcpinffnhbnicnloefbpmecpncejnkdgcglnggighfeamjdadjjphnjcnbgmpjhh
+lklfjfdbdhlgjgdcboonmeokbndndjafgngkjiioehhphhcdonmlgbadldpmddim
+bafeeabppmdfofbmdkknljncgcknjnhjjgoiadiaomahkghjhielndddkednbgle
+aaclhemimkhmeaalnddplfcielkiblmjnjfmckkikcjikaicckaikaicckaikaic
+ckaidbpdgdddleneimmchekhfhaaebgigjdkfcemakfalbbdjmakiaogmgnkogan
+ncnmmldhicjdbaenmbohehimepllibgedcelbiheakaekcnoebbamaadfecamgji
+fbhbjdcmmikahjibjolefeecaiicckkiagebbffeaaebbffeaaebbffeaagcicfm
+ncebaaijgokjhmaadjlnokjcephifkaabhhfkngenkngmkgdnkckmoojlcclkfgo
+onboaljlaaaaaehmfldhkfpimiellgljlbimfhnbkdichokaafeamefogigebahm
+mdhnbklogldfkokbncfmflmkcpbeddokfbcoacadjdhofbnmipdhamgpgngpajol
+nkmgclmnemeoikdjnaoiihmdobgkbknkkepedelgbmikjmbolgncammiakfgcfia
+amndkdhnfebfcckcicffaaaaaaaakacjjkigjipgbfigckkiagebbffeaaebbffe
+aaebbffeaaeddilljddonbjcgeaehokjicakfaekfmebafcabnfeebaabffeebaa
+bffeebaabffeebaabffeebaabffeebaabffeebaabffeebaaijdkmbbnfeaanceb
+bfaefaebbfaepbppjn</image>
+</ImgIcon>
+</xobject>
